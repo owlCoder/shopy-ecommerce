@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Http;
+using System.Web.Http.Results;
 
 namespace Online_Shop.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : ApiController
     {
-        public ActionResult Index()
+        [HttpGet, Route("")]
+        public RedirectResult Index()
         {
-            ViewBag.Title = "Home Page";
-
-            return View();
+            return Redirect(Request.RequestUri.AbsoluteUri + "index.html");
         }
     }
 }

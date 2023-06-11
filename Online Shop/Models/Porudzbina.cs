@@ -9,7 +9,6 @@ namespace Online_Shop.Models
         public Korisnik Kupac { get; set; }
         public DateTime DatumPorudzbine { get; set; }
         public STATUS Status { get; set; }
-
         public bool IsDeleted { get; set; }
     }
 }
