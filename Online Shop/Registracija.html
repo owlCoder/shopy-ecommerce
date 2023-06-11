@@ -35,6 +35,9 @@
 
     <script>
         $(document).ready(function () {
+            // inicijalno nema poruka o greskama
+            $("#divgreske").addClass('d-none');
+
             // ako je ulogovan, prebaci ga na index - slucaj da ide na back opciju
             $.ajax({
                 url: "/api/auth/Ulogovan",
@@ -90,6 +93,8 @@
                             }
                             else
                             {
+                                // desila se greska - prikazi je
+                                $("#divgreske").removeClass('d-none');
                                 $("#greske").text($.parseJSON(response));
                             }
                         }
@@ -140,7 +145,7 @@
 
                                             <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Registrujte novi nalog</h5>
                                             
-                                            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                                            <div id="divgreske" class="alert alert-danger d-flex align-items-center" role="alert">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-exclamation-mark" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M12 19v.01" /> <path d="M12 15v-10" /> </svg>
                                                 <span id="greske">
                                                     
