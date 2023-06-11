@@ -5,12 +5,14 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
+using System.Web.Hosting;
 
 namespace Online_Shop.Storage
 {
     public class KorisniciStorage
     {
         public static Dictionary<string, Korisnik> Korisnici { get; set; }
+        public static string KorisniciPath = HostingEnvironment.MapPath(@"~/App_Data/korisnici.json");
 
         public KorisniciStorage()
         {
@@ -20,12 +22,12 @@ namespace Online_Shop.Storage
         public static void UcitajKorisnike()
         {
             // ucitavanje korisnika iz datoteke - ako ona postoji
-            if (File.Exists("~/App_Data/korisnici.json"))
+            if (File.Exists(KorisniciPath))
             {
                 try
                 {
                     // ucitavanje svih korisnika iz json datoteke
-                    Korisnici = JsonConvert.DeserializeObject<Dictionary<string, Korisnik>>("~/App_Data/korisnici.json");
+                    Korisnici = JsonConvert.DeserializeObject<Dictionary<string, Korisnik>>(KorisniciPath);
                 }
                 catch 
                 {
@@ -52,7 +54,7 @@ namespace Online_Shop.Storage
             try
             {
                 string json = JsonConvert.SerializeObject(Korisnici);
-                File.WriteAllText("~/App_Data/korisnici.json", json);
+                File.WriteAllText(KorisniciPath, json);
             }
             catch { }
         }
