@@ -33,6 +33,11 @@ namespace Online_Shop.Storage
                     Korisnici = new Dictionary<string, Korisnik>();
                 }
             }
+            else
+            {
+                // ne postoji datoteka - pa se kreira prazan recnik
+                Korisnici = new Dictionary<string, Korisnik>();
+            }
         }
 
         // Metoda koja proverava da li postoji korisnik sa trazenim username

@@ -16,14 +16,15 @@ namespace Online_Shop
     {
         protected void Application_Start()
         {
+            // Ucitavanje podataka o korisnicima
+            KorisniciStorage.UcitajKorisnike();
+
+            // Registracija filtera i ruta
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            // Ucitavanje podataka o korisnicima
-            KorisniciStorage.UcitajKorisnike();
         }
 
         // Podrška za sesije u okviru poziva rest servisa
