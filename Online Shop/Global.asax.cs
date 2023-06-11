@@ -1,4 +1,5 @@
 ﻿using Online_Shop.Models;
+using Online_Shop.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.SessionState;
 
 namespace Online_Shop
 {
@@ -20,8 +22,24 @@ namespace Online_Shop
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            // Trenutni korisnik
-            //Korisnik Prijavljen_Korisnik
+            // Ucitavanje podataka o korisnicima
+            KorisniciStorage.UcitajKorisnike();
+        }
+
+        // Podrška za sesije u okviru poziva rest servisa
+        public override void Init()
+        {
+            PostAuthenticateRequest += MyPostAuthenticateRequest;
+            base.Init();
+        }
+
+        // Sesije, url zahteva /api/ kao pocetni parametar
+        void MyPostAuthenticateRequest(object sender, EventArgs e)
+        {
+            if (HttpContext.Current.Request.Url.AbsolutePath.StartsWith("/api/"))
+            {
+                HttpContext.Current.SetSessionStateBehavior(SessionStateBehavior.Required);
+            }
         }
     }
 }
