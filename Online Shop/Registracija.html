@@ -44,7 +44,7 @@
             contentType: "application/json; charset=utf-8",
             success: function (response) {
                 if (response != null) {
-                    if ($.parseJSON(response) === "OK") // korisnik je ulogovan, ne moze da se registruje
+                    if (JSON.parse(response) === "OK") // korisnik je ulogovan, ne moze da se registruje
                     {
                         window.location.href = "Index.html";
                     }
@@ -52,11 +52,11 @@
             }
         });
 
-        $(document).ready(function () {
+        jQuery(function () {
             // inicijalno nema poruka o greskama
             $("#divgreske").addClass('d-none');
 
-            $("#registrujbtn").click(function () {
+            $("#registrujbtn").on('click', function () {
                 var korisnickoIme = $("#korisnickoime").val();
                 var lozinka = $("#lozinka").val();
                 var ime = $("#ime").val();
@@ -85,7 +85,7 @@
                     contentType: "application/json; charset=utf-8",
                     success: function (response) {
                         if (response != null) {
-                            if ($.parseJSON(response) === "OK") // korisnik se registrovao uspesno
+                            if (JSON.parse(response) === "OK") // korisnik se registrovao uspesno
                             {
                                 window.location.href = "Index.html";
                                 return false;
@@ -94,7 +94,7 @@
                             {
                                 // desila se greska - prikazi je
                                 $("#divgreske").removeClass('d-none');
-                                $("#greske").text($.parseJSON(response));
+                                $("#greske").text(JSON.parse(response));
                             }
                         }
                     }
