@@ -13,5 +13,20 @@
         "ObjavljeniProizvodi": null,
         "IsDeleted": false,
         "IsLoggedIn": true
+    },
+    "11": {
+        "KorisnickoIme": "11",
+        "Lozinka": "1",
+        "Ime": "1",
+        "Prezime": "1",
+        "Pol": "Muški",
+        "Email": "jovanovic.pr55.2020@uns.ac.rs",
+        "DatumRodjenja": "2020-01-01T00:00:00Z",
+        "Uloga": 0,
+        "Porudzbine": [],
+        "OmiljenjiProizvodi": [],
+        "ObjavljeniProizvodi": null,
+        "IsDeleted": false,
+        "IsLoggedIn": true
     }
 }

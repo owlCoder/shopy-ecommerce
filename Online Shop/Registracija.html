@@ -34,28 +34,27 @@
     </style>
 
     <script>
+        // ako je ulogovan, prebaci ga na index - slucaj da ide na back opciju
+        $.ajax({
+            url: "/api/auth/Ulogovan",
+            type: "GET",
+            async: false,
+            cache: false,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                if (response != null) {
+                    if ($.parseJSON(response) === "OK") // korisnik je ulogovan, ne moze da se registruje
+                    {
+                        window.location.href = "Index.html";
+                    }
+                }
+            }
+        });
+
         $(document).ready(function () {
             // inicijalno nema poruka o greskama
             $("#divgreske").addClass('d-none');
-
-            // ako je ulogovan, prebaci ga na index - slucaj da ide na back opciju
-            $.ajax({
-                url: "/api/auth/Ulogovan",
-                type: "GET",
-                async: false,
-                cache: false,
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function (response) {
-                    if (response != null)
-                    {
-                        if ($.parseJSON(response) === "OK") // korisnik je ulogovan, ne moze da se registruje
-                        {
-                            window.location.href = "Index.html";
-                        }                        
-                    }
-                }
-            });
 
             $("#registrujbtn").click(function () {
                 var korisnickoIme = $("#korisnickoime").val();

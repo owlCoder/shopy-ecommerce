@@ -33,6 +33,7 @@ namespace Online_Shop.Controllers
                 else
                 {
                     Korisnik novi = new Korisnik(zahtev.KorisnickoIme, zahtev.Lozinka, zahtev.Ime, zahtev.Prezime, zahtev.Pol, zahtev.Email, zahtev.DatumRodjenja);
+                    novi.IsLoggedIn = true;
                     KorisniciStorage.Korisnici.Add(zahtev.KorisnickoIme, novi);
                     KorisniciStorage.AzurirajKorisnikeUBazi();
 

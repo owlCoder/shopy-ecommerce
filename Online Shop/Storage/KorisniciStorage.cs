@@ -27,7 +27,16 @@ namespace Online_Shop.Storage
                 try
                 {
                     // ucitavanje svih korisnika iz json datoteke
-                    Korisnici = JsonConvert.DeserializeObject<Dictionary<string, Korisnik>>(KorisniciPath);
+                    Korisnici = JsonConvert.DeserializeObject<Dictionary<string, Korisnik>>(File.ReadAllText(KorisniciPath));
+
+                    // izloguj sve korisnike - server se restartovao
+                    foreach (Korisnik k in Korisnici.Values)
+                    {
+                        if (k.IsLoggedIn)
+                        {
+                            k.IsLoggedIn = false;
+                        }
+                    }
                 }
                 catch 
                 {
@@ -54,18 +63,7 @@ namespace Online_Shop.Storage
         {
             try
             {
-                Dictionary<string, Korisnik> korisnici_default = new Dictionary<string, Korisnik>(Korisnici);
-                
-                // izloguj sve korisnike kada se upisuje u fajl, tj. nece imati status logged in
-                foreach(Korisnik k in korisnici_default.Values)
-                {
-                    if(k.IsLoggedIn)
-                    {
-                        k.IsLoggedIn = false;
-                    }
-                }
-
-                string json = JsonConvert.SerializeObject(korisnici_default);
+                string json = JsonConvert.SerializeObject(Korisnici);
                 File.WriteAllText(KorisniciPath, json);
             }
             catch { }
