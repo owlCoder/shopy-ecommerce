@@ -48,27 +48,19 @@
             cache: false,
             dataType: "json",
             contentType: "application/json; charset=utf-8",
-            success: function (response) {
-                if (!response) {
-                    // prikazi podatke i promeni meni
-                    var data = JSON.parse(response);
+            success: function (response)
+            {
+                var data = JSON.parse(response);
 
+                if (data.KorisnickoIme !== "") {
+                    // prikazi podatke i promeni meni
                     // sakri dugmice za login i register
                     $(function () {
-                        if (!response) {
-                            $("#pl").hide();
+                        $("#pl").remove();
 
-                            // prikazi meni za nalog
-                            $('#poruka').text("Dobrodošli nazad, " + data.KorisnickoIme);
-                        }
-                        else {
-                            // korisnik nije ulogovan - prikazi login i register
-                            $("#pl").show();
-
-                            // prikazi meni za nalog
-                            $('#profil').addClass('d-none');
-                        }
-                    });
+                        // prikazi meni za nalog
+                        $('#poruka').text("Dobrodošli nazad, " + data.KorisnickoIme);
+                    })
                 }
                 else {
                     $(function () {
@@ -80,6 +72,31 @@
                     });
                 }
             }
+        });
+
+        // Odjava korisnika
+        jQuery(function () {
+            $("#odjava").on('click', function () {
+                // ajax poziv ka api-ju za vrsenje registracije
+                $.ajax({
+                    url: "/api/auth/Odjava",
+                    type: "POST",
+                    data: {},
+                    async: false,
+                    cache: false,
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        if (response != null) {
+                            if (JSON.parse(response).Kod === 0) // korisnik se odjavio uspesno
+                            {
+                                window.location.href = "Index.html";
+                                return false;
+                            }
+                        }
+                    }
+                });
+            });
         });
     </script>
 </head>
@@ -106,11 +123,9 @@
                                 <span id="poruka"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="#" id="mojprofil">Moj profil</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                <li><a class="dropdown-item text-danger" id="odjava" href="#">Odjava sa platforme</a></li>
                             </ul>
                         </div>
                     </li>

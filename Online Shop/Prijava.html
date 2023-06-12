@@ -83,6 +83,12 @@
                     $("#g2").text("Lozinka mora imati minimalno 6 karaktera!");
                     greska = true;
                 }
+                else {
+                    $("#g2").addClass("d-none");
+                    $("#lozinka").removeClass("is-invalid");
+                    $("#lozinka").removeClass("invalid-feedback");
+                    $("#lozinka").add("is-valid");
+                }
 
                 if (greska === true) return; // ne izvrsava se ajax poziv - rasterecuje se server od callbacks
 
@@ -101,7 +107,7 @@
                     contentType: "application/json; charset=utf-8",
                     success: function (response) {
                         if (response != null) {
-                            if (JSON.parse(response).Kod === 0) // korisnik se registrovao uspesno
+                            if (JSON.parse(response).Kod === 0) // korisnik se prijavio uspesno
                             {
                                 window.location.href = "Index.html";
                                 return false;

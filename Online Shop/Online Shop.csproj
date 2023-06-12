@@ -132,6 +132,7 @@
     <Compile Include="Models\AuthKorisnik.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Korisnik.cs" />
+    <Compile Include="Models\KorisnikLogin.cs" />
     <Compile Include="Models\KorisnikRegistracija.cs" />
     <Compile Include="Models\Porudzbina.cs" />
     <Compile Include="Models\Proizvod.cs" />

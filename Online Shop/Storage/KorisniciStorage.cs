@@ -58,6 +58,12 @@ namespace Online_Shop.Storage
             return (Korisnici.TryGetValue(username, out Korisnik pronadjen) && !pronadjen.IsDeleted);
         }
 
+        // Dobavi referencu korisnika iz baze podataka
+        public static Korisnik GetKorisnik(string username)
+        {
+            return Korisnici.TryGetValue(username, out Korisnik korisnik) ? korisnik : null;
+        }
+
         // Dodaje novog korisnika i cuva u json nakon uspesne registracije
         public static void AzurirajKorisnikeUBazi()
         {
