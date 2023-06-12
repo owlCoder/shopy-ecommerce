@@ -20,7 +20,7 @@ namespace Online_Shop.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return JsonConvert.SerializeObject("Podaci koje ste uneli u formi nisu validni!");
+                return JsonConvert.SerializeObject(new Response { Kod = 1, Poruka = "Podaci koje ste uneli u formi nisu validni!" });
             }
             else
             {
@@ -28,7 +28,7 @@ namespace Online_Shop.Controllers
                 if (KorisniciStorage.ProveriPostojiUsername(zahtev.KorisnickoIme))
                 {
                     // postoji vec, vratiti gresku
-                    return JsonConvert.SerializeObject("Korisnik sa unetim korisničkim imenom postoji!");
+                    return JsonConvert.SerializeObject(new Response { Kod = 2, Poruka = "Korisnik sa unetim korisničkim imenom postoji!" });
                 }
                 else
                 {
@@ -40,7 +40,7 @@ namespace Online_Shop.Controllers
                     // auto login registrovanog korisnika - cuvanje po http sesiji
                     HttpContext.Current.Session["korisnik"] = novi;
 
-                    return JsonConvert.SerializeObject("OK");
+                    return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
                 }
             }
         }
@@ -52,9 +52,9 @@ namespace Online_Shop.Controllers
             Korisnik korisnik = (Korisnik)HttpContext.Current.Session["korisnik"];
 
             if (korisnik != null && korisnik.IsLoggedIn)
-                return JsonConvert.SerializeObject("OK");
+                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
             else
-                return JsonConvert.SerializeObject("Nije ulogovan!");
+                return JsonConvert.SerializeObject(new Response { Kod = 3, Poruka = "Nije ulogovan!" });
 
         }
     }

@@ -135,6 +135,7 @@
     <Compile Include="Models\Porudzbina.cs" />
     <Compile Include="Models\Proizvod.cs" />
     <Compile Include="Models\Recenzija.cs" />
+    <Compile Include="Models\Response.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\KorisniciStorage.cs" />
   </ItemGroup>

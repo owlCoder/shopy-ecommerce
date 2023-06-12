@@ -32,6 +32,25 @@
             }
         }
     </style>
+    <script>
+        // ako je ulogovan, prebaci ga na index - slucaj da ide na back opciju
+        $.ajax({
+            url: "/api/auth/Ulogovan",
+            type: "GET",
+            async: false,
+            cache: false,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                if (response != null) {
+                    if (JSON.parse(response) === "OK") // korisnik je ulogovan, ne moze da se registruje
+                    {
+                        window.location.href = "Index.html";
+                    }
+                }
+            }
+        });
+    </script>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
