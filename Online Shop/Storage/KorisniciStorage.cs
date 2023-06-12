@@ -45,7 +45,8 @@ namespace Online_Shop.Storage
         // Metoda koja proverava da li postoji korisnik sa trazenim username
         public static bool ProveriPostojiUsername(string username)
         {
-            return Korisnici.ContainsKey(username);
+            // ako postoji i nije obrisan
+            return (Korisnici.TryGetValue(username, out Korisnik pronadjen) && !pronadjen.IsDeleted);
         }
 
         // Dodaje novog korisnika i cuva u json nakon uspesne registracije
@@ -53,7 +54,18 @@ namespace Online_Shop.Storage
         {
             try
             {
-                string json = JsonConvert.SerializeObject(Korisnici);
+                Dictionary<string, Korisnik> korisnici_default = new Dictionary<string, Korisnik>(Korisnici);
+                
+                // izloguj sve korisnike kada se upisuje u fajl, tj. nece imati status logged in
+                foreach(Korisnik k in korisnici_default.Values)
+                {
+                    if(k.IsLoggedIn)
+                    {
+                        k.IsLoggedIn = false;
+                    }
+                }
+
+                string json = JsonConvert.SerializeObject(korisnici_default);
                 File.WriteAllText(KorisniciPath, json);
             }
             catch { }
