@@ -161,7 +161,9 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\pwd.jpg" />
     <Content Include="Images\rgbg.jpg" />
+    <Content Include="IzmenaLozinke.html" />
     <Content Include="MojProfil.html" />
     <Content Include="Registracija.html" />
     <Content Include="Prijava.html" />

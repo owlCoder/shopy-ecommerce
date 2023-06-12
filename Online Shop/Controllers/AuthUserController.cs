@@ -145,5 +145,47 @@ namespace Online_Shop.Controllers
             else
                 return JsonConvert.SerializeObject(new Response { Kod = 3, Poruka = "Nije ulogovan!" });
         }
+
+        // Metoda za azuriranje korisnickog profila
+        [HttpPost]
+        [Route("AzuriranjeProfila")]
+        public string AzuriranjeProfila(KorisnikRegistracija zahtev)
+        {
+            if (!ModelState.IsValid)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 1, Poruka = "Niste popunili pravilno formu!" });
+            }
+            else
+            {
+                Korisnik korisnik = (Korisnik)HttpContext.Current.Session["korisnik"];
+
+                // uneti podaci su okej uneti - provera da li postoji korisnik sa unetim korisnickim imenom
+                if (korisnik != null && KorisniciStorage.ProveriPostojiUsername(korisnik.KorisnickoIme))
+                {
+                    Korisnik tren = KorisniciStorage.GetKorisnik(korisnik.KorisnickoIme);
+
+                    if (tren != null)
+                    {
+                        tren.KorisnickoIme = zahtev.KorisnickoIme;
+                        tren.Ime = zahtev.Ime;
+                        tren.Prezime = zahtev.Prezime;
+                        tren.Pol = zahtev.Pol;
+                        tren.Email = zahtev.Email;
+                        tren.DatumRodjenja = zahtev.DatumRodjenja;
+                        KorisniciStorage.AzurirajKorisnikeUBazi();
+
+                        return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
+                    }
+                    else
+                    {
+                        return JsonConvert.SerializeObject(new Response { Kod = 7, Poruka = "Istekla Vam je sesija!" });
+                    }
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(new Response { Kod = 8, Poruka = "Potrebno je da se ponovo ulogujete!" });
+                }
+            }
+        }
     }
 }
