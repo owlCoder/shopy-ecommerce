@@ -162,6 +162,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Images\rgbg.jpg" />
+    <Content Include="MojProfil.html" />
     <Content Include="Registracija.html" />
     <Content Include="Prijava.html" />
     <Content Include="Scripts\bootstrap.bundle.js" />

@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <title>Dobro došli! - Shopy</title>
     <link rel="stylesheet" href="Content/bootstrap.min.css">
     <script src="Scripts/jquery-3.7.0.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
@@ -48,8 +49,7 @@
             cache: false,
             dataType: "json",
             contentType: "application/json; charset=utf-8",
-            success: function (response)
-            {
+            success: function (response) {
                 var data = JSON.parse(response);
 
                 if (data.KorisnickoIme !== "") {
@@ -61,6 +61,9 @@
                         // prikazi meni za nalog
                         $('#poruka').text("Dobrodošli nazad, " + data.KorisnickoIme);
                     })
+
+                    // popuni sva polja u formi
+
                 }
                 else {
                     $(function () {
@@ -123,7 +126,7 @@
                                 <span id="poruka"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" id="mojprofil">Moj profil</a></li>
+                                <li><a class="dropdown-item" href="MojProfil.html" id="mojprofil">Moj profil</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item text-danger" id="odjava" href="#">Odjava sa platforme</a></li>
                             </ul>
