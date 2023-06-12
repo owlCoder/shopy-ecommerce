@@ -144,7 +144,7 @@
                 var prezime = $("#prezime").val();
                 var pol = $("#pol").val();
                 var email = $("#email").val();
-                var datumRodjenja = new Date(($("#datumrodjenja").val() === "" ? STARI_DATUM : $("#datumrodjenja").val()));
+                var datumRodjenja = $("#datumrodjenja").val();
 
                 var greska = false;
 
@@ -210,11 +210,12 @@
 
                 var minDate = Date.parse("1970-01-01");
                 var maxDate = Date.parse("2020-01-01");
-                var str = $("#datumrodjenja").val().replace(".", "/");
-                if (str === "") // datum se nije promenio
-                    str = STARI_DATUM;
+                if (datumRodjenja === "") // datum se nije promenio
+                    datumRodjenja = STARI_DATUM;
 
-                var datum = Date.parse(str);
+                var datum = Date.parse(datumRodjenja.split(".").reverse().join("-"));
+                datumRodjenja = Date.parse(datumRodjenja.split(".").reverse().join("-"));
+                datumRodjenja = new Date(datumRodjenja).toISOString();
 
                 if ((datum < minDate) || (datum > maxDate)) {
                     $("#g6").addClass("d-block");
@@ -243,7 +244,7 @@
                         Prezime: prezime,
                         Pol: pol,
                         Email: email,
-                        DatumRodjenja: datumRodjenja.toISOString()
+                        DatumRodjenja: datumRodjenja
                     }),
 
                     async: false,
@@ -251,7 +252,6 @@
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
                     success: function (response) {
-                        console.log(response);
                         if (response != null) {
                             if (JSON.parse(response).Kod === 0) // azuriranje podataka je proslo uspesno
                             {

@@ -1,1 +1,32 @@
-{"111111":{"KorisnickoIme":"111111","Lozinka":"=O+?}??8?\f??iI?\u0007\u001f?\u000e=","Ime":"1111","Prezime":"22222222222","Pol":"Muški","Email":"jovanovi2.pr55.2020@uns.ac.rs","DatumRodjenja":"2019-09-20T00:00:00Z","Uloga":0,"Porudzbine":[],"OmiljenjiProizvodi":[],"ObjavljeniProizvodi":null,"IsDeleted":false,"IsLoggedIn":true}}
+{
+    "1111112": {
+        "KorisnickoIme": "1111112",
+        "Lozinka": "|J?\t?7b?a?? ?=?d???\u001b",
+        "Ime": "Danijel71",
+        "Prezime": "Jovanovic71",
+        "Pol": "Ženski",
+        "Email": "jovanovic71.pr55.2020@uns.ac.rs",
+        "DatumRodjenja": "2019-10-08T22:00:00Z",
+        "Uloga": 0,
+        "Porudzbine": [],
+        "OmiljenjiProizvodi": [],
+        "ObjavljeniProizvodi": null,
+        "IsDeleted": false,
+        "IsLoggedIn": true
+    },
+    "11111124": {
+        "KorisnickoIme": "11111124",
+        "Lozinka": "=O+?}??8?\f??iI?\u0007\u001f?\u000e=",
+        "Ime": "Danijel1",
+        "Prezime": "Jovanovic1",
+        "Pol": "Muški",
+        "Email": "jovanovic.pr55.2020@uns.ac.rs",
+        "DatumRodjenja": "2019-12-25T00:00:00Z",
+        "Uloga": 0,
+        "Porudzbine": [],
+        "OmiljenjiProizvodi": [],
+        "ObjavljeniProizvodi": null,
+        "IsDeleted": false,
+        "IsLoggedIn": true
+    }
+}

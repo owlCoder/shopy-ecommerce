@@ -8,7 +8,7 @@ namespace Online_Shop.Controllers
         [HttpGet, Route("")]
         public RedirectResult Index()
         {
-            return Redirect(Request.RequestUri.AbsoluteUri + "index.html");
+            return Redirect(Request.RequestUri.AbsoluteUri + "Index.html");
         }
     }
 }

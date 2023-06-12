@@ -158,9 +158,22 @@ namespace Online_Shop.Controllers
             else
             {
                 Korisnik korisnik = (Korisnik)HttpContext.Current.Session["korisnik"];
+                string staro_korisnicko_ime = korisnik.KorisnickoIme;
+                bool provera;
 
-                // uneti podaci su okej uneti - provera da li postoji korisnik sa unetim korisnickim imenom
-                if (korisnik != null && KorisniciStorage.ProveriPostojiUsername(korisnik.KorisnickoIme))
+                // korisnik nije hteo da menja korisnicko ime - sto je i okej
+                if (staro_korisnicko_ime.Equals(zahtev.KorisnickoIme))
+                {
+                    provera = true;
+                }
+                else
+                {
+                    // nisu ista korisnicka imena - provera da li je korisnicko ime zauzeto
+                    provera = !KorisniciStorage.ProveriPostojiUsername(zahtev.KorisnickoIme);
+                }
+
+                // uneti podaci su okej uneti - provera da ne postoji korisnik sa unetim korisnickim imenom
+                if (korisnik != null && provera)
                 {
                     Korisnik tren = KorisniciStorage.GetKorisnik(korisnik.KorisnickoIme);
 
@@ -172,18 +185,29 @@ namespace Online_Shop.Controllers
                         tren.Pol = zahtev.Pol;
                         tren.Email = zahtev.Email;
                         tren.DatumRodjenja = zahtev.DatumRodjenja;
+
+                        // Azuriranje korisnika
+                        HttpContext.Current.Session["korisnik"] = tren;
+
+                        // ukloni stari zapis kljuca u recniku i dodaj novi azuriran
+                        KorisniciStorage.Korisnici.Remove(staro_korisnicko_ime);
+
+                        // cuvanje novog korisnika po novom kljucu
+                        KorisniciStorage.Korisnici.Add(tren.KorisnickoIme, tren);
+
+                        // azuriranje "baze podataka"
                         KorisniciStorage.AzurirajKorisnikeUBazi();
 
                         return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
                     }
                     else
                     {
-                        return JsonConvert.SerializeObject(new Response { Kod = 7, Poruka = "Istekla Vam je sesija!" });
+                        return JsonConvert.SerializeObject(new Response { Kod = 7, Poruka = "Korisnik je izbrisan iz baze podataka!" });
                     }
                 }
                 else
                 {
-                    return JsonConvert.SerializeObject(new Response { Kod = 8, Poruka = "Potrebno je da se ponovo ulogujete!" });
+                    return JsonConvert.SerializeObject(new Response { Kod = 8, Poruka = "Korisničko ime je zauzeto!" });
                 }
             }
         }
