@@ -44,7 +44,7 @@
             contentType: "application/json; charset=utf-8",
             success: function (response) {
                 if (response != null) {
-                    if (JSON.parse(response).Kod === "0") // korisnik je ulogovan, ne moze da se registruje
+                    if (JSON.parse(response).Kod === 0) // korisnik je ulogovan, ne moze da se registruje
                     {
                         window.location.href = "Index.html";
                     }
@@ -221,7 +221,7 @@
             </div>
         </div>
     </nav>
-    <div class="container body-content mt-4">
+    <div class="container body-content mt-4 mb-5">
         <main>
             <div class="container">
                 <div class="row">
@@ -303,7 +303,7 @@
                                                 </div>
 
                                                 <p class="mb-5 pb-lg-2" style="color: #393f81;">
-                                                    Imate aktivan nalog? <a href="Prijava.hmtl"
+                                                    Imate aktivan nalog? <a href="Prijava.html"
                                                                             style="color: #393f81;">Prijavite se</a>
                                                 </p>
                                         </form>

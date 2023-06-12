@@ -4,14 +4,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="Content/bootstrap.min.css">
-    <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/jquery-3.7.0.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
     <script src="Scripts/modernizr-2.8.3.js"></script>
     <style>
         .navbar .login-btn {
             position: absolute;
             top: 7px;
             right: 95px;
+        }
+
+        .navbar .profil-btn {
+            position: absolute;
+            top: 10px;
+            right: 35px;
         }
 
         @media (max-width: 767px) {
@@ -33,20 +40,44 @@
         }
     </style>
     <script>
-        // ako je ulogovan, prebaci ga na index - slucaj da ide na back opciju
+        // ako je ulogovan, prebaci prikazi meni u zavisnoti od uloge
         $.ajax({
-            url: "/api/auth/Ulogovan",
+            url: "/api/auth/AuthKorisnik",
             type: "GET",
             async: false,
             cache: false,
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (response) {
-                if (response != null) {
-                    if (JSON.parse(response) === "OK") // korisnik je ulogovan, ne moze da se registruje
-                    {
-                        window.location.href = "Index.html";
-                    }
+                if (!response) {
+                    // prikazi podatke i promeni meni
+                    var data = JSON.parse(response);
+
+                    // sakri dugmice za login i register
+                    $(function () {
+                        if (!response) {
+                            $("#pl").hide();
+
+                            // prikazi meni za nalog
+                            $('#poruka').text("Dobrodošli nazad, " + data.KorisnickoIme);
+                        }
+                        else {
+                            // korisnik nije ulogovan - prikazi login i register
+                            $("#pl").show();
+
+                            // prikazi meni za nalog
+                            $('#profil').addClass('d-none');
+                        }
+                    });
+                }
+                else {
+                    $(function () {
+                        // korisnik nije ulogovan - prikazi login i register
+                        $("#pl").show();
+
+                        // sakri meni za nalog
+                        $('#profil').addClass('d-none');
+                    });
                 }
             }
         });
@@ -64,9 +95,24 @@
                 <ul class="navbar-nav flex-grow-1">
                     <li><a href="/" class="nav-link">Početna stranica</a></li>
 
-                    <li>
+                    <li id="pl">
                         <a href="Registracija.html" type="submit" id="registracija" class="btn btn-outline-light navbar-btn login-btn">Registracija</a>
                         <a href="Prijava.html" type="submit" id="prijava" class="btn btn-outline-light navbar-btn register-btn">Prijava</a>
+                    </li>
+
+                    <li id="profil">
+                        <div class="btn-group profil-btn">
+                            <button type="button" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span id="poruka"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </div>

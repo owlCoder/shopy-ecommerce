@@ -32,6 +32,91 @@
             }
         }
     </style>
+    <script>
+        // ako je ulogovan, prebaci ga na index - slucaj da ide na back opciju
+        $.ajax({
+            url: "/api/auth/Ulogovan",
+            type: "GET",
+            async: false,
+            cache: false,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                if (response != null) {
+                    if (JSON.parse(response).Kod === 0) // korisnik je ulogovan, ne moze da se registruje
+                    {
+                        window.location.href = "Index.html";
+                    }
+                }
+            }
+        });
+
+        jQuery(function () {
+            // inicijalno nema poruka o greskama
+            $("#divgreske").addClass('d-none');
+
+            $("#prijavabtn").on('click', function () {
+                var korisnickoIme = $("#korisnickoime").val();
+                var lozinka = $("#lozinka").val();
+
+                var greska = false;
+
+                // provera unosa na klijentu
+                if (korisnickoIme.length < 6) {
+                    $("#g1").addClass("d-block");
+                    $("#g1").removeClass("d-none");
+                    $("#korisnickoime").addClass("is-invalid");
+                    $("#g1").text("Korisničko ime mora imati minimalno 6 karaktera!");
+                    greska = true;
+                }
+                else {
+                    $("#g1").addClass("d-none");
+                    $("#korisnickoime").removeClass("is-invalid");
+                    $("#korisnickoime").removeClass("invalid-feedback");
+                    $("#korisnickoime").add("is-valid");
+                }
+
+                if (lozinka.length < 6) {
+                    $("#g2").addClass("d-block");
+                    $("#g2").removeClass("d-none");
+                    $("#lozinka").addClass("is-invalid");
+                    $("#g2").text("Lozinka mora imati minimalno 6 karaktera!");
+                    greska = true;
+                }
+
+                if (greska === true) return; // ne izvrsava se ajax poziv - rasterecuje se server od callbacks
+
+                // ajax poziv ka api-ju za vrsenje registracije
+                $.ajax({
+                    url: "/api/auth/Prijava",
+                    type: "POST",
+                    data: JSON.stringify({
+                        KorisnickoIme: korisnickoIme,
+                        Lozinka: lozinka
+                    }),
+
+                    async: false,
+                    cache: false,
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        if (response != null) {
+                            if (JSON.parse(response).Kod === 0) // korisnik se registrovao uspesno
+                            {
+                                window.location.href = "Index.html";
+                                return false;
+                            }
+                            else {
+                                // desila se greska - prikazi je
+                                $("#divgreske").removeClass('d-none');
+                                $("#greske").text(JSON.parse(response).Poruka);
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
@@ -68,31 +153,42 @@
                                   <div class="col-md-6 col-lg-7 d-flex align-items-center">
                                     <div class="card-body p-4 p-lg-5 text-black">
                       
-                                      <form>
-                      
-                                        <div class="d-flex mb-3 pb-1">
-                                          <span class="h1 fw-bold mb-0">Shopy</span>
-                                        </div>
-                      
-                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Prijavite se na Vaš nalog</h5>
-                      
-                                        <div class="form-outline mb-4">
-                                          <input type="email" id="form2Example17" class="form-control form-control-lg" />
-                                          <label class="form-label" for="form2Example17">Email adresa</label>
-                                        </div>
-                      
-                                        <div class="form-outline mb-4">
-                                          <input type="password" id="form2Example27" class="form-control form-control-lg" />
-                                          <label class="form-label" for="form2Example27">Lozinka</label>
-                                        </div>
-                      
-                                        <div class="pt-1 mb-4">
-                                          <button class="btn btn-dark btn-lg btn-block" type="button">Prijava na platformu</button>
-                                        </div>
-                      
-                                        <p class="mb-5 pb-lg-2" style="color: #393f81;">Nemate aktivan nalog? <a href="Registracija.hmtl"
-                                            style="color: #393f81;">Registrujte se</a></p>
-                                      </form>
+                                        <form>
+
+                                            <div class="d-flex mb-3 pb-1">
+                                                <span class="h1 fw-bold mb-0">Shopy</span>
+                                            </div>
+
+                                            <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Prijavite se na Vaš nalog</h5>
+
+                                            <div id="divgreske" class="alert alert-danger d-flex align-items-center" role="alert">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-exclamation-mark" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M12 19v.01" /> <path d="M12 15v-10" /> </svg>
+                                                <span id="greske">
+
+                                                </span>
+                                            </div>
+
+                                           <div class="form-outline mb-4">
+                                                <label class="form-label" for="korisnickoime">Korisničko ime</label>
+                                                <input type="text" id="korisnickoime" autofocus class="form-control form-control-lg" required />
+                                                <span id="g1" class="invalid-feedback">Molimo Vas popunite ovo polje.</span>
+                                            </div>
+
+                                            <div class="form-outline mb-4">
+                                                <label class="form-label" for="lozinka">Lozinka</label>
+                                                <input type="password" id="lozinka" class="form-control form-control-lg" required />
+                                                <span id="g2" class="invalid-feedback">Molimo Vas popunite ovo polje.</span>
+                                            </div>
+
+                                            <div class="pt-1 mb-4">
+                                                <button class="btn btn-dark btn-lg btn-block" id="prijavabtn" type="button">Prijava na platformu</button>
+                                            </div>
+
+                                            <p class="mb-5 pb-lg-2" style="color: #393f81;">
+                                                Nemate aktivan nalog? <a href="Registracija.html"
+                                                                         style="color: #393f81;">Registrujte se</a>
+                                            </p>
+                                        </form>
                       
                                     </div>
                                   </div>

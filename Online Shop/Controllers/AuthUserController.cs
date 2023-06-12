@@ -55,7 +55,32 @@ namespace Online_Shop.Controllers
                 return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
             else
                 return JsonConvert.SerializeObject(new Response { Kod = 3, Poruka = "Nije ulogovan!" });
+        }
 
+        [HttpGet]
+        [Route("AuthKorisnik")]
+        public string TrenutnoUlogovanAuthPodaci()
+        {
+            Korisnik korisnik = (Korisnik)HttpContext.Current.Session["korisnik"];
+
+            if (korisnik != null && korisnik.IsLoggedIn)
+                return JsonConvert.SerializeObject(new AuthKorisnik
+                {
+                    KorisnickoIme = korisnik.KorisnickoIme,
+                    Ime = korisnik.Ime,
+                    Prezime = korisnik.Prezime,
+                    Pol = korisnik.Pol,
+                    Email = korisnik.Email,
+                    DatumRodjenja = korisnik.DatumRodjenja,
+                    Uloga = korisnik.Uloga,
+                    Porudzbine = korisnik.Porudzbine,
+                    OmiljenjiProizvodi = korisnik.OmiljenjiProizvodi,
+                    ObjavljeniProizvodi = korisnik.ObjavljeniProizvodi,
+                    IsDeleted = korisnik.IsDeleted,
+                    IsLoggedIn = korisnik.IsLoggedIn
+                });
+            else
+                return JsonConvert.SerializeObject(null);
         }
     }
 }
