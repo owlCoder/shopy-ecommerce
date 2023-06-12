@@ -187,5 +187,47 @@ namespace Online_Shop.Controllers
                 }
             }
         }
+
+        [HttpPost]
+        [Route("AzuriranjeLozinke")]
+        public string AzuriranjeLozinke(PromenaLozinke zahtev)
+        {
+            if (!ModelState.IsValid)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 1, Poruka = "Niste popunili pravilno formu!" });
+            }
+            else
+            {
+                Korisnik korisnik = (Korisnik)HttpContext.Current.Session["korisnik"];
+
+                // uneti podaci su okej uneti - provera da li postoji korisnik sa unetim korisnickim imenom
+                if (korisnik != null && KorisniciStorage.ProveriPostojiUsername(korisnik.KorisnickoIme))
+                {
+                    Korisnik tren = KorisniciStorage.GetKorisnik(korisnik.KorisnickoIme);
+
+                    // proveri da li se lozinke poklapaju
+                    var stara_sifra = new SHA1CryptoServiceProvider().ComputeHash(Encoding.ASCII.GetBytes(zahtev.StaraLozinka));
+                    var nova_sifra = new SHA1CryptoServiceProvider().ComputeHash(Encoding.ASCII.GetBytes(zahtev.NovaLozinka));
+                    var sha1_stara = new ASCIIEncoding().GetString(stara_sifra);
+                    var sha1_nova = new ASCIIEncoding().GetString(nova_sifra);
+
+                    if (tren != null && tren.Lozinka.Equals(sha1_stara))
+                    {
+                        tren.Lozinka = sha1_nova;
+                        KorisniciStorage.AzurirajKorisnikeUBazi();
+
+                        return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
+                    }
+                    else
+                    {
+                        return JsonConvert.SerializeObject(new Response { Kod = 7, Poruka = "Stara lozinka nije tačna!" });
+                    }
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(new Response { Kod = 8, Poruka = "Potrebno je da se ponovo ulogujete!" });
+                }
+            }
+        }
     }
 }

@@ -136,6 +136,7 @@
     <Compile Include="Models\KorisnikRegistracija.cs" />
     <Compile Include="Models\Porudzbina.cs" />
     <Compile Include="Models\Proizvod.cs" />
+    <Compile Include="Models\PromenaLozinke.cs" />
     <Compile Include="Models\Recenzija.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
