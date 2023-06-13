@@ -166,6 +166,7 @@
     <Content Include="Images\rgbg.jpg" />
     <Content Include="IzmenaLozinke.html" />
     <Content Include="MojProfil.html" />
+    <Content Include="IzmenaProfila.html" />
     <Content Include="Registracija.html" />
     <Content Include="Prijava.html" />
     <Content Include="Scripts\bootstrap.bundle.js" />
