@@ -41,24 +41,6 @@
         }
     </style>
     <script>
-        // brisanje korisnika
-        function Brisanje(id) {
-            $.ajax({
-                url: "/api/user/Ulogovan",
-                type: "POST",
-                data: {
-                    Id: id
-                },
-                async: false,
-                cache: false,
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function (response) {
-                    console.log("dada");
-                }
-            });
-        }
-
         // ako je ulogovan, prebaci ga na index - slucaj da ide na back opciju
         $.ajax({
             url: "/api/auth/Ulogovan",
@@ -147,8 +129,8 @@
                                                             '<td>' + k.Email + '</td>' +
                                                             '<td>' + new Date(k.DatumRodjenja).toLocaleDateString("en-GB") + '</td>' +
                                                             '<td><b>' + uloga.toUpperCase() + '</b></td>' +
-                                                            '<td class="d-flex justify-content-center"><button class="btn btn-dark" type="button" onclick="Izmena(' + k.KorisnickoIme + ')">Izmena</button>&emsp;' +
-                                                            '<button class="btn btn-danger" type="button" onclick="Brisanje(\'' + k.KorisnickoIme + '\')">Brisanje</button></td>' +
+                                                            '<td class="d-flex justify-content-center"><a class="btn btn-dark" href="Izmena.html?' + k.KorisnickoIme + '">Izmena</a>&emsp;' +
+                                                            '<a class="btn btn-danger" href="Brisanje.html?' + k.KorisnickoIme + '">Brisanje</a></td>' +
                                 '</tr>');
                         }); 
                     });
@@ -158,6 +140,8 @@
 
         // Odjava korisnika
         jQuery(function () {
+            $("#divgreske").addClass('d-none');
+
             $("#odjava").on('click', function () {
                 // ajax poziv ka api-ju za vrsenje registracije
                 $.ajax({
@@ -239,25 +223,32 @@
                                                         <a href="DodajProdavca.html" class="btn btn-dark btn-lg btn-block">➕ Dodavanje prodavca</a>
                                                     </div>
 
-                                                        <div class="pt-1 mb-4">
-                                                            <table id="korisnici" class="table table-bordered rounded-5 border-dark">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Korisničko ime</th>
-                                                                        <th>Ime</th>
-                                                                        <th>Prezime</th>
-                                                                        <th>Pol</th>
-                                                                        <th>Email</th>
-                                                                        <th>Datum rođenja</th>
-                                                                        <th>Uloga</th>
-                                                                        <th>Operacija</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <!-- Ucitani podaci -->
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
+                                                    <div id="divgreske" class="alert alert-dark d-flex align-items-center" role="alert">
+                                                        <svg height="25" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                                                        </svg>
+                                                        <span id="greske"></span>
+                                                    </div>
+
+                                                    <div class="pt-1 mb-4">
+                                                        <table id="korisnici" class="table table-bordered rounded-5 border-dark">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Korisničko ime</th>
+                                                                    <th>Ime</th>
+                                                                    <th>Prezime</th>
+                                                                    <th>Pol</th>
+                                                                    <th>Email</th>
+                                                                    <th>Datum rođenja</th>
+                                                                    <th>Uloga</th>
+                                                                    <th>Operacija</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <!-- Ucitani podaci -->
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>

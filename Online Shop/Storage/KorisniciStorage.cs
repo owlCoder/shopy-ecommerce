@@ -79,10 +79,12 @@ namespace Online_Shop.Storage
         public static List<AuthKorisnik> GetKorisnici()
         {
             List<AuthKorisnik> korisnici = new List<AuthKorisnik>();
+            string trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]).KorisnickoIme;
 
             foreach(Korisnik k in Korisnici.Values)
             {
-                if(k.IsDeleted == false)
+                // ne prikazuju se administratori, niti LOGICKI obrisani korisnici niti trenutno ulogovan korisnik
+                if(k.IsDeleted == false && k.Uloga != ULOGA.Administrator && !k.KorisnickoIme.Equals(trenutni))
                 {
                     AuthKorisnik ak = new AuthKorisnik
                     {
