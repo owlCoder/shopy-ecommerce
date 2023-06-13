@@ -162,6 +162,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\mainpf.jpg" />
     <Content Include="Images\pwd.jpg" />
     <Content Include="Images\rgbg.jpg" />
     <Content Include="IzmenaLozinke.html" />

@@ -80,8 +80,27 @@
                         // prikazi meni za nalog
                         $('#poruka').text("Dobrodošli nazad, " + data.KorisnickoIme);
 
-                        // Popuni formu
-                       
+                        // Prikazi samo dugmice vezane za korisnika koji ima datu ulogu
+                        var uloga = data.Uloga;
+
+                        if (uloga === 0) {
+                            // u pitanju je kupac
+                            $("#prodavacmeni").remove();
+                            $("#adminmeni").remove();
+                            $("#uloga").text("Kupac");
+                        }
+                        else if (uloga === 1) {
+                            // u pitanju je prodavac
+                            $("#kupacmeni").remove();
+                            $("#adminmeni").remove();
+                            $("#uloga").text("Prodavac");
+                        }
+                        else if (uloga === 2) {
+                            // u pitanju je administrator
+                            $("#prodavacmeni").remove();
+                            $("#kupacmeni").remove();
+                            $("#uloga").text("Administrator");
+                        }
                     });
                 }
                 else {
@@ -175,42 +194,42 @@
                                             <div class="card-body p-4 p-lg-5 text-black">
                                                 <form>
                                                     <div class="d-flex mb-3 pb-1">
-                                                        <span class="h1 fw-bold mb-0">Shopy</span>
+                                                        <span class="h1 fw-bold mb-0">Shopy <span id="uloga"></span></span>
                                                     </div>
 
                                                     <h5 class="fw-normal mb-5 pb-2" style="letter-spacing: 1px;">Detalji i opcije Vašeg naloga</h5>
 
                                                     <div class="pt-1 mb-4">
-                                                        <button class="btn btn-dark btn-lg btn-block" id="izmenaprofila" type="button">Izmena profila</button>
+                                                        <a href="IzmenaProfila.html" class="btn btn-dark btn-lg btn-block" id="izmenaprofila" type="button">Izmena profila</a>
                                                     </div>
 
                                                     <div id="kupacmeni">
                                                         <div class="pt-1 mb-4">
-                                                            <button class="btn btn-dark btn-lg btn-block" id="mojeporudzbine" type="button">Moje porudžbine</button>
+                                                            <a href="MojePorudzbine.html" class="btn btn-dark btn-lg btn-block" id="mojeporudzbine" type="button">Moje porudžbine</a>
                                                         </div>
 
                                                         <div class="pt-1 mb-4">
-                                                            <button class="btn btn-dark btn-lg btn-block" id="omiljeniproizvodi" type="button">Omiljeni proizvodi</button>
+                                                            <a href="OmiljeniProizvodi.html" class="btn btn-dark btn-lg btn-block" id="omiljeniproizvodi" type="button">Omiljeni proizvodi</a>
                                                         </div>
                                                     </div>
 
                                                     <div id="prodavacmeni">
                                                         <div class="pt-1 mb-4">
-                                                            <button class="btn btn-dark btn-lg btn-block" id="mojiproizvodi" type="button">Moji proizvodi</button>
+                                                            <a href="MojiProizvodi.html" class="btn btn-dark btn-lg btn-block" id="mojiproizvodi" type="button">Moji proizvodi</a>
                                                         </div>
                                                     </div>
 
                                                     <div id="adminmeni">
                                                         <div class="pt-1 mb-4">
-                                                            <button class="btn btn-dark btn-lg btn-block" id="listakorisnika" type="button">Lista korisnika</button>
+                                                            <a href="ListaKorisnika.html" class="btn btn-dark btn-lg btn-block" id="listakorisnika" type="button">Lista korisnika</a>
                                                         </div>
 
                                                         <div class="pt-1 mb-4">
-                                                            <button class="btn btn-dark btn-lg btn-block" id="listaproizvoda" type="button">Lista proizvoda</button>
+                                                            <a href="ListaProizvoda.html" class="btn btn-dark btn-lg btn-block" id="listaproizvoda" type="button">Lista proizvoda</a>
                                                         </div>
 
                                                         <div class="pt-1 mb-4">
-                                                            <button class="btn btn-dark btn-lg btn-block" id="listaporudzbina" type="button">Lista porudžbina</button>
+                                                            <a href="ListaPorudzbina.html" class="btn btn-dark btn-lg btn-block" id="listaporudzbina" type="button">Lista porudžbina</a>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -225,7 +244,5 @@
             </div>
         </main>
     </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
 </body>
 </html>
