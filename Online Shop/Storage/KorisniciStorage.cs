@@ -26,8 +26,19 @@ namespace Online_Shop.Storage
             {
                 try
                 {
+                    Korisnici = new Dictionary<string, Korisnik>();
+
                     // ucitavanje svih korisnika iz json datoteke
-                    Korisnici = JsonConvert.DeserializeObject<Dictionary<string, Korisnik>>(File.ReadAllText(KorisniciPath));
+                    var tempKorisnici = JsonConvert.DeserializeObject<Dictionary<string, Korisnik>>(File.ReadAllText(KorisniciPath));
+
+                    // ne cuvaj u memoriji logicki obrisane korisnike
+                    foreach(Korisnik k in tempKorisnici.Values)
+                    {
+                        if(!k.IsDeleted)
+                        {
+                            Korisnici.Add(k.KorisnickoIme, k);
+                        }
+                    }
 
                     // izloguj sve korisnike - server se restartovao
                     foreach (Korisnik k in Korisnici.Values)
@@ -102,6 +113,24 @@ namespace Online_Shop.Storage
             }
 
             return korisnici;
+        }
+
+        public static bool LogickoBrisanje(string id)
+        {
+            if(Korisnici.TryGetValue(id, out Korisnik pronadjen))
+            {
+                // logicko brisanje
+                pronadjen.IsDeleted = true;
+                AzurirajKorisnikeUBazi(); // ostaje upisan u fajlu ali sa IsDeleted na true
+
+                // ukloni iz recnika - nije bitan podataka
+                Korisnici.Remove(id);
+                return true;
+            }
+            else
+            { 
+                return false; 
+            }
         }
     }
 }

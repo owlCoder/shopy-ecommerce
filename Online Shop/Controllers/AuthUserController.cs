@@ -56,10 +56,13 @@ namespace Online_Shop.Controllers
         {
             Korisnik korisnik = (Korisnik)HttpContext.Current.Session["korisnik"];
 
-            if (korisnik != null && korisnik.IsLoggedIn)
+            if (korisnik != null && !korisnik.IsDeleted && korisnik.IsLoggedIn)
                 return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
             else
+            {
+                OdjavaKorisnika();
                 return JsonConvert.SerializeObject(new Response { Kod = 3, Poruka = "Nije ulogovan!" });
+            }
         }
 
         [HttpGet]

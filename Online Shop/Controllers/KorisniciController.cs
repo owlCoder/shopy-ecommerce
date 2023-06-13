@@ -26,9 +26,9 @@ namespace Online_Shop.Controllers
         [Route("BrisanjeKorisnika")]
         public string ObrisiKorisnika(SingleIdRequest id)
         {
-            if(KorisniciStorage.Korisnici.Remove(id.Id))
+            if(KorisniciStorage.LogickoBrisanje(id.Id))
             {
-                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
+                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "Korisnik sa ID '" + id.Id + "' uspešno obrisan!" });
             }
             else
             {
