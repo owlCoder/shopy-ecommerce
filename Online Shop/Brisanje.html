@@ -42,11 +42,6 @@
                     // prikazi podatke i promeni meni
                     // sakri dugmice za login i register
                     $(function () {
-                        $("#pl").remove();
-
-                        // prikazi meni za nalog
-                        $('#poruka').text("Dobrodošli nazad, " + data.KorisnickoIme);
-
                         // Prikazi samo dugmice vezane za korisnika koji ima datu ulogu
                         var uloga = data.Uloga;
 
@@ -56,7 +51,21 @@
                         }
 
                         // obrisi korisnika po id
+                        $.ajax({
+                            url: "/api/users/BrisanjeKorisnika",
+                            type: "POST",
+                            data: {
+                                id: id
+                            },
+                            async: false,
+                            cache: false,
+                            dataType: "json",
+                            contentType: "application/json; charset=utf-8",
+                            success: function (response) {
+                                var data = JSON.parse(response);
 
+                            }
+                        });
                     });
                 }
 

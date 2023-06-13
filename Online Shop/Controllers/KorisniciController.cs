@@ -18,8 +18,15 @@ namespace Online_Shop.Controllers
         [Route("ListaKorisnika")]
         public string ListaKorisnika()
         {
-            //return JsonConvert.SerializeObject(new List<AuthKorisnik>());
             return JsonConvert.SerializeObject(KorisniciStorage.GetKorisnici());
+        }
+
+        // Metoda za brisanje korisnika
+        [HttpPost]
+        [Route("BrisanjeKorisnika")]
+        public string ObrisiKorisnika(string id)
+        {
+            return JsonConvert.SerializeObject(id);
         }
     }
 }
