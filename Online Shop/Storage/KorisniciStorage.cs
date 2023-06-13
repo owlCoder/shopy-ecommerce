@@ -74,5 +74,32 @@ namespace Online_Shop.Storage
             }
             catch { }
         }
+
+        // Iz recnika svih korisnika vraca listu korisnika koji nisu obrisani
+        public static List<AuthKorisnik> GetKorisnici()
+        {
+            List<AuthKorisnik> korisnici = new List<AuthKorisnik>();
+
+            foreach(Korisnik k in Korisnici.Values)
+            {
+                if(k.IsDeleted == false)
+                {
+                    AuthKorisnik ak = new AuthKorisnik
+                    {
+                        KorisnickoIme = k.KorisnickoIme,
+                        Ime = k.Ime,
+                        Prezime = k.Prezime,
+                        Pol = k.Pol,
+                        Email = k.Email,
+                        DatumRodjenja = k.DatumRodjenja,
+                        Uloga = k.Uloga,
+                    };
+
+                    korisnici.Add(ak);
+                }    
+            }
+
+            return korisnici;
+        }
     }
 }

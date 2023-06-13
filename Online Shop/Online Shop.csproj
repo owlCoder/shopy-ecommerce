@@ -126,6 +126,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AuthUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KorisniciController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -166,6 +167,7 @@
     <Content Include="Images\pwd.jpg" />
     <Content Include="Images\rgbg.jpg" />
     <Content Include="IzmenaLozinke.html" />
+    <Content Include="ListaKorisnika.html" />
     <Content Include="MojProfil.html" />
     <Content Include="IzmenaProfila.html" />
     <Content Include="Registracija.html" />
