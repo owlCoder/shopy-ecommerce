@@ -45,18 +45,22 @@
                         // Prikazi samo dugmice vezane za korisnika koji ima datu ulogu
                         var uloga = data.Uloga;
 
-                        if (uloga !== 2) {
-                            // nije pitanju administrator - povratak na pocetnu stranicu
-                            window.location.href = "MojProfil.html";
-                        }
+                        //if (uloga !== 2) {
+                        //    // nije pitanju administrator - povratak na pocetnu stranicu
+                        //    window.location.href = "MojProfil.html";
+                        //}
+
+                        // id iz url
+                        let searchParams = new URLSearchParams(window.location.search)
+                        var Id = searchParams.get('id');
 
                         // obrisi korisnika po id
                         $.ajax({
                             url: "/api/users/BrisanjeKorisnika",
                             type: "POST",
-                            data: {
-                                id: id
-                            },
+                            data: JSON.stringify({
+                                id: Id
+                            }),
                             async: false,
                             cache: false,
                             dataType: "json",
@@ -64,12 +68,12 @@
                             success: function (response) {
                                 var data = JSON.parse(response);
 
+                                window.location.href = "ListaKorisnika.html?msg=" + data.Poruka;
                             }
                         });
                     });
                 }
 
-                window.location.href = "ListaKorisnika.html";
             }
         });
 

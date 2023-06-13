@@ -24,9 +24,16 @@ namespace Online_Shop.Controllers
         // Metoda za brisanje korisnika
         [HttpPost]
         [Route("BrisanjeKorisnika")]
-        public string ObrisiKorisnika(string id)
+        public string ObrisiKorisnika(SingleIdRequest id)
         {
-            return JsonConvert.SerializeObject(id);
+            if(KorisniciStorage.Korisnici.Remove(id.Id))
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
+            }
+            else
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 9, Poruka = "Došlo je do greške prilikom brisanja!" });
+            }
         }
     }
 }
