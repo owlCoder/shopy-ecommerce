@@ -75,14 +75,14 @@
         "IsLoggedIn": true
     },
     {
-        "KorisnickoIme": "danijel12",
-        "Lozinka": "'???\u0003?$S?????U???\u0001?S",
+        "KorisnickoIme": "admin1",
+        "Lozinka": "??t.????\u0000??T????\t0}?",
         "Ime": "danijel",
         "Prezime": "danijel",
         "Pol": "Muški",
         "Email": "danijel@gmail.com",
         "DatumRodjenja": "2011-11-11T00:00:00Z",
-        "Uloga": 0,
+        "Uloga": 2,
         "Porudzbine": [],
         "OmiljenjiProizvodi": [],
         "ObjavljeniProizvodi": null,

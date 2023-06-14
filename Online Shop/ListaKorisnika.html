@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Moj Profil - Shopy</title>
+    <title>Lista Korisnika - Shopy</title>
     <link rel="stylesheet" href="Content/bootstrap.min.css">
     <script src="Scripts/jquery-3.7.0.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
@@ -171,6 +171,51 @@
                     }
                 });
             });
+
+            $("#ponistibtn").on('click', function () {
+                // isprazni redove
+                $('#korisnici tbody').empty();
+
+                // popuni svim podacima
+                // get metoda za dobijanje listi svih korisnika
+                $.ajax({
+                    url: "/api/users/ListaKorisnika",
+                    type: "GET",
+                    async: false,
+                    cache: false,
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        var data = JSON.parse(response);
+
+                        if (data.length > 0) {
+                            $(function () {
+                                // popuni tabelu
+                                $.each(data, function (key, k) {
+                                    // dodavanje reda po red
+                                    var uloga = "Auth";
+
+                                    if (k.Uloga == 0) uloga = "Kupac";
+                                    if (k.Uloga == 1) uloga = "Prodavac";
+                                    if (k.Uloga == 2) uloga = "Administrator";
+
+                                    $("#korisnici > tbody").append('<tr><td>' + k.KorisnickoIme + '</td>' +
+                                        '<td>' + k.Ime + '</td>' +
+                                        '<td>' + k.Prezime + '</td>' +
+                                        '<td>' + k.Pol + '</td>' +
+                                        '<td>' + k.Email + '</td>' +
+                                        '<td>' + new Date(k.DatumRodjenja).toLocaleDateString("en-GB") + '</td>' +
+                                        '<td><b>' + uloga.toUpperCase() + '</b></td>' +
+                                        '<td class="d-flex justify-content-center"><a class="btn btn-dark" href="Izmena.html?id=' + k.KorisnickoIme + '">Izmena</a>&emsp;' +
+                                        '<a class="btn btn-danger" href="Brisanje.html?id=' + k.KorisnickoIme + '">Brisanje</a></td>' +
+                                        '</tr>');
+                                });
+                            });
+                        }
+                    }
+                });
+            });
+
         });
 
     </script>
@@ -227,9 +272,64 @@
 
                                                     <h5 class="fw-normal pb-3" style="letter-spacing: 1px;">Detalji i lista svih korisnika registrovanih na Shopy platformu</h5>
 
-                                                    <div class="pt-1 mb-4">
+                                                    <div class="pt-1 mb-3">
                                                         <a href="DodajProdavca.html" class="btn btn-dark btn-lg btn-block">➕ Dodavanje prodavca</a>
                                                     </div>
+
+                                                    <br />
+
+                                                    <h5 class="fw-semibold" style="letter-spacing: 1px;">Pretraga korisnika registrovanih na Shopy platformu</h5>
+                                                    <p class="fw-normal pb-3" style="letter-spacing: 1px;">Moguće je korisnike pretražiti po jednom ili više kriterijuma. Ostavljanjem praznog polja, taj kriterijum se <b>NE PRIMENJUJE</b> na pretragu!</p>
+
+                                                    <div class="col-12 mb-3">
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                                <div class="input-group flex-nowrap mb-3">
+                                                                    <span class="input-group-text" id="addon-wrapping">Ime</span>
+                                                                    <input id="ime" type="text" class="form-control" placeholder="Unesite pojam..." aria-label="ime" aria-describedby="addon-wrapping">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <div class="input-group flex-nowrap mb-3">
+                                                                    <span class="input-group-text" id="addon-wrapping">Prezime</span>
+                                                                    <input id="prezime" type="text" class="form-control" placeholder="Unesite pojam..." aria-label="prezime" aria-describedby="addon-wrapping">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-2">
+                                                                <div class="input-group flex-nowrap mb-3">
+                                                                    <span class="input-group-text" id="addon-wrapping">Od</span>
+                                                                    <input id="datumod" type="date" class="form-control" placeholder="Unesite pojam..." aria-label="prezime" aria-describedby="addon-wrapping">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-2">
+                                                                <div class="input-group flex-nowrap mb-3">
+                                                                    <span class="input-group-text" id="addon-wrapping">Do</span>
+                                                                    <input id="datumdo" type="date" class="form-control" placeholder="Unesite pojam..." aria-label="prezime" aria-describedby="addon-wrapping">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-2">
+                                                                <div class="input-group flex-nowrap mb-3">
+                                                                    <span class="input-group-text" id="addon-wrapping">Uloga</span>
+                                                                    <select id="pol" class="form-control">
+                                                                        <option value="">/</option>
+                                                                        <option value="Muški">Muški</option>
+                                                                        <option value="Ženski">Ženski</option>
+                                                                        <option value="Drugo">Drugo</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="pt-1 mb-3">
+                                                                <button id="pretragabtn" class="btn btn-dark btn-lg btn-block">🔎 Pretraga korisnika</button>
+                                                                &emsp;<button id="ponistibtn" type="reset" class="btn btn-secondary btn-lg btn-block">↺ Resetovanje pretrage</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                   
 
                                                     <div id="divgreske" class="alert alert-dark d-flex align-items-center" role="alert">
                                                         <svg height="25" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
