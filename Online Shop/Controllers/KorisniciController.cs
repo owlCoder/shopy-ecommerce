@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Cryptography;
+using System.Text;
+using System.Web;
 using System.Web.Http;
 
 namespace Online_Shop.Controllers
@@ -57,6 +60,38 @@ namespace Online_Shop.Controllers
             else
             {
                 return JsonConvert.SerializeObject(new List<AuthKorisnik>());
+            }
+        }
+
+        // Metoda za registraciju novog prodavca
+        [HttpPost]
+        [Route("RegistracijaProdavca")]
+        public string Registracija(KorisnikRegistracija zahtev)
+        {
+            if (!ModelState.IsValid)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 1, Poruka = "Podaci koje ste uneli u formi nisu validni!" });
+            }
+            else
+            {
+                // uneti podaci su okej uneti - provera da li postoji korisnik sa unetim korisnickim imenom
+                if (KorisniciStorage.ProveriPostojiUsername(zahtev.KorisnickoIme))
+                {
+                    // postoji vec, vratiti gresku
+                    return JsonConvert.SerializeObject(new Response { Kod = 2, Poruka = "Korisnik sa unetim korisničkim imenom postoji!" });
+                }
+                else
+                {
+                    var sifra = new SHA1CryptoServiceProvider().ComputeHash(Encoding.ASCII.GetBytes(zahtev.Lozinka));
+                    var sha1 = new ASCIIEncoding().GetString(sifra);
+
+                    Korisnik novi = new Korisnik(zahtev.KorisnickoIme, sha1, zahtev.Ime, zahtev.Prezime, zahtev.Pol, zahtev.Email, zahtev.DatumRodjenja, ULOGA.Prodavac, null, null, new List<Proizvod>(), false, false);
+                    novi.IsLoggedIn = true;
+                    KorisniciStorage.Korisnici.Add(novi);
+                    KorisniciStorage.AzurirajKorisnikeUBazi();
+
+                    return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
+                }
             }
         }
     }
