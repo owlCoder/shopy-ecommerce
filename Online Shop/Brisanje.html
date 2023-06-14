@@ -45,11 +45,10 @@
                         // Prikazi samo dugmice vezane za korisnika koji ima datu ulogu
                         var uloga = data.Uloga;
 
-                        ///////////////////////////// VRATI NA KRAJU!!!!!!
-                        //if (uloga !== 2) {
-                        //    // nije pitanju administrator - povratak na pocetnu stranicu
-                        //    window.location.href = "MojProfil.html";
-                        //}
+                        if (uloga !== 2) {
+                            // nije pitanju administrator - povratak na pocetnu stranicu
+                            window.location.href = "MojProfil.html";
+                        }
 
                         // id iz url
                         let searchParams = new URLSearchParams(window.location.search)

@@ -81,11 +81,10 @@
                         // Prikazi samo dugmice vezane za korisnika koji ima datu ulogu
                         var uloga = data.Uloga;
 
-                        ///////////////////////////////////// VRATI POSLE SADA ZBOG TESTIRANJA NEKA BUDE OVAKO !!!!!!!!!!!!!!!!!
-                        //if (uloga !== 2) {
-                        //    // nije pitanju administrator - povratak na pocetnu stranicu
-                        //    window.location.href = "MojProfil.html";
-                        //}
+                        if (uloga !== 2) {
+                            // nije pitanju administrator - povratak na pocetnu stranicu
+                            window.location.href = "MojProfil.html";
+                        }
                     });
                 }
                 else {
