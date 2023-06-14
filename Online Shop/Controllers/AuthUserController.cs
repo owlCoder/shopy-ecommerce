@@ -192,9 +192,6 @@ namespace Online_Shop.Controllers
                         // Azuriranje korisnika
                         HttpContext.Current.Session["korisnik"] = tren;
 
-                        // cuvanje novog korisnika po novom kljucu
-                        KorisniciStorage.Korisnici.Add(tren);
-
                         // azuriranje "baze podataka"
                         KorisniciStorage.AzurirajKorisnikeUBazi();
 
