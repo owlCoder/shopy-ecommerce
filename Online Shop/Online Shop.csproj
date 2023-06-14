@@ -174,6 +174,7 @@
     <Content Include="Izmena.html" />
     <Content Include="IzmenaLozinke.html" />
     <Content Include="ListaKorisnika.html" />
+    <Content Include="MojiProizvodi.html" />
     <Content Include="MojProfil.html" />
     <Content Include="IzmenaProfila.html" />
     <Content Include="Registracija.html" />
