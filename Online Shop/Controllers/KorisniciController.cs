@@ -35,5 +35,29 @@ namespace Online_Shop.Controllers
                 return JsonConvert.SerializeObject(new Response { Kod = 9, Poruka = "Došlo je do greške prilikom brisanja!" });
             }
         }
+        
+        // Metoda za pretragu korisnika
+        [HttpPost]
+        [Route("PretragaKorisnika")]
+        public string PretragaKorisnika(SearchRequest zahtev)
+        {
+            if(ModelState.IsValid)
+            {
+                int uloga;
+                if (zahtev.Uloga.Equals("Kupac"))
+                    uloga = 0;
+                else if (zahtev.Uloga.Equals("Prodavac"))
+                    uloga = 1;
+                else
+                    uloga = -1;
+
+                // pretraga po kriterijumu
+                return JsonConvert.SerializeObject(KorisniciStorage.PretragaKorisnika(zahtev, uloga));
+            }
+            else
+            {
+                return JsonConvert.SerializeObject(new List<AuthKorisnik>());
+            }
+        }
     }
 }

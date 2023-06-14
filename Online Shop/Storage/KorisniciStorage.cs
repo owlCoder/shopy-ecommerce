@@ -135,5 +135,53 @@ namespace Online_Shop.Storage
                 return false; 
             }
         }
+
+        public static List<AuthKorisnik> PretragaKorisnika(SearchRequest zahtev, int uloga)
+        {
+            List<AuthKorisnik> pretrazeni = new List<AuthKorisnik>();
+            List<Korisnik> temp = Korisnici.FindAll(p => p.IsDeleted == false && p.Uloga != ULOGA.Administrator);
+
+            if(!zahtev.Ime.Equals("")) // uneo je zahtev po imenu
+            {
+                temp = temp.FindAll(p => p.Ime.Contains(zahtev.Ime));
+            }
+
+            // pretraga po ostalim kriterijumima
+            if (!zahtev.Prezime.Equals("")) // uneo je zahtev po prezimenu
+            {
+                temp = temp.FindAll(p => p.Prezime.Contains(zahtev.Prezime));
+            }
+
+            DateTime invalid_date = new DateTime(1900, 01, 01);
+            if (!zahtev.Od.Equals(invalid_date) && !zahtev.Do.Equals(invalid_date)) // uneo je zahtev po datumu
+            {
+                temp = temp.FindAll(p => (p.DatumRodjenja >= zahtev.Od && p.DatumRodjenja <= zahtev.Do));
+            }
+
+            // pretraga po ulozi
+            if(uloga != -1)
+            {
+                ULOGA ul = uloga == 0 ? ULOGA.Kupac : ULOGA.Prodavac;
+                temp = temp.FindAll(p => p.Uloga.Equals(ul));
+            }
+
+            foreach(Korisnik k in temp)
+            {
+                AuthKorisnik ak = new AuthKorisnik
+                {
+                    KorisnickoIme = k.KorisnickoIme,
+                    Ime = k.Ime,
+                    Prezime = k.Prezime,
+                    Pol = k.Pol,
+                    Email = k.Email,
+                    DatumRodjenja = k.DatumRodjenja,
+                    Uloga = k.Uloga,
+                };
+
+                pretrazeni.Add(ak);
+            }
+
+            return pretrazeni;
+        }
     }
 }

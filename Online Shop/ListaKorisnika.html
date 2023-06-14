@@ -146,7 +146,6 @@
             if (searchParams.has('msg')) {
                 // ima msg kao url parametar prikazi primljenu poruku
                 $("#divgreske").removeClass('d-none');
-                console.log(searchParams.get('msg'));
                 $("#greske").text(searchParams.get('msg'));
             }
 
@@ -173,6 +172,8 @@
             });
 
             $("#ponistibtn").on('click', function () {
+                $("#divgreske").addClass('d-none');
+
                 // isprazni redove
                 $('#korisnici tbody').empty();
 
@@ -214,6 +215,108 @@
                         }
                     }
                 });
+
+                $("od").val() = "";
+                $("do").val() = "";
+
+                return false; // prevent ajax page reload
+            });
+
+            // dugme pretraga
+            $("#pretragabtn").on('click', function () {
+                // isprazni redove
+                $('#korisnici tbody').empty();
+                $("#divgreske").addClass('d-none');
+
+                // uneo je okej datume, pokupimo vrednosti polja i onda ajax call
+                var ime = $("#ime").val();
+                var prezime = $("#prezime").val();
+                var dmin = $("#od").val();
+                var dmax = $("#do").val();
+                var defDate = new Date("1900-01-01").toISOString();
+                var minDate = new Date("1900-01-01").toISOString();
+                var maxDate = new Date("1900-01-01").toISOString();
+                var uloga = $("#uloga").val();
+
+                if (dmin !== "") {
+                    dmin = Date.parse(dmin.split(".").reverse().join("-"));
+                    minDate = new Date(dmin).toISOString();
+                }
+
+                if (dmax !== "") {
+                    dmax = Date.parse(dmax.split(".").reverse().join("-"));
+                    maxDate = new Date(dmax).toISOString();
+                }
+
+                if (minDate === defDate && maxDate !== defDate) {
+                    // desila se greska - prikazi je
+                    $("#divgreske").removeClass('d-none');
+                    $("#greske").text("Unesite početni datum za pretragu!");
+                    return false;
+                }
+
+                if (minDate !== defDate && maxDate === defDate) {
+                    // desila se greska - prikazi je
+                    $("#divgreske").removeClass('d-none');
+                    $("#greske").text("Unesite krajnji datum za pretragu!");
+                    return false;
+                }
+
+                // poziv ka apiju za pretragu
+                $.ajax({
+                    url: "/api/users/PretragaKorisnika",
+                    type: "POST",
+                    data: JSON.stringify({
+                        Ime: ime,
+                        Prezime: prezime,
+                        Od: minDate,
+                        Do: maxDate,
+                        Uloga: uloga
+                    }),
+                    async: false,
+                    cache: false,
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        var data = JSON.parse(response);
+
+                        if (data.length > 0) {
+                            $("#divgreske").removeClass('d-none');
+                            $("#greske").text("Korisnici koji ispunjavaju uneti kriterijum su izlistani u tabeli ispod!");
+
+                            // popuni tabelu
+                            $.each(data, function (key, k) {
+                                // dodavanje reda po red
+                                var uloga = "Auth";
+
+                                if (k.Uloga == 0) uloga = "Kupac";
+                                if (k.Uloga == 1) uloga = "Prodavac";
+                                if (k.Uloga == 2) uloga = "Administrator";
+
+                                $("#korisnici > tbody").append('<tr><td>' + k.KorisnickoIme + '</td>' +
+                                    '<td>' + k.Ime + '</td>' +
+                                    '<td>' + k.Prezime + '</td>' +
+                                    '<td>' + k.Pol + '</td>' +
+                                    '<td>' + k.Email + '</td>' +
+                                    '<td>' + new Date(k.DatumRodjenja).toLocaleDateString("en-GB") + '</td>' +
+                                    '<td><b>' + uloga.toUpperCase() + '</b></td>' +
+                                    '<td class="d-flex justify-content-center"><a class="btn btn-dark" href="Izmena.html?id=' + k.KorisnickoIme + '">Izmena</a>&emsp;' +
+                                    '<a class="btn btn-danger" href="Brisanje.html?id=' + k.KorisnickoIme + '">Brisanje</a></td>' +
+                                    '</tr>');
+                            });
+
+                            return false;
+                        }
+                        else {
+                            // desila se greska - prikazi je
+                            $("#divgreske").removeClass('d-none');
+                            $("#greske").text("Nema korisnika koji ispunjavaju uneti kriterijum!");
+                            return false;
+                        }
+                    }
+                });
+
+                return false; // prevent ajax page reload
             });
 
         });
@@ -299,32 +402,31 @@
                                                             <div class="col-2">
                                                                 <div class="input-group flex-nowrap mb-3">
                                                                     <span class="input-group-text" id="addon-wrapping">Od</span>
-                                                                    <input id="datumod" type="date" class="form-control" placeholder="Unesite pojam..." aria-label="prezime" aria-describedby="addon-wrapping">
+                                                                    <input id="od" type="date" min="1970-01-01" class="form-control" placeholder="Unesite pojam..." aria-label="prezime" aria-describedby="addon-wrapping">
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-2">
                                                                 <div class="input-group flex-nowrap mb-3">
                                                                     <span class="input-group-text" id="addon-wrapping">Do</span>
-                                                                    <input id="datumdo" type="date" class="form-control" placeholder="Unesite pojam..." aria-label="prezime" aria-describedby="addon-wrapping">
+                                                                    <input id="do" type="date" min="1970-01-01" class="form-control" placeholder="Unesite pojam..." aria-label="prezime" aria-describedby="addon-wrapping">
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-2">
                                                                 <div class="input-group flex-nowrap mb-3">
                                                                     <span class="input-group-text" id="addon-wrapping">Uloga</span>
-                                                                    <select id="pol" class="form-control">
+                                                                    <select id="uloga" class="form-control">
                                                                         <option value="">/</option>
-                                                                        <option value="Muški">Muški</option>
-                                                                        <option value="Ženski">Ženski</option>
-                                                                        <option value="Drugo">Drugo</option>
+                                                                        <option value="Kupac">Kupac</option>
+                                                                        <option value="Prodavac">Prodavac</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="pt-1 mb-3">
-                                                                <button id="pretragabtn" class="btn btn-dark btn-lg btn-block">🔎 Pretraga korisnika</button>
+                                                                <button id="pretragabtn" type="button" class="btn btn-dark btn-lg btn-block">🔎 Pretraga korisnika</button>
                                                                 &emsp;<button id="ponistibtn" type="reset" class="btn btn-secondary btn-lg btn-block">↺ Resetovanje pretrage</button>
                                                             </div>
                                                         </div>
