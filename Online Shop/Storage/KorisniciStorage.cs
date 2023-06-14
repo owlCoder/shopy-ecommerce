@@ -61,6 +61,13 @@ namespace Online_Shop.Storage
             return (pronadjen != null && !pronadjen.IsDeleted);
         }
 
+        // Metoda koja vraca trazenog korisnika
+        public static Korisnik KorisnikPoId(string username)
+        {
+            // ako postoji i nije obrisan
+            return Korisnici.FirstOrDefault(p => p.KorisnickoIme.Equals(username) && p.IsDeleted == false);
+        }
+
         // Dobavi referencu korisnika iz baze podataka
         public static Korisnik GetKorisnik(string username)
         {

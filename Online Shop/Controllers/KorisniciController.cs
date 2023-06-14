@@ -94,5 +94,79 @@ namespace Online_Shop.Controllers
                 }
             }
         }
+
+        // Metoda za pribavljanje konkretnog korisnika
+        [HttpPost]
+        [Route("GetKorisnikById")]
+        public string KorisnikPoId(SingleIdRequest id)
+        {
+            Korisnik k = KorisniciStorage.KorisnikPoId(id.Id);
+
+            if(k == null)
+            {
+                return JsonConvert.SerializeObject(new AuthKorisnik { KorisnickoIme = ""});
+            }
+            else
+            {
+                return JsonConvert.SerializeObject(k);
+            }
+        }
+
+        // Metoda za azuriranje profila
+        [HttpPost]
+        [Route("AzuriranjeProfilaKorisnika")]
+        public string AzuriranjeProfila(KorisnikIzmenaProfila zahtev)
+        {
+            if (!ModelState.IsValid)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 1, Poruka = "Niste popunili pravilno formu!" });
+            }
+            else
+            {
+                string staro_korisnicko_ime = zahtev.Id;
+                Korisnik korisnik = KorisniciStorage.KorisnikPoId(zahtev.Id);
+                bool provera;
+
+                // korisnik nije hteo da menja korisnicko ime - sto je i okej
+                if (staro_korisnicko_ime.Equals(zahtev.KorisnickoIme))
+                {
+                    provera = true;
+                }
+                else
+                {
+                    // nisu ista korisnicka imena - provera da li je korisnicko ime zauzeto
+                    provera = !KorisniciStorage.ProveriPostojiUsername(zahtev.KorisnickoIme);
+                }
+
+                // uneti podaci su okej uneti - provera da ne postoji korisnik sa unetim korisnickim imenom
+                if (korisnik != null && provera)
+                {
+                    Korisnik tren = korisnik;
+
+                    if (tren != null)
+                    {
+                        tren.KorisnickoIme = zahtev.KorisnickoIme;
+                        tren.Ime = zahtev.Ime;
+                        tren.Prezime = zahtev.Prezime;
+                        tren.Pol = zahtev.Pol;
+                        tren.Email = zahtev.Email;
+                        tren.DatumRodjenja = zahtev.DatumRodjenja;
+
+                        // azuriranje "baze podataka"
+                        KorisniciStorage.AzurirajKorisnikeUBazi();
+
+                        return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
+                    }
+                    else
+                    {
+                        return JsonConvert.SerializeObject(new Response { Kod = 7, Poruka = "Korisnik je izbrisan iz baze podataka!" });
+                    }
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(new Response { Kod = 8, Poruka = "Korisničko ime je zauzeto!" });
+                }
+            }
+        }
     }
 }

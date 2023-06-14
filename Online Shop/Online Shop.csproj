@@ -133,6 +133,7 @@
     <Compile Include="Models\AuthKorisnik.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Korisnik.cs" />
+    <Compile Include="Models\KorisnikIzmenaProfila.cs" />
     <Compile Include="Models\KorisnikLogin.cs" />
     <Compile Include="Models\KorisnikRegistracija.cs" />
     <Compile Include="Models\Porudzbina.cs" />
@@ -170,6 +171,7 @@
     <Content Include="Images\mainpf.jpg" />
     <Content Include="Images\pwd.jpg" />
     <Content Include="Images\rgbg.jpg" />
+    <Content Include="Izmena.html" />
     <Content Include="IzmenaLozinke.html" />
     <Content Include="ListaKorisnika.html" />
     <Content Include="MojProfil.html" />
