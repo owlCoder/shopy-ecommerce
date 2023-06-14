@@ -319,8 +319,58 @@
                 return false; // prevent ajax page reload
             });
 
-        });
+            // sortiranje korisnika
+            $('#sort').on('change', function () {
+                var Id = this.value; // trenutni id u padajecem meniju
 
+                $("#divgreske").addClass('d-none');
+
+                // isprazni redove
+                $('#korisnici tbody').empty();
+
+                // popuni svim podacima
+                // get metoda za dobijanje listi svih korisnika
+                $.ajax({
+                    url: "/api/users/SortiranjeKorisnika",
+                    type: "POST",
+                    data: JSON.stringify({
+                        Id: Id
+                    }),
+                    async: false,
+                    cache: false,
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        var data = JSON.parse(response);
+
+                        if (data.length > 0) {
+                            $(function () {
+                                // popuni tabelu
+                                $.each(data, function (key, k) {
+                                    // dodavanje reda po red
+                                    var uloga = "Auth";
+
+                                    if (k.Uloga == 0) uloga = "Kupac";
+                                    if (k.Uloga == 1) uloga = "Prodavac";
+                                    if (k.Uloga == 2) uloga = "Administrator";
+
+                                    $("#korisnici > tbody").append('<tr><td>' + k.KorisnickoIme + '</td>' +
+                                        '<td>' + k.Ime + '</td>' +
+                                        '<td>' + k.Prezime + '</td>' +
+                                        '<td>' + k.Pol + '</td>' +
+                                        '<td>' + k.Email + '</td>' +
+                                        '<td>' + new Date(k.DatumRodjenja).toLocaleDateString("en-GB") + '</td>' +
+                                        '<td><b>' + uloga.toUpperCase() + '</b></td>' +
+                                        '<td class="d-flex justify-content-center"><a class="btn btn-dark" href="Izmena.html?id=' + k.KorisnickoIme + '">Izmena</a>&emsp;' +
+                                        '<a class="btn btn-danger" href="Brisanje.html?id=' + k.KorisnickoIme + '">Brisanje</a></td>' +
+                                        '</tr>');
+                                });
+                            });
+                        }
+                    }
+                });
+            });
+        });
     </script>
 </head>
 <body>
@@ -431,7 +481,26 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                   
+
+                                                    <div class="col-12 mb-3 d-flex justify-content-end">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="input-group flex-nowrap mb-3">
+                                                                    <span class="input-group-text" id="addon-sort">Sortiranje korisnika po</span>
+                                                                    <select id="sort" class="form-control">
+                                                                        <option value="0">Podrazumevano</option>
+                                                                        <option value="1">Imenu (rastuće)</option>
+                                                                        <option value="2">Imenu (opadajuće)</option>
+                                                                        <option value="3">Datumu rođenja (rastuće)</option>
+                                                                        <option value="4">Datumu rođenja (opadajuće)</option>
+                                                                        <option value="5">Ulozi (rastuće)</option>
+                                                                        <option value="6">Ulozi (opadajuće)</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
 
                                                     <div id="divgreske" class="alert alert-dark d-flex align-items-center" role="alert">
                                                         <svg height="25" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -447,7 +516,7 @@
                                                                 <tr>
                                                                     <th>Korisničko ime</th>
                                                                     <th>Ime</th>
-                                                                    <th>Prezime</th> 
+                                                                    <th>Prezime</th>
                                                                     <th>Pol</th>
                                                                     <th>Email</th>
                                                                     <th>Datum rođenja</th>

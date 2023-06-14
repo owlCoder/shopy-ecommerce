@@ -168,5 +168,13 @@ namespace Online_Shop.Controllers
                 }
             }
         }
+
+        // Metoda za sortiranje korisnika
+        [HttpPost]
+        [Route("SortiranjeKorisnika")]
+        public string SortirajKorisnike(SingleIdRequest id)
+        {
+            return JsonConvert.SerializeObject(KorisniciStorage.GetSorterd(id.Id));
+        }
     }
 }

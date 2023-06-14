@@ -190,5 +190,59 @@ namespace Online_Shop.Storage
 
             return pretrazeni;
         }
+
+        // Metoda za sortiranje po kriterijumu
+        // 0 - default, 1 - ime asc, 2 - ime desc, 3 - dat rodj asc, 4 - dat rodj desc, 5 - uloga asc, 6 - uloga desc
+        public static List<AuthKorisnik> GetSorterd(string id)
+        {
+            // svi korisnici koji nisu obrisani, koji nisu admini i nisu trenutni
+            string trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]).KorisnickoIme;
+            List <Korisnik> korisnici = Korisnici.FindAll(p => p.IsDeleted == false && p.Uloga != ULOGA.Administrator && !p.KorisnickoIme.Equals(trenutni));
+            List<AuthKorisnik> sortirani = new List<AuthKorisnik>();
+
+            // kopiranje liste korisnika u novu sortiranu
+            foreach(Korisnik k in korisnici)
+            {
+                AuthKorisnik ak = new AuthKorisnik
+                {
+                    KorisnickoIme = k.KorisnickoIme,
+                    Ime = k.Ime,
+                    Prezime = k.Prezime,
+                    Pol = k.Pol,
+                    Email = k.Email,
+                    DatumRodjenja = k.DatumRodjenja,
+                    Uloga = k.Uloga,
+                };
+
+                sortirani.Add(ak);
+            }
+
+            if(id.Equals("1"))
+            {
+                sortirani = sortirani.OrderBy(p => p.Ime).ToList();
+            }
+            else if (id.Equals("2"))
+            {
+                sortirani = sortirani.OrderByDescending(p => p.Ime).ToList();
+            }
+            if (id.Equals("3"))
+            {
+                sortirani = sortirani.OrderBy(p => p.DatumRodjenja).ToList();
+            }
+            else if (id.Equals("4"))
+            {
+                sortirani = sortirani.OrderByDescending(p => p.DatumRodjenja).ToList();
+            }
+            if (id.Equals("5"))
+            {
+                sortirani = sortirani.OrderBy(p => p.Uloga).ToList();
+            }
+            else if (id.Equals("6"))
+            {
+                sortirani = sortirani.OrderByDescending(p => p.Uloga).ToList();
+            }
+
+            return sortirani;
+        }
     }
 }
