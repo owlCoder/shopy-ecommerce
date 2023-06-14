@@ -11,7 +11,7 @@ namespace Online_Shop.Storage
 {
     public class KorisniciStorage
     {
-        public static Dictionary<string, Korisnik> Korisnici { get; set; }
+        public static List<Korisnik> Korisnici { get; set; }
         public static string KorisniciPath = HostingEnvironment.MapPath(@"~/App_Data/korisnici.json");
 
         public KorisniciStorage()
@@ -26,22 +26,13 @@ namespace Online_Shop.Storage
             {
                 try
                 {
-                    Korisnici = new Dictionary<string, Korisnik>();
+                    Korisnici = new List<Korisnik>();
 
                     // ucitavanje svih korisnika iz json datoteke
-                    var tempKorisnici = JsonConvert.DeserializeObject<Dictionary<string, Korisnik>>(File.ReadAllText(KorisniciPath));
-
-                    // ne cuvaj u memoriji logicki obrisane korisnike
-                    foreach(Korisnik k in tempKorisnici.Values)
-                    {
-                        if(!k.IsDeleted)
-                        {
-                            Korisnici.Add(k.KorisnickoIme, k);
-                        }
-                    }
+                    Korisnici = JsonConvert.DeserializeObject<List<Korisnik>>(File.ReadAllText(KorisniciPath));
 
                     // izloguj sve korisnike - server se restartovao
-                    foreach (Korisnik k in Korisnici.Values)
+                    foreach (Korisnik k in Korisnici)
                     {
                         if (k.IsLoggedIn)
                         {
@@ -52,13 +43,13 @@ namespace Online_Shop.Storage
                 catch 
                 {
                     // ne postoji datoteka - pa se kreira prazan recnik
-                    Korisnici = new Dictionary<string, Korisnik>();
+                    Korisnici = new List<Korisnik>();
                 }
             }
             else
             {
                 // ne postoji datoteka - pa se kreira prazan recnik
-                Korisnici = new Dictionary<string, Korisnik>();
+                Korisnici = new List<Korisnik>();
             }
         }
 
@@ -66,13 +57,14 @@ namespace Online_Shop.Storage
         public static bool ProveriPostojiUsername(string username)
         {
             // ako postoji i nije obrisan
-            return (Korisnici.TryGetValue(username, out Korisnik pronadjen) && !pronadjen.IsDeleted);
+            Korisnik pronadjen = Korisnici.FirstOrDefault(p => p.KorisnickoIme.Equals(username));
+            return (pronadjen != null && !pronadjen.IsDeleted);
         }
 
         // Dobavi referencu korisnika iz baze podataka
         public static Korisnik GetKorisnik(string username)
         {
-            return Korisnici.TryGetValue(username, out Korisnik korisnik) ? korisnik : null;
+            return Korisnici.FirstOrDefault(p => p.KorisnickoIme.Equals(username));
         }
 
         // Dodaje novog korisnika i cuva u json nakon uspesne registracije
@@ -92,7 +84,7 @@ namespace Online_Shop.Storage
             List<AuthKorisnik> korisnici = new List<AuthKorisnik>();
             string trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]).KorisnickoIme;
 
-            foreach(Korisnik k in Korisnici.Values)
+            foreach(Korisnik k in Korisnici)
             {
                 // ne prikazuju se administratori, niti LOGICKI obrisani korisnici niti trenutno ulogovan korisnik
                 if(k.IsDeleted == false && k.Uloga != ULOGA.Administrator && !k.KorisnickoIme.Equals(trenutni))
@@ -117,14 +109,25 @@ namespace Online_Shop.Storage
 
         public static bool LogickoBrisanje(string id)
         {
-            if(Korisnici.TryGetValue(id, out Korisnik pronadjen))
+            Korisnik pronadjen = Korisnici.FirstOrDefault(p => p.KorisnickoIme.Equals(id));
+
+            if (pronadjen != null)
             {
+                // TO DO: ako je bio kupac vrati sve sa porudzbina na stanje, porudzbine ponisti itd
+                // ako je bio prodavac...
+                // TODO
+                if(pronadjen.Uloga == ULOGA.Kupac)
+                {
+
+                }
+                else if(pronadjen.Uloga == ULOGA.Prodavac)
+                {
+
+                }
+
                 // logicko brisanje
                 pronadjen.IsDeleted = true;
                 AzurirajKorisnikeUBazi(); // ostaje upisan u fajlu ali sa IsDeleted na true
-
-                // ukloni iz recnika - nije bitan podataka
-                Korisnici.Remove(id);
                 return true;
             }
             else

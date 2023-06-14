@@ -39,7 +39,7 @@ namespace Online_Shop.Controllers
 
                     Korisnik novi = new Korisnik(zahtev.KorisnickoIme, sha1, zahtev.Ime, zahtev.Prezime, zahtev.Pol, zahtev.Email, zahtev.DatumRodjenja);
                     novi.IsLoggedIn = true;
-                    KorisniciStorage.Korisnici.Add(zahtev.KorisnickoIme, novi);
+                    KorisniciStorage.Korisnici.Add(novi);
                     KorisniciStorage.AzurirajKorisnikeUBazi();
 
                     // auto login registrovanog korisnika - cuvanje po http sesiji
@@ -192,11 +192,8 @@ namespace Online_Shop.Controllers
                         // Azuriranje korisnika
                         HttpContext.Current.Session["korisnik"] = tren;
 
-                        // ukloni stari zapis kljuca u recniku i dodaj novi azuriran
-                        KorisniciStorage.Korisnici.Remove(staro_korisnicko_ime);
-
                         // cuvanje novog korisnika po novom kljucu
-                        KorisniciStorage.Korisnici.Add(tren.KorisnickoIme, tren);
+                        KorisniciStorage.Korisnici.Add(tren);
 
                         // azuriranje "baze podataka"
                         KorisniciStorage.AzurirajKorisnikeUBazi();
