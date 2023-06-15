@@ -135,7 +135,6 @@
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li><a href="/" class="nav-link">Početna stranica</a></li>
-
                     <li>
                         <a href="Registracija.html" type="submit" id="registracija" class="btn btn-outline-light navbar-btn login-btn">Registracija</a>
                         <a href="Prijava.html" type="submit" id="prijava" class="btn btn-outline-light navbar-btn register-btn">Prijava</a>
@@ -151,57 +150,51 @@
                     <div class="col-lg-12 mx-auto mt-4">
                         <div class="row d-flex justify-content-center align-items-center h-100">
                             <div class="col col-xl-10">
-                              <div class="card" style="border-radius: 1rem;">
-                                <div class="row g-0">
-                                    <div class="col-md-6 col-lg-5 d-none d-md-block">
-                                        <img src="Images/lgbg.jpg" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                                <div class="card" style="border-radius: 1rem;">
+                                    <div class="row g-0">
+                                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                                            <img src="Images/lgbg.jpg" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                                        </div>
+                                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                                            <div class="card-body p-4 p-lg-5 text-black">
+                                                <form>
+                                                    <div class="d-flex mb-3 pb-1">
+                                                        <span class="h1 fw-bold mb-0">Shopy</span>
+                                                    </div>
+                                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Prijavite se na Vaš nalog</h5>
+                                                    <div id="divgreske" class="alert alert-danger d-flex align-items-center" role="alert">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-exclamation-mark" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                            <path d="M12 19v.01" />
+                                                            <path d="M12 15v-10" />
+                                                        </svg>
+                                                        <span id="greske">
+                                                        </span>
+                                                    </div>
+                                                    <div class="form-outline mb-4">
+                                                        <label class="form-label" for="korisnickoime">Korisničko ime</label>
+                                                        <input type="text" id="korisnickoime" autofocus class="form-control form-control-lg" required />
+                                                        <span id="g1" class="invalid-feedback">Molimo Vas popunite ovo polje.</span>
+                                                    </div>
+                                                    <div class="form-outline mb-4">
+                                                        <label class="form-label" for="lozinka">Lozinka</label>
+                                                        <input type="password" id="lozinka" class="form-control form-control-lg" required />
+                                                        <span id="g2" class="invalid-feedback">Molimo Vas popunite ovo polje.</span>
+                                                    </div>
+                                                    <div class="pt-1 mb-4">
+                                                        <button class="btn btn-dark btn-lg btn-block" id="prijavabtn" type="button">Prijava na platformu</button>
+                                                    </div>
+                                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">
+                                                        Nemate aktivan nalog? <a href="Registracija.html"
+                                                                                 style="color: #393f81;">Registrujte se</a>
+                                                    </p>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
-                                  <div class="col-md-6 col-lg-7 d-flex align-items-center">
-                                    <div class="card-body p-4 p-lg-5 text-black">
-                      
-                                        <form>
-
-                                            <div class="d-flex mb-3 pb-1">
-                                                <span class="h1 fw-bold mb-0">Shopy</span>
-                                            </div>
-
-                                            <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Prijavite se na Vaš nalog</h5>
-
-                                            <div id="divgreske" class="alert alert-danger d-flex align-items-center" role="alert">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-exclamation-mark" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M12 19v.01" /> <path d="M12 15v-10" /> </svg>
-                                                <span id="greske">
-
-                                                </span>
-                                            </div>
-
-                                           <div class="form-outline mb-4">
-                                                <label class="form-label" for="korisnickoime">Korisničko ime</label>
-                                                <input type="text" id="korisnickoime" autofocus class="form-control form-control-lg" required />
-                                                <span id="g1" class="invalid-feedback">Molimo Vas popunite ovo polje.</span>
-                                            </div>
-
-                                            <div class="form-outline mb-4">
-                                                <label class="form-label" for="lozinka">Lozinka</label>
-                                                <input type="password" id="lozinka" class="form-control form-control-lg" required />
-                                                <span id="g2" class="invalid-feedback">Molimo Vas popunite ovo polje.</span>
-                                            </div>
-
-                                            <div class="pt-1 mb-4">
-                                                <button class="btn btn-dark btn-lg btn-block" id="prijavabtn" type="button">Prijava na platformu</button>
-                                            </div>
-
-                                            <p class="mb-5 pb-lg-2" style="color: #393f81;">
-                                                Nemate aktivan nalog? <a href="Registracija.html"
-                                                                         style="color: #393f81;">Registrujte se</a>
-                                            </p>
-                                        </form>
-                      
-                                    </div>
-                                  </div>
                                 </div>
-                              </div>
                             </div>
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>

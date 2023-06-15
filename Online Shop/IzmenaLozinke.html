@@ -86,7 +86,7 @@
                         $("#prezime").val(data.Prezime);
                         $("#pol").val(data.Pol);
                         $("#email").val(data.Email);
-                        
+
                         let today = new Date(data.DatumRodjenja);
 
                         let day = (today.getDate());
@@ -141,7 +141,7 @@
             $("#azurirajbtn").on('click', function () {
                 var stara_lozinka = $("#staralozinka").val();
                 var nova_lozinka = $("#novalozinka").val();
-                
+
                 var greska = false;
 
                 // provera unosa na klijentu
@@ -218,12 +218,10 @@
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li><a href="/" class="nav-link">Početna stranica</a></li>
-
                     <li id="pl">
                         <a href="Registracija.html" type="submit" id="registracija" class="btn btn-outline-light navbar-btn login-btn">Registracija</a>
                         <a href="Prijava.html" type="submit" id="prijava" class="btn btn-outline-light navbar-btn register-btn">Prijava</a>
                     </li>
-
                     <li id="profil">
                         <div class="btn-group profil-btn">
                             <button type="button" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -232,7 +230,9 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="MojProfil.html" id="mojprofil">Moj profil</a></li>
                                 <li><a class="dropdown-item" href="IzmenaLozinke.html" id="izmenalozinke">Izmena lozinke</a></li>
-                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
                                 <li><a class="dropdown-item text-danger" id="odjava" href="#">Odjava sa platforme</a></li>
                             </ul>
                         </div>
@@ -259,28 +259,26 @@
                                                     <div class="d-flex mb-3 pb-1">
                                                         <span class="h1 fw-bold mb-0">Shopy</span>
                                                     </div>
-
                                                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Izmena korisničke lozinke</h5>
-
                                                     <div id="divgreske" class="alert alert-danger d-flex align-items-center" role="alert">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-exclamation-mark" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M12 19v.01" /> <path d="M12 15v-10" /> </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-exclamation-mark" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                            <path d="M12 19v.01" />
+                                                            <path d="M12 15v-10" />
+                                                        </svg>
                                                         <span id="greske">
-
                                                         </span>
                                                     </div>
-
                                                     <div class="form-outline mb-4">
                                                         <label class="form-label" for="staralozinka">Stara Lozinka</label>
                                                         <input type="password" id="staralozinka" class="form-control form-control-lg" required />
                                                         <span id="g2" class="invalid-feedback">Molimo Vas popunite ovo polje.</span>
                                                     </div>
-
                                                     <div class="form-outline mb-4">
                                                         <label class="form-label" for="novalozinka">Nova Lozinka</label>
                                                         <input type="password" id="novalozinka" class="form-control form-control-lg" required />
                                                         <span id="g2" class="invalid-feedback">Molimo Vas popunite ovo polje.</span>
                                                     </div>
-
                                                     <p class="my-3 pb-lg-2 fw-bold text-danger">
                                                         Može proći nekoliko minuta dok se nova lozinka ne primeni na svim servisima e-platforme!
                                                     </p>
@@ -288,7 +286,6 @@
                                                         <button class="btn btn-dark btn-lg btn-block" id="azurirajbtn" type="button">Promeni lozinku</button>
                                                     </div>
                                                 </form>
-
                                             </div>
                                         </div>
                                     </div>
