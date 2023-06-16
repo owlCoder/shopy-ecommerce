@@ -131,19 +131,23 @@
 
             // azuriranje pregleda slike
             $("#slika").on('change', function () {
-                pregled.src = URL.createObjectURL(slika.files[0]);
+                if (slika.files[0] === undefined) {
+                    pregled.src = "/Images/productplc.jpg";
+                }
+                else {
+                    pregled.src = URL.createObjectURL(slika.files[0]);
+                }
             });
 
             
             // cuvanje izmena
-            $("#dodaj").on('click', function () {
+            $("#dodajbtn").on('click', function () {
                 var naziv = $("#naziv").val();
                 var opis = $("#opis").val();
                 var cena = $("#cena").val();
                 var kolicina = $("#kolicina").val();
                 var grad = $("#grad").val();
-                var datumRodjenja = $("#datumrodjenja").val();
-
+                var slika = $("#slika").val();
                 var greska = false;
 
                 // provera unosa na klijentu
@@ -161,77 +165,80 @@
                     $("#naziv").add("is-valid");
                 }
 
-                if (opis.length < 3) {
+                if (opis.length < 20) {
+                    $("#g2").addClass("d-block");
+                    $("#g2").removeClass("d-none");
+                    $("#opis").addClass("is-invalid");
+                    $("#g2").removeClass("d-none");
+                    $("#g2").text("Opis mora imati minimalno 20 karaktera!");
+                    greska = true;
+                }
+                else {
+                    $("#g2").addClass("d-none");
+                    $("#opis").removeClass("is-invalid");
+                    $("#opis").removeClass("invalid-feedback");
+                    $("#opis").add("is-valid");
+                }
+
+                if (cena <= 0) {
                     $("#g3").addClass("d-block");
                     $("#g3").removeClass("d-none");
-                    $("#ime").addClass("is-invalid");
-                    $("#g3").removeClass("d-none");
-                    $("#g3").text("Ime mora imati minimalno 3 karaktera!");
+                    $("#cena").addClass("is-invalid");
+                    $("#g3").text("Cena ne sme biti negativan broj!");
                     greska = true;
                 }
                 else {
                     $("#g3").addClass("d-none");
-                    $("#ime").removeClass("is-invalid");
-                    $("#ime").removeClass("invalid-feedback");
-                    $("#ime").add("is-valid");
+                    $("#cena").removeClass("is-invalid");
+                    $("#cena").removeClass("invalid-feedback");
+                    $("#cena").add("is-valid");
                 }
 
-                if (prezime.length < 6) {
+                if (kolicina <= 0) {
                     $("#g4").addClass("d-block");
                     $("#g4").removeClass("d-none");
-                    $("#prezime").addClass("is-invalid");
-                    $("#g4").text("Prezime mora imati minimalno 6 karaktera!");
+                    $("#kolicina").addClass("is-invalid");
+                    $("#g4").text("Količina ne sme biti negativan broj!");
                     greska = true;
                 }
                 else {
                     $("#g4").addClass("d-none");
-                    $("#prezime").removeClass("is-invalid");
-                    $("#prezime").removeClass("invalid-feedback");
-                    $("#prezime").add("is-valid");
+                    $("#kolicina").removeClass("is-invalid");
+                    $("#kolicina").removeClass("invalid-feedback");
+                    $("#kolicina").add("is-valid");
                 }
 
-                var regexEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
-                if (regexEmail.test(email) === false) {
+                if (grad.length < 3) {
                     $("#g5").addClass("d-block");
                     $("#g5").removeClass("d-none");
-                    $("#email").addClass("is-invalid");
-                    $("#g5").removeClass("d-none");
-                    $("#g5").text("Email nije unet u validnom formatu!");
+                    $("#grad").addClass("is-invalid");
+                    $("#g5").text("Grad mora imati minimalno 3 karaktera!");
                     greska = true;
                 }
                 else {
                     $("#g5").addClass("d-none");
-                    $("#email").removeClass("is-invalid");
-                    $("#email").removeClass("invalid-feedback");
-                    $("#email").add("is-valid");
+                    $("#grad").removeClass("is-invalid");
+                    $("#grad").removeClass("invalid-feedback");
+                    $("#grad").add("is-valid");
                 }
 
-                var minDate = Date.parse("1970-01-01");
-                var maxDate = Date.parse("2020-01-01");
-                if (datumRodjenja === "") // datum se nije promenio
-                    datumRodjenja = STARI_DATUM;
-
-                var datum = Date.parse(datumRodjenja.split(".").reverse().join("-"));
-                datumRodjenja = Date.parse(datumRodjenja.split(".").reverse().join("-"));
-                datumRodjenja = new Date(datumRodjenja).toISOString();
-
-                if ((datum < minDate) || (datum > maxDate)) {
+                if (slika.length <= 0) {
                     $("#g6").addClass("d-block");
                     $("#g6").removeClass("d-none");
-                    $("#datumRodjenja").addClass("is-invalid");
-                    $("#g6").text("Niste uneli datum rođenja u dozvoljenom opsegu!");
+                    $("#slika").addClass("is-invalid");
+                    $("#g6").text("Morate odabrati sliku proizvoda!");
                     greska = true;
                 }
                 else {
                     $("#g6").addClass("d-none");
-                    $("#datumRodjenja").removeClass("is-invalid");
-                    $("#datumRodjenja").removeClass("invalid-feedback");
-                    $("#datumRodjenja").add("is-valid");
+                    $("#slika").removeClass("is-invalid");
+                    $("#slika").removeClass("invalid-feedback");
+                    $("#slika").add("is-valid");
                 }
 
                 if (greska === true) return; // ne izvrsava se ajax poziv - rasterecuje se server od callbacks
 
-                // ajax poziv ka api-ju za vrsenje registracije
+                // ajax poziv ka api-ju za upload slike
                 $.ajax({
                     url: "/api/users/AzuriranjeProfilaKorisnika",
                     type: "POST",
