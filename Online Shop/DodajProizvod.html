@@ -9,7 +9,6 @@
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/bootstrap.bundle.min.js"></script>
     <script src="Scripts/modernizr-2.8.3.js"></script>
-    <script src="Scripts/base64Encoder.js"></script>
     <style>
         .navbar .login-btn {
             position: absolute;
@@ -135,33 +134,34 @@
                 pregled.src = URL.createObjectURL(slika.files[0]);
             });
 
+            
             // cuvanje izmena
-            $("#azurirajbtn").on('click', function () {
-                var naziv = $("#korisnickoime").val();
-                var opis = $("#ime").val();
-                var cena = $("#prezime").val();
-                var kolicina = $("#pol").val();
-                var grad = $("#email").val();
+            $("#dodaj").on('click', function () {
+                var naziv = $("#naziv").val();
+                var opis = $("#opis").val();
+                var cena = $("#cena").val();
+                var kolicina = $("#kolicina").val();
+                var grad = $("#grad").val();
                 var datumRodjenja = $("#datumrodjenja").val();
 
                 var greska = false;
 
                 // provera unosa na klijentu
-                if (korisnickoIme.length < 6) {
+                if (naziv.length < 3) {
                     $("#g1").addClass("d-block");
                     $("#g1").removeClass("d-none");
-                    $("#korisnickoime").addClass("is-invalid");
-                    $("#g1").text("Korisničko ime mora imati minimalno 6 karaktera!");
+                    $("#naziv").addClass("is-invalid");
+                    $("#g1").text("Naziv mora imati minimalno 3 karaktera!");
                     greska = true;
                 }
                 else {
                     $("#g1").addClass("d-none");
-                    $("#korisnickoime").removeClass("is-invalid");
-                    $("#korisnickoime").removeClass("invalid-feedback");
-                    $("#korisnickoime").add("is-valid");
+                    $("#naziv").removeClass("is-invalid");
+                    $("#naziv").removeClass("invalid-feedback");
+                    $("#naziv").add("is-valid");
                 }
 
-                if (ime.length < 3) {
+                if (opis.length < 3) {
                     $("#g3").addClass("d-block");
                     $("#g3").removeClass("d-none");
                     $("#ime").addClass("is-invalid");
@@ -317,7 +317,7 @@
                                         </div>
                                         <div class="col-md-6 col-lg-7 d-flex align-items-center">
                                             <div class="card-body p-4 p-lg-5 text-black">
-                                                <form>
+                                                <form id="form" name="form">
                                                     <div class="d-flex mb-3 pb-1">
                                                         <span class="h1 fw-bold mb-0">Shopy</span>
                                                     </div>
@@ -338,7 +338,7 @@
                                                     </div>
                                                     <div class="form-outline mb-4">
                                                         <label class="form-label" for="opis">Opis proizvoda</label>
-                                                        <input type="text" id="opis" class="form-control form-control-lg" required />
+                                                        <textarea id="opis" class="form-control" rows="5" required></textarea>
                                                         <span id="g2" class="invalid-feedback">Molimo Vas popunite ovo polje.</span>
                                                     </div>
                                                     <div class="form-outline mb-4">
@@ -370,7 +370,7 @@
                                                         Dodavanjem novog proizvoda, saglasni ste da on postane javno vidljiv na platformi Shopy.
                                                     </p>
                                                     <div class="pt-1 mb-4">
-                                                        <button class="btn btn-dark btn-lg btn-block" id="azurirajbtn" type="button">Dodavanje proizvoda</button>
+                                                        <button class="btn btn-dark btn-lg btn-block" id="dodajbtn" type="button">Dodavanje proizvoda</button>
                                                     </div>
                                                 </form>
                                             </div>
