@@ -108,13 +108,13 @@ namespace Online_Shop.Storage
         }
 
         // Metoda koja vraca sve proizvode koji pripadaju trenutno ulogovanom korisniku
-        public List<Proizvod> GetProizvodiPerUser()
+        public static List<Proizvod> GetProizvodiPerUser()
         {
             Korisnik trenutni = (Korisnik)HttpContext.Current.Session["korisnik"];
 
             if(trenutni != null && trenutni.ObjavljeniProizvodi != null && trenutni.ObjavljeniProizvodi.Count > 0)
             {
-                return trenutni.ObjavljeniProizvodi;
+                return trenutni.ObjavljeniProizvodi.FindAll(p => p.IsDeleted == false);
             }
             else
             {

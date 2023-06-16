@@ -13,6 +13,7 @@ namespace Online_Shop.Controllers
     [RoutePrefix("api/products")]
     public class ProizvodiController : ApiController
     {
+        // Metoda za dodavanje proizvoda
         [HttpPost]
         [Route("DodavanjeProizvoda")]
         public string DodajProizvod(ProizvodAddRequest zahtev)
@@ -26,6 +27,14 @@ namespace Online_Shop.Controllers
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 12, Poruka = "Uneti podaci nisu validni!" });
             }    
+        }
+
+        // Metoda za prikazivanje svih proizvoda
+        [HttpGet]
+        [Route("ListaProizvoda")]
+        public string PrikazObjavljenihProizvoda()
+        {
+            return JsonConvert.SerializeObject(ProizvodiStorage.GetProizvodiPerUser());
         }
     }
 }

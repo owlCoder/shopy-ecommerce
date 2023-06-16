@@ -99,9 +99,9 @@
             }
         });
 
-        // get metoda za dobijanje listi svih korisnika
+        // get metoda za dobijanje listi svih proizvoda za korisnika
         $.ajax({
-            url: "/api/users/ListaKorisnika",
+            url: "/api/products/ListaProizvoda",
             type: "GET",
             async: false,
             cache: false,
@@ -115,21 +115,16 @@
                         // popuni tabelu
                         $.each(data, function (key, k) {
                             // dodavanje reda po red
-                            var uloga = "Auth";
-
-                            if (k.Uloga == 0) uloga = "Kupac";
-                            if (k.Uloga == 1) uloga = "Prodavac";
-                            if (k.Uloga == 2) uloga = "Administrator";
-
-                            $("#korisnici > tbody").append('<tr><td>' + k.KorisnickoIme + '</td>' +
-                                '<td>' + k.Ime + '</td>' +
-                                '<td>' + k.Prezime + '</td>' +
-                                '<td>' + k.Pol + '</td>' +
-                                '<td>' + k.Email + '</td>' +
-                                '<td>' + new Date(k.DatumRodjenja).toLocaleDateString("en-GB") + '</td>' +
-                                '<td><b>' + uloga.toUpperCase() + '</b></td>' +
-                                '<td class="d-flex justify-content-center"><a class="btn btn-dark" href="Izmena.html?id=' + k.KorisnickoIme + '">Izmena</a>&emsp;' +
-                                '<a class="btn btn-danger" href="Brisanje.html?id=' + k.KorisnickoIme + '">Brisanje</a></td>' +
+                            $("#proizvodi > tbody").append('<tr><td>' + k.Naziv + '</td>' +
+                                '<td><img alt="proizvod" class="img-fluid" width="100" height="100" src="/Uploads/' + k.Slika + '" /></td>' +
+                                '<td>' + k.Kolicina + '</td>' +
+                                '<td>' + k.Cena + ' RSD</td>' +
+                                '<td>' + k.Opis + '</td>' +
+                                '<td>' + new Date(k.DatumPostavljanjaProizvoda).toLocaleDateString("en-GB") + '</td>' +
+                                '<td>' + k.Grad + '</td>' +
+                                '<td><b>' + (k.Status ? "NA&nbsp;STANJU" : "NEDOSTUPAN") + '</b></td>' +
+                                '<td class="d-flex justify-content-center"><a class="btn btn-dark" href="IzmenaProizvoda.html?id=' + k.Id + '">Izmena</a>&emsp;' +
+                                '<a class="btn btn-danger" href="BrisanjeProizvoda.html?id=' + k.Id + '">Brisanje</a></td>' +
                                 '</tr>');
                         });
                     });
@@ -175,7 +170,7 @@
                 $("#divgreske").addClass('d-none');
 
                 // isprazni redove
-                $('#korisnici tbody').empty();
+                $('#proizvodi tbody').empty();
 
                 // popuni svim podacima
                 // get metoda za dobijanje listi svih korisnika
@@ -200,7 +195,7 @@
                                     if (k.Uloga == 1) uloga = "Prodavac";
                                     if (k.Uloga == 2) uloga = "Administrator";
 
-                                    $("#korisnici > tbody").append('<tr><td>' + k.KorisnickoIme + '</td>' +
+                                    $("#proizvodi > tbody").append('<tr><td>' + k.KorisnickoIme + '</td>' +
                                         '<td>' + k.Ime + '</td>' +
                                         '<td>' + k.Prezime + '</td>' +
                                         '<td>' + k.Pol + '</td>' +
@@ -225,7 +220,7 @@
             // dugme pretraga
             $("#pretragabtn").on('click', function () {
                 // isprazni redove
-                $('#korisnici tbody').empty();
+                $('#proizvodi tbody').empty();
                 $("#divgreske").addClass('d-none');
 
                 // uneo je okej datume, pokupimo vrednosti polja i onda ajax call
@@ -293,7 +288,7 @@
                                 if (k.Uloga == 1) uloga = "Prodavac";
                                 if (k.Uloga == 2) uloga = "Administrator";
 
-                                $("#korisnici > tbody").append('<tr><td>' + k.KorisnickoIme + '</td>' +
+                                $("#proizvodi > tbody").append('<tr><td>' + k.KorisnickoIme + '</td>' +
                                     '<td>' + k.Ime + '</td>' +
                                     '<td>' + k.Prezime + '</td>' +
                                     '<td>' + k.Pol + '</td>' +
@@ -326,7 +321,7 @@
                 $("#divgreske").addClass('d-none');
 
                 // isprazni redove
-                $('#korisnici tbody').empty();
+                $('#proizvodi tbody').empty();
 
                 // popuni svim podacima
                 // get metoda za dobijanje listi svih korisnika
@@ -354,7 +349,7 @@
                                     if (k.Uloga == 1) uloga = "Prodavac";
                                     if (k.Uloga == 2) uloga = "Administrator";
 
-                                    $("#korisnici > tbody").append('<tr><td>' + k.KorisnickoIme + '</td>' +
+                                    $("#proizvodi > tbody").append('<tr><td>' + k.KorisnickoIme + '</td>' +
                                         '<td>' + k.Ime + '</td>' +
                                         '<td>' + k.Prezime + '</td>' +
                                         '<td>' + k.Pol + '</td>' +
@@ -463,10 +458,10 @@
                                                         </div>
                                                     </div>
                                                     <div class="pt-1 mb-4">
-                                                        <table id="korisnici" class="table table-bordered rounded-5 border-dark">
+                                                        <table id="proizvodi" class="table table-bordered rounded-5 border-dark">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Naziv</th>
+                                                                    <th >Naziv</th>
                                                                     <th>Slika</th>
                                                                     <th>Količina</th>
                                                                     <th>Cena</th>
