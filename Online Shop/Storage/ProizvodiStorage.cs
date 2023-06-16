@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Ajax.Utilities;
+using Newtonsoft.Json;
 using Online_Shop.Models;
 using System;
 using System.Collections.Generic;
@@ -59,7 +60,7 @@ namespace Online_Shop.Storage
         }
 
         // Metoda za azuriranje proizvoda u json datoteci
-        public static void AzurirajKorisnikeUBazi()
+        public static void AzurirajProizvodeUBazi()
         {
             try
             {
@@ -67,6 +68,43 @@ namespace Online_Shop.Storage
                 File.WriteAllText(ProizvodiPath, json);
             }
             catch { }
+        }
+
+        // Metoda koja vraca trazeni proizvod po Id
+        public Proizvod GetProizvodById(int id)
+        {
+            return Proizvodi.FirstOrDefault(p => p.Id == id);
+        }
+
+        // Metoda za dodavanje proizvoda
+        public static bool DodajProizvod(string naziv, double cena, double kolicina, string opis, string slika, string grad)
+        {
+            // Proizvod treba dodati i u listu proizvoda prodavca i u globalnu listu proizvoda
+            // string slika je sada PUTANJA SLIKE NA SERVERU
+            Proizvod novi = new Proizvod(naziv, cena, kolicina, opis, slika, grad);
+
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+
+            if(trenutni != null)
+            {
+                // Dodavanje proizvoda u listu
+                Proizvodi.Add(novi);
+
+                // Dodavanje proizvoda u listu objavljenih proizvoda
+                if(trenutni.ObjavljeniProizvodi == null) trenutni.ObjavljeniProizvodi = new List<Proizvod>();
+
+                trenutni.ObjavljeniProizvodi.Add(novi);
+
+                // Azurirati json i za korisnike i za proizvode
+                KorisniciStorage.AzurirajKorisnikeUBazi();
+                AzurirajProizvodeUBazi();
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
