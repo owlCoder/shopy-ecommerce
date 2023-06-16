@@ -58,6 +58,15 @@ namespace Online_Shop.Storage
             }
         }
 
-        // 
+        // Metoda za azuriranje proizvoda u json datoteci
+        public static void AzurirajKorisnikeUBazi()
+        {
+            try
+            {
+                string json = JsonConvert.SerializeObject(Proizvodi);
+                File.WriteAllText(ProizvodiPath, json);
+            }
+            catch { }
+        }
     }
 }
