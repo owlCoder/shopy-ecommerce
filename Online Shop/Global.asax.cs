@@ -19,6 +19,9 @@ namespace Online_Shop
             // Ucitavanje podataka o korisnicima
             KorisniciStorage.UcitajKorisnike();
 
+            // Ucitavanje podataka o proizvodima
+            ProizvodiStorage.UcitajProizvode();
+
             // Registracija filtera i ruta
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
@@ -30,12 +33,12 @@ namespace Online_Shop
         // Podrška za sesije u okviru poziva rest servisa
         public override void Init()
         {
-            PostAuthenticateRequest += MyPostAuthenticateRequest;
+            PostAuthenticateRequest += ApiRequestHandler;
             base.Init();
         }
 
         // Sesije, url zahteva /api/ kao pocetni parametar
-        void MyPostAuthenticateRequest(object sender, EventArgs e)
+        void ApiRequestHandler(object sender, EventArgs e)
         {
             if (HttpContext.Current.Request.Url.AbsolutePath.StartsWith("/api/"))
             {
