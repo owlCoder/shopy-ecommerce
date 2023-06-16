@@ -21,17 +21,18 @@ namespace Online_Shop.Controllers
         {
             HttpFileCollection slika_forma = HttpContext.Current.Request.Files;
             HttpPostedFile otpremljena_slika = slika_forma.Get("slika");
+            string naziv_fajla = new Guid().ToString() + ".jpg";
 
             // Ako direktorijum ne postoji, kreiraj ga
-            if(!Directory.Exists(HostingEnvironment.MapPath(@"~/Uploads/")))
+            if (!Directory.Exists(HostingEnvironment.MapPath(@"~/Uploads/")))
             {
                 Directory.CreateDirectory(HostingEnvironment.MapPath(@"~/Uploads/"));
             }
 
             try
             {
-                otpremljena_slika.SaveAs(Path.Combine(HostingEnvironment.MapPath(@"~/Uploads/") + new Guid().ToString() + ".jpg"));
-                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
+                otpremljena_slika.SaveAs(Path.Combine(HostingEnvironment.MapPath(@"~/Uploads/") + naziv_fajla));
+                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = naziv_fajla });
             }
             catch(Exception)
             {
