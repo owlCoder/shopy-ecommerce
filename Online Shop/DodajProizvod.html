@@ -236,27 +236,53 @@
                     $("#slika").add("is-valid");
                 }
 
-                //if (greska === true) return; // ne izvrsava se ajax poziv - rasterecuje se server od callbacks
+                if (greska === true) return; // ne izvrsava se ajax poziv - rasterecuje se server od callbacks
 
                 // priprema slike za slanje
                 var slikaAjax = new FormData();
-                slikaAjax.append("slika", $("#slika").get(0));
+                slikaAjax.append("slika", $("#slika")[0].files[0]);
 
                 // ajax poziv ka api-ju za upload slike
                 $.ajax({
                     url: "/api/storage/OtpremanjeSlike",
-                    ype: "POST",
+                    type: "POST",
                     contentType: false,
                     processData: false,  
                     data: slikaAjax, 
                     success: function (response) {
                         if (response != null) {
-                            if (JSON.parse(response).Kod === 0) // azuriranje podataka je proslo uspesno
+                            var msg = JSON.parse(response);
+                            if (msg.Kod === 0) // azuriranje podataka je proslo uspesno
                             {
                                 // slika je otpremljena na server, sada se kreira i sam proizvod
-                                console.log(JSON.parse(response).Poruka);
+                                console.log(msg);
 
-
+                                // ajax poziv ka API-ju za kreiranje proizvoda
+                                $.ajax({
+                                    url: "/api/products/DodavanjeProizvoda",
+                                    type: "POST",
+                                    data: JSON.stringify({
+                                        Naziv: naziv,
+                                        Cena: cena,
+                                        Kolicina: kolicina,
+                                        Opis: opis,
+                                        Slika: msg.Poruka,
+                                        Grad: grad
+                                    }),
+                                    async: false,
+                                    cache: false,
+                                    dataType: "json",
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function (response) {
+                                        if (response != null) {
+                                            if (JSON.parse(response).Kod === 0)
+                                            {
+                                                window.location.href = "MojiProizvodi.html";
+                                                return false;
+                                            }
+                                        }
+                                    }
+                                });
 
                                 return false;
                             }
@@ -320,7 +346,7 @@
                                         </div>
                                         <div class="col-md-6 col-lg-7 d-flex align-items-center">
                                             <div class="card-body p-4 p-lg-5 text-black">
-                                                <form id="form" name="form">
+                                                <form id="form" name="form" enctype="multipart/form-data">
                                                     <div class="d-flex mb-3 pb-1">
                                                         <span class="h1 fw-bold mb-0">Shopy</span>
                                                     </div>

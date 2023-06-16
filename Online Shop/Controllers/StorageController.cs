@@ -2,6 +2,7 @@
 using Online_Shop.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -21,7 +22,7 @@ namespace Online_Shop.Controllers
         {
             HttpFileCollection slika_forma = HttpContext.Current.Request.Files;
             HttpPostedFile otpremljena_slika = slika_forma.Get("slika");
-            string naziv_fajla = new Guid().ToString() + ".jpg";
+            string naziv_fajla = Guid.NewGuid().ToString() + ".jpg";
 
             // Ako direktorijum ne postoji, kreiraj ga
             if (!Directory.Exists(HostingEnvironment.MapPath(@"~/Uploads/")))
@@ -34,9 +35,9 @@ namespace Online_Shop.Controllers
                 otpremljena_slika.SaveAs(Path.Combine(HostingEnvironment.MapPath(@"~/Uploads/") + naziv_fajla));
                 return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = naziv_fajla });
             }
-            catch(Exception)
+            catch (Exception)
             {
-                return JsonConvert.SerializeObject(new Response { Kod = 11, Poruka = " Došlo je do neočekivane greške, pokušajte ponovo!" });
+                return JsonConvert.SerializeObject(new Response { Kod = 11, Poruka = "Došlo je do neočekivane greške, pokušajte ponovo!" });
             }
         }
     }
