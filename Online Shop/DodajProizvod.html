@@ -9,6 +9,7 @@
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/bootstrap.bundle.min.js"></script>
     <script src="Scripts/modernizr-2.8.3.js"></script>
+    <script src="Scripts/base64Encoder.js"></script>
     <style>
         .navbar .login-btn {
             position: absolute;
@@ -136,11 +137,11 @@
 
             // cuvanje izmena
             $("#azurirajbtn").on('click', function () {
-                var korisnickoIme = $("#korisnickoime").val();
-                var ime = $("#ime").val();
-                var prezime = $("#prezime").val();
-                var pol = $("#pol").val();
-                var email = $("#email").val();
+                var naziv = $("#korisnickoime").val();
+                var opis = $("#ime").val();
+                var cena = $("#prezime").val();
+                var kolicina = $("#pol").val();
+                var grad = $("#email").val();
                 var datumRodjenja = $("#datumrodjenja").val();
 
                 var greska = false;

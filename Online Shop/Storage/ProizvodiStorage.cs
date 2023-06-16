@@ -83,7 +83,7 @@ namespace Online_Shop.Storage
             // string slika je sada PUTANJA SLIKE NA SERVERU
             Proizvod novi = new Proizvod(naziv, cena, kolicina, opis, slika, grad);
 
-            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            Korisnik trenutni = (Korisnik)HttpContext.Current.Session["korisnik"];
 
             if(trenutni != null)
             {
@@ -107,6 +107,19 @@ namespace Online_Shop.Storage
             }
         }
 
-        // 
+        // Metoda koja vraca sve proizvode koji pripadaju trenutno ulogovanom korisniku
+        public List<Proizvod> GetProizvodiPerUser()
+        {
+            Korisnik trenutni = (Korisnik)HttpContext.Current.Session["korisnik"];
+
+            if(trenutni != null && trenutni.ObjavljeniProizvodi != null && trenutni.ObjavljeniProizvodi.Count > 0)
+            {
+                return trenutni.ObjavljeniProizvodi;
+            }
+            else
+            {
+                return new List<Proizvod>();
+            }
+        }
     }
 }

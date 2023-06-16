@@ -171,45 +171,10 @@
                     $("#prezime").add("is-valid");
                 }
 
-                var regexEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
-                if (regexEmail.test(email) === false) {
-                    $("#g5").addClass("d-block");
-                    $("#g5").removeClass("d-none");
-                    $("#email").addClass("is-invalid");
-                    $("#g5").removeClass("d-none");
-                    $("#g5").text("Email nije unet u validnom formatu!");
-                    greska = true;
-                }
-                else {
-                    $("#g5").addClass("d-none");
-                    $("#email").removeClass("is-invalid");
-                    $("#email").removeClass("invalid-feedback");
-                    $("#email").add("is-valid");
-                }
-
-                var minDate = Date.parse("1970-01-01");
-                var maxDate = Date.parse("2020-01-01");
-                var str = $("#datumrodjenja").val().replace(".", "/");
-                if (str === "") str = "1950-01-01";
-                var datum = Date.parse(str);
-
-                if ((datum < minDate) || (datum > maxDate)) {
-                    $("#g6").addClass("d-block");
-                    $("#g6").removeClass("d-none");
-                    $("#datumRodjenja").addClass("is-invalid");
-                    $("#g6").text("Niste uneli datum rođenja u dozvoljenom opsegu!");
-                    greska = true;
-                }
-                else {
-                    $("#g6").addClass("d-none");
-                    $("#datumRodjenja").removeClass("is-invalid");
-                    $("#datumRodjenja").removeClass("invalid-feedback");
-                    $("#datumRodjenja").add("is-valid");
-                }
 
                 if (greska === true) return; // ne izvrsava se ajax poziv - rasterecuje se server od callbacks
 
-                // ajax poziv ka api-ju za vrsenje registracije prodavca
+                // ajax poziv ka api-ju za vrsenje dodavanje proizvoda
                 $.ajax({
                     url: "/api/users/RegistracijaProdavca",
                     type: "POST",
