@@ -236,32 +236,26 @@
                     $("#slika").add("is-valid");
                 }
 
-                if (greska === true) return; // ne izvrsava se ajax poziv - rasterecuje se server od callbacks
+                //if (greska === true) return; // ne izvrsava se ajax poziv - rasterecuje se server od callbacks
+
+                // priprema slike za slanje
+                var slikaAjax = new FormData();
+                slikaAjax.append("slika", $("#slika").get(0));
 
                 // ajax poziv ka api-ju za upload slike
                 $.ajax({
-                    url: "/api/users/AzuriranjeProfilaKorisnika",
-                    type: "POST",
-                    data: JSON.stringify({
-                        Id: Id,
-                        KorisnickoIme: korisnickoIme,
-                        Ime: ime,
-                        Lozinka: "oc_auth_434u3dfs-dsdw-dummy",
-                        Prezime: prezime,
-                        Pol: pol,
-                        Email: email,
-                        DatumRodjenja: datumRodjenja
-                    }),
-
-                    async: false,
-                    cache: false,
-                    dataType: "json",
-                    contentType: "application/json; charset=utf-8",
+                    url: "/api/storage/OtpremanjeSlike",
+                    ype: "POST",
+                    contentType: false,
+                    processData: false,  
+                    data: slikaAjax, 
                     success: function (response) {
                         if (response != null) {
                             if (JSON.parse(response).Kod === 0) // azuriranje podataka je proslo uspesno
                             {
-                                window.location.href = "ListaKorisnika.html";
+                                // slika je otpremljena na server, sada se kreira i sam proizvod
+                                console.log(JSON.parse(response).Poruka);
+
                                 return false;
                             }
                             else {
