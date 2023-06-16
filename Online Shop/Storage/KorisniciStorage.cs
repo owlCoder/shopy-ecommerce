@@ -16,7 +16,7 @@ namespace Online_Shop.Storage
 
         public KorisniciStorage()
         {
-            // Prazan konstruktor
+            // Prazan konstruktor - zbog serijalizacije
         }
 
         public static void UcitajKorisnike()
