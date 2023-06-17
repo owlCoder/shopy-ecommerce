@@ -186,11 +186,13 @@ namespace Online_Shop.Storage
             // i kupce koji su taj proizvod dodali u porudzbine i/ili omiljeni)
 
             // prvo prolazimo kroz listu svih proizvoda i logicki brisemo proizvod
-            List<Proizvod> za_brisanje = Proizvodi.FindAll(p => p.Id == id && p.IsDeleted == false);
+            // proizvod nije obrisan i na stanju je
+            List<Proizvod> za_brisanje = Proizvodi.FindAll(p => p.Id == id && p.IsDeleted == false && p.Status == true);
 
             if (za_brisanje.Count == 0)
             {
-                return false; // proizvod je vec obrisan, nema daljeg brisanja 
+                return false; // proizvod je vec obrisana, nema daljeg brisanja 
+                // ili proizvod vise nije na stanju, kolicina je 0
             }
 
             // ipak postoji proizvod za brisanje u listi svih proizvoda
@@ -231,9 +233,24 @@ namespace Online_Shop.Storage
 
             foreach(Korisnik k in korisnici_kupci)
             {
+                List<Proizvod> omiljeni = k.OmiljenjiProizvodi.FindAll(p => p.Id == id);
 
+                // uklanja se samo iz aktivnih porudzbina, one obradjenje tj izvrsene vise nisu od interesa za brisanja
+                List<Porudzbina> porudzbine = k.Porudzbine.FindAll(p => p.Proizvod.Id == id && p.Status == STATUS.AKTIVNA);
+
+                foreach(Proizvod p in omiljeni)
+                {
+                    p.IsDeleted = true;
+                }
+
+                // logicko brisanje proizvoda u porudzbini i brisanje same porudzbine
+                // specifikacija: Jedna porudzbina se odnosi na tacno jedan proizvod
+                foreach(Porudzbina p in porudzbine)
+                {
+                    p.IsDeleted = true;
+                    p.Proizvod.IsDeleted = true;
+                }
             }
-
 
             // Azuriranje u json fajlovima, novo izmenjenih entiteta
             AzurirajProizvodeUBazi();
