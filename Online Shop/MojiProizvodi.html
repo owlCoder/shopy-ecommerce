@@ -168,21 +168,25 @@
             });
 
             // dugme pretraga
-            $("#dostupni").on('change', function () {
+            $("#dostupni, #sort").on('change', function () {
                 // isprazni redove
                 $('#proizvodi tbody').empty();
                 $("#divgreske").addClass('d-none');
 
                 // da li je cekirano = dostupni
                 // nije cekirano, svi
-                var checked = (this.checked ? "1" : "0"); // 0 - podrazumevano, svi
-
-                // poziv ka apiju za prikaz samo dostupnih
+                // NAPOMENA: proveriti da li se sortiraju SVI ili SAMO DOSTUPNI PROIZVODI
+                // checkbox -> dostupni
+                var combo = $("#sort").val().toString();
+                var primenjeno = $("#dostupni").is(":checked") ? "1;" : "0;";
+                primenjeno += combo;
+ 
+                // poziv ka apiju za prikaz po filteru
                 $.ajax({
-                    url: "/api/products/ListaDostupnihProizvoda",
+                    url: "/api/products/ListaFiltriranihProizvoda",
                     type: "POST",
                     data: JSON.stringify({
-                        Id: checked
+                        Id: primenjeno
                     }),
                     async: false,
                     cache: false,
@@ -230,53 +234,7 @@
 
             // sortiranje korisnika
             $('#sort').on('change', function () {
-                var Id = this.value; // trenutni id u padajecem meniju
-
-                $("#divgreske").addClass('d-none');
-
-                // isprazni redove
-                $('#proizvodi tbody').empty();
-
-                // popuni svim podacima
-                $.ajax({
-                    url: "/api/users/SortiranjeKorisnika",
-                    type: "POST",
-                    data: JSON.stringify({
-                        Id: Id
-                    }),
-                    async: false,
-                    cache: false,
-                    dataType: "json",
-                    contentType: "application/json; charset=utf-8",
-                    success: function (response) {
-                        var data = JSON.parse(response);
-
-                        if (data.length > 0) {
-                            $(function () {
-                                // popuni tabelu
-                                $.each(data, function (key, k) {
-                                    // dodavanje reda po red
-                                    var uloga = "Auth";
-
-                                    if (k.Uloga == 0) uloga = "Kupac";
-                                    if (k.Uloga == 1) uloga = "Prodavac";
-                                    if (k.Uloga == 2) uloga = "Administrator";
-
-                                    $("#proizvodi > tbody").append('<tr><td>' + k.KorisnickoIme + '</td>' +
-                                        '<td>' + k.Ime + '</td>' +
-                                        '<td>' + k.Prezime + '</td>' +
-                                        '<td>' + k.Pol + '</td>' +
-                                        '<td>' + k.Email + '</td>' +
-                                        '<td>' + new Date(k.DatumRodjenja).toLocaleDateString("en-GB") + '</td>' +
-                                        '<td><b>' + uloga.toUpperCase() + '</b></td>' +
-                                        '<td class="d-flex justify-content-center"><a class="btn btn-dark" href="Izmena.html?id=' + k.KorisnickoIme + '">Izmena</a>&emsp;' +
-                                        '<a class="btn btn-danger" href="Brisanje.html?id=' + k.KorisnickoIme + '">Brisanje</a></td>' +
-                                        '</tr>');
-                                });
-                            });
-                        }
-                    }
-                });
+                
             });
         });
     </script>

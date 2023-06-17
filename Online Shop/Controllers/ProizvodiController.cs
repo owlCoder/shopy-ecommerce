@@ -38,17 +38,31 @@ namespace Online_Shop.Controllers
         }
 
         [HttpPost]
-        [Route("ListaDostupnihProizvoda")]
+        [Route("ListaFiltriranihProizvoda")]
         public string PrikazDostupnihProizvoda(SingleIdRequest zahtev)
         {
-            if(zahtev.Id == "0")
+            string[] request = zahtev.Id.Split(';');
+            List<Proizvod> proizvodi;
+
+            if (request[0].Equals("0"))
             {
-                return PrikazObjavljenihProizvoda();
+                proizvodi = ProizvodiStorage.GetProizvodiPerUser();
             }
             else
             {
-                return JsonConvert.SerializeObject(ProizvodiStorage.GetDostupniProizvodi());
-            }    
+                proizvodi = ProizvodiStorage.GetDostupniProizvodi();
+            }
+
+            // filtiranje po drugom kriterijumu - ako nije 0 - podrazumevano
+            if (request[1].Equals("0") || request[1].Equals("")) 
+            { 
+                return JsonConvert.SerializeObject(proizvodi);
+            }
+            else
+            {
+                proizvodi = ProizvodiStorage.SortirajPoKriterijumu(request[1]);
+                return JsonConvert.SerializeObject(proizvodi);
+            }
         }
     }
 }

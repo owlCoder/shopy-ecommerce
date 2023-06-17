@@ -122,7 +122,7 @@ namespace Online_Shop.Storage
             }
         }
 
-        public static object GetDostupniProizvodi()
+        public static List<Proizvod> GetDostupniProizvodi()
         {
             Korisnik trenutni = (Korisnik)HttpContext.Current.Session["korisnik"];
 
