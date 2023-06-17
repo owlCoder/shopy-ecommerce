@@ -254,9 +254,6 @@
                             var msg = JSON.parse(response);
                             if (msg.Kod === 0) // azuriranje podataka je proslo uspesno
                             {
-                                // slika je otpremljena na server, sada se kreira i sam proizvod
-                                console.log(msg);
-
                                 // ajax poziv ka API-ju za kreiranje proizvoda
                                 $.ajax({
                                     url: "/api/products/DodavanjeProizvoda",

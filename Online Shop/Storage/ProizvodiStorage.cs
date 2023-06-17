@@ -186,9 +186,15 @@ namespace Online_Shop.Storage
             // i kupce koji su taj proizvod dodali u porudzbine i/ili omiljeni)
 
             // prvo prolazimo kroz listu svih proizvoda i logicki brisemo proizvod
-            List<Proizvod> za_brisanje = Proizvodi.FindAll(p => p.Id == id);
+            List<Proizvod> za_brisanje = Proizvodi.FindAll(p => p.Id == id && p.IsDeleted == false);
 
-            foreach(Proizvod proizvod in za_brisanje)
+            if (za_brisanje.Count == 0)
+            {
+                return false; // proizvod je vec obrisan, nema daljeg brisanja 
+            }
+
+            // ipak postoji proizvod za brisanje u listi svih proizvoda
+            foreach (Proizvod proizvod in za_brisanje)
             {
                 if (proizvod.IsDeleted == false)
                 {
@@ -197,6 +203,37 @@ namespace Online_Shop.Storage
                     proizvod.IsDeleted = true;
                 }
             }
+
+            // brisanje proizvoda iz liste objavljenih proizvoda za prodavca
+            // korisnici koji nisu obrisani i koji su prodavci
+            List<Korisnik> korisnici = KorisniciStorage.Korisnici.FindAll(p => p.IsDeleted == false && p.Uloga == ULOGA.Prodavac); 
+            
+            foreach(Korisnik k in  korisnici)
+            {
+                bool pronasao = false;
+                List<Proizvod> objavljeni_za_brisanje = k.ObjavljeniProizvodi.FindAll(p => p.Id == id);
+
+                foreach (Proizvod p in objavljeni_za_brisanje)
+                {
+                    p.IsDeleted = true;
+                    pronasao = true;
+                    break;
+                }
+
+                if(pronasao)
+                {
+                    break; // jedan prodavac moze imati samo jedan proizvod sa jednim id - id je primarni kljuc
+                }
+            }
+
+            // za sve kupce ako se proizvod nalazi u omiljenim, obrisati ga iz omiljenih i aktivnih porudzbina
+            List<Korisnik> korisnici_kupci = KorisniciStorage.Korisnici.FindAll(p => p.IsDeleted == false && p.Uloga == ULOGA.Kupac);
+
+            foreach(Korisnik k in korisnici_kupci)
+            {
+
+            }
+
 
             // Azuriranje u json fajlovima, novo izmenjenih entiteta
             AzurirajProizvodeUBazi();
