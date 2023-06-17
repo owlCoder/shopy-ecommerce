@@ -178,5 +178,14 @@ namespace Online_Shop.Storage
                 }
             }
         }
+    
+        // Metoda koja brise proizvode iz kolekcije svih proizvoda, i listi proizvoda koji se nalaze listi korisnika
+        public static bool DeleteProizvod(int id)
+        {
+
+            // Azuriraj sve proizvode u bazi, kao i korisnike
+            AzurirajProizvodeUBazi();
+            KorisniciStorage.AzurirajKorisnikeUBazi();
+        }
     }
 }
