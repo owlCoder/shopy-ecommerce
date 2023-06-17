@@ -182,6 +182,7 @@
     <Content Include="IzmenaLozinke.html" />
     <Content Include="IzmenaProizvoda.html" />
     <Content Include="ListaKorisnika.html" />
+    <Content Include="ListaProizvoda.html" />
     <Content Include="MojiProizvodi.html" />
     <Content Include="MojProfil.html" />
     <Content Include="IzmenaProfila.html" />
