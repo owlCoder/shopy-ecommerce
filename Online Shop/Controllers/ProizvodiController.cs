@@ -86,7 +86,7 @@ namespace Online_Shop.Controllers
             }
             else
             {
-                return JsonConvert.SerializeObject(new Response { Kod = 13, Poruka = "Proizvod sa " + zahtev.Id + " nije moguće uspešno obrisati iz liste svih proizvoda!"});
+                return JsonConvert.SerializeObject(new Response { Kod = 13, Poruka = "Proizvod sa " + zahtev.Id + " nije moguće uspešno obrisati iz liste svih proizvoda. Proverite da li je proizvod dostupan na stanju!"});
             }
         }
     }

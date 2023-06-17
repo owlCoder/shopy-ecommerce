@@ -191,7 +191,7 @@ namespace Online_Shop.Storage
 
             if (za_brisanje.Count == 0)
             {
-                return false; // proizvod je vec obrisana, nema daljeg brisanja 
+                return false; // proizvod je vec obrisan, nema daljeg brisanja 
                 // ili proizvod vise nije na stanju, kolicina je 0
             }
 
