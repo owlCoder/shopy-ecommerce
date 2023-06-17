@@ -215,9 +215,10 @@
                                 });
                             });
 
+                            var kriterijum = $("#sort").find(":selected").text().toLowerCase();
                             // desila se greska - prikazi je
                             $("#divgreske").removeClass('d-none');
-                            $("#greske").text("Prikazani su svi " + ($("#dostupni").is(":checked") ? "dostupni" : "") + " proizvodi.");
+                            $("#greske").text("Prikazani su svi " + ($("#dostupni").is(":checked") ? "dostupni" : "") + " proizvodi sortirani koristeći kriterijum " + kriterijum + ".");
                             return false;
                         }
                         else {

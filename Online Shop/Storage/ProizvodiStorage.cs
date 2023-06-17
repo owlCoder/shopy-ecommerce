@@ -135,5 +135,46 @@ namespace Online_Shop.Storage
                 return new List<Proizvod>();
             }
         }
+
+        public static List<Proizvod> SortirajPoKriterijumu(string kriterijum, List<Proizvod> proizvodi)
+        {
+            if (proizvodi == null || proizvodi.Count == 0)
+            {
+                return new List<Proizvod>();
+            }
+            else
+            {
+                // lista nije prazna, sortirani po kriterijumu
+                // 1 - naziv asc, 2 - naziv desc, 3 - cena asc, 4 - cena desc, 5 - datum ogl asc, 6 - datum ogl desc
+                if(kriterijum.Equals("1"))
+                {
+                    return proizvodi.OrderBy(p => p.Naziv).ToList();
+                }
+                else if (kriterijum.Equals("2"))
+                {
+                    return proizvodi.OrderByDescending(p => p.Naziv).ToList();
+                }
+                else if (kriterijum.Equals("3"))
+                {
+                    return proizvodi.OrderBy(p => p.Cena).ToList();
+                }
+                else if (kriterijum.Equals("4"))
+                {
+                    return proizvodi.OrderByDescending(p => p.Naziv).ToList();
+                }
+                else if (kriterijum.Equals("5"))
+                {
+                    return proizvodi.OrderBy(p => p.DatumPostavljanjaProizvoda).ToList();
+                }
+                else if (kriterijum.Equals("6"))
+                {
+                    return proizvodi.OrderByDescending(p => p.DatumPostavljanjaProizvoda).ToList();
+                }
+                else
+                {
+                    return proizvodi;
+                }
+            }
+        }
     }
 }

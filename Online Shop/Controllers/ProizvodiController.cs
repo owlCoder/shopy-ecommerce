@@ -60,7 +60,7 @@ namespace Online_Shop.Controllers
             }
             else
             {
-                proizvodi = ProizvodiStorage.SortirajPoKriterijumu(request[1]);
+                proizvodi = ProizvodiStorage.SortirajPoKriterijumu(request[1], proizvodi);
                 return JsonConvert.SerializeObject(proizvodi);
             }
         }
