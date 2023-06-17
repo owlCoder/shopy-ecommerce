@@ -194,7 +194,7 @@
                     $("#cena").add("is-valid");
                 }
 
-                if (kolicina <= 0) {
+                if (kolicina < 0) {
                     $("#g4").addClass("d-block");
                     $("#g4").removeClass("d-none");
                     $("#kolicina").addClass("is-invalid");
@@ -382,7 +382,7 @@
                                                     </div>
                                                     <div class="form-outline mb-4">
                                                         <label class="form-label" for="grad">Grad</label>
-                                                        <input type="text" id="grad" class="form-control form-control-lg" required />
+                                                        <input type="text" id="grad" maxlength="20" class="form-control form-control-lg" required />
                                                         <span id="g5" class="invalid-feedback">Molimo Vas popunite ovo polje.</span>
                                                     </div>
                                                     <div class="form-outline mb-4">

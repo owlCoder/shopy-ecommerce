@@ -119,11 +119,12 @@
                                 '<td><img alt="proizvod" width="80" height="80" src="/Uploads/' + k.Slika + '" /></td>' +
                                 '<td class="align-middle">' + k.Kolicina + '</td>' +
                                 '<td class="align-middle">' + k.Cena + '&nbsp;RSD</td>' +
-                                '<td class="align-middle">' + k.Opis.substring(0, 30) + '</td>' +
+                                '<td class="align-middle">' + k.Opis.substring(0, 20) + '</td>' +
                                 '<td class="align-middle">' + new Date(k.DatumPostavljanjaProizvoda).toLocaleDateString("en-GB") + '</td>' +
-                                '<td class="align-middle">' + k.Grad + '</td>' +
+                                '<td class="align-middle">' + k.Grad.substring(0, 20) + '</td>' +
                                 '<td class="align-middle"><b>' + (k.Status ? "NA&nbsp;STANJU" : "NEDOSTUPAN") + '</b></td>' +
-                                '<td class="align-middle"><div  style="display:flex; align-item:center; justify-content: space-around;"><a class="btn btn-dark" href="IzmenaProizvoda.html?id=' + k.Id + '">Izmena</a>&emsp;' +
+                                '<td class="align-middle"><div class="align-middle justify-content-center">' +
+                                '&emsp;<a class="btn btn-dark" href="IzmenaProizvoda.html?id=' + k.Id + '">Izmena</a>&emsp;' +
                                 '<a class="btn btn-danger" href="BrisanjeProizvoda.html?id=' + k.Id + '">Brisanje</a></div></td>' +
                                 '</tr>');
                         });
@@ -412,7 +413,7 @@
                                 <div class="card" style="border-radius: 1rem;">
                                     <div class="row g-0">
                                         <div class="col-lg-12 d-flex align-items-center">
-                                            <div class="card-body p-4 p-lg-5 text-black">
+                                            <div class="card-body text-black">
                                                 <form>
                                                     <div class="d-flex mb-3 pb-1">
                                                         <span class="h1 fw-bold mb-0">Shopy Proizvodi</span>
@@ -457,7 +458,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="pt-1 mb-4">
+                                                    <div class="pt-1 mb-4 col-12">
                                                         <table id="proizvodi" class="table table-bordered border-dark rounded-5">
                                                             <thead>
                                                                 <tr>
