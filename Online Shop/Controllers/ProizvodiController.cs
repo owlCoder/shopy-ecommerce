@@ -97,10 +97,17 @@ namespace Online_Shop.Controllers
 
         // Metoda za prikaz svih proizvoda koji nisu obrisani i koji su dostupni
         [HttpGet]
-        [Route("SviProizvodi")]
+        [Route("SviProizvodiPocetna")]
         public string PrikazSvihProizvoda()
         {
             return JsonConvert.SerializeObject(ProizvodiStorage.Proizvodi.FindAll(p => p.IsDeleted == false && p.Status == true));
+        }
+
+        [HttpGet]
+        [Route("SviProizvodi")]
+        public string PrikazSvihProizvodaAdministracija()
+        {
+            return JsonConvert.SerializeObject(ProizvodiStorage.Proizvodi.FindAll(p => p.IsDeleted == false));
         }
 
         // Metoda za brisanje proizvoda

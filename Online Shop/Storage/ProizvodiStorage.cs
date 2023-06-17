@@ -162,7 +162,7 @@ namespace Online_Shop.Storage
                 }
                 else if (kriterijum.Equals("4"))
                 {
-                    return proizvodi.OrderByDescending(p => p.Naziv).ToList();
+                    return proizvodi.OrderByDescending(p => p.Cena).ToList();
                 }
                 else if (kriterijum.Equals("5"))
                 {
