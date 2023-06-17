@@ -37,7 +37,7 @@ namespace Online_Shop.Controllers
             return JsonConvert.SerializeObject(ProizvodiStorage.GetProizvodiPerUser());
         }
 
-        // Metoda za prikaz dostupnih proizvoda i filtriranje
+        // Metoda za prikaz dostupnih proizvoda i filtriranje po korisniku
         [HttpPost]
         [Route("ListaFiltriranihProizvoda")]
         public string PrikazDostupnihProizvoda(SingleIdRequest zahtev)
@@ -62,6 +62,35 @@ namespace Online_Shop.Controllers
             else
             {
                 proizvodi = ProizvodiStorage.SortirajPoKriterijumu(request[1], proizvodi);
+                return JsonConvert.SerializeObject(proizvodi);
+            }
+        }
+
+        // Metoda za prikaz dostupnih proizvoda i filtriranje u CELOM SISTEMU
+        [HttpPost]
+        [Route("ListaFiltriranihSvihProizvoda")]
+        public string PrikazSvihDostupnihProizvoda(SingleIdRequest zahtev)
+        {
+            string[] request = zahtev.Id.Split(';');
+            List<Proizvod> proizvodi;
+
+            if (request[0].Equals("0"))
+            {
+                proizvodi = ProizvodiStorage.GetSviProizvodi();
+            }
+            else
+            {
+                proizvodi = ProizvodiStorage.GetDostupniSviProizvodi();
+            }
+
+            // filtiranje po drugom kriterijumu - ako nije 0 - podrazumevano
+            if (request[1].Equals("0") || request[1].Equals(""))
+            {
+                return JsonConvert.SerializeObject(proizvodi);
+            }
+            else
+            {
+                proizvodi = ProizvodiStorage.SortirajPoKriterijumuSveProizvode(request[1], proizvodi);
                 return JsonConvert.SerializeObject(proizvodi);
             }
         }

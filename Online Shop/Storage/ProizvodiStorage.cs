@@ -258,5 +258,22 @@ namespace Online_Shop.Storage
 
             return true;
         }
+
+        // Metoda koja vraca sve proizvode koji nisu obrisani
+        public static List<Proizvod> GetSviProizvodi()
+        {
+            return Proizvodi.FindAll(p => p.IsDeleted == false);
+        }
+
+        // Metoda koja vraca sve proizvode koji nisu obrisani i koji su dostupni
+        public static List<Proizvod> GetDostupniSviProizvodi()
+        {
+            return GetSviProizvodi().FindAll(p => p.Status == true);
+        }
+
+        public static List<Proizvod> SortirajPoKriterijumuSveProizvode(string v, List<Proizvod> proizvodi)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
