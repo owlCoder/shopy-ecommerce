@@ -122,6 +122,7 @@ namespace Online_Shop.Storage
             }
         }
 
+        // Metoda koja vraca sve dostupne proizvode za trenutno prijavljenog korisnika
         public static List<Proizvod> GetDostupniProizvodi()
         {
             Korisnik trenutni = (Korisnik)HttpContext.Current.Session["korisnik"];
@@ -136,6 +137,7 @@ namespace Online_Shop.Storage
             }
         }
 
+        // Metoda koja dodatno sortira proizvode koji su dostupni/svi proizvodi
         public static List<Proizvod> SortirajPoKriterijumu(string kriterijum, List<Proizvod> proizvodi)
         {
             if (proizvodi == null || proizvodi.Count == 0)
