@@ -167,17 +167,23 @@
                 });
             });
 
-            $("#ponistibtn").on('click', function () {
-                $("#divgreske").addClass('d-none');
-
+            // dugme pretraga
+            $("#dostupni").on('change', function () {
                 // isprazni redove
                 $('#proizvodi tbody').empty();
+                $("#divgreske").addClass('d-none');
 
-                // popuni svim podacima
-                // get metoda za dobijanje listi svih korisnika
+                // da li je cekirano = dostupni
+                // nije cekirano, svi
+                var checked = (this.checked ? "1" : "0"); // 0 - podrazumevano, svi
+
+                // poziv ka apiju za prikaz samo dostupnih
                 $.ajax({
-                    url: "/api/users/ListaKorisnika",
-                    type: "GET",
+                    url: "/api/products/ListaDostupnihProizvoda",
+                    type: "POST",
+                    data: JSON.stringify({
+                        Id: checked
+                    }),
                     async: false,
                     cache: false,
                     dataType: "json",
@@ -190,123 +196,30 @@
                                 // popuni tabelu
                                 $.each(data, function (key, k) {
                                     // dodavanje reda po red
-                                    var uloga = "Auth";
-
-                                    if (k.Uloga == 0) uloga = "Kupac";
-                                    if (k.Uloga == 1) uloga = "Prodavac";
-                                    if (k.Uloga == 2) uloga = "Administrator";
-
-                                    $("#proizvodi > tbody").append('<tr><td>' + k.KorisnickoIme + '</td>' +
-                                        '<td>' + k.Ime + '</td>' +
-                                        '<td>' + k.Prezime + '</td>' +
-                                        '<td>' + k.Pol + '</td>' +
-                                        '<td>' + k.Email + '</td>' +
-                                        '<td>' + new Date(k.DatumRodjenja).toLocaleDateString("en-GB") + '</td>' +
-                                        '<td><b>' + uloga.toUpperCase() + '</b></td>' +
-                                        '<td class="d-flex justify-content-center"><a class="btn btn-dark" href="Izmena.html?id=' + k.KorisnickoIme + '">Izmena</a>&emsp;' +
-                                        '<a class="btn btn-danger" href="Brisanje.html?id=' + k.KorisnickoIme + '">Brisanje</a></td>' +
+                                    $("#proizvodi > tbody").append('<tr><td class="align-middle">' + k.Naziv + '</td>' +
+                                        '<td><img alt="proizvod" width="80" height="80" src="/Uploads/' + k.Slika + '" /></td>' +
+                                        '<td class="align-middle">' + k.Kolicina + '</td>' +
+                                        '<td class="align-middle">' + k.Cena + '&nbsp;RSD</td>' +
+                                        '<td class="align-middle">' + k.Opis.substring(0, 20) + '</td>' +
+                                        '<td class="align-middle">' + new Date(k.DatumPostavljanjaProizvoda).toLocaleDateString("en-GB") + '</td>' +
+                                        '<td class="align-middle">' + k.Grad.substring(0, 20) + '</td>' +
+                                        '<td class="align-middle"><b>' + (k.Status ? "NA&nbsp;STANJU" : "NEDOSTUPAN") + '</b></td>' +
+                                        '<td class="align-middle"><div class="align-middle justify-content-center">' +
+                                        '&emsp;<a class="btn btn-dark" href="IzmenaProizvoda.html?id=' + k.Id + '">Izmena</a>&emsp;' +
+                                        '<a class="btn btn-danger" href="BrisanjeProizvoda.html?id=' + k.Id + '">Brisanje</a></div></td>' +
                                         '</tr>');
                                 });
                             });
-                        }
-                    }
-                });
 
-                $("od").val() = "";
-                $("do").val() = "";
-
-                return false; // prevent ajax page reload
-            });
-
-            // dugme pretraga
-            $("#pretragabtn").on('click', function () {
-                // isprazni redove
-                $('#proizvodi tbody').empty();
-                $("#divgreske").addClass('d-none');
-
-                // uneo je okej datume, pokupimo vrednosti polja i onda ajax call
-                var ime = $("#ime").val();
-                var prezime = $("#prezime").val();
-                var dmin = $("#od").val();
-                var dmax = $("#do").val();
-                var defDate = new Date("1900-01-01").toISOString();
-                var minDate = new Date("1900-01-01").toISOString();
-                var maxDate = new Date("1900-01-01").toISOString();
-                var uloga = $("#uloga").val();
-
-                if (dmin !== "") {
-                    dmin = Date.parse(dmin.split(".").reverse().join("-"));
-                    minDate = new Date(dmin).toISOString();
-                }
-
-                if (dmax !== "") {
-                    dmax = Date.parse(dmax.split(".").reverse().join("-"));
-                    maxDate = new Date(dmax).toISOString();
-                }
-
-                if (minDate === defDate && maxDate !== defDate) {
-                    // desila se greska - prikazi je
-                    $("#divgreske").removeClass('d-none');
-                    $("#greske").text("Unesite početni datum za pretragu!");
-                    return false;
-                }
-
-                if (minDate !== defDate && maxDate === defDate) {
-                    // desila se greska - prikazi je
-                    $("#divgreske").removeClass('d-none');
-                    $("#greske").text("Unesite krajnji datum za pretragu!");
-                    return false;
-                }
-
-                // poziv ka apiju za pretragu
-                $.ajax({
-                    url: "/api/users/PretragaKorisnika",
-                    type: "POST",
-                    data: JSON.stringify({
-                        Ime: ime,
-                        Prezime: prezime,
-                        Od: minDate,
-                        Do: maxDate,
-                        Uloga: uloga
-                    }),
-                    async: false,
-                    cache: false,
-                    dataType: "json",
-                    contentType: "application/json; charset=utf-8",
-                    success: function (response) {
-                        var data = JSON.parse(response);
-
-                        if (data.length > 0) {
+                            // desila se greska - prikazi je
                             $("#divgreske").removeClass('d-none');
-                            $("#greske").text("Korisnici koji ispunjavaju uneti kriterijum su izlistani u tabeli ispod!");
-
-                            // popuni tabelu
-                            $.each(data, function (key, k) {
-                                // dodavanje reda po red
-                                var uloga = "Auth";
-
-                                if (k.Uloga == 0) uloga = "Kupac";
-                                if (k.Uloga == 1) uloga = "Prodavac";
-                                if (k.Uloga == 2) uloga = "Administrator";
-
-                                $("#proizvodi > tbody").append('<tr><td>' + k.KorisnickoIme + '</td>' +
-                                    '<td>' + k.Ime + '</td>' +
-                                    '<td>' + k.Prezime + '</td>' +
-                                    '<td>' + k.Pol + '</td>' +
-                                    '<td>' + k.Email + '</td>' +
-                                    '<td>' + new Date(k.DatumRodjenja).toLocaleDateString("en-GB") + '</td>' +
-                                    '<td><b>' + uloga.toUpperCase() + '</b></td>' +
-                                    '<td class="d-flex justify-content-center"><a class="btn btn-dark" href="Izmena.html?id=' + k.KorisnickoIme + '">Izmena</a>&emsp;' +
-                                    '<a class="btn btn-danger" href="Brisanje.html?id=' + k.KorisnickoIme + '">Brisanje</a></td>' +
-                                    '</tr>');
-                            });
-
+                            $("#greske").text("Prikazani su svi " + ($("#dostupni").is(":checked") ? "dostupni" : "") + " proizvodi.");
                             return false;
                         }
                         else {
                             // desila se greska - prikazi je
                             $("#divgreske").removeClass('d-none');
-                            $("#greske").text("Nema korisnika koji ispunjavaju uneti kriterijum!");
+                            $("#greske").text("Nema proizvoda koji ispunjavaju uneti kriterijum!");
                             return false;
                         }
                     }
@@ -325,7 +238,6 @@
                 $('#proizvodi tbody').empty();
 
                 // popuni svim podacima
-                // get metoda za dobijanje listi svih korisnika
                 $.ajax({
                     url: "/api/users/SortiranjeKorisnika",
                     type: "POST",

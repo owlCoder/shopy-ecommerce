@@ -121,5 +121,19 @@ namespace Online_Shop.Storage
                 return new List<Proizvod>();
             }
         }
+
+        public static object GetDostupniProizvodi()
+        {
+            Korisnik trenutni = (Korisnik)HttpContext.Current.Session["korisnik"];
+
+            if (trenutni != null && trenutni.ObjavljeniProizvodi != null && trenutni.ObjavljeniProizvodi.Count > 0)
+            {
+                return trenutni.ObjavljeniProizvodi.FindAll(p => p.IsDeleted == false && p.Status);
+            }
+            else
+            {
+                return new List<Proizvod>();
+            }
+        }
     }
 }

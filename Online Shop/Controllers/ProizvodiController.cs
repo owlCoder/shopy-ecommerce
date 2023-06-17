@@ -36,5 +36,19 @@ namespace Online_Shop.Controllers
         {
             return JsonConvert.SerializeObject(ProizvodiStorage.GetProizvodiPerUser());
         }
+
+        [HttpPost]
+        [Route("ListaDostupnihProizvoda")]
+        public string PrikazDostupnihProizvoda(SingleIdRequest zahtev)
+        {
+            if(zahtev.Id == "0")
+            {
+                return PrikazObjavljenihProizvoda();
+            }
+            else
+            {
+                return JsonConvert.SerializeObject(ProizvodiStorage.GetDostupniProizvodi());
+            }    
+        }
     }
 }
