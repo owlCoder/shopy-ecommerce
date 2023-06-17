@@ -115,16 +115,16 @@
                         // popuni tabelu
                         $.each(data, function (key, k) {
                             // dodavanje reda po red
-                            $("#proizvodi > tbody").append('<tr><td>' + k.Naziv + '</td>' +
-                                '<td><img alt="proizvod" class="img-fluid" width="100" height="100" src="/Uploads/' + k.Slika + '" /></td>' +
-                                '<td>' + k.Kolicina + '</td>' +
-                                '<td>' + k.Cena + ' RSD</td>' +
-                                '<td>' + k.Opis + '</td>' +
-                                '<td>' + new Date(k.DatumPostavljanjaProizvoda).toLocaleDateString("en-GB") + '</td>' +
-                                '<td>' + k.Grad + '</td>' +
-                                '<td><b>' + (k.Status ? "NA&nbsp;STANJU" : "NEDOSTUPAN") + '</b></td>' +
-                                '<td class="d-flex justify-content-center"><a class="btn btn-dark" href="IzmenaProizvoda.html?id=' + k.Id + '">Izmena</a>&emsp;' +
-                                '<a class="btn btn-danger" href="BrisanjeProizvoda.html?id=' + k.Id + '">Brisanje</a></td>' +
+                            $("#proizvodi > tbody").append('<tr><td class="align-middle">' + k.Naziv + '</td>' +
+                                '<td><img alt="proizvod" width="80" height="80" src="/Uploads/' + k.Slika + '" /></td>' +
+                                '<td class="align-middle">' + k.Kolicina + '</td>' +
+                                '<td class="align-middle">' + k.Cena + '&nbsp;RSD</td>' +
+                                '<td class="align-middle">' + k.Opis.substring(0, 30) + '</td>' +
+                                '<td class="align-middle">' + new Date(k.DatumPostavljanjaProizvoda).toLocaleDateString("en-GB") + '</td>' +
+                                '<td class="align-middle">' + k.Grad + '</td>' +
+                                '<td class="align-middle"><b>' + (k.Status ? "NA&nbsp;STANJU" : "NEDOSTUPAN") + '</b></td>' +
+                                '<td class="align-middle"><div  style="display:flex; align-item:center; justify-content: space-around;"><a class="btn btn-dark" href="IzmenaProizvoda.html?id=' + k.Id + '">Izmena</a>&emsp;' +
+                                '<a class="btn btn-danger" href="BrisanjeProizvoda.html?id=' + k.Id + '">Brisanje</a></div></td>' +
                                 '</tr>');
                         });
                     });
@@ -458,18 +458,18 @@
                                                         </div>
                                                     </div>
                                                     <div class="pt-1 mb-4">
-                                                        <table id="proizvodi" class="table table-bordered rounded-5 border-dark">
+                                                        <table id="proizvodi" class="table table-bordered border-dark rounded-5">
                                                             <thead>
                                                                 <tr>
-                                                                    <th >Naziv</th>
-                                                                    <th>Slika</th>
-                                                                    <th>Količina</th>
-                                                                    <th>Cena</th>
-                                                                    <th>Opis</th>
-                                                                    <th>Datum postavljanja</th>
-                                                                    <th>Grad</th>
-                                                                    <th>Status</th>
-                                                                    <th>Operacija</th>
+                                                                    <th class="align-middle">Naziv</th>
+                                                                    <th class="align-middle">Slika</th>
+                                                                    <th class="align-middle">Količina</th>
+                                                                    <th class="align-middle">Cena</th>
+                                                                    <th class="align-middle">Opis</th>
+                                                                    <th class="align-middle">Datum postavljanja</th>
+                                                                    <th class="align-middle">Grad</th>
+                                                                    <th class="align-middle">Status</th>
+                                                                    <th class="align-middle">Operacija</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
