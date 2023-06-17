@@ -270,10 +270,5 @@ namespace Online_Shop.Storage
         {
             return GetSviProizvodi().FindAll(p => p.Status == true);
         }
-
-        public static List<Proizvod> SortirajPoKriterijumuSveProizvode(string v, List<Proizvod> proizvodi)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
