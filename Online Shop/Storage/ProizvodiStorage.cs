@@ -182,10 +182,21 @@ namespace Online_Shop.Storage
         // Metoda koja brise proizvode iz kolekcije svih proizvoda, i listi proizvoda koji se nalaze listi korisnika
         public static bool DeleteProizvod(int id)
         {
-
             // Obrisi sve proizvode u bazi, kao i korisnike (prodavac koji je kreirao taj proizvod,
             // i kupce koji su taj proizvod dodali u porudzbine i/ili omiljeni)
 
+            // prvo prolazimo kroz listu svih proizvoda i logicki brisemo proizvod
+            List<Proizvod> za_brisanje = Proizvodi.FindAll(p => p.Id == id);
+
+            foreach(Proizvod proizvod in za_brisanje)
+            {
+                if (proizvod.IsDeleted == false)
+                {
+                    // nije jos uvek obrisan
+                    // obrisemo ga logicki
+                    proizvod.IsDeleted = true;
+                }
+            }
 
             // Azuriranje u json fajlovima, novo izmenjenih entiteta
             AzurirajProizvodeUBazi();
