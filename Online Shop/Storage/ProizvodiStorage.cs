@@ -183,9 +183,15 @@ namespace Online_Shop.Storage
         public static bool DeleteProizvod(int id)
         {
 
-            // Azuriraj sve proizvode u bazi, kao i korisnike
+            // Obrisi sve proizvode u bazi, kao i korisnike (prodavac koji je kreirao taj proizvod,
+            // i kupce koji su taj proizvod dodali u porudzbine i/ili omiljeni)
+
+
+            // Azuriranje u json fajlovima, novo izmenjenih entiteta
             AzurirajProizvodeUBazi();
             KorisniciStorage.AzurirajKorisnikeUBazi();
+
+            return true;
         }
     }
 }
