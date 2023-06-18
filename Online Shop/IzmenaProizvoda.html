@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Dodavanje Proizvoda - Shopy</title>
+    <title>Izmena Proizvoda - Shopy</title>
     <link rel="stylesheet" href="Content/bootstrap.min.css">
     <script src="Scripts/jquery-3.7.0.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
@@ -43,6 +43,14 @@
     <script>
         var STARA_SLIKA = "";
         var id_iz_url = "";
+
+        // popunjavanje forme podacima o proizvodu
+        // ako nema id u url, redirect
+        let searchParams = new URLSearchParams(window.location.search)
+        if (searchParams.has('id') === false) { // nema id, pokusaj hardcore pristupa, redirect
+            window.location.href = "Index.html";
+        }
+        id_iz_url = searchParams.get('id');
 
         // ako je ulogovan, prebaci ga na index - slucaj da ide na back opciju
         $.ajax({
@@ -89,14 +97,6 @@
                             window.location.href = "MojProfil.html";
                         }
 
-                        // popunjavanje forme podacima o proizvodu
-                        // ako nema id u url, redirect
-                        let searchParams = new URLSearchParams(window.location.search)
-                        if (searchParams.has('id') === false) { // nema id, pokusaj hardcore pristupa, redirect
-                            window.location.href = "Index.html";
-                        }
-                        id_iz_url = searchParams.get('id');
-
                         $.ajax({
                             url: "/api/products/ProizvodPoId",
                             type: "POST",
@@ -126,6 +126,9 @@
                                         window.location.href = "MojiProizvodi.html?msg=Odabrani proizvod nije moguće izmeniti jer više nije DOSTUPAN!";
                                         return false;
                                     }
+
+                                    // tek sada moze videti formu
+                                    $("#bodyauth").removeClass("d-none");
 
                                     // popunjavanje forme podacima
                                     $("#naziv").val(data.Naziv);
@@ -355,7 +358,7 @@
         });
     </script>
 </head>
-<body>
+<body id="bodyauth" class="d-none">
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
         <div class="container">
             <a href="/" class="navbar-brand">Shopy</a>
