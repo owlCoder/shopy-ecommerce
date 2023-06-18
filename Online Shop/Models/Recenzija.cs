@@ -7,6 +7,7 @@ namespace Online_Shop.Models
 {
     public class Recenzija
     {
+        public int Id { get; set; }
         public Proizvod Proizvod { get; set; }
         public Korisnik Recenzent { get; set; }
         public string Naslov { get; set; }

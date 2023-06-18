@@ -20,8 +20,12 @@ namespace Online_Shop.Controllers
         {
             if (ModelState.IsValid)
             {
-                ProizvodiStorage.DodajProizvod(zahtev.Naziv, zahtev.Cena, zahtev.Kolicina, zahtev.Opis, zahtev.Slika, zahtev.Grad);
-                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
+                bool uspesno = ProizvodiStorage.DodajProizvod(zahtev.Naziv, zahtev.Cena, zahtev.Kolicina, zahtev.Opis, zahtev.Slika, zahtev.Grad);
+                
+                if(uspesno)
+                    return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
+                else
+                    return JsonConvert.SerializeObject(new Response { Kod = 15, Poruka = "Došlo je do greške prilikom dodavanja proizvoda!" });
             }
             else
             {
@@ -55,8 +59,12 @@ namespace Online_Shop.Controllers
         {
             if (ModelState.IsValid)
             {
-                ProizvodiStorage.AzuriranjeProizvoda(zahtev.Id, zahtev.Naziv, zahtev.Cena, zahtev.Kolicina, zahtev.Opis, zahtev.Slika, zahtev.Grad);
-                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
+                bool uspesno = ProizvodiStorage.AzuriranjeProizvoda(zahtev.Id, zahtev.Naziv, zahtev.Cena, zahtev.Kolicina, zahtev.Opis, zahtev.Slika, zahtev.Grad);
+                
+                if(uspesno)
+                    return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
+                else
+                    return JsonConvert.SerializeObject(new Response { Kod = 15, Poruka = "Došlo je do greške prilikom ažuriranja proizvoda!" });
             }
             else
             {

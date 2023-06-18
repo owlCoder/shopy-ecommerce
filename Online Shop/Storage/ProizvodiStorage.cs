@@ -301,13 +301,118 @@ namespace Online_Shop.Storage
         }
 
         // Metoda za azuriranje proizvoda
-        public static void AzuriranjeProizvoda(string id, string naziv, double cena, double kolicina, string opis, string slika, string grad)
+        public static bool AzuriranjeProizvoda(string id_str, string naziv, double cena, double kolicina, string opis, string slika, string grad)
         {
+            // nije unet validan broj tj id koji je broj
+            if(!int.TryParse(id_str, out int id))
+            {
+                return false;
+            }
+
+            // Azuriraj sve proizvode u bazi, kao i korisnike (prodavac koji je kreirao taj proizvod,
+            // i kupce koji su taj proizvod dodali u AKTIVNE porudzbine i/ili omiljeni)
+
+            // prvo prolazimo kroz listu svih proizvoda i azuriramo proizvod
+            // proizvod nije obrisan
+            List<Proizvod> za_izmenu = Proizvodi.FindAll(p => p.Id == id && p.IsDeleted == false);
+
+            if (za_izmenu.Count == 0)
+            {
+                return false; // proizvod je vec obrisan, nema daljeg azuriranja 
+            }
+
+            // da li proizvod menja prodavac, jer ako prodavac menja onda je potrebno proveriti i status proizvoda
+            // specifikacija: proizvodi koji nisu dostupni ne mogu biti obrisani niti izmenjeni
+            if (((Korisnik)HttpContext.Current.Session["korisnik"]).Uloga == ULOGA.Prodavac &&
+                za_izmenu.FindAll(p => p.Status == false).Count > 0)
+            {
+                return false; // proizvod koji nije dostupan pokusava izmeniti prodavac
+            }
+
+            // ipak postoji proizvod za izmenu u listi svih proizvoda
+            foreach (Proizvod proizvod in za_izmenu)
+            {
+                if (proizvod.IsDeleted == false)
+                {
+                    // azuriranje podataka o proizvodu
+                    proizvod.Naziv = naziv;
+                    proizvod.Cena = cena;
+                    proizvod.Kolicina = kolicina;
+                    proizvod.Opis = opis;
+                    proizvod.Slika = slika;
+                    proizvod.Grad = grad;
+                }
+            }
+
+            // azuriranje proizvoda iz liste objavljenih proizvoda za prodavca
+            // korisnici koji nisu obrisani i koji su prodavci
+            List<Korisnik> korisnici = KorisniciStorage.Korisnici.FindAll(p => p.IsDeleted == false && p.Uloga == ULOGA.Prodavac);
+
+            foreach (Korisnik k in korisnici)
+            {
+                bool pronasao = false;
+                List<Proizvod> objavljeni_za_izmenu = k.ObjavljeniProizvodi.FindAll(p => p.Id == id);
+
+                foreach (Proizvod proizvod in objavljeni_za_izmenu)
+                {
+                    // azuriranje podataka o proizvodu
+                    proizvod.Naziv = naziv;
+                    proizvod.Cena = cena;
+                    proizvod.Kolicina = kolicina;
+                    proizvod.Opis = opis;
+                    proizvod.Slika = slika;
+                    proizvod.Grad = grad;
+                    pronasao = true;
+                    break;
+                }
+
+                if (pronasao)
+                {
+                    break; // jedan prodavac moze imati samo jedan proizvod sa jednim id - id je primarni kljuc
+                }
+            }
+
+            // za sve kupce ako se proizvod nalazi u omiljenim, azurirati ga u omiljenim i aktivnim porudzbinama
+            List<Korisnik> korisnici_kupci = KorisniciStorage.Korisnici.FindAll(p => p.IsDeleted == false && p.Uloga == ULOGA.Kupac);
+
+            foreach (Korisnik k in korisnici_kupci)
+            {
+                List<Proizvod> omiljeni = k.OmiljenjiProizvodi.FindAll(p => p.Id == id);
+
+                // azurira se samo iz aktivnih porudzbina, one obradjenje tj izvrsene vise nisu od interesa za izmenu
+                List<Porudzbina> porudzbine = k.Porudzbine.FindAll(p => p.Proizvod.Id == id && p.Status == STATUS.AKTIVNA);
+
+                foreach (Proizvod proizvod in omiljeni)
+                {
+                    // azuriranje podataka o proizvodu
+                    proizvod.Naziv = naziv;
+                    proizvod.Cena = cena;
+                    proizvod.Kolicina = kolicina;
+                    proizvod.Opis = opis;
+                    proizvod.Slika = slika;
+                    proizvod.Grad = grad;
+                }
+
+                // azuriranje proizvoda u porudzbini
+                // specifikacija: Jedna porudzbina se odnosi na tacno jedan proizvod
+                foreach (Porudzbina p in porudzbine)
+                {
+                    Proizvod proizvod = p.Proizvod;
+                    // azuriranje podataka o proizvodu
+                    proizvod.Naziv = naziv;
+                    proizvod.Cena = cena;
+                    proizvod.Kolicina = kolicina;
+                    proizvod.Opis = opis;
+                    proizvod.Slika = slika;
+                    proizvod.Grad = grad;
+                }
+            }
+
             // Azuriranje u json fajlovima, novo izmenjenih entiteta
             AzurirajProizvodeUBazi();
             KorisniciStorage.AzurirajKorisnikeUBazi();
 
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

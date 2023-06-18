@@ -4,6 +4,7 @@ namespace Online_Shop.Models
 {
     public class Porudzbina
     {
+        public int Id { get; set; }
         public Proizvod Proizvod { get; set; }
         public double Kolicina { get; set; }
         public Korisnik Kupac { get; set; }
