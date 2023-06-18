@@ -43,6 +43,7 @@
     <script>
         var STARA_SLIKA = "";
         var id_iz_url = "";
+        var uloga_trenutna = 0;
 
         // popunjavanje forme podacima o proizvodu
         // ako nema id u url, redirect
@@ -96,6 +97,8 @@
                             // nije pitanju prodavac ni administrator - povratak na zadatu stranicu
                             window.location.href = "MojProfil.html";
                         }
+
+                        uloga_trenutna = uloga;
 
                         $.ajax({
                             url: "/api/products/ProizvodPoId",
@@ -195,7 +198,7 @@
 
 
             // cuvanje izmena
-            $("#dodajbtn").on('click', function () {
+            $("#izmenabtn").on('click', function () {
                 var naziv = $("#naziv").val();
                 var opis = $("#opis").val();
                 var cena = $("#cena").val();
@@ -276,7 +279,13 @@
                     $("#grad").add("is-valid");
                 }
 
+                if (greska === true) return; // ne izvrsava se ajax poziv - rasterecuje se server od callbacks
+
                 if (slika.length > 0) {
+                    // priprema slike za slanje
+                    var slikaAjax = new FormData();
+                    slikaAjax.append("slika", $("#slika")[0].files[0]);
+
                     // promenjena je slika
                     // treba izvrsiti upload
                     // ajax poziv ka api-ju za upload slike
@@ -292,32 +301,61 @@
                                 if (msg.Kod === 0) // azuriranje podataka je proslo uspesno
                                 {
                                     STARA_SLIKA = msg.Poruka; // novi naziv tj guid slike na serveru
+
+                                    // ajax poziv ka API-ju za azuriranje proizvoda
+                                    $.ajax({
+                                        url: "/api/products/AzuriranjeProizvoda",
+                                        type: "POST",
+                                        data: JSON.stringify({
+                                            Id: id_iz_url,
+                                            Naziv: naziv,
+                                            Cena: cena,
+                                            Kolicina: kolicina,
+                                            Opis: opis,
+                                            Slika: STARA_SLIKA,
+                                            Grad: grad
+                                        }),
+                                        async: false,
+                                        cache: false,
+                                        dataType: "json",
+                                        contentType: "application/json; charset=utf-8",
+                                        success: function (response) {
+                                            if (response != null) {
+                                                if (JSON.parse(response).Kod === 0) {
+                                                    if (uloga_trenutna == 1) { // prodavac
+                                                        window.location.href = "MojiProizvodi.html?msg=Proizvod je uspešno ažuriran u bazi podataka!";
+                                                        return false;
+                                                    }
+                                                    else if (uloga_trenutna == 2) { // admin
+                                                        window.location.href = "ListaProizvoda.html?msg=Proizvod je uspešno ažuriran u bazi podataka!";
+                                                        return false;
+                                                    }
+                                                    else {
+                                                        window.location.href = "MojProfil.html";
+                                                        return false;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    });
                                 }
                                 else {
                                     // desila se greska - prikazi je
                                     $("#divgreske").removeClass('d-none');
                                     $("#greske").text(JSON.parse(response).Poruka);
+                                    return false;
                                 }
                             }
                         }
                     });
                 }
-                else {
-                    
-                }
-
-                if (greska === true) return; // ne izvrsava se ajax poziv - rasterecuje se server od callbacks
-
-                // priprema slike za slanje
-                var slikaAjax = new FormData();
-                slikaAjax.append("slika", $("#slika")[0].files[0]);
 
                 // ajax poziv ka API-ju za azuriranje proizvoda
                 $.ajax({
                     url: "/api/products/AzuriranjeProizvoda",
                     type: "POST",
                     data: JSON.stringify({
-                        Id: id,
+                        Id: id_iz_url,
                         Naziv: naziv,
                         Cena: cena,
                         Kolicina: kolicina,
@@ -335,19 +373,16 @@
                             {
                                 if (uloga_trenutna == 1) { // prodavac
                                     window.location.href = "MojiProizvodi.html?msg=Proizvod je uspešno ažuriran u bazi podataka!";
+                                    return false;
                                 }
-                                else {
-                                    window.location.href = "MojiProizvodi.html?msg=Došlo je do greške prilikom ažuriranja proizvoda u bazi podataka!";
-                                }
-
-                                if (uloga_trenutna == 1) { // admin
+                                else if(uloga_trenutna == 2) { // admin
                                     window.location.href = "ListaProizvoda.html?msg=Proizvod je uspešno ažuriran u bazi podataka!";
+                                    return false;
                                 }
                                 else {
-                                    window.location.href = "ListaProizvoda.html?msg=Došlo je do greške prilikom ažuriranja proizvoda u bazi podataka!";
+                                    window.location.href = "MojProfil.html";
+                                    return false;
                                 }
-
-                                return false;
                             }
                         }
                     }
@@ -459,7 +494,7 @@
                                                         Nakon promene podataka o proizvodu, biće potrebno par trenutaka da bi promene bile vidljive na platformi Shopy.
                                                     </p>
                                                     <div class="pt-1 mb-4">
-                                                        <button class="btn btn-dark btn-lg btn-block" id="dodajbtn" type="button">Sačuvaj izmene</button>
+                                                        <button class="btn btn-dark btn-lg btn-block" id="izmenabtn" type="button">Sačuvaj izmene</button>
                                                     </div>
                                                 </form>
                                             </div>
