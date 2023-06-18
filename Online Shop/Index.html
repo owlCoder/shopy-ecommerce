@@ -41,6 +41,7 @@
         }
     </style>
     <script>
+        var uloga = -1;
         // ako je ulogovan, prebaci prikazi meni u zavisnoti od uloge
         $.ajax({
             url: "/api/auth/AuthKorisnik",
@@ -60,10 +61,9 @@
 
                         // prikazi meni za nalog
                         $('#poruka').text("Dobrodošli nazad, " + data.KorisnickoIme);
+
+                        uloga = data.Uloga;
                     })
-
-                    // popuni sva polja u formi
-
                 }
                 else {
                     $(function () {
@@ -72,6 +72,57 @@
 
                         // sakri meni za nalog
                         $('#profil').addClass('d-none');
+                    });
+                }
+            }
+        });
+
+
+        // get metoda za dobijanje listi svih proizvoda za korisnika
+        $.ajax({
+            url: "/api/products/SviProizvodiPocetna",
+            type: "GET",
+            async: false,
+            cache: false,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                var ucitano = JSON.parse(response);
+
+                if (ucitano.length > 0) {
+                    $(function () {
+                        // popuni tabelu
+                        $.each(ucitano, function (key, data) {
+                            // dodavanje reda po red
+                            var kupac_dodaj_naruci = "";
+
+                            if(uloga === 0)
+                               kupac_dodaj_naruci = '<a href="PorucivanjeProizvoda.html?id=' + data.Id + '" class="btn btn-success mt-4">Naruči proizvod</a>&emsp;' +
+                                    '<a href="DodavanjeUOmiljene.html?id=' + data.Id + '" class="btn btn-outline-dark mt-4">Dodaj u omiljene</a>';
+                            else
+                                kupac_dodaj_naruci = '<a href="#" class="btn btn-outline-danger mt-4 disabled">Naruči proizvod</a>&emsp;' +
+                                    '<a href="#" class="btn btn-outline-dark mt-4 disabled">Dodaj u omiljene</a>';
+
+                            $("#proizvodi").append(
+                                '<div class="card mb-4 border-success">' +
+                                    '<div class="card-body">' +
+                                        '<div class="row justify-content-between">' +
+                                            '<div class="col-2">' +
+                                                '<img alt="proizvod" class="card-img-top" width="150" height="150" src="/Uploads/' + data.Slika + '" />' +
+                                            '</div>' +
+                                            '<div class="col-10">' +
+                                                '<div class="d-flex justify-content-between">' +
+                                                    '<span class="h5 card-title justify-content-start">' + data.Naziv + '</span>' +
+                                                    '<span class="h5 card-title text-success fw-semibold justify-content-end">' + data.Grad + '</span>' +
+                                                '</div>' +
+                                                '<h6 class="card-subtitle mb-2 text-muted">' + data.Cena + ' RSD</h6>' +
+                                                '<p class="card-text">' + data.Opis + '</p>' +
+                                                kupac_dodaj_naruci +
+                                            '</div>' +
+                                        '</div>' +
+                                   '</div>' +
+                                '</div>');
+                        });
                     });
                 }
             }
@@ -174,6 +225,10 @@
                 <div class="row">
                     <div class="col-lg-12 mx-auto">
                         <h3 class="text-dark mt-4">Svi proizvodi</h3>
+                        <br/>
+                        <div id="proizvodi">
+                            <!-- Ucitani proizvodi -->
+                        </div>
                     </div>
                 </div>
             </div>
