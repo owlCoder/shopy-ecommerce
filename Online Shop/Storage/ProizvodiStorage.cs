@@ -275,12 +275,21 @@ namespace Online_Shop.Storage
         {
             if(!int.TryParse(id, out int idp))
             {
-                return new Proizvod();
+                return new Proizvod() { Id = 0 }; // ne postoji proizvod
             }
             else
             {
                 // proizvod sa trazenim id i da nije obrisan
-                return Proizvodi.Find(p => p.IsDeleted == false && p.Id == idp);
+                Proizvod proizvod = Proizvodi.Find(p => p.IsDeleted == false && p.Id == idp);
+                
+                if(proizvod == null)
+                {
+                    return new Proizvod() { Id = 0 }; // ne postoji proizvod
+                }
+                else
+                {
+                    return proizvod;
+                }
             }
         }
     }

@@ -108,11 +108,9 @@
                             contentType: "application/json; charset=utf-8",
                             success: function (response) {
                                 if (response != null) {
-                                    if (JSON.parse(response).Kod === 0) // korisnik se odjavio uspesno
-                                    {
-                                        window.location.href = "Index.html";
-                                        return false;
-                                    }
+                                    var data = JSON.parse(response);
+
+                                    // \ko je ""
                                 }
                             }
                         });
