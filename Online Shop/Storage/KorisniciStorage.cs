@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Hosting;
+using System.Web.UI.WebControls;
 
 namespace Online_Shop.Storage
 {
@@ -135,24 +136,94 @@ namespace Online_Shop.Storage
 
                     // sve porudzbine vezane za kupca se sada trebaju obrisati
                     // ako su AKTIVNE onda se kolicina iz proizvoda iz te porudzbine vraca na stanje liste SVIH proizvoda
-                    List<Porudzbina> porudzbine = PorudzbineStorage.Porudzbine.FindAll(p => p.Kupac.KorisnickoIme.Equals(id) && p.IsDeleted == false && p.Status == STATUS.AKTIVNA);
+                    List<Porudzbina> porudzbine = PorudzbineStorage.Porudzbine.FindAll(p => p.Kupac.KorisnickoIme.Equals(id) && p.IsDeleted == false);
 
-                    foreach(Porudzbina porudzbina in porudzbine)
+                    foreach (Porudzbina porudzbina in porudzbine)
                     {
-                        // proizvod kome treba da se vrati kolicina nakon brisanja porudzbine
-                        Proizvod proizvod = ProizvodiStorage.Proizvodi.FirstOrDefault(p => p.Id == porudzbina.Proizvod.Id && p.IsDeleted == false);
-                        proizvod.Kolicina += porudzbina.Kolicina; // vrati onu kolicinu koju je kupac porucio
-                        porudzbina.IsDeleted = true; // brisanje porudzbine kada je kolicina vracena u magacin proizvoda
+                        if (porudzbina.Status == STATUS.AKTIVNA)
+                        {
+                            // proizvod kome treba da se vrati kolicina nakon brisanja porudzbine
+                            Proizvod proizvod = ProizvodiStorage.Proizvodi.FirstOrDefault(p => p.Id == porudzbina.Proizvod.Id && p.IsDeleted == false);
+                            proizvod.Kolicina += porudzbina.Kolicina; // vrati onu kolicinu koju je kupac porucio
+                        }
+
+                        porudzbina.IsDeleted = true; // brisanje porudzbine
                     }
                 }
                 else if (pronadjen.Uloga == ULOGA.Prodavac)
                 {
+                    // kod logickog brisanja prodavca
+                    // brisu se svi njegovi proizvodi, a uz same proizvode i sve one kolekcije gde se ti proizvodi nalaze
+                    // pronadji sve AKTIVNE porudzbine u kojima se taj proizvod nalazi, i sve te porudzbine obrisati
+                    // POTREBNO JE U SVIM LISTAMA KOD KUPCA OMILJENI PROIZVODI UKLONITI TE PROIZVODE OD PRODAVCA KOJI SE BRISE
+                    List<Proizvod> objavljeni_proizvodi = pronadjen.ObjavljeniProizvodi;
 
+                    // samo ako je neki proizvod i objavio pristupa se kaskadnom logickom brisanju
+                    if (objavljeni_proizvodi.Count > 0)
+                    {
+                        List<Korisnik> kupci = Korisnici.FindAll(p => p.IsDeleted == false && p.Uloga == ULOGA.Kupac);
+                        // pronaci sve kupce koji imaju neki od proizvoda u svojim omiljenim proizvodima
+
+                        foreach (Korisnik korisnik in kupci)
+                        {
+                            List<Proizvod> omiljeni = korisnik.OmiljenjiProizvodi.FindAll(p => p.IsDeleted == false);
+                            List<Porudzbina> porudzbine = korisnik.Porudzbine.FindAll(p => p.IsDeleted == false);
+
+                            foreach (Proizvod tmp in objavljeni_proizvodi)
+                            {
+                                foreach (Proizvod kp in omiljeni)
+                                {
+                                    if (kp.Id == tmp.Id)
+                                    {
+                                        kp.IsDeleted = true; // logicko brisanje iz liste omiljenih proizvoda
+                                    }
+                                }
+
+                                // posto se brisu i svi proizvodi kupca, ne treba obrisane porudzbine kao i njihove kolicine
+                                // vracati na stanje u magacinu
+                                foreach (Porudzbina p in porudzbine)
+                                {
+                                    if (p.Proizvod.Id == tmp.Id)
+                                    {
+                                        p.IsDeleted = true; // brisanje porudzbine koja sadrzi dati proizvod
+                                    }
+                                }
+
+                                // sve recenzije koje sadrze dati proizvod takodje obrisati - proizvod vise ne postoji
+                                List<Recenzija> recenzije = RecenzijeStorage.Recenzije.FindAll(p => p.IsDeleted == false && p.Proizvod.Id == tmp.Id);
+
+                                foreach(Recenzija recenzija in recenzije)
+                                {
+                                    recenzija.IsDeleted = true; // logicko brisanje recenzija koje su objavljene za taj proizvod
+                                }
+                            }
+                        }
+
+                        // obrisati iz liste svih proizvoda, one proizvode koji pripadaju prodavcu koji se brise
+                        List<Proizvod> svi = ProizvodiStorage.Proizvodi.FindAll(p => p.IsDeleted == false);
+
+                        foreach (Proizvod za_brisanje in objavljeni_proizvodi)
+                        {
+                            // svaki proizvod uvek ima unique id u listi svih proizvoda pa je uvek samo jedan
+                            Proizvod proizvod = svi.FirstOrDefault(p => p.Id == za_brisanje.Id);
+
+                            if (proizvod != null)
+                            {
+                                proizvod.IsDeleted = true; // logicko brisanje proizvoda
+                            }
+                        }
+                    }
                 }
 
-                // logicko brisanje
+                // logicko brisanje korisnika
                 pronadjen.IsDeleted = true;
+
+                // azuriranje podataka u svim bazama podataka
                 AzurirajKorisnikeUBazi(); // ostaje upisan u fajlu ali sa IsDeleted na true
+                PorudzbineStorage.AzurirajPorudzbineUBazi();
+                ProizvodiStorage.AzurirajProizvodeUBazi();
+                RecenzijeStorage.AzurirajRecenzijeUBazi();
+
                 return true;
             }
             else
