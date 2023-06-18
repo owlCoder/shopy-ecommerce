@@ -42,6 +42,7 @@
     </style>
     <script>
         var STARA_SLIKA = "";
+        var id_iz_url = "";
 
         // ako je ulogovan, prebaci ga na index - slucaj da ide na back opciju
         $.ajax({
@@ -94,7 +95,7 @@
                         if (searchParams.has('id') === false) { // nema id, pokusaj hardcore pristupa, redirect
                             window.location.href = "Index.html";
                         }
-                        var id_iz_url = searchParams.get('id');
+                        id_iz_url = searchParams.get('id');
 
                         $.ajax({
                             url: "/api/products/ProizvodPoId",
@@ -305,12 +306,12 @@
                 var slikaAjax = new FormData();
                 slikaAjax.append("slika", $("#slika")[0].files[0]);
 
-                
                 // ajax poziv ka API-ju za azuriranje proizvoda
                 $.ajax({
                     url: "/api/products/AzuriranjeProizvoda",
                     type: "POST",
                     data: JSON.stringify({
+                        Id: id,
                         Naziv: naziv,
                         Cena: cena,
                         Kolicina: kolicina,

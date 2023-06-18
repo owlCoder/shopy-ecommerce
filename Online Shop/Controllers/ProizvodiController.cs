@@ -16,7 +16,7 @@ namespace Online_Shop.Controllers
         // Metoda za dodavanje proizvoda
         [HttpPost]
         [Route("DodavanjeProizvoda")]
-        public string DodajProizvod(ProizvodRequest zahtev)
+        public string DodajProizvod(ProizvodAddRequest zahtev)
         {
             if (ModelState.IsValid)
             {
@@ -46,6 +46,9 @@ namespace Online_Shop.Controllers
         }
 
         // Metoda za azuriranje proizvoda
+        // propagacija izmene se odvija svuda gde se proizvod nalazi
+        // lista svih proizvoda, liste omiljenih proizvoda kod kupaca, lista aktivnih porudzbina kod kupaca
+        // lista 
         [HttpPost]
         [Route("AzuriranjeProizvoda")]
         public string AzurirajProizvod(ProizvodEditRequest zahtev)
