@@ -78,7 +78,7 @@
         });
 
 
-        // get metoda za dobijanje listi svih proizvoda za korisnika
+        // get metoda za dobijanje listi svih proizvoda
         $.ajax({
             url: "/api/products/SviProizvodiPocetna",
             type: "GET",
@@ -161,8 +161,168 @@
                 // isprazni redove
                 $('#proizvodi').empty();
                 $("#divgreske").addClass('d-none');
-               
+
                 var sortiranje = $("#sort").val().toString();
+                var naziv = $("#naziv").val();
+                var grad = $("#grad").val();
+                var minCena = $("#od").val();
+                var maxCena = $("#do").val();
+
+                if (minCena === "" && maxCena !== "") {
+                    $("#divgreske").removeClass('d-none');
+                    $("#greske").text("Potrebno je uneti i minimalnu cenu kako bi se prikazali proizvodi u željenom cenovnom opsegu.");
+                    return false;
+                }
+                else if (minCena !== "" && maxCena === "") {
+                    $("#divgreske").removeClass('d-none');
+                    $("#greske").text("Potrebno je uneti i maksimalnu cenu kako bi se prikazali proizvodi u željenom cenovnom opsegu.");
+                    return false;
+                }
+
+                // ako nije uneo cene - nema primene tog opsega
+                if (minCena === "" && maxCena === "") {
+                    minCena = -1.0;
+                    maxCena = -1.0;
+                }
+                else {
+                    // unete su obe cene
+                    minCena = parseFloat(minCena);
+                    maxCena = parseFloat(maxCena);
+
+                    if (minCena < 0) {
+                        $("#divgreske").removeClass('d-none');
+                        $("#greske").text("Potrebno je uneti minimalnu cenu koja nije negativan broj kako bi se prikazali proizvodi u željenom cenovnom opsegu.");
+                        return false;
+                    }
+
+                    if (maxCena <= 0) {
+                        $("#divgreske").removeClass('d-none');
+                        $("#greske").text("Potrebno je uneti maksimalnu cenu koja nije negativan broj kako bi se prikazali proizvodi u željenom cenovnom opsegu.");
+                        return false;
+                    }
+
+                    if (minCena > maxCena) {
+                        $("#divgreske").removeClass('d-none');
+                        $("#greske").text("Niste uneli validan opseg cena. Proverite unete cenovne opsege!");
+                        return false;
+                    }
+                }
+
+                // poziv ka apiju za prikaz po filteru
+                $.ajax({
+                    url: "/api/products/ListaFiltriranihProizvodaPocetna",
+                    type: "POST",
+                    data: JSON.stringify({
+                        Naziv: naziv,
+                        Grad: grad,
+                        MinCena:  minCena,
+                        MaxCena: maxCena,
+                        Sortiranje: sortiranje
+                    }),
+                    async: false,
+                    cache: false,
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        var data = JSON.parse(response);
+
+                        if (data.length > 0) {
+                            $(function () {
+                                // popuni tabelu
+                                $.each(data, function (key, k) {
+                                    // dodavanje reda po red
+                                    var kupac_dodaj_naruci = '<a href="Proizvod.html?id=' + k.Id + '" class="btn btn-dark">Pogledajte proizvod</a>';
+
+                                    $("#proizvodi").append(
+                                        '<div class="card mb-4 border-success">' +
+                                        '<div class="card-body">' +
+                                        '<div class="row justify-content-between">' +
+                                        '<div class="col-2">' +
+                                        '<img alt="proizvod" class="card-img-top" width="150" height="150" src="/Uploads/' + k.Slika + '" />' +
+                                        '</div>' +
+                                        '<div class="col-10">' +
+                                        '<div class="d-flex justify-content-between">' +
+                                        '<span class="h5 card-title justify-content-start">' + k.Naziv + '</span>' +
+                                        '<span class="h5 card-title text-success fw-semibold justify-content-end">' + k.Grad + '</span>' +
+                                        '</div>' +
+                                        '<h6 class="card-subtitle mb-2 text-muted">' + k.Cena + ' RSD</h6>' +
+                                        '<p class="card-text">' + k.Opis + '</p>' +
+                                        kupac_dodaj_naruci +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>');
+                                });
+                            });
+
+                            var kriterijum = $("#sort").find(":selected").text().toLowerCase();
+                            // desila se greska - prikazi je
+                            $("#divgreske").removeClass('d-none');
+                            $("#greske").text("Prikazani su svi proizvodi dobijenim kombinovanom pretragom i sortirani koristeći kriterijum " + kriterijum + ".");
+                            return false;
+                        }
+                        else {
+                            // desila se greska - prikazi je
+                            $("#divgreske").removeClass('d-none');
+                            $("#greske").text("Nema proizvoda koji ispunjavaju uneti kriterijum!");
+                            return false;
+                        }
+                    }
+                });
+
+                return false; // prevent ajax page reload
+            });
+
+            $("#sort").on('change', function () {
+                // isprazni redove
+                $('#proizvodi').empty();
+                $("#divgreske").addClass('d-none');
+
+                var sortiranje = $("#sort").val().toString();
+                var naziv = $("#naziv").val();
+                var grad = $("#grad").val();
+                var minCena = $("#od").val();
+                var maxCena = $("#do").val();
+
+                if (minCena === "" && maxCena !== "") {
+                    $("#divgreske").removeClass('d-none');
+                    $("#greske").text("Potrebno je uneti i minimalnu cenu kako bi se prikazali proizvodi u željenom cenovnom opsegu.");
+                    return false;
+                }
+                else if (minCena !== "" && maxCena === "") {
+                    $("#divgreske").removeClass('d-none');
+                    $("#greske").text("Potrebno je uneti i maksimalnu cenu kako bi se prikazali proizvodi u željenom cenovnom opsegu.");
+                    return false;
+                }
+
+                // ako nije uneo cene - nema primene tog opsega
+                if (minCena === "" && maxCena === "") {
+                    minCena = -1.0;
+                    maxCena = -1.0;
+                }
+                else {
+                    // unete su obe cene
+                    minCena = parseFloat(minCena);
+                    maxCena = parseFloat(maxCena);
+
+                    if (minCena < 0) {
+                        $("#divgreske").removeClass('d-none');
+                        $("#greske").text("Potrebno je uneti minimalnu cenu koja nije negativan broj kako bi se prikazali proizvodi u željenom cenovnom opsegu.");
+                        return false;
+                    }
+
+                    if (maxCena <= 0) {
+                        $("#divgreske").removeClass('d-none');
+                        $("#greske").text("Potrebno je uneti maksimalnu cenu koja nije negativan broj kako bi se prikazali proizvodi u željenom cenovnom opsegu.");
+                        return false;
+                    }
+
+                    if (minCena > maxCena) {
+                        $("#divgreske").removeClass('d-none');
+                        $("#greske").text("Niste uneli validan opseg cena. Proverite unete cenovne opsege!");
+                        return false;
+                    }
+                }
 
                 // poziv ka apiju za prikaz po filteru
                 $.ajax({
@@ -214,7 +374,7 @@
                             var kriterijum = $("#sort").find(":selected").text().toLowerCase();
                             // desila se greska - prikazi je
                             $("#divgreske").removeClass('d-none');
-                            $("#greske").text("Prikazani su svi " + ($("#dostupni").is(":checked") ? "dostupni" : "") + " proizvodi sortirani koristeći kriterijum " + kriterijum + ".");
+                            $("#greske").text("Prikazani su svi proizvodi dobijenim kombinovanom pretragom i sortirani koristeći kriterijum " + kriterijum + ".");
                             return false;
                         }
                         else {
@@ -227,6 +387,56 @@
                 });
 
                 return false; // prevent ajax page reload
+            });
+
+            $("#ponistibtn").on('click', function () {
+                // isprazni redove
+                $('#proizvodi').empty();
+                $("#divgreske").addClass('d-none');
+
+                // get metoda za dobijanje listi svih proizvoda
+                $.ajax({
+                    url: "/api/products/SviProizvodiPocetna",
+                    type: "GET",
+                    async: false,
+                    cache: false,
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        var ucitano = JSON.parse(response);
+
+                        if (ucitano.length > 0) {
+                            $(function () {
+                                // popuni tabelu
+                                $.each(ucitano, function (key, data) {
+                                    // dodavanje reda po red
+                                    var kupac_dodaj_naruci = '<a href="Proizvod.html?id=' + data.Id + '" class="btn btn-dark">Pogledajte proizvod</a>';
+
+                                    $("#proizvodi").append(
+                                        '<div class="card mb-4 border-success">' +
+                                        '<div class="card-body">' +
+                                        '<div class="row justify-content-between">' +
+                                        '<div class="col-2">' +
+                                        '<img alt="proizvod" class="card-img-top" width="150" height="150" src="/Uploads/' + data.Slika + '" />' +
+                                        '</div>' +
+                                        '<div class="col-10">' +
+                                        '<div class="d-flex justify-content-between">' +
+                                        '<span class="h5 card-title justify-content-start">' + data.Naziv + '</span>' +
+                                        '<span class="h5 card-title text-success fw-semibold justify-content-end">' + data.Grad + '</span>' +
+                                        '</div>' +
+                                        '<h6 class="card-subtitle mb-2 text-muted">' + data.Cena + ' RSD</h6>' +
+                                        '<p class="card-text">' + data.Opis + '</p>' +
+                                        kupac_dodaj_naruci +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>');
+                                });
+                            });
+                        }
+                    }
+                });
+
             });
         });
     </script>
@@ -306,7 +516,7 @@
                             </div>
                         </div>
 
-                        <div id="divgreske" class="alert alert-dark d-flex align-items-center mb-4" role="alert">
+                        <div id="divgreske" class="alert alert-dark d-flex align-items-center mb-3 mt-5" role="alert">
                             <svg height="25" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
                             </svg>

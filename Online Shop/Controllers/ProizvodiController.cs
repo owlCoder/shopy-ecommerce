@@ -105,6 +105,47 @@ namespace Online_Shop.Controllers
             }
         }
 
+        // Metoda za prikaz dostupnih proizvoda i filtriranje u CELOM SISTEMU za POCETNU STRANICU
+        [HttpPost]
+        [Route("ListaFiltriranihProizvodaPocetna")]
+        public string PrikazSvihDostupnihProizvoda(FilterProductRequest zahtev)
+        {
+            if(ModelState.IsValid)
+            {
+                List<Proizvod> proizvodi = ProizvodiStorage.Proizvodi.FindAll(p => p.IsDeleted == false && p.Status == true);
+
+                if (!zahtev.Naziv.Equals("")) // unet je kriterijum za naziv
+                {
+                    proizvodi = proizvodi.FindAll(p => p.Naziv.ToLower().Contains(zahtev.Naziv.ToLower()));
+                }
+                
+                if(!zahtev.Grad.Equals("")) // unet je kriterijum za grad
+                {
+                    proizvodi = proizvodi.FindAll(p => p.Grad.ToLower().Contains(zahtev.Grad.ToLower()));
+                }
+
+                if(zahtev.MinCena != -1.0 && zahtev.MaxCena != -1.0)
+                {
+                    proizvodi = proizvodi.FindAll(p => p.Cena >= zahtev.MinCena && p.Cena <= zahtev.MaxCena);
+                }
+
+                // filtiranje po drugom kriterijumu - ako nije 0 - podrazumevano
+                if (zahtev.Sortiranje.Equals("0") || zahtev.Sortiranje.Equals(""))
+                {
+                    return JsonConvert.SerializeObject(proizvodi);
+                }
+                else
+                {
+                    proizvodi = ProizvodiStorage.SortirajPoKriterijumu(zahtev.Sortiranje, proizvodi);
+                    return JsonConvert.SerializeObject(proizvodi);
+                }
+            }
+            else
+            {
+                return JsonConvert.SerializeObject(new List<Proizvod>());
+            }
+        }
+
         // Metoda za prikaz dostupnih proizvoda i filtriranje u CELOM SISTEMU
         [HttpPost]
         [Route("ListaFiltriranihSvihProizvoda")]

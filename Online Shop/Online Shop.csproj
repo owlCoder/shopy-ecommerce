@@ -127,6 +127,7 @@
     <Compile Include="Controllers\AuthUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KorisniciController.cs" />
+    <Compile Include="Models\FilterProductRequest.cs" />
     <Compile Include="Models\ProizvodEditRequest.cs" />
     <Compile Include="Controllers\ProizvodiController.cs" />
     <Compile Include="Controllers\StorageController.cs" />
