@@ -293,8 +293,13 @@ namespace Online_Shop.Storage
             }
         }
 
-        internal static void AzuriranjeProizvoda(int id, string naziv, double cena, double kolicina, string opis, string slika, string grad)
+        // Metoda za azuriranje proizvoda
+        public static void AzuriranjeProizvoda(string id, string naziv, double cena, double kolicina, string opis, string slika, string grad)
         {
+            // Azuriranje u json fajlovima, novo izmenjenih entiteta
+            AzurirajProizvodeUBazi();
+            KorisniciStorage.AzurirajKorisnikeUBazi();
+
             throw new NotImplementedException();
         }
     }

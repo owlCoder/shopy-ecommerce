@@ -5,7 +5,7 @@ namespace Online_Shop.Models
     public class ProizvodEditRequest
     {
         [Required]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [Required]
         public string Naziv { get; set; }
