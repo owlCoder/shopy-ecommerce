@@ -118,11 +118,11 @@ namespace Online_Shop.Controllers
         {
             if(int.TryParse(zahtev.Id, out int idp) && ProizvodiStorage.DeleteProizvod(idp))
             {
-                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "Proizvod sa " + zahtev.Id + " uspešno obrisan iz liste proizvoda." });
+                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "Proizvod uspešno obrisan iz liste proizvoda." });
             }
             else
             {
-                return JsonConvert.SerializeObject(new Response { Kod = 13, Poruka = "Proizvod sa " + zahtev.Id + " nije moguće uspešno obrisati iz liste svih proizvoda. Proverite da li je proizvod dostupan na stanju!"});
+                return JsonConvert.SerializeObject(new Response { Kod = 13, Poruka = "Proizvod nije moguće uspešno obrisati iz liste svih proizvoda. Proverite da li je proizvod na stanju!"});
             }
         }
     }
