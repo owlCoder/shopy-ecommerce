@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Online_Shop.Storage;
 using System;
-using Online_Shop.Storage;
+using System.Collections.Generic;
 
 namespace Online_Shop.Models
 {
@@ -20,9 +20,9 @@ namespace Online_Shop.Models
         public double Kolicina { get { return kolicina; } set { if (kolicina != value) { kolicina = value; Status = kolicina > 0.0; } } }
 
         // Prazan konstruktor zbog serijalizacije
-        public Proizvod() 
+        public Proizvod()
         {
-            
+
         }
 
         // Kreiranje tek dodatog proizvoda

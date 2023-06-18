@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Online_Shop.Models
 {
@@ -12,7 +8,7 @@ namespace Online_Shop.Models
 
         public string Prezime { get; set; }
 
-        public DateTime Od { get; set;}
+        public DateTime Od { get; set; }
 
         public DateTime Do { get; set; }
 

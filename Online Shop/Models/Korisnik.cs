@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Online_Shop.Models
 {
@@ -26,8 +26,8 @@ namespace Online_Shop.Models
         }
 
         // Konstruktor za ucitavanje podataka iz liste
-        public Korisnik(string korisnickoIme, string lozinka, string ime, string prezime, string pol, string email, 
-                        DateTime datumRodjenja, ULOGA uloga, List<Porudzbina> porudzbine, List<Proizvod> omiljenjiProizvodi, 
+        public Korisnik(string korisnickoIme, string lozinka, string ime, string prezime, string pol, string email,
+                        DateTime datumRodjenja, ULOGA uloga, List<Porudzbina> porudzbine, List<Proizvod> omiljenjiProizvodi,
                         List<Proizvod> objavljeniProizvodi, bool isDeleted, bool isLoggedIn)
         {
             KorisnickoIme = korisnickoIme;

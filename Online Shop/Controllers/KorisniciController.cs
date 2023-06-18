@@ -1,14 +1,9 @@
 ﻿using Newtonsoft.Json;
 using Online_Shop.Models;
 using Online_Shop.Storage;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
 using System.Web.Http;
 
 namespace Online_Shop.Controllers
@@ -29,7 +24,7 @@ namespace Online_Shop.Controllers
         [Route("BrisanjeKorisnika")]
         public string ObrisiKorisnika(SingleIdRequest id)
         {
-            if(KorisniciStorage.LogickoBrisanje(id.Id))
+            if (KorisniciStorage.LogickoBrisanje(id.Id))
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "Korisnik sa ID '" + id.Id + "' uspešno obrisan!" });
             }
@@ -38,13 +33,13 @@ namespace Online_Shop.Controllers
                 return JsonConvert.SerializeObject(new Response { Kod = 9, Poruka = "Došlo je do greške prilikom brisanja!" });
             }
         }
-        
+
         // Metoda za pretragu korisnika
         [HttpPost]
         [Route("PretragaKorisnika")]
         public string PretragaKorisnika(SearchRequest zahtev)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 int uloga;
                 if (zahtev.Uloga.Equals("Kupac"))
@@ -103,9 +98,9 @@ namespace Online_Shop.Controllers
         {
             Korisnik k = KorisniciStorage.KorisnikPoId(id.Id);
 
-            if(k == null)
+            if (k == null)
             {
-                return JsonConvert.SerializeObject(new AuthKorisnik { KorisnickoIme = ""});
+                return JsonConvert.SerializeObject(new AuthKorisnik { KorisnickoIme = "" });
             }
             else
             {

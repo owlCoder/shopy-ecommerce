@@ -1,11 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Online_Shop.Models;
 using Online_Shop.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
@@ -88,7 +83,7 @@ namespace Online_Shop.Controllers
                     IsLoggedIn = korisnik.IsLoggedIn
                 });
             else
-                return JsonConvert.SerializeObject(new AuthKorisnik { KorisnickoIme = ""});
+                return JsonConvert.SerializeObject(new AuthKorisnik { KorisnickoIme = "" });
         }
 
         [HttpPost]
@@ -110,7 +105,7 @@ namespace Online_Shop.Controllers
 
                     Korisnik tren = KorisniciStorage.GetKorisnik(zahtev.KorisnickoIme);
 
-                    if(tren.Lozinka.Equals(sha1))
+                    if (tren.Lozinka.Equals(sha1))
                     {
                         tren.IsLoggedIn = true;
                         HttpContext.Current.Session["korisnik"] = tren;

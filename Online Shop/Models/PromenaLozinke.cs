@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Online_Shop.Models
 {
@@ -10,7 +6,7 @@ namespace Online_Shop.Models
     {
         [Required]
         public string StaraLozinka { get; set; }
-        
+
         [Required]
         public string NovaLozinka { get; set; }
     }

@@ -1,10 +1,10 @@
-﻿using Online_Shop.Models;
+﻿using Newtonsoft.Json;
+using Online_Shop.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
-using Newtonsoft.Json;
 using System.Web.Hosting;
 
 namespace Online_Shop.Storage
@@ -40,7 +40,7 @@ namespace Online_Shop.Storage
                         }
                     }
                 }
-                catch 
+                catch
                 {
                     // ne postoji datoteka - pa se kreira prazan recnik
                     Korisnici = new List<Korisnik>();
@@ -91,10 +91,10 @@ namespace Online_Shop.Storage
             List<AuthKorisnik> korisnici = new List<AuthKorisnik>();
             string trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]).KorisnickoIme;
 
-            foreach(Korisnik k in Korisnici)
+            foreach (Korisnik k in Korisnici)
             {
                 // ne prikazuju se administratori, niti LOGICKI obrisani korisnici niti trenutno ulogovan korisnik
-                if(k.IsDeleted == false && k.Uloga != ULOGA.Administrator && !k.KorisnickoIme.Equals(trenutni))
+                if (k.IsDeleted == false && k.Uloga != ULOGA.Administrator && !k.KorisnickoIme.Equals(trenutni))
                 {
                     AuthKorisnik ak = new AuthKorisnik
                     {
@@ -108,7 +108,7 @@ namespace Online_Shop.Storage
                     };
 
                     korisnici.Add(ak);
-                }    
+                }
             }
 
             return korisnici;
@@ -123,11 +123,11 @@ namespace Online_Shop.Storage
                 // TO DO: ako je bio kupac vrati sve sa porudzbina na stanje, porudzbine ponisti itd
                 // ako je bio prodavac...
                 // TODO
-                if(pronadjen.Uloga == ULOGA.Kupac)
+                if (pronadjen.Uloga == ULOGA.Kupac)
                 {
 
                 }
-                else if(pronadjen.Uloga == ULOGA.Prodavac)
+                else if (pronadjen.Uloga == ULOGA.Prodavac)
                 {
 
                 }
@@ -138,8 +138,8 @@ namespace Online_Shop.Storage
                 return true;
             }
             else
-            { 
-                return false; 
+            {
+                return false;
             }
         }
 
@@ -148,7 +148,7 @@ namespace Online_Shop.Storage
             List<AuthKorisnik> pretrazeni = new List<AuthKorisnik>();
             List<Korisnik> temp = Korisnici.FindAll(p => p.IsDeleted == false && p.Uloga != ULOGA.Administrator);
 
-            if(!zahtev.Ime.Equals("")) // uneo je zahtev po imenu
+            if (!zahtev.Ime.Equals("")) // uneo je zahtev po imenu
             {
                 temp = temp.FindAll(p => p.Ime.Contains(zahtev.Ime));
             }
@@ -166,13 +166,13 @@ namespace Online_Shop.Storage
             }
 
             // pretraga po ulozi
-            if(uloga != -1)
+            if (uloga != -1)
             {
                 ULOGA ul = uloga == 0 ? ULOGA.Kupac : ULOGA.Prodavac;
                 temp = temp.FindAll(p => p.Uloga.Equals(ul));
             }
 
-            foreach(Korisnik k in temp)
+            foreach (Korisnik k in temp)
             {
                 AuthKorisnik ak = new AuthKorisnik
                 {
@@ -197,11 +197,11 @@ namespace Online_Shop.Storage
         {
             // svi korisnici koji nisu obrisani, koji nisu admini i nisu trenutni
             string trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]).KorisnickoIme;
-            List <Korisnik> korisnici = Korisnici.FindAll(p => p.IsDeleted == false && p.Uloga != ULOGA.Administrator && !p.KorisnickoIme.Equals(trenutni));
+            List<Korisnik> korisnici = Korisnici.FindAll(p => p.IsDeleted == false && p.Uloga != ULOGA.Administrator && !p.KorisnickoIme.Equals(trenutni));
             List<AuthKorisnik> sortirani = new List<AuthKorisnik>();
 
             // kopiranje liste korisnika u novu sortiranu
-            foreach(Korisnik k in korisnici)
+            foreach (Korisnik k in korisnici)
             {
                 AuthKorisnik ak = new AuthKorisnik
                 {
@@ -217,7 +217,7 @@ namespace Online_Shop.Storage
                 sortirani.Add(ak);
             }
 
-            if(id.Equals("1"))
+            if (id.Equals("1"))
             {
                 sortirani = sortirani.OrderBy(p => p.Ime).ToList();
             }

@@ -1,7 +1,5 @@
-﻿using Microsoft.Ajax.Utilities;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Online_Shop.Models;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,7 +13,7 @@ namespace Online_Shop.Storage
         public static List<Proizvod> Proizvodi { get; set; }
         public static string ProizvodiPath = HostingEnvironment.MapPath(@"~/App_Data/proizvodi.json");
 
-        public ProizvodiStorage() 
+        public ProizvodiStorage()
         {
             // Prazan konstruktor - zbog serijalizacije
         }
@@ -85,13 +83,13 @@ namespace Online_Shop.Storage
 
             Korisnik trenutni = (Korisnik)HttpContext.Current.Session["korisnik"];
 
-            if(trenutni != null)
+            if (trenutni != null)
             {
                 // Dodavanje proizvoda u listu
                 Proizvodi.Add(novi);
 
                 // Dodavanje proizvoda u listu objavljenih proizvoda
-                if(trenutni.ObjavljeniProizvodi == null) trenutni.ObjavljeniProizvodi = new List<Proizvod>();
+                if (trenutni.ObjavljeniProizvodi == null) trenutni.ObjavljeniProizvodi = new List<Proizvod>();
 
                 trenutni.ObjavljeniProizvodi.Add(novi);
 
@@ -112,7 +110,7 @@ namespace Online_Shop.Storage
         {
             Korisnik trenutni = (Korisnik)HttpContext.Current.Session["korisnik"];
 
-            if(trenutni != null && trenutni.ObjavljeniProizvodi != null && trenutni.ObjavljeniProizvodi.Count > 0)
+            if (trenutni != null && trenutni.ObjavljeniProizvodi != null && trenutni.ObjavljeniProizvodi.Count > 0)
             {
                 return trenutni.ObjavljeniProizvodi.FindAll(p => p.IsDeleted == false);
             }
@@ -148,7 +146,7 @@ namespace Online_Shop.Storage
             {
                 // lista nije prazna, sortirani po kriterijumu
                 // 1 - naziv asc, 2 - naziv desc, 3 - cena asc, 4 - cena desc, 5 - datum ogl asc, 6 - datum ogl desc
-                if(kriterijum.Equals("1"))
+                if (kriterijum.Equals("1"))
                 {
                     return proizvodi.OrderBy(p => p.Naziv).ToList();
                 }
@@ -178,7 +176,7 @@ namespace Online_Shop.Storage
                 }
             }
         }
-    
+
         // Metoda koja brise proizvode iz kolekcije svih proizvoda, i listi proizvoda koji se nalaze listi korisnika
         public static bool DeleteProizvod(int id)
         {
@@ -215,9 +213,9 @@ namespace Online_Shop.Storage
 
             // brisanje proizvoda iz liste objavljenih proizvoda za prodavca
             // korisnici koji nisu obrisani i koji su prodavci
-            List<Korisnik> korisnici = KorisniciStorage.Korisnici.FindAll(p => p.IsDeleted == false && p.Uloga == ULOGA.Prodavac); 
-            
-            foreach(Korisnik k in  korisnici)
+            List<Korisnik> korisnici = KorisniciStorage.Korisnici.FindAll(p => p.IsDeleted == false && p.Uloga == ULOGA.Prodavac);
+
+            foreach (Korisnik k in korisnici)
             {
                 bool pronasao = false;
                 List<Proizvod> objavljeni_za_brisanje = k.ObjavljeniProizvodi.FindAll(p => p.Id == id);
@@ -229,7 +227,7 @@ namespace Online_Shop.Storage
                     break;
                 }
 
-                if(pronasao)
+                if (pronasao)
                 {
                     break; // jedan prodavac moze imati samo jedan proizvod sa jednim id - id je primarni kljuc
                 }
@@ -238,21 +236,21 @@ namespace Online_Shop.Storage
             // za sve kupce ako se proizvod nalazi u omiljenim, obrisati ga iz omiljenih i aktivnih porudzbina
             List<Korisnik> korisnici_kupci = KorisniciStorage.Korisnici.FindAll(p => p.IsDeleted == false && p.Uloga == ULOGA.Kupac);
 
-            foreach(Korisnik k in korisnici_kupci)
+            foreach (Korisnik k in korisnici_kupci)
             {
                 List<Proizvod> omiljeni = k.OmiljenjiProizvodi.FindAll(p => p.Id == id);
 
                 // uklanja se samo iz aktivnih porudzbina, one obradjenje tj izvrsene vise nisu od interesa za brisanja
                 List<Porudzbina> porudzbine = k.Porudzbine.FindAll(p => p.Proizvod.Id == id && p.Status == STATUS.AKTIVNA);
 
-                foreach(Proizvod p in omiljeni)
+                foreach (Proizvod p in omiljeni)
                 {
                     p.IsDeleted = true;
                 }
 
                 // logicko brisanje proizvoda u porudzbini i brisanje same porudzbine
                 // specifikacija: Jedna porudzbina se odnosi na tacno jedan proizvod
-                foreach(Porudzbina p in porudzbine)
+                foreach (Porudzbina p in porudzbine)
                 {
                     p.IsDeleted = true;
                     p.Proizvod.IsDeleted = true;
@@ -280,7 +278,7 @@ namespace Online_Shop.Storage
 
         public static Proizvod GetProizvodPoId(string id)
         {
-            if(!int.TryParse(id, out int idp))
+            if (!int.TryParse(id, out int idp))
             {
                 return new Proizvod() { Id = 0 }; // ne postoji proizvod
             }
@@ -288,8 +286,8 @@ namespace Online_Shop.Storage
             {
                 // proizvod sa trazenim id i da nije obrisan
                 Proizvod proizvod = Proizvodi.Find(p => p.IsDeleted == false && p.Id == idp);
-                
-                if(proizvod == null)
+
+                if (proizvod == null)
                 {
                     return new Proizvod() { Id = 0 }; // ne postoji proizvod
                 }
@@ -304,7 +302,7 @@ namespace Online_Shop.Storage
         public static bool AzuriranjeProizvoda(string id_str, string naziv, double cena, double kolicina, string opis, string slika, string grad)
         {
             // nije unet validan broj tj id koji je broj
-            if(!int.TryParse(id_str, out int id))
+            if (!int.TryParse(id_str, out int id))
             {
                 return false;
             }
