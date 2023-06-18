@@ -127,6 +127,7 @@
     <Compile Include="Controllers\AuthUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KorisniciController.cs" />
+    <Compile Include="Models\ProizvodEditRequest.cs" />
     <Compile Include="Controllers\ProizvodiController.cs" />
     <Compile Include="Controllers\StorageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -140,7 +141,7 @@
     <Compile Include="Models\KorisnikRegistracija.cs" />
     <Compile Include="Models\Porudzbina.cs" />
     <Compile Include="Models\Proizvod.cs" />
-    <Compile Include="Models\ProizvodRequest.cs" />
+    <Compile Include="Models\ProizvodAddRequest.cs" />
     <Compile Include="Models\PromenaLozinke.cs" />
     <Compile Include="Models\Recenzija.cs" />
     <Compile Include="Models\Response.cs" />

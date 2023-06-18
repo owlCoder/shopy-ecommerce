@@ -9,7 +9,7 @@ namespace Online_Shop.Models
         public int Id { get; set; }
         public string Naziv { get; set; }
         public double Cena { get; set; }
-        public double Kolicina { get { return Kolicina; } set { if(Kolicina != value) { Kolicina = value; Status = Kolicina > 0.0; } } }
+        private double kolicina;
         public string Opis { get; set; }
         public string Slika { get; set; }
         public DateTime DatumPostavljanjaProizvoda { get; set; }
@@ -17,6 +17,7 @@ namespace Online_Shop.Models
         public List<Recenzija> Recenzija { get; set; }
         public bool Status { get; set; }
         public bool IsDeleted { get; set; }
+        public double Kolicina { get { return kolicina; } set { if (kolicina != value) { kolicina = value; Status = kolicina > 0.0; } } }
 
         // Prazan konstruktor zbog serijalizacije
         public Proizvod() 
