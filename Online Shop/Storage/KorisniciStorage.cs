@@ -120,12 +120,30 @@ namespace Online_Shop.Storage
 
             if (pronadjen != null)
             {
-                // TO DO: ako je bio kupac vrati sve sa porudzbina na stanje, porudzbine ponisti itd
+
+                // ako je bio kupac vrati sve sa porudzbina na stanje, porudzbine ponisti itd
                 // ako je bio prodavac...
-                // TODO
                 if (pronadjen.Uloga == ULOGA.Kupac)
                 {
+                    // brisu se sve recenzije kupca koje je ostavio
+                    List<Recenzija> recenzije = RecenzijeStorage.Recenzije.FindAll(p => p.Recenzent.KorisnickoIme.Equals(id) && p.IsDeleted == false);
+                    
+                    foreach(Recenzija recenzija in recenzije)
+                    {
+                        recenzija.IsDeleted = true; // logicko brisanje recenzije
+                    }
 
+                    // sve porudzbine vezane za kupca se sada trebaju obrisati
+                    // ako su AKTIVNE onda se kolicina iz proizvoda iz te porudzbine vraca na stanje liste SVIH proizvoda
+                    List<Porudzbina> porudzbine = PorudzbineStorage.Porudzbine.FindAll(p => p.Kupac.KorisnickoIme.Equals(id) && p.IsDeleted == false && p.Status == STATUS.AKTIVNA);
+
+                    foreach(Porudzbina porudzbina in porudzbine)
+                    {
+                        // proizvod kome treba da se vrati kolicina nakon brisanja porudzbine
+                        Proizvod proizvod = ProizvodiStorage.Proizvodi.FirstOrDefault(p => p.Id == porudzbina.Proizvod.Id && p.IsDeleted == false);
+                        proizvod.Kolicina += porudzbina.Kolicina; // vrati onu kolicinu koju je kupac porucio
+                        porudzbina.IsDeleted = true; // brisanje porudzbine kada je kolicina vracena u magacin proizvoda
+                    }
                 }
                 else if (pronadjen.Uloga == ULOGA.Prodavac)
                 {

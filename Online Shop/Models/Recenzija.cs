@@ -10,6 +10,5 @@
         public string Slika { get; set; }
         public bool Odobrena { get; set; }
         public bool IsDeleted { get; set; }
-
     }
 }
