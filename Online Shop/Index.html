@@ -96,12 +96,14 @@
                             // dodavanje reda po red
                             var kupac_dodaj_naruci = "";
 
-                            if(uloga === 0)
-                               kupac_dodaj_naruci = '<a href="PorucivanjeProizvoda.html?id=' + data.Id + '" class="btn btn-success mt-4">Naruči proizvod</a>&emsp;' +
-                                    '<a href="DodavanjeUOmiljene.html?id=' + data.Id + '" class="btn btn-outline-dark mt-4">Dodaj u omiljene</a>';
-                            else
-                                kupac_dodaj_naruci = '<a href="#" class="btn btn-outline-danger mt-4 disabled">Naruči proizvod</a>&emsp;' +
-                                    '<a href="#" class="btn btn-outline-dark mt-4 disabled">Dodaj u omiljene</a>';
+                            //if(uloga === 0)
+                            //   kupac_dodaj_naruci = '<a href="PorucivanjeProizvoda.html?id=' + data.Id + '" class="btn btn-success mt-4">Naruči proizvod</a>&emsp;' +
+                            //        '<a href="DodavanjeUOmiljene.html?id=' + data.Id + '" class="btn btn-outline-dark mt-4">Dodaj u omiljene</a>';
+                            //else
+                            //    kupac_dodaj_naruci = '<a href="#" class="btn btn-outline-danger mt-4 disabled">Naruči proizvod</a>&emsp;' +
+                            //        '<a href="#" class="btn btn-outline-dark mt-4 disabled">Dodaj u omiljene</a>';
+
+                            kupac_dodaj_naruci = '<a href="Proizvod.html?id=' + data.Id + '" class="btn btn-dark">Pogledajte proizvod</a>';
 
                             $("#proizvodi").append(
                                 '<div class="card mb-4 border-success">' +
@@ -130,6 +132,8 @@
 
         // Odjava korisnika
         jQuery(function () {
+            $("#divgreske").addClass('d-none');
+
             $("#odjava").on('click', function () {
                 // ajax poziv ka api-ju za vrsenje registracije
                 $.ajax({
@@ -189,50 +193,79 @@
         </div>
     </nav>
     <div class="container body-content mt-4">
-        <main>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 mx-auto">
-                        <h3 class="text-dark mb-3">Pretraga proizvoda</h3>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Unesite traženi pojam..." aria-label="Search" aria-describedby="button-addon2">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Podrazumevano</button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="#">Price asc</a></li>
-                                <li><a class="dropdown-item" href="#">Price desc</a></li>
-                                <li><a class="dropdown-item" href="#">Date asc</a></li>
-                                <li><a class="dropdown-item" href="#">Date desc</a></li>
-                            </ul>
-                            <div class="input-group-text">
-                                <input type="checkbox" aria-label="Checkbox for following text input">&nbsp; Naziv &nbsp;
-                                <input type="checkbox" aria-label="Checkbox for following text input">&nbsp; Grad &nbsp;
-                                <input type="checkbox" aria-label="Checkbox for following text input">&nbsp; Cena &nbsp;
-                                <div class="form-group">
-                                    <label for="min-price">&nbsp;Min:</label>
-                                    <input type="number" id="min-price" name="min-price" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="max-price">&nbsp;&nbsp;Max:</label>
-                                    <input type="number" id="max-price" name="max-price" value="" />
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mx-auto">
+                    <h3 class="text-dark mt-4">Shopy eCommerce</h3>
+                    <p class="fw-normal pb-3" style="letter-spacing: 1px;">Ispred Vas je celokupna ponuda proizvoda na platformi. Shopy Team Vam želi ugodnu kupovinu!</p>
+
+                    <form class="col-12 mb-3">
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="input-group flex-nowrap mb-3">
+                                    <span class="input-group-text" id="addon-wrapping">Naziv</span>
+                                    <input id="naziv" type="text" class="form-control" placeholder="Unesite pojam..." aria-label="ime" aria-describedby="addon-wrapping">
                                 </div>
                             </div>
-                            <button class="btn btn-outline-success" type="button" id="button-addon2">PRETRAGA</button>
+                            <div class="col-3">
+                                <div class="input-group flex-nowrap mb-3">
+                                    <span class="input-group-text" id="addon-wrapping">Grad</span>
+                                    <input id="grad" type="text" class="form-control" placeholder="Unesite pojam..." aria-label="prezime" aria-describedby="addon-wrapping">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group flex-nowrap mb-3">
+                                    <span class="input-group-text" id="addon-wrapping">Minimalna cena</span>
+                                    <input id="od" type="number" min="0" class="form-control" placeholder="Unesite cenu..." aria-label="prezime" aria-describedby="addon-wrapping">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group flex-nowrap mb-3">
+                                    <span class="input-group-text" id="addon-wrapping">Maksimalna cena</span>
+                                    <input id="do" type="number" min="0" class="form-control" placeholder="Unesite cenu..." aria-label="prezime" aria-describedby="addon-wrapping">
+                                </div>
+                            </div>
                         </div>
+                        <div class="row">
+                            <div class="pt-2 mb-2">
+                                <button id="pretragabtn" type="button" class="btn btn-dark btn-block fs-5">🔎 Pretraga proizvoda</button>
+                                &emsp;<button id="ponistibtn" type="reset" class="btn btn-secondary fs-5 btn-block">↺ Resetovanje pretrage</button>
+                            </div>
+                        </div>
+
+                        <div id="divgreske" class="alert alert-dark d-flex align-items-center mb-4" role="alert">
+                            <svg height="25" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                            </svg>
+                            <span>&emsp;</span>
+                            <span id="greske"></span>
+                        </div>
+                        <br />
+                        <div class="col-12 mb-1 d-flex justify-content-end">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="input-group flex-nowrap mb-3">
+                                        <span class="input-group-text" id="addon-sort">Sortiranje proizvoda po</span>
+                                        <select id="sort" class="form-control">
+                                            <option value="0">Podrazumevano</option>
+                                            <option value="1">Nazivu (rastuće)</option>
+                                            <option value="2">Nazivu (opadajuće)</option>
+                                            <option value="3">Ceni (rastuće)</option>
+                                            <option value="4">Ceni (opadajuće)</option>
+                                            <option value="5">Datumu oglašavanja (rastuće)</option>
+                                            <option value="6">Datumu oglašavanja (opadajuće)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="proizvodi">
+                        <!-- Ucitani proizvodi -->
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 mx-auto">
-                        <h3 class="text-dark mt-4">Svi proizvodi</h3>
-                        <br/>
-                        <div id="proizvodi">
-                            <!-- Ucitani proizvodi -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+        </div>
     </div>
 </body>
 </html>
