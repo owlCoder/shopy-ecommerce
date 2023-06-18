@@ -60,7 +60,7 @@
                             url: "/api/products/ProizvodPoId",
                             type: "POST",
                             data: JSON.stringify({
-                                Id: id_iz_url
+                                Id: Id
                             }),
                             async: false,
                             cache: false,
@@ -69,18 +69,21 @@
                             success: function (response) {
                                 if (response != null) {
                                     var data = JSON.parse(response);
-
+                                   
                                     // ne postoji proizvod, obrisan je u medjuvremenu
                                     if (uloga === 1 && data.Id === 0) {
                                         window.location.href = "MojiProizvodi.html";
+                                        return false;
                                     }
                                     else if (uloga === 2 && data.Id === 0) {
                                         window.location.href = "ListaProizvoda.html";
+                                        return false;
                                     }
 
                                     // prodavac ne moze da menja ili brise proizvode koji nisu dostupni
                                     if (uloga === 1 && data.Status === false) {
                                         window.location.href = "MojiProizvodi.html?msg=Odabrani proizvod nije moguće izmeniti jer više nije DOSTUPAN!";
+                                        return false;
                                     }
 
                                     // brisanje proizvoda
@@ -106,7 +109,7 @@
                                             else if (uloga == 2) {
                                                 // u pitanju je administrator, on se preusmerava na stranicu svih proizvoda
                                                 window.location.href = "ListaProizvoda.html?msg=" + data.Poruka;
-
+                                                return false;
                                             }
                                         }
                                     });

@@ -114,14 +114,17 @@
                                     // ne postoji proizvod, obrisan je u medjuvremenu
                                     if (uloga === 1 && data.Id === 0) {
                                         window.location.href = "MojiProizvodi.html";
+                                        return false;
                                     }
                                     else if (uloga === 2 && data.Id === 0) {
                                         window.location.href = "ListaProizvoda.html";
+                                        return false;
                                     }
 
                                     // prodavac ne moze da menja ili brise proizvode koji nisu dostupni
                                     if (uloga === 1 && data.Status === false) {
                                         window.location.href = "MojiProizvodi.html?msg=Odabrani proizvod nije moguće izmeniti jer više nije DOSTUPAN!";
+                                        return false;
                                     }
 
                                     // popunjavanje forme podacima
@@ -132,7 +135,7 @@
                                     $("#grad").val(data.Grad);
                                     STARA_SLIKA = data.Slika;
                                     $("#pregled").attr('src', "/Uploads/" + data.Slika);
-
+                                    return false;
                                 }
                             }
                         });

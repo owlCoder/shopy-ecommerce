@@ -187,7 +187,7 @@ namespace Online_Shop.Storage
 
             // prvo prolazimo kroz listu svih proizvoda i logicki brisemo proizvod
             // proizvod nije obrisan i na stanju je
-            List<Proizvod> za_brisanje = Proizvodi.FindAll(p => p.Id == id && p.IsDeleted == false && p.Status == true);
+            List<Proizvod> za_brisanje = Proizvodi.FindAll(p => p.Id == id && p.IsDeleted == false);
 
             if (za_brisanje.Count == 0)
             {
