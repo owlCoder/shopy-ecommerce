@@ -292,5 +292,10 @@ namespace Online_Shop.Storage
                 }
             }
         }
+
+        internal static void AzuriranjeProizvoda(int id, string naziv, double cena, double kolicina, string opis, string slika, string grad)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
