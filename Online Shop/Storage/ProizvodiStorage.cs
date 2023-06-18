@@ -340,16 +340,13 @@ namespace Online_Shop.Storage
             // ipak postoji proizvod za izmenu u listi svih proizvoda
             foreach (Proizvod proizvod in za_izmenu)
             {
-                if (proizvod.IsDeleted == false)
-                {
-                    // azuriranje podataka o proizvodu
-                    proizvod.Naziv = naziv;
-                    proizvod.Cena = cena;
-                    proizvod.Kolicina = kolicina;
-                    proizvod.Opis = opis;
-                    proizvod.Slika = slika;
-                    proizvod.Grad = grad;
-                }
+                // azuriranje podataka o proizvodu
+                proizvod.Naziv = naziv;
+                proizvod.Cena = cena;
+                proizvod.Kolicina = kolicina;
+                proizvod.Opis = opis;
+                proizvod.Slika = slika;
+                proizvod.Grad = grad;
             }
 
             // azuriranje proizvoda iz liste objavljenih proizvoda za prodavca
@@ -416,9 +413,45 @@ namespace Online_Shop.Storage
                 }
             }
 
+            // sve recenzije koje sadrze dati proizvod, trebaju da imaju azurirano novo stanje o njemu
+            List<Recenzija> sve = RecenzijeStorage.Recenzije.FindAll(p => p.Proizvod.Id == id && p.IsDeleted == false);
+
+            // i svaki proizvod u sebi ima listu recenzija, pa i nju treba azurirati
+            Proizvod za_izmenu_p = Proizvodi.FirstOrDefault(p => p.Id == id && p.IsDeleted == false);
+            List<Recenzija> recenzcije_proizvod;
+
+            if(za_izmenu_p != null)
+            {
+                recenzcije_proizvod = za_izmenu_p.Recenzija.FindAll(p => p.Proizvod.Id == id && p.IsDeleted == false); // sve recenzije vezane za dati proizvod
+                
+                foreach(Recenzija r in recenzcije_proizvod)
+                {
+                    Proizvod proizvod = r.Proizvod;
+                    proizvod.Naziv = naziv;
+                    proizvod.Cena = cena;
+                    proizvod.Kolicina = kolicina;
+                    proizvod.Opis = opis;
+                    proizvod.Slika = slika;
+                    proizvod.Grad = grad;
+                }
+            }
+
+            foreach(Recenzija r in sve)
+            {
+                Proizvod proizvod = r.Proizvod;
+                proizvod.Naziv = naziv;
+                proizvod.Cena = cena;
+                proizvod.Kolicina = kolicina;
+                proizvod.Opis = opis;
+                proizvod.Slika = slika;
+                proizvod.Grad = grad;
+            }
+
             // Azuriranje u json fajlovima, novo izmenjenih entiteta
             AzurirajProizvodeUBazi();
             KorisniciStorage.AzurirajKorisnikeUBazi();
+            PorudzbineStorage.AzurirajPorudzbineUBazi();
+            RecenzijeStorage.AzurirajRecenzijeUBazi();
 
             return true;
         }
