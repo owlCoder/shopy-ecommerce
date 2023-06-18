@@ -149,6 +149,7 @@
     <Compile Include="Models\SingleIdRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\KorisniciStorage.cs" />
+    <Compile Include="Storage\PorudzbineStorage.cs" />
     <Compile Include="Storage\ProizvodiStorage.cs" />
   </ItemGroup>
   <ItemGroup>
