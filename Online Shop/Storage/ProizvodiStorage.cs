@@ -257,9 +257,19 @@ namespace Online_Shop.Storage
                 }
             }
 
+            // recenzije za dati proizvod vise nije moguce ni postaviti ni menjati, pa se logicki brisu
+            List<Recenzija> recenzije = RecenzijeStorage.Recenzije.FindAll(p => p.Proizvod.Id == id && !p.IsDeleted);
+
+            foreach(Recenzija recenzija in recenzije)
+            {
+                recenzija.IsDeleted = true; // brisanje recenzije, nezavisno od statusa (odobrena/odbijena)
+            }
+
             // Azuriranje u json fajlovima, novo izmenjenih entiteta
             AzurirajProizvodeUBazi();
             KorisniciStorage.AzurirajKorisnikeUBazi();
+            PorudzbineStorage.AzurirajPorudzbineUBazi();
+            RecenzijeStorage.AzurirajRecenzijeUBazi();
 
             return true;
         }

@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Hosting;
-using System.Web.UI.WebControls;
 
 namespace Online_Shop.Storage
 {
@@ -128,8 +127,8 @@ namespace Online_Shop.Storage
                 {
                     // brisu se sve recenzije kupca koje je ostavio
                     List<Recenzija> recenzije = RecenzijeStorage.Recenzije.FindAll(p => p.Recenzent.KorisnickoIme.Equals(id) && p.IsDeleted == false);
-                    
-                    foreach(Recenzija recenzija in recenzije)
+
+                    foreach (Recenzija recenzija in recenzije)
                     {
                         recenzija.IsDeleted = true; // logicko brisanje recenzije
                     }
@@ -192,7 +191,7 @@ namespace Online_Shop.Storage
                                 // sve recenzije koje sadrze dati proizvod takodje obrisati - proizvod vise ne postoji
                                 List<Recenzija> recenzije = RecenzijeStorage.Recenzije.FindAll(p => p.IsDeleted == false && p.Proizvod.Id == tmp.Id);
 
-                                foreach(Recenzija recenzija in recenzije)
+                                foreach (Recenzija recenzija in recenzije)
                                 {
                                     recenzija.IsDeleted = true; // logicko brisanje recenzija koje su objavljene za taj proizvod
                                 }
