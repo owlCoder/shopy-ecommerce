@@ -22,6 +22,9 @@ namespace Online_Shop
             // Ucitavanje podataka o porudzbinama
             PorudzbineStorage.UcitajPorudzbine();
 
+            // Ucitavanje podataka o recenzijama
+            RecenzijeStorage.UcitajRecenzije();
+
             // Registracija filtera i ruta
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);

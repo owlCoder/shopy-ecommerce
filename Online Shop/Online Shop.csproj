@@ -151,6 +151,7 @@
     <Compile Include="Storage\KorisniciStorage.cs" />
     <Compile Include="Storage\PorudzbineStorage.cs" />
     <Compile Include="Storage\ProizvodiStorage.cs" />
+    <Compile Include="Storage\RecenzijeStorage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Brisanje.html" />
