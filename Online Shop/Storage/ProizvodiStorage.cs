@@ -186,13 +186,20 @@ namespace Online_Shop.Storage
             // i kupce koji su taj proizvod dodali u porudzbine i/ili omiljeni)
 
             // prvo prolazimo kroz listu svih proizvoda i logicki brisemo proizvod
-            // proizvod nije obrisan i na stanju je
+            // proizvod nije obrisan
             List<Proizvod> za_brisanje = Proizvodi.FindAll(p => p.Id == id && p.IsDeleted == false);
 
             if (za_brisanje.Count == 0)
             {
                 return false; // proizvod je vec obrisan, nema daljeg brisanja 
-                // ili proizvod vise nije na stanju, kolicina je 0
+            }
+
+            // da li proizvod brise prodavac, jer ako prodavac brise onda je potrebno proveriti i status proizvoda
+            // specifikacija: proizvodi koji nisu dostupni ne mogu biti obrisani niti izmenjeni
+            if (((Korisnik)HttpContext.Current.Session["korisnik"]).Uloga == ULOGA.Prodavac &&
+                za_brisanje.FindAll(p => p.Status == false).Count > 0)
+            {
+                return false; // proizvod koji nije dostupan pokusava izmeniti prodavac
             }
 
             // ipak postoji proizvod za brisanje u listi svih proizvoda
