@@ -1,10 +1,442 @@
 ﻿<!DOCTYPE html>
-<html>
+<html data-bs-theme="light">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dodavanje Proizvoda - Shopy</title>
+    <link rel="stylesheet" href="Content/bootstrap.min.css">
+    <script src="Scripts/jquery-3.7.0.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
+    <script src="Scripts/modernizr-2.8.3.js"></script>
+    <style>
+        .navbar .login-btn {
+            position: absolute;
+            top: 7px;
+            right: 95px;
+        }
+
+        .navbar .profil-btn {
+            position: absolute;
+            top: 10px;
+            right: 35px;
+        }
+
+        @media (max-width: 767px) {
+            .navbar .login-btn {
+                right: 75px;
+            }
+        }
+
+        .navbar .register-btn {
+            position: absolute;
+            top: 7px;
+            right: 15px;
+        }
+
+        @media (max-width: 767px) {
+            .navbar .register-btn {
+                right: 175px;
+            }
+        }
+    </style>
+    <script>
+        var STARA_SLIKA = "";
+
+        // ako je ulogovan, prebaci ga na index - slucaj da ide na back opciju
+        $.ajax({
+            url: "/api/auth/Ulogovan",
+            type: "GET",
+            async: false,
+            cache: false,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                if (response != null) {
+                    if (JSON.parse(response).Kod !== 0) // korisnik je ulogovan, ne moze da se registruje
+                    {
+                        window.location.href = "Index.html";
+                    }
+                }
+            }
+        });
+
+        // ako je ulogovan, prebaci prikazi meni u zavisnoti od uloge
+        $.ajax({
+            url: "/api/auth/AuthKorisnik",
+            type: "GET",
+            async: false,
+            cache: false,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                var data = JSON.parse(response);
+                if (data.KorisnickoIme !== "") {
+                    // prikazi podatke i promeni meni
+                    // sakri dugmice za login i register
+                    $(function () {
+                        $("#pl").remove();
+
+                        // prikazi meni za nalog
+                        $('#poruka').text("Dobrodošli nazad, " + data.KorisnickoIme);
+
+                        // Prikazi samo dugmice vezane za korisnika koji ima datu ulogu
+                        var uloga = data.Uloga;
+
+                        if (uloga !== 1 && uloga !== 2) {
+                            // nije pitanju prodavac ni administrator - povratak na zadatu stranicu
+                            window.location.href = "MojProfil.html";
+                        }
+
+                        // popunjavanje forme podacima o proizvodu
+                        // ako nema id u url, redirect
+                        let searchParams = new URLSearchParams(window.location.search)
+                        if (searchParams.has('id') === false) { // nema id, pokusaj hardcore pristupa, redirect
+                            window.location.href = "Index.html";
+                        }
+                        var id_iz_url = searchParams.get('id');
+
+                        $.ajax({
+                            url: "/api/products/ProizvodPoId",
+                            type: "POST",
+                            data: JSON.stringify({
+                                Id: id_iz_url        
+                            }),
+                            async: false,
+                            cache: false,
+                            dataType: "json",
+                            contentType: "application/json; charset=utf-8",
+                            success: function (response) {
+                                if (response != null) {
+                                    if (JSON.parse(response).Kod === 0) // korisnik se odjavio uspesno
+                                    {
+                                        window.location.href = "Index.html";
+                                        return false;
+                                    }
+                                }
+                            }
+                        });
+                    });
+                }
+                else {
+                    $(function () {
+                        // korisnik nije ulogovan - prikazi login i register
+                        $("#pl").show();
+
+                        // sakri meni za nalog
+                        $('#profil').addClass('d-none');
+                    });
+                }
+            }
+        });
+
+        // Odjava korisnika
+        jQuery(function () {
+            // inicijalno nema poruka o greskama
+            $("#divgreske").addClass('d-none');
+
+            $("#odjava").on('click', function () {
+                // ajax poziv ka api-ju za vrsenje registracije
+                $.ajax({
+                    url: "/api/auth/Odjava",
+                    type: "POST",
+                    data: {},
+                    async: false,
+                    cache: false,
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        if (response != null) {
+                            if (JSON.parse(response).Kod === 0) // korisnik se odjavio uspesno
+                            {
+                                window.location.href = "Index.html";
+                                return false;
+                            }
+                        }
+                    }
+                });
+            });
+
+            // azuriranje pregleda slike
+            $("#slika").on('change', function () {
+                if (slika.files[0] === undefined) {
+                    pregled.src = "/Images/productplc.jpg";
+                }
+                else {
+                    pregled.src = URL.createObjectURL(slika.files[0]);
+                }
+            });
+
+
+            // cuvanje izmena
+            $("#dodajbtn").on('click', function () {
+                var naziv = $("#naziv").val();
+                var opis = $("#opis").val();
+                var cena = $("#cena").val();
+                var kolicina = $("#kolicina").val();
+                var grad = $("#grad").val();
+                var slika = $("#slika").val();
+                var greska = false;
+
+                // provera unosa na klijentu
+                if (naziv.length < 3) {
+                    $("#g1").addClass("d-block");
+                    $("#g1").removeClass("d-none");
+                    $("#naziv").addClass("is-invalid");
+                    $("#g1").text("Naziv mora imati minimalno 3 karaktera!");
+                    greska = true;
+                }
+                else {
+                    $("#g1").addClass("d-none");
+                    $("#naziv").removeClass("is-invalid");
+                    $("#naziv").removeClass("invalid-feedback");
+                    $("#naziv").add("is-valid");
+                }
+
+                if (opis.length < 20) {
+                    $("#g2").addClass("d-block");
+                    $("#g2").removeClass("d-none");
+                    $("#opis").addClass("is-invalid");
+                    $("#g2").removeClass("d-none");
+                    $("#g2").text("Opis mora imati minimalno 20 karaktera!");
+                    greska = true;
+                }
+                else {
+                    $("#g2").addClass("d-none");
+                    $("#opis").removeClass("is-invalid");
+                    $("#opis").removeClass("invalid-feedback");
+                    $("#opis").add("is-valid");
+                }
+
+                if (cena <= 0) {
+                    $("#g3").addClass("d-block");
+                    $("#g3").removeClass("d-none");
+                    $("#cena").addClass("is-invalid");
+                    $("#g3").text("Cena ne sme biti negativan broj!");
+                    greska = true;
+                }
+                else {
+                    $("#g3").addClass("d-none");
+                    $("#cena").removeClass("is-invalid");
+                    $("#cena").removeClass("invalid-feedback");
+                    $("#cena").add("is-valid");
+                }
+
+                if (kolicina < 0) {
+                    $("#g4").addClass("d-block");
+                    $("#g4").removeClass("d-none");
+                    $("#kolicina").addClass("is-invalid");
+                    $("#g4").text("Količina ne sme biti negativan broj!");
+                    greska = true;
+                }
+                else {
+                    $("#g4").addClass("d-none");
+                    $("#kolicina").removeClass("is-invalid");
+                    $("#kolicina").removeClass("invalid-feedback");
+                    $("#kolicina").add("is-valid");
+                }
+
+                if (grad.length < 3) {
+                    $("#g5").addClass("d-block");
+                    $("#g5").removeClass("d-none");
+                    $("#grad").addClass("is-invalid");
+                    $("#g5").text("Grad mora imati minimalno 3 karaktera!");
+                    greska = true;
+                }
+                else {
+                    $("#g5").addClass("d-none");
+                    $("#grad").removeClass("is-invalid");
+                    $("#grad").removeClass("invalid-feedback");
+                    $("#grad").add("is-valid");
+                }
+
+                if (slika.length <= 0) {
+                    $("#g6").addClass("d-block");
+                    $("#g6").removeClass("d-none");
+                    $("#slika").addClass("is-invalid");
+                    $("#g6").text("Morate odabrati sliku proizvoda!");
+                    greska = true;
+                }
+                else {
+                    $("#g6").addClass("d-none");
+                    $("#slika").removeClass("is-invalid");
+                    $("#slika").removeClass("invalid-feedback");
+                    $("#slika").add("is-valid");
+                }
+
+                if (greska === true) return; // ne izvrsava se ajax poziv - rasterecuje se server od callbacks
+
+                // priprema slike za slanje
+                var slikaAjax = new FormData();
+                slikaAjax.append("slika", $("#slika")[0].files[0]);
+
+                // ajax poziv ka api-ju za upload slike
+                $.ajax({
+                    url: "/api/storage/OtpremanjeSlike",
+                    type: "POST",
+                    contentType: false,
+                    processData: false,
+                    data: slikaAjax,
+                    success: function (response) {
+                        if (response != null) {
+                            var msg = JSON.parse(response);
+                            if (msg.Kod === 0) // azuriranje podataka je proslo uspesno
+                            {
+                                // ajax poziv ka API-ju za kreiranje proizvoda
+                                $.ajax({
+                                    url: "/api/products/DodavanjeProizvoda",
+                                    type: "POST",
+                                    data: JSON.stringify({
+                                        Naziv: naziv,
+                                        Cena: cena,
+                                        Kolicina: kolicina,
+                                        Opis: opis,
+                                        Slika: msg.Poruka,
+                                        Grad: grad
+                                    }),
+                                    async: false,
+                                    cache: false,
+                                    dataType: "json",
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function (response) {
+                                        if (response != null) {
+                                            if (JSON.parse(response).Kod === 0)
+                                            {
+                                                window.location.href = "MojiProizvodi.html";
+                                                return false;
+                                            }
+                                        }
+                                    }
+                                });
+
+                                return false;
+                            }
+                            else {
+                                // desila se greska - prikazi je
+                                $("#divgreske").removeClass('d-none');
+                                $("#greske").text(JSON.parse(response).Poruka);
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
-
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            <a href="/" class="navbar-brand">Shopy</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li><a href="/" class="nav-link">Početna stranica</a></li>
+                    <li id="pl">
+                        <a href="Registracija.html" type="submit" id="registracija" class="btn btn-outline-light navbar-btn login-btn">Registracija</a>
+                        <a href="Prijava.html" type="submit" id="prijava" class="btn btn-outline-light navbar-btn register-btn">Prijava</a>
+                    </li>
+                    <li id="profil">
+                        <div class="btn-group profil-btn">
+                            <button type="button" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span id="poruka"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="MojProfil.html" id="mojprofil">Moj profil</a></li>
+                                <li><a class="dropdown-item" href="IzmenaLozinke.html" id="izmenalozinke">Izmena lozinke</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item text-danger" id="odjava" href="#">Odjava sa platforme</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content mt-4 mb-5">
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 mx-auto mt-4">
+                        <div class="row d-flex justify-content-center align-items-center h-100">
+                            <div class="col col-xl-10">
+                                <div class="card" style="border-radius: 1rem;">
+                                    <div class="row g-0">
+                                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                                            <img src="Images/rgbg.jpg" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                                        </div>
+                                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                                            <div class="card-body p-4 p-lg-5 text-black">
+                                                <form id="form" name="form" enctype="multipart/form-data">
+                                                    <div class="d-flex mb-3 pb-1">
+                                                        <span class="h1 fw-bold mb-0">Shopy</span>
+                                                    </div>
+                                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Dodavanje novog proizvoda</h5>
+                                                    <div id="divgreske" class="alert alert-danger d-flex align-items-center" role="alert">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-exclamation-mark" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                            <path d="M12 19v.01" />
+                                                            <path d="M12 15v-10" />
+                                                        </svg>
+                                                        <span id="greske">
+                                                        </span>
+                                                    </div>
+                                                    <div class="form-outline mb-4">
+                                                        <label class="form-label" for="naziv">Naziv proizvoda</label>
+                                                        <input type="text" id="naziv" autofocus class="form-control form-control-lg" required />
+                                                        <span id="g1" class="invalid-feedback">Molimo Vas popunite ovo polje.</span>
+                                                    </div>
+                                                    <div class="form-outline mb-4">
+                                                        <label class="form-label" for="opis">Opis proizvoda</label>
+                                                        <textarea id="opis" class="form-control" rows="5" required></textarea>
+                                                        <span id="g2" class="invalid-feedback">Molimo Vas popunite ovo polje.</span>
+                                                    </div>
+                                                    <div class="form-outline mb-4">
+                                                        <label class="form-label" for="cena">Cena proizvoda</label>
+                                                        <input type="number" min="0" max="500000" id="cena" class="form-control form-control-lg" required />
+                                                        <span id="g3" class="invalid-feedback">Molimo Vas popunite ovo polje.</span>
+                                                    </div>
+                                                    <div class="form-outline mb-4">
+                                                        <label class="form-label" for="kolicina">Količina proizvoda</label>
+                                                        <input type="number" min="0" max="100000" id="kolicina" class="form-control form-control-lg" required />
+                                                        <span id="g4" class="invalid-feedback">Molimo Vas popunite ovo polje.</span>
+                                                    </div>
+                                                    <div class="form-outline mb-4">
+                                                        <label class="form-label" for="grad">Grad</label>
+                                                        <input type="text" id="grad" maxlength="20" class="form-control form-control-lg" required />
+                                                        <span id="g5" class="invalid-feedback">Molimo Vas popunite ovo polje.</span>
+                                                    </div>
+                                                    <div class="form-outline mb-4">
+                                                        <label class="form-label" for="slika">Slika proizvoda</label>
+                                                        <input type="file" accept="image/*" class="form-control" id="slika" required />
+                                                        <span id="g6" class="invalid-feedback">Molimo Vas popunite ovo polje.</span>
+                                                    </div>
+                                                    <div class="form-outline mb-4">
+                                                        <label class="form-label" for="pregled">Pregled slike proizvoda</label>
+                                                        <br />
+                                                        <img id="pregled" src="/Images/productplc.jpg" width="80" height="80" class="img-fluid" />
+                                                    </div>
+                                                    <p class="my-3 pb-lg-2 fw-bold text-dark">
+                                                        Dodavanjem novog proizvoda, saglasni ste da on postane javno vidljiv na platformi Shopy.
+                                                    </p>
+                                                    <div class="pt-1 mb-4">
+                                                        <button class="btn btn-dark btn-lg btn-block" id="dodajbtn" type="button">Dodavanje proizvoda</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 </body>
 </html>

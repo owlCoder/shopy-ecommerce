@@ -270,5 +270,18 @@ namespace Online_Shop.Storage
         {
             return GetSviProizvodi().FindAll(p => p.Status == true);
         }
+
+        public static Proizvod GetProizvodPoId(string id)
+        {
+            if(!int.TryParse(id, out int idp))
+            {
+                return new Proizvod();
+            }
+            else
+            {
+                // proizvod sa trazenim id i da nije obrisan
+                return Proizvodi.Find(p => p.IsDeleted == false && p.Id == idp);
+            }
+        }
     }
 }

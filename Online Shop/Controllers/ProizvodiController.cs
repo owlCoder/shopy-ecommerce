@@ -125,5 +125,13 @@ namespace Online_Shop.Controllers
                 return JsonConvert.SerializeObject(new Response { Kod = 13, Poruka = "Proizvod nije moguće uspešno obrisati iz liste svih proizvoda. Proverite da li je proizvod na stanju!"});
             }
         }
+
+        // Metoda za pribvljanje informacija o proizvodu za izmenu
+        [HttpPost]
+        [Route("ProizvodPoId")]
+        public string GetProizvodById(SingleIdRequest zahtev)
+        {
+            return JsonConvert.SerializeObject(ProizvodiStorage.GetProizvodPoId(zahtev.Id));
+        }
     }
 }
