@@ -66,6 +66,8 @@
 
                         // Prikazi samo dugmice vezane za korisnika koji ima datu ulogu
                         uloga = data.Uloga;
+                        
+                        
                     });
                 }
                 else {
@@ -82,12 +84,21 @@
 
         // Odjava korisnika
         jQuery(function () {
+            $("#kupmsg").addClass("d-none");
             // id iz url
             let searchParams = new URLSearchParams(window.location.search)
 
             if (!searchParams.has('id')) {
                 window.location.href = "Index.html?msg=Proizvod više nije dostupan na platformi!";
                 return false;
+            }
+
+            // samo kupci mogu porucivati i dodavati u omiljene
+            if (uloga !== 0) {
+                $("#porucibtn").addClass("disabled");
+                $("input").attr("disabled", true);
+                $("#kupmsg").removeClass("d-none");
+                $("#omiljenbtn").addClass("d-none");
             }
 
             Id = searchParams.get('id');
@@ -245,9 +256,9 @@
                     <div class="d-flex pt-4">
                         <input class="form-control text-center me-3 border-2 border-secondary-subtle fs-5" id="kolicina" type="number" value="1" min="1" style="max-width: 4rem" />
                         <button class="btn btn-outline-dark flex-shrink-0 btn-lg" type="button" id="porucibtn"> 🛒 Poručite proizvod</button>&emsp;
-                        <button class="btn btn-outline-danger flex-shrink-0 btn-lg" type="button" id="omiljenBtn">🤍</button>
+                        <button class="btn btn-outline-danger flex-shrink-0 btn-lg" type="button" id="omiljenbtn">🤍</button>
+                        <p class="text-danger" id="kupmsg">Samo kupci mogu poručiti proizvod.</p>
                     </div>
-                </div>
             </div>
         </div>
     </section>
