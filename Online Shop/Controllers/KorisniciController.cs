@@ -2,8 +2,10 @@
 using Online_Shop.Models;
 using Online_Shop.Storage;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web;
 using System.Web.Http;
 
 namespace Online_Shop.Controllers
@@ -171,6 +173,40 @@ namespace Online_Shop.Controllers
         public string SortirajKorisnike(SingleIdRequest id)
         {
             return JsonConvert.SerializeObject(KorisniciStorage.GetSorterd(id.Id));
+        }
+
+        // Metoda koja provera da li se proizvod nalazi u listi omiljenih proizvoda za trenutnog korisnika
+        [HttpPost]
+        [Route("OmiljeniProizvod")]
+        public string IsOmiljen(SingleIdRequest zahtev)
+        {
+            int id = -1;
+            if(ModelState.IsValid || int.TryParse(zahtev.Id, out id))
+            {
+                // da li je trenutni korisnik kupac
+                Korisnik korisnik = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+                if (korisnik != null && korisnik.Uloga == ULOGA.Kupac)
+                {
+                    bool postoji = KorisniciStorage.ProveriOmiljenProizvod(id);
+
+                    if(postoji)
+                    {
+                        return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
+                    }
+                    else
+                    {
+                        return JsonConvert.SerializeObject(new Response { Kod = 15, Poruka = "Nevalidan zahtev!" });
+                    }
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(new Response { Kod = 17, Poruka = "Nevalidan zahtev!" });
+                }
+            }
+            else
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 16, Poruka = "Nevalidan zahtev!" });
+            }
         }
     }
 }

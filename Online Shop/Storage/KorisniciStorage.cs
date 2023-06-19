@@ -61,6 +61,13 @@ namespace Online_Shop.Storage
             return (pronadjen != null && !pronadjen.IsDeleted);
         }
 
+        // Metoda koja proverava da li se proizvod nalazi u listi omiljenih proizvoda
+        public static bool ProveriOmiljenProizvod(int id)
+        {
+            // da li se proizvod nalazi u listi omiljenih proizvoda za korisnika u sesiji
+            return ((Korisnik)HttpContext.Current.Session["korisnik"]).OmiljenjiProizvodi.FirstOrDefault(p => p.Id == id) != null;
+        }
+
         // Metoda koja vraca trazenog korisnika
         public static Korisnik KorisnikPoId(string username)
         {

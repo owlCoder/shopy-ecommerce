@@ -82,7 +82,6 @@
             }
         });
 
-        // Odjava korisnika
         jQuery(function () {
             $("#kupmsg").addClass("d-none");
             $("#nema").addClass("d-none");
@@ -134,6 +133,34 @@
                     $("#cena").text(data.Cena + " RSD");
                     $("#opis").text(data.Opis);
                     $("#slika").attr('src', "/Uploads/" + data.Slika);
+                }
+            });
+
+            // proveriti da li je proizvod vec dodat u omiljene proizvode
+            $.ajax({
+                url: "/api/users/OmiljeniProizvod",
+                type: "POST",
+                data: JSON.stringify({
+                    Id: Id
+                }),
+                async: false,
+                cache: false,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    var data = JSON.parse(response);
+                    if (data.Poruka === "OK") {
+                        // nalazi se u omiljenim
+                        $(function () {
+                            $("#omiljenbtn").addClass('d-none'); // sakriti dugme za dodavanje u omiljenje
+                        });
+                    }
+                    else {
+                        $(function () {
+                            // nije jos uvek u omiljenim proizvodima
+                            $("#omiljenovec").addClass('d-none'); // sakriti dugme vec u omiljenim
+                        });
+                    }
                 }
             });
 
@@ -206,10 +233,16 @@
                 });
             });
 
-            // cuvanje izmena
+            // kreiranje porudzbine
             $("#narucibtn").on('click', function () {
                 // ajax poziv ka api-ju za vrsenje porudzbine
                 
+            });
+
+            // dodavanje u omiljene
+            $("#omiljenbtn").on('click', function () {
+                // ajax poziv ka api-ju za dodavanje u omiljenje proizvode
+
             });
         });
     </script>
@@ -250,9 +283,18 @@
     </nav>
     <section class="pt-0">
         <div class="container px-4 pt-lg-5 mt-0">
+            <div id="divgreske" class="alert alert-dark d-flex align-items-center mb-3 mt-5" role="alert">
+                <svg height="25" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                </svg>
+                <span>&emsp;</span>
+                <span id="greske"></span>
+            </div>
+            <br />
             <div class="row gx-4 gx-lg-5 align-items-center">
                 <div class="col-md-6">
-                <img class="w-75 h-75 card-img-top mb-5 mb-md-0" src="" id="slika" alt="proizvod" /></div>
+                    <img class="w-75 h-75 card-img-top mb-5 mb-md-0" src="" id="slika" alt="proizvod" />
+                </div>
                 <div class="col-md-6">
                     <h5 class="mb-1 text-success" id="grad"></h5>
                     <h1 class="display-5 fw-bolder" id="naslov"></h1>
@@ -264,6 +306,7 @@
                         <input class="form-control text-center me-3 border-2 border-secondary-subtle fs-5" id="kolicina" type="number" value="1" min="1" style="max-width: 4rem" />
                         <button class="btn btn-outline-dark flex-shrink-0 btn-lg" type="button" id="porucibtn"> 🛒 Poručite proizvod</button>&emsp;
                         <button class="btn btn-outline-danger flex-shrink-0 btn-lg" type="button" id="omiljenbtn">🤍</button>
+                        <button class="btn btn-outline-danger flex-shrink-0 btn-lg disabled" type="button" id="omiljenovec">🤍 Omiljen</button>
                     </div>
                     <p class="text-danger align-items-center pt-2" id="kupmsg">Samo kupci sa aktivnim nalogom na platformi mogu poručiti proizvod.</p>
                 </div>
