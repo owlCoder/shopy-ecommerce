@@ -124,20 +124,30 @@
                             //    kupac_dodaj_naruci = '<a href="#" class="btn btn-outline-danger disabled">Proizvod nije dostupan</a>';
 
                             var status = "";
+                            var akcijaPrispeca = "";
+                            var ostaviRecenziju = "";
 
                             if (k.Status === 0) {
                                 // aktivna
-                                status = '<span class="h5 card-title text-primary fw-semibold justify-content-end">AKTIVNA</span>'
+                                status = '<span class="h5 card-title text-primary fw-semibold justify-content-end">AKTIVNA</span>';
+
+                                // aktivne mogu preci u izvrsene
+                                akcijaPrispeca = '<a href="OznaciPrispece.html?id=' + k.Id + '" class="btn btn-dark">Označite kao prispelu</a>';
+                                ostaviRecenziju = '<a href="#" class="btn btn-outline-primary disabled">Čeka se prispeće porudžbine...</a>';
                             }
                             else if (k.Status === 1) {
                                 // izvrsena
-                                status = '<span class="h5 card-title text-success fw-semibold justify-content-end">IZVRŠENA</span>'
+                                status = '<span class="h5 card-title text-success fw-semibold justify-content-end">IZVRŠENA</span>';
+                                akcijaPrispeca = '<a href="#" class="btn btn-outline-dark disabled">Porudžbina obrađena</a>';
+                                ostaviRecenziju = '<a href="OstaviRecenziju.html?id=' + k.Id + '" class="btn btn-outline-primary">Ostavite recenziju</a>';
                             }
                             else {
                                 // otkazana
-                                status = '<span class="h5 card-title text-danger fw-semibold justify-content-end">OTKAZANA</span>'
+                                status = '<span class="h5 card-title text-danger fw-semibold justify-content-end">OTKAZANA</span>';
+                                akcijaPrispeca = '<a href="#" class="btn btn-outline-danger disabled">Porudžbina otkazana</a>';
+                                ostaviRecenziju = '<a href="#" class="btn btn-outline-danger disabled">Ostavljanje recenzije nije moguće</a>';
                             }
-                            
+
                             $("#proizvodi").append(
                                 '<div class="card mb-4 border-success">' +
                                 '<div class="card-body">' +
@@ -152,7 +162,7 @@
                                 '</div>' +
                                 '<h6 class="card-subtitle mb-2 text-muted">Ukupno: ' + (parseFloat(k.Proizvod.Cena) * parseFloat(k.Kolicina)) + ' RSD</h6>' +
                                 '<p class="card-text">' + k.Kolicina + '</p>' +
-                                kupac_dodaj_naruci +
+                                kupac_dodaj_naruci + akcijaPrispeca + "&emsp;" + ostaviRecenziju +
                                 '</div>' +
                                 '</div>' +
                                 '</div>' +
