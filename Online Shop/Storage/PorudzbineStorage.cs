@@ -3,6 +3,7 @@ using Online_Shop.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Hosting;
 
 namespace Online_Shop.Storage
@@ -55,9 +56,16 @@ namespace Online_Shop.Storage
         }
 
         // Metoda koja vraca trazeni proizvod po Id
-        public Porudzbina GetPorudzbinaById(int id)
+        public static Porudzbina GetPorudzbinaById(int id)
         {
             return Porudzbine.FirstOrDefault(p => p.Id == id);
+        }
+
+        // Metoda koja vraca listu svih porudzbina koje nisu obrisane i pripadaju kupcu
+        public static List<Porudzbina> PorudzbineKupac()
+        {
+            string korisnickoIme = ((Korisnik)HttpContext.Current.Session["korisnik"]).KorisnickoIme;
+            return Porudzbine.FindAll(p => p.Kupac.Equals(korisnickoIme));
         }
     }
 }

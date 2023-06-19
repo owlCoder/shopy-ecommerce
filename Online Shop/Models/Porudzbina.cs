@@ -8,7 +8,7 @@ namespace Online_Shop.Models
         public int Id { get; set; }
         public Proizvod Proizvod { get; set; }
         public double Kolicina { get; set; }
-        public Korisnik Kupac { get; set; }
+        public string Kupac { get; set; }
         public DateTime DatumPorudzbine { get; set; }
         public STATUS Status { get; set; }
         public bool IsDeleted { get; set; }
@@ -19,7 +19,7 @@ namespace Online_Shop.Models
         }
 
         // Konstruktor za json serijalizator
-        public Porudzbina(int id, Proizvod proizvod, double kolicina, Korisnik kupac, DateTime datumPorudzbine, STATUS status, bool isDeleted)
+        public Porudzbina(int id, Proizvod proizvod, double kolicina, string kupac, DateTime datumPorudzbine, STATUS status, bool isDeleted)
         {
             Id = id;
             Proizvod = proizvod;
@@ -31,7 +31,7 @@ namespace Online_Shop.Models
         }
 
         // Konstruktor za kreiranje nove porudzbine
-        public Porudzbina(Proizvod proizvod, double kolicina, Korisnik kupac)
+        public Porudzbina(Proizvod proizvod, double kolicina, string kupac)
         {
             Id = PorudzbineStorage.Porudzbine.Count + 1;
             Proizvod = proizvod;

@@ -25,7 +25,7 @@ namespace Online_Shop.Controllers
                 // proveriti da li je trenutni korisnik kupac
                 Korisnik korisnik = ((Korisnik)HttpContext.Current.Session["korisnik"]);
 
-                if(korisnik == null && korisnik.Uloga == ULOGA.Kupac)
+                if(korisnik == null || korisnik.Uloga != ULOGA.Kupac)
                 {
                     JsonConvert.SerializeObject(new Response { Kod = 21, Poruka = "Potrebno je da se ponovo prijavite kako bi izvršili porudžbinu!!" });
                 }
@@ -40,17 +40,16 @@ namespace Online_Shop.Controllers
                     }
                     else
                     {
-                        if(proizvod.Kolicina < order.Kolicina)
+                        if (proizvod.Kolicina < order.Kolicina)
                         {
                             // da li korisnik narucuje vise nego sto trenutno ima na stanju
                             return JsonConvert.SerializeObject(new Response { Kod = 42, Poruka = "Nažalost, količina proizvoda koju želite više nije dostupna. Smanjite količinu i pokušajte ponovo." });
                         }
                         else
                         {
-                            Porudzbina nova = new Porudzbina(proizvod, order.Kolicina, korisnik);
+                            Porudzbina nova = new Porudzbina(proizvod, order.Kolicina, korisnik.KorisnickoIme);
                             Proizvod pr = new Proizvod(proizvod.Id, proizvod.Naziv, proizvod.Cena, proizvod.Kolicina - order.Kolicina, proizvod.Opis, proizvod.Slika, proizvod.DatumPostavljanjaProizvoda, proizvod.Grad, proizvod.Recenzija, proizvod.Status, proizvod.IsDeleted);
-                            Korisnik novi = new Korisnik(korisnik.KorisnickoIme, korisnik.Lozinka, korisnik.Ime, korisnik.Prezime, korisnik.Pol, korisnik.Email, korisnik.DatumRodjenja, korisnik.Uloga, korisnik.Porudzbine, korisnik.OmiljenjiProizvodi, korisnik.ObjavljeniProizvodi, korisnik.IsDeleted, korisnik.IsLoggedIn);
-                            Porudzbina novaK = new Porudzbina(pr, order.Kolicina, novi);
+                            Porudzbina novaK = new Porudzbina(pr, order.Kolicina, korisnik.KorisnickoIme);
 
                             // pokusaj smanjenja stanja kolicine proizvoda
                             if(ProizvodiStorage.AzuriranjeProizvoda(proizvod.Id.ToString(), proizvod.Naziv, proizvod.Cena, proizvod.Kolicina - order.Kolicina, proizvod.Opis, proizvod.Slika, proizvod.Grad))
@@ -77,6 +76,25 @@ namespace Online_Shop.Controllers
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 20, Poruka = "Nije moguće izvršiti kreiranje porudžbine!" });
             }
+        }
+
+        // Metoda koja izlistava sve porudzbine koje je napravio trenutni kupac
+        [HttpGet]
+        [Route("MojePorudzbine")]
+        public string PorudzbineKupac()
+        {
+            // proveriti da li je trenutni korisnik kupac
+            Korisnik korisnik = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+
+            if (korisnik == null || korisnik.Uloga != ULOGA.Kupac)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 21, Poruka = "Potrebno je da se ponovo prijavite kako bi videli svoje porudžbine!!" });
+            }
+            else
+            {
+                return JsonConvert.SerializeObject(PorudzbineStorage.PorudzbineKupac(), new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore});
+            }
+
         }
     }
 }

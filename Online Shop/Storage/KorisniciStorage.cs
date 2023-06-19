@@ -164,7 +164,7 @@ namespace Online_Shop.Storage
 
                     // sve porudzbine vezane za kupca se sada trebaju obrisati
                     // ako su AKTIVNE onda se kolicina iz proizvoda iz te porudzbine vraca na stanje liste SVIH proizvoda
-                    List<Porudzbina> porudzbine = PorudzbineStorage.Porudzbine.FindAll(p => p.Kupac.KorisnickoIme.Equals(id) && p.IsDeleted == false);
+                    List<Porudzbina> porudzbine = PorudzbineStorage.Porudzbine.FindAll(p => p.Kupac.Equals(id) && p.IsDeleted == false);
 
                     foreach (Porudzbina porudzbina in porudzbine)
                     {
