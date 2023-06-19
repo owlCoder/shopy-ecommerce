@@ -361,5 +361,11 @@ namespace Online_Shop.Storage
 
             return sortirani;
         }
+        
+        // Metoda koja vraca listu omiljenih proizvoda za kupca
+        public static List<Proizvod> ListaOmiljenihProizvoda()
+        {
+            return ((Korisnik)HttpContext.Current.Session["korisnik"]).OmiljenjiProizvodi.FindAll(p => p.IsDeleted == false);
+        }
     }
 }

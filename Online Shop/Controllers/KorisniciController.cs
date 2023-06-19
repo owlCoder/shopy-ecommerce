@@ -241,5 +241,29 @@ namespace Online_Shop.Controllers
                 return JsonConvert.SerializeObject(new Response { Kod = 16, Poruka = "Nevalidan zahtev!" });
             }
         }
+
+        // Metoda koja vraca listu omiljenih proizvoda za kupca
+        [HttpGet]
+        [Route("OmiljeniProizvodiPoKorisniku")]
+        public string GetOmiljeniProizvodiKorisnik()
+        {
+            if (ModelState.IsValid)
+            {
+                // da li je trenutni korisnik kupac
+                Korisnik korisnik = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+                if (korisnik != null && korisnik.Uloga == ULOGA.Kupac)
+                {
+                    return JsonConvert.SerializeObject(KorisniciStorage.ListaOmiljenihProizvoda());   
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(new Response { Kod = 17, Poruka = "Nevalidan zahtev!" });
+                }
+            }
+            else
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 16, Poruka = "Nevalidan zahtev!" });
+            }
+        }
     }
 }
