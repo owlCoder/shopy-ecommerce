@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Hosting;
+using System.Web.UI;
 
 namespace Online_Shop.Storage
 {
@@ -66,6 +67,27 @@ namespace Online_Shop.Storage
         {
             // da li se proizvod nalazi u listi omiljenih proizvoda za korisnika u sesiji
             return ((Korisnik)HttpContext.Current.Session["korisnik"]).OmiljenjiProizvodi.FirstOrDefault(p => p.Id == id) != null;
+        }
+
+        public static bool DodajUOmiljene(int pid)
+        {
+            if(((Korisnik)HttpContext.Current.Session["korisnik"]).OmiljenjiProizvodi.FirstOrDefault(p => p.Id == pid) != null)
+            {
+                // vec se nalazi u omiljenim proizvodima
+                return false;
+            }
+
+            Proizvod proizvod = ProizvodiStorage.Proizvodi.FirstOrDefault(p => p.Id == pid);
+            if(proizvod != null)
+            {
+                ((Korisnik)HttpContext.Current.Session["korisnik"]).OmiljenjiProizvodi.Add(proizvod);
+                AzurirajKorisnikeUBazi();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         // Metoda koja vraca trazenog korisnika

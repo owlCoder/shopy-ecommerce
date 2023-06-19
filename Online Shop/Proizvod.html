@@ -242,6 +242,36 @@
             // dodavanje u omiljene
             $("#omiljenbtn").on('click', function () {
                 // ajax poziv ka api-ju za dodavanje u omiljenje proizvode
+                // Id je trenutni id proizvoda koji se dodaje u omiljene
+                $.ajax({
+                    url: "/api/users/DodajOmiljeniProizvod",
+                    type: "POST",
+                    data: JSON.stringify({
+                        Id: Id
+                    }),
+                    async: false,
+                    cache: false,
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        var data = JSON.parse(response);
+                        if (data.Poruka === "OK") {
+                            // nalazi se u omiljenim
+                            $(function () {
+                                $("#omiljenbtn").addClass('d-none'); // sakriti dugme za dodavanje u omiljenje
+                                $("#omiljenovec").removeClass('d-none'); 
+                                $("#divgreske").removeClass('d-none');
+                                $("#greske").text("Proizvod je dodat u omiljene proizvode!");
+                            });
+                        }
+                        else {
+                            $(function () {
+                                // nije jos uvek u omiljenim proizvodima
+                                $("#omiljenovec").addClass('d-none'); // sakriti dugme vec u omiljenim
+                            });
+                        }
+                    }
+                });
 
             });
         });

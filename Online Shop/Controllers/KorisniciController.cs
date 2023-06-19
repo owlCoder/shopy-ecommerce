@@ -181,7 +181,7 @@ namespace Online_Shop.Controllers
         public string IsOmiljen(SingleIdRequest zahtev)
         {
             int id = -1;
-            if(ModelState.IsValid || int.TryParse(zahtev.Id, out id))
+            if(ModelState.IsValid && int.TryParse(zahtev.Id, out id))
             {
                 // da li je trenutni korisnik kupac
                 Korisnik korisnik = ((Korisnik)HttpContext.Current.Session["korisnik"]);
@@ -190,6 +190,39 @@ namespace Online_Shop.Controllers
                     bool postoji = KorisniciStorage.ProveriOmiljenProizvod(id);
 
                     if(postoji)
+                    {
+                        return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
+                    }
+                    else
+                    {
+                        return JsonConvert.SerializeObject(new Response { Kod = 15, Poruka = "Nevalidan zahtev!" });
+                    }
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(new Response { Kod = 17, Poruka = "Nevalidan zahtev!" });
+                }
+            }
+            else
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 16, Poruka = "Nevalidan zahtev!" });
+            }
+        }
+
+        [HttpPost]
+        [Route("DodajOmiljeniProizvod")]
+        public string DodavanjeUOmiljene(SingleIdRequest zahtev)
+        {
+            int id = -1;
+            if (ModelState.IsValid && int.TryParse(zahtev.Id, out id))
+            {
+                // da li je trenutni korisnik kupac
+                Korisnik korisnik = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+                if (korisnik != null && korisnik.Uloga == ULOGA.Kupac)
+                {
+                    bool postoji = KorisniciStorage.DodajUOmiljene(id);
+
+                    if (postoji)
                     {
                         return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
                     }
