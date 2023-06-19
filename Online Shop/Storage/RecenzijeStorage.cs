@@ -59,5 +59,31 @@ namespace Online_Shop.Storage
         {
             return Recenzije.FirstOrDefault(p => p.Id == id);
         }
+
+        // Metoda koja vraca recenzije od datog korisnika
+        public static List<Recenzija> RecenzijePoProizvodu(int proizvod_id)
+        {
+            // vracaju se samo ne obrisane, odobrene recenzije i za dati proizvod
+            // return Recenzije.FindAll(p => p.IsDeleted == false && p.Odobrena == true && p.Proizvod.Id == proizvod_id);
+            // proizvod u sebi ima listu recenzija - brza pretraga nego lista svih recenzije
+            Proizvod trazeni = ProizvodiStorage.Proizvodi.FirstOrDefault(p => p.Id == proizvod_id);
+
+            if(trazeni == null)
+            {
+                return new List<Recenzija>();
+            }
+            else
+            {
+                // sve recenzije koje su odobrene i nisu obrisane
+                return trazeni.Recenzija.FindAll(p => p.IsDeleted == false && p.Odobrena == true);
+            }
+        }
+
+        // Metoda koja vraca sve recenzije za dato korisnicko ime
+        public static List<Recenzija> RecenzijePoKorisniku(string korisnickoIme)
+        {
+            // vracaju se samo ne obrisane, sve recenzije i od datog korisnika
+            return Recenzije.FindAll(p => p.IsDeleted == false && p.Recenzent.KorisnickoIme.Equals(korisnickoIme));
+        }
     }
 }
