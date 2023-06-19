@@ -242,10 +242,11 @@
             </div>
         </div>
     </nav>
-    <section class="py-5">
-        <div class="container px-4 px-lg-5 mt-5">
+    <section class="pt-5">
+        <div class="container px-4 pt-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
-                <div class="col-md-6"><img class="w-75 h-75 card-img-top mb-5 mb-md-0" src="" id="slika" alt="proizvod" /></div>
+                <div class="col-md-6">
+                <img class="w-75 h-75 card-img-top mb-5 mb-md-0" src="" id="slika" alt="proizvod" /></div>
                 <div class="col-md-6">
                     <h5 class="mb-1 text-success" id="grad"></h5>
                     <h1 class="display-5 fw-bolder" id="naslov"></h1>
@@ -253,12 +254,60 @@
                         <span class="text-decoration" id="cena"></span>
                     </div>
                     <p class="lead text-wrap text-break" id="opis"></p>
-                    <div class="d-flex pt-4">
+                    <div class="d-flex pt-4 align-items-center">
                         <input class="form-control text-center me-3 border-2 border-secondary-subtle fs-5" id="kolicina" type="number" value="1" min="1" style="max-width: 4rem" />
                         <button class="btn btn-outline-dark flex-shrink-0 btn-lg" type="button" id="porucibtn"> 🛒 Poručite proizvod</button>&emsp;
                         <button class="btn btn-outline-danger flex-shrink-0 btn-lg" type="button" id="omiljenbtn">🤍</button>
-                        <p class="text-danger" id="kupmsg">Samo kupci mogu poručiti proizvod.</p>
                     </div>
+                    <p class="text-danger align-items-center pt-2" id="kupmsg">Samo kupci sa aktivnim nalogom na platformi mogu poručiti proizvod.</p>
+                </div>
+            </div>
+    </section>
+    <section class="px-4 p-md-5 text-center text-lg-start border-0">
+        <div class="row d-flex justify-content-center">
+
+            <!-- Naslov pocetka recenzija -->
+            <div class="col-md-10">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h1 class="fw-semibold mb-4">Recenzije proizvoda</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ucitane recenzije za dati proizvod -->
+            <div class="col-md-10 text-start" style="margin-top: -20px !important;" id="nema">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h4>Trenutno nema recenzija za proizvod. Dođite kasnije!</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-10 pt-4">
+                <div class="card">
+                    <div class="card-body m-3">
+                        <div class="row">
+                            <div class="col-lg-4 d-flex justify-content-center align-items-center mb-4 mb-lg-0">
+                                <img src="/Images/rgbg.jpg" class=" shadow-1 rounded-5" alt="sliak recenzije" width="150" height="150" />
+                            </div>
+                            <div class="col-lg-8">
+                                <h4>naslovo</h4>
+                                <p class="text-muted fw-light mb-4">sadrzaj</p>
+                                <p class="fw-bold lead mb-1" id="imeprezime"><strong>kupac ime prez</strong></p>
+                                <p class="fw-bold text-muted mb-0">Shopy Kupac</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
