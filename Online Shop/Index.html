@@ -132,6 +132,15 @@
 
         // Odjava korisnika
         jQuery(function () {
+            let searchParams = new URLSearchParams(window.location.search)
+
+            if (searchParams.has('msg')) {
+                $("#divgreske").removeClass('d-none');
+                $("#greske").text(searchParams.get('msg'));
+                return false;
+            }
+
+
             $("#divgreske").addClass('d-none');
 
             $("#odjava").on('click', function () {

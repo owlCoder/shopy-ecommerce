@@ -197,5 +197,13 @@ namespace Online_Shop.Controllers
         {
             return JsonConvert.SerializeObject(ProizvodiStorage.GetProizvodPoId(zahtev.Id));
         }
+
+        // Metoda za pribvljanje informacija o proizvodu za prikaz na Proizvod stranici
+        [HttpPost]
+        [Route("DostupanProizvodPoId")]
+        public string GetProizvodByIdDostupan(SingleIdRequest zahtev)
+        {
+            return JsonConvert.SerializeObject(ProizvodiStorage.GetProizvodPoIdDostupan(zahtev.Id));
+        }
     }
 }

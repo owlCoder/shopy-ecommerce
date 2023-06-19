@@ -308,6 +308,29 @@ namespace Online_Shop.Storage
             }
         }
 
+        // Metoda koja vraca dostupan proizvod
+        public static Proizvod GetProizvodPoIdDostupan(string id)
+        {
+            if (!int.TryParse(id, out int idp))
+            {
+                return new Proizvod() { Id = 0 }; // ne postoji proizvod
+            }
+            else
+            {
+                // proizvod sa trazenim id i da nije obrisan
+                Proizvod proizvod = Proizvodi.Find(p => p.IsDeleted == false && p.Id == idp && p.Status == true);
+
+                if (proizvod == null)
+                {
+                    return new Proizvod() { Id = 0 }; // ne postoji proizvod
+                }
+                else
+                {
+                    return proizvod;
+                }
+            }
+        }
+
         // Metoda za azuriranje proizvoda
         public static bool AzuriranjeProizvoda(string id_str, string naziv, double cena, double kolicina, string opis, string slika, string grad)
         {

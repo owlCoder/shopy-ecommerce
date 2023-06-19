@@ -1,0 +1,343 @@
+﻿<!DOCTYPE html>
+<html data-bs-theme="light">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Pregled Proizvoda - Shopy</title>
+    <link rel="stylesheet" href="Content/bootstrap.min.css">
+    <script src="Scripts/jquery-3.7.0.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
+    <script src="Scripts/modernizr-2.8.3.js"></script>
+    <style>
+        .navbar .login-btn {
+            position: absolute;
+            top: 7px;
+            right: 95px;
+        }
+
+        .navbar .profil-btn {
+            position: absolute;
+            top: 10px;
+            right: 35px;
+        }
+
+        @media (max-width: 767px) {
+            .navbar .login-btn {
+                right: 75px;
+            }
+        }
+
+        .navbar .register-btn {
+            position: absolute;
+            top: 7px;
+            right: 15px;
+        }
+
+        @media (max-width: 767px) {
+            .navbar .register-btn {
+                right: 175px;
+            }
+        }
+    </style>
+    <script>
+        var uloga = -1;
+        var Id = "";
+        var maxQuantity = 0;
+
+        // ako je ulogovan, prebaci prikazi meni u zavisnoti od uloge
+        $.ajax({
+            url: "/api/auth/AuthKorisnik",
+            type: "GET",
+            async: false,
+            cache: false,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                var data = JSON.parse(response);
+                if (data.KorisnickoIme !== "") {
+                    // prikazi podatke i promeni meni
+                    // sakri dugmice za login i register
+                    $(function () {
+                        $("#pl").remove();
+
+                        // prikazi meni za nalog
+                        $('#poruka').text("Dobrodošli nazad, " + data.KorisnickoIme);
+
+                        // Prikazi samo dugmice vezane za korisnika koji ima datu ulogu
+                        uloga = data.Uloga;
+                    });
+                }
+                else {
+                    $(function () {
+                        // korisnik nije ulogovan - prikazi login i register
+                        $("#pl").show();
+
+                        // sakri meni za nalog
+                        $('#profil').addClass('d-none');
+                    });
+                }
+            }
+        });
+
+        // Odjava korisnika
+        jQuery(function () {
+            // id iz url
+            let searchParams = new URLSearchParams(window.location.search)
+
+            if (!searchParams.has('id')) {
+                window.location.href = "Index.html?msg=Proizvod više nije dostupan na platformi!";
+                return false;
+            }
+
+            Id = searchParams.get('id');
+
+            // obrisi korisnika po id
+            $.ajax({
+                url: "/api/products/DostupanProizvodPoId",
+                type: "POST",
+                data: JSON.stringify({
+                    id: Id
+                }),
+                async: false,
+                cache: false,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    // ako je proizvod obrisan u medjuvremenu)
+                    var data = JSON.parse(response);
+
+                    // ako je proizvod postao nedostupan u medjuvremenu
+                    if (data.Id === 0) {
+                        window.location.href = "Index.html?msg=Proizvod više nije dostupan na platformi!";
+                        return false;
+                    }
+
+                    // ispis podataka o proizvodu
+                    maxQuantity = data.Kolicina;
+                }
+            });
+
+            // limitiranje unosa kolicine
+            $('input').on('input', function () {
+                var value = $(this).val();
+                if ((value !== '') && (value.indexOf('.') === -1)) {
+                    $(this).val(Math.max(Math.min(value, maxQuantity), -90));
+                }
+            });
+
+            // inicijalno nema poruka o greskama
+            $("#divgreske").addClass('d-none');
+
+            $("#odjava").on('click', function () {
+                // ajax poziv ka api-ju za vrsenje registracije
+                $.ajax({
+                    url: "/api/auth/Odjava",
+                    type: "POST",
+                    data: {},
+                    async: false,
+                    cache: false,
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        if (response != null) {
+                            if (JSON.parse(response).Kod === 0) // korisnik se odjavio uspesno
+                            {
+                                window.location.href = "Index.html";
+                                return false;
+                            }
+                        }
+                    }
+                });
+            });
+
+            // cuvanje izmena
+            $("#azurirajbtn").on('click', function () {
+                var korisnickoIme = $("#korisnickoime").val();
+                var ime = $("#ime").val();
+                var prezime = $("#prezime").val();
+                var pol = $("#pol").val();
+                var email = $("#email").val();
+                var datumRodjenja = $("#datumrodjenja").val();
+
+                var greska = false;
+
+                // provera unosa na klijentu
+                if (korisnickoIme.length < 6) {
+                    $("#g1").addClass("d-block");
+                    $("#g1").removeClass("d-none");
+                    $("#korisnickoime").addClass("is-invalid");
+                    $("#g1").text("Korisničko ime mora imati minimalno 6 karaktera!");
+                    greska = true;
+                }
+                else {
+                    $("#g1").addClass("d-none");
+                    $("#korisnickoime").removeClass("is-invalid");
+                    $("#korisnickoime").removeClass("invalid-feedback");
+                    $("#korisnickoime").add("is-valid");
+                }
+
+                if (ime.length < 3) {
+                    $("#g3").addClass("d-block");
+                    $("#g3").removeClass("d-none");
+                    $("#ime").addClass("is-invalid");
+                    $("#g3").removeClass("d-none");
+                    $("#g3").text("Ime mora imati minimalno 3 karaktera!");
+                    greska = true;
+                }
+                else {
+                    $("#g3").addClass("d-none");
+                    $("#ime").removeClass("is-invalid");
+                    $("#ime").removeClass("invalid-feedback");
+                    $("#ime").add("is-valid");
+                }
+
+                if (prezime.length < 6) {
+                    $("#g4").addClass("d-block");
+                    $("#g4").removeClass("d-none");
+                    $("#prezime").addClass("is-invalid");
+                    $("#g4").text("Prezime mora imati minimalno 6 karaktera!");
+                    greska = true;
+                }
+                else {
+                    $("#g4").addClass("d-none");
+                    $("#prezime").removeClass("is-invalid");
+                    $("#prezime").removeClass("invalid-feedback");
+                    $("#prezime").add("is-valid");
+                }
+
+                var regexEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+                if (regexEmail.test(email) === false) {
+                    $("#g5").addClass("d-block");
+                    $("#g5").removeClass("d-none");
+                    $("#email").addClass("is-invalid");
+                    $("#g5").removeClass("d-none");
+                    $("#g5").text("Email nije unet u validnom formatu!");
+                    greska = true;
+                }
+                else {
+                    $("#g5").addClass("d-none");
+                    $("#email").removeClass("is-invalid");
+                    $("#email").removeClass("invalid-feedback");
+                    $("#email").add("is-valid");
+                }
+
+                var minDate = Date.parse("1970-01-01");
+                var maxDate = Date.parse("2020-01-01");
+                if (datumRodjenja === "") // datum se nije promenio
+                    datumRodjenja = STARI_DATUM;
+
+                var datum = Date.parse(datumRodjenja.split(".").reverse().join("-"));
+                datumRodjenja = Date.parse(datumRodjenja.split(".").reverse().join("-"));
+                datumRodjenja = new Date(datumRodjenja).toISOString();
+
+                if ((datum < minDate) || (datum > maxDate)) {
+                    $("#g6").addClass("d-block");
+                    $("#g6").removeClass("d-none");
+                    $("#datumRodjenja").addClass("is-invalid");
+                    $("#g6").text("Niste uneli datum rođenja u dozvoljenom opsegu!");
+                    greska = true;
+                }
+                else {
+                    $("#g6").addClass("d-none");
+                    $("#datumRodjenja").removeClass("is-invalid");
+                    $("#datumRodjenja").removeClass("invalid-feedback");
+                    $("#datumRodjenja").add("is-valid");
+                }
+
+                if (greska === true) return; // ne izvrsava se ajax poziv - rasterecuje se server od callbacks
+
+                // ajax poziv ka api-ju za vrsenje registracije
+                $.ajax({
+                    url: "/api/users/AzuriranjeProfilaKorisnika",
+                    type: "POST",
+                    data: JSON.stringify({
+                        Id: Id,
+                        KorisnickoIme: korisnickoIme,
+                        Ime: ime,
+                        Lozinka: "oc_auth_434u3dfs-dsdw-dummy",
+                        Prezime: prezime,
+                        Pol: pol,
+                        Email: email,
+                        DatumRodjenja: datumRodjenja
+                    }),
+
+                    async: false,
+                    cache: false,
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        if (response != null) {
+                            if (JSON.parse(response).Kod === 0) // azuriranje podataka je proslo uspesno
+                            {
+                                window.location.href = "ListaKorisnika.html";
+                                return false;
+                            }
+                            else {
+                                // desila se greska - prikazi je
+                                $("#divgreske").removeClass('d-none');
+                                $("#greske").text(JSON.parse(response).Poruka);
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            <a href="/" class="navbar-brand">Shopy</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li><a href="/" class="nav-link">Početna stranica</a></li>
+                    <li id="pl">
+                        <a href="Registracija.html" type="submit" id="registracija" class="btn btn-outline-light navbar-btn login-btn">Registracija</a>
+                        <a href="Prijava.html" type="submit" id="prijava" class="btn btn-outline-light navbar-btn register-btn">Prijava</a>
+                    </li>
+                    <li id="profil">
+                        <div class="btn-group profil-btn">
+                            <button type="button" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span id="poruka"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="MojProfil.html" id="mojprofil">Moj profil</a></li>
+                                <li><a class="dropdown-item" href="IzmenaLozinke.html" id="izmenalozinke">Izmena lozinke</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item text-danger" id="odjava" href="#">Odjava sa platforme</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="/Images/productplc.jpg" alt="..." /></div>
+                <div class="col-md-6">
+                    <h5 class="mb-1 text-success" id="grad">Novi Sad</h5>
+                    <h1 class="display-5 fw-bolder" id="naslov">Shop item template</h1>
+                    <div class="fs-5 mb-5">
+                        <span class="text-decoration" id="cena">$45.00</span>
+                    </div>
+                    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+                    <div class="d-flex pt-4">
+                        <input class="form-control text-center me-3 border-2 border-secondary-subtle fs-5" id="kolicina" type="number" value="1" min="1" max="10" maxlength="2" style="max-width: 4rem" />
+                        <button class="btn btn-outline-dark flex-shrink-0 btn-lg" type="button" id="porucibtn"> 🛒 Poručite proizvod</button>&emsp;
+                        <button class="btn btn-outline-danger flex-shrink-0 btn-lg" type="button" id="omiljenBtn">🤍</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

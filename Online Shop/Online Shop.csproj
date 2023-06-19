@@ -190,6 +190,7 @@
     <Content Include="MojiProizvodi.html" />
     <Content Include="MojProfil.html" />
     <Content Include="IzmenaProfila.html" />
+    <Content Include="Proizvod.html" />
     <Content Include="Registracija.html" />
     <Content Include="Prijava.html" />
     <Content Include="Scripts\base64Encoder.js" />
