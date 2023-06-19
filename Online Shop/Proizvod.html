@@ -55,6 +55,7 @@
             contentType: "application/json; charset=utf-8",
             success: function (response) {
                 var data = JSON.parse(response);
+
                 if (data.KorisnickoIme !== "") {
                     // prikazi podatke i promeni meni
                     // sakri dugmice za login i register
@@ -234,9 +235,30 @@
             });
 
             // kreiranje porudzbine
-            $("#narucibtn").on('click', function () {
-                // ajax poziv ka api-ju za vrsenje porudzbine
+            $("#porucibtn").on('click', function () {
+                var kolicina = parseFloat($("#kolicina").val());
 
+                // ajax poziv ka api-ju za vrsenje porudzbine
+                $.ajax({
+                    url: "/api/orders/KreiranjePorudzbine",
+                    type: "POST",
+                    data: JSON.stringify({
+                        Id: Id,
+                        Kolicina: kolicina
+                    }),
+                    async: false,
+                    cache: false,
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        var data = JSON.parse(response);
+                        
+                        $(function () {
+                            $("#divgreske").removeClass('d-none');
+                            $("#greske").text(data.Poruka);
+                        });
+                    }
+                });
                 
             });
 

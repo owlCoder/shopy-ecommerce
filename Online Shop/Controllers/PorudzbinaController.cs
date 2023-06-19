@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Http;
 
@@ -47,13 +48,18 @@ namespace Online_Shop.Controllers
                         else
                         {
                             Porudzbina nova = new Porudzbina(proizvod, order.Kolicina, korisnik);
+                            Proizvod pr = new Proizvod(proizvod.Id, proizvod.Naziv, proizvod.Cena, proizvod.Kolicina - order.Kolicina, proizvod.Opis, proizvod.Slika, proizvod.DatumPostavljanjaProizvoda, proizvod.Grad, proizvod.Recenzija, proizvod.Status, proizvod.IsDeleted);
+                            Korisnik novi = new Korisnik(korisnik.KorisnickoIme, korisnik.Lozinka, korisnik.Ime, korisnik.Prezime, korisnik.Pol, korisnik.Email, korisnik.DatumRodjenja, korisnik.Uloga, korisnik.Porudzbine, korisnik.OmiljenjiProizvodi, korisnik.ObjavljeniProizvodi, korisnik.IsDeleted, korisnik.IsLoggedIn);
+                            Porudzbina novaK = new Porudzbina(pr, order.Kolicina, novi);
 
                             // pokusaj smanjenja stanja kolicine proizvoda
                             if(ProizvodiStorage.AzuriranjeProizvoda(proizvod.Id.ToString(), proizvod.Naziv, proizvod.Cena, proizvod.Kolicina - order.Kolicina, proizvod.Opis, proizvod.Slika, proizvod.Grad))
                             {
                                 // tek sada se moze dodati porudzbina
-                                korisnik.Porudzbine.Add(nova);
                                 PorudzbineStorage.Porudzbine.Add(nova);
+                                korisnik.Porudzbine.Add(novaK);
+                                KorisniciStorage.AzurirajKorisnikeUBazi();
+                                PorudzbineStorage.AzurirajPorudzbineUBazi();
 
                                 return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "Uspešno ste kreirali porudžbinu! Status porudžbine može pratiti na stranici 'Moje Porudžbine." });
                             }

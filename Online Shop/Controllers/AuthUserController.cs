@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Online_Shop.Models;
 using Online_Shop.Storage;
+using System;
+using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
@@ -67,7 +69,8 @@ namespace Online_Shop.Controllers
             Korisnik korisnik = (Korisnik)HttpContext.Current.Session["korisnik"];
 
             if (korisnik != null && korisnik.IsLoggedIn)
-                return JsonConvert.SerializeObject(new AuthKorisnik
+            {
+                AuthKorisnik novi = new AuthKorisnik
                 {
                     KorisnickoIme = korisnik.KorisnickoIme,
                     Ime = korisnik.Ime,
@@ -81,7 +84,14 @@ namespace Online_Shop.Controllers
                     ObjavljeniProizvodi = korisnik.ObjavljeniProizvodi,
                     IsDeleted = korisnik.IsDeleted,
                     IsLoggedIn = korisnik.IsLoggedIn
+                };
+
+                // proveri kasnije zbog liste porudzbina!
+                return JsonConvert.SerializeObject(novi, new JsonSerializerSettings
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                 });
+            }
             else
                 return JsonConvert.SerializeObject(new AuthKorisnik { KorisnickoIme = "" });
         }
