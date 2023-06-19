@@ -115,6 +115,12 @@
 
                     // ispis podataka o proizvodu
                     maxQuantity = data.Kolicina;
+
+                    $("#grad").text(data.Grad);
+                    $("#naslov").text(data.Naziv.substring(0, 30));
+                    $("#cena").text(data.Cena + " RSD");
+                    $("#opis").text(data.Opis);
+                    $("#slika").attr('src', "/Uploads/" + data.Slika);
                 }
             });
 
@@ -122,7 +128,7 @@
             $('input').on('input', function () {
                 var value = $(this).val();
                 if ((value !== '') && (value.indexOf('.') === -1)) {
-                    $(this).val(Math.max(Math.min(value, maxQuantity), -90));
+                    $(this).val(Math.max(Math.min(value, maxQuantity), -maxQuantity));
                 }
             });
 
@@ -153,100 +159,6 @@
 
             // cuvanje izmena
             $("#azurirajbtn").on('click', function () {
-                var korisnickoIme = $("#korisnickoime").val();
-                var ime = $("#ime").val();
-                var prezime = $("#prezime").val();
-                var pol = $("#pol").val();
-                var email = $("#email").val();
-                var datumRodjenja = $("#datumrodjenja").val();
-
-                var greska = false;
-
-                // provera unosa na klijentu
-                if (korisnickoIme.length < 6) {
-                    $("#g1").addClass("d-block");
-                    $("#g1").removeClass("d-none");
-                    $("#korisnickoime").addClass("is-invalid");
-                    $("#g1").text("Korisničko ime mora imati minimalno 6 karaktera!");
-                    greska = true;
-                }
-                else {
-                    $("#g1").addClass("d-none");
-                    $("#korisnickoime").removeClass("is-invalid");
-                    $("#korisnickoime").removeClass("invalid-feedback");
-                    $("#korisnickoime").add("is-valid");
-                }
-
-                if (ime.length < 3) {
-                    $("#g3").addClass("d-block");
-                    $("#g3").removeClass("d-none");
-                    $("#ime").addClass("is-invalid");
-                    $("#g3").removeClass("d-none");
-                    $("#g3").text("Ime mora imati minimalno 3 karaktera!");
-                    greska = true;
-                }
-                else {
-                    $("#g3").addClass("d-none");
-                    $("#ime").removeClass("is-invalid");
-                    $("#ime").removeClass("invalid-feedback");
-                    $("#ime").add("is-valid");
-                }
-
-                if (prezime.length < 6) {
-                    $("#g4").addClass("d-block");
-                    $("#g4").removeClass("d-none");
-                    $("#prezime").addClass("is-invalid");
-                    $("#g4").text("Prezime mora imati minimalno 6 karaktera!");
-                    greska = true;
-                }
-                else {
-                    $("#g4").addClass("d-none");
-                    $("#prezime").removeClass("is-invalid");
-                    $("#prezime").removeClass("invalid-feedback");
-                    $("#prezime").add("is-valid");
-                }
-
-                var regexEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
-                if (regexEmail.test(email) === false) {
-                    $("#g5").addClass("d-block");
-                    $("#g5").removeClass("d-none");
-                    $("#email").addClass("is-invalid");
-                    $("#g5").removeClass("d-none");
-                    $("#g5").text("Email nije unet u validnom formatu!");
-                    greska = true;
-                }
-                else {
-                    $("#g5").addClass("d-none");
-                    $("#email").removeClass("is-invalid");
-                    $("#email").removeClass("invalid-feedback");
-                    $("#email").add("is-valid");
-                }
-
-                var minDate = Date.parse("1970-01-01");
-                var maxDate = Date.parse("2020-01-01");
-                if (datumRodjenja === "") // datum se nije promenio
-                    datumRodjenja = STARI_DATUM;
-
-                var datum = Date.parse(datumRodjenja.split(".").reverse().join("-"));
-                datumRodjenja = Date.parse(datumRodjenja.split(".").reverse().join("-"));
-                datumRodjenja = new Date(datumRodjenja).toISOString();
-
-                if ((datum < minDate) || (datum > maxDate)) {
-                    $("#g6").addClass("d-block");
-                    $("#g6").removeClass("d-none");
-                    $("#datumRodjenja").addClass("is-invalid");
-                    $("#g6").text("Niste uneli datum rođenja u dozvoljenom opsegu!");
-                    greska = true;
-                }
-                else {
-                    $("#g6").addClass("d-none");
-                    $("#datumRodjenja").removeClass("is-invalid");
-                    $("#datumRodjenja").removeClass("invalid-feedback");
-                    $("#datumRodjenja").add("is-valid");
-                }
-
-                if (greska === true) return; // ne izvrsava se ajax poziv - rasterecuje se server od callbacks
-
                 // ajax poziv ka api-ju za vrsenje registracije
                 $.ajax({
                     url: "/api/users/AzuriranjeProfilaKorisnika",
@@ -322,16 +234,16 @@
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
-                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="/Images/productplc.jpg" alt="..." /></div>
+                <div class="col-md-6"><img class="w-75 h-75 card-img-top mb-5 mb-md-0" src="" id="slika" alt="proizvod" /></div>
                 <div class="col-md-6">
-                    <h5 class="mb-1 text-success" id="grad">Novi Sad</h5>
-                    <h1 class="display-5 fw-bolder" id="naslov">Shop item template</h1>
+                    <h5 class="mb-1 text-success" id="grad"></h5>
+                    <h1 class="display-5 fw-bolder" id="naslov"></h1>
                     <div class="fs-5 mb-5">
-                        <span class="text-decoration" id="cena">$45.00</span>
+                        <span class="text-decoration" id="cena"></span>
                     </div>
-                    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+                    <p class="lead text-wrap text-break" id="opis"></p>
                     <div class="d-flex pt-4">
-                        <input class="form-control text-center me-3 border-2 border-secondary-subtle fs-5" id="kolicina" type="number" value="1" min="1" max="10" maxlength="2" style="max-width: 4rem" />
+                        <input class="form-control text-center me-3 border-2 border-secondary-subtle fs-5" id="kolicina" type="number" value="1" min="1" style="max-width: 4rem" />
                         <button class="btn btn-outline-dark flex-shrink-0 btn-lg" type="button" id="porucibtn"> 🛒 Poručite proizvod</button>&emsp;
                         <button class="btn btn-outline-danger flex-shrink-0 btn-lg" type="button" id="omiljenBtn">🤍</button>
                     </div>
