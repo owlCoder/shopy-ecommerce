@@ -18,10 +18,6 @@ namespace Online_Shop.Controllers
         [Route("RecenzijeZaProizvodPoId")]
         public string RecenzijePoProizvodu(SingleIdRequest zahtev)
         {
-            return JsonConvert.SerializeObject(new List<Recenzija> {
-                new Recenzija(1, new Proizvod(), new Korisnik(), "Recenzija1", "sadrzaj", "0ed68eda-1395-43bf-8ec6-b197037cc2a0.jpg", false, false)
-            });
-
             if(!ModelState.IsValid || int.TryParse(zahtev.Id, out int id))
             {
                 return JsonConvert.SerializeObject(new List<Recenzija>());
