@@ -48,6 +48,7 @@ namespace Online_Shop.Models
         }
 
         // Konstruktor za ucitavanje iz json fajla
+        [JsonConstructor]
         public Proizvod(int id, string naziv, double cena, double kolicina, string opis, string slika, DateTime datumPostavljanjaProizvoda, string grad, List<Recenzija> recenzija, bool status, bool isDeleted)
         {
             Id = id;
@@ -58,7 +59,7 @@ namespace Online_Shop.Models
             Slika = slika;
             DatumPostavljanjaProizvoda = datumPostavljanjaProizvoda;
             Grad = grad;
-            Recenzija = recenzija;
+            Recenzija = new List<Recenzija>();
             Status = status;
             IsDeleted = isDeleted;
         }

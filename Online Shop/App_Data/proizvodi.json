@@ -1,0 +1,20 @@
+[
+  {
+    "$id": "1",
+    "Id": 1,
+    "Naziv": "dsadsadsadsa",
+    "Cena": 12.0,
+    "Opis": "das dsa asd asdsadasdasdasdasdas",
+    "Slika": "2c78b7db-83c3-400b-b1fa-6735e5279453.jpg",
+    "DatumPostavljanjaProizvoda": "2023-06-20T11:56:17.1181395+02:00",
+    "Grad": "dasdsadsadas",
+    "Recenzija": [],
+    "Status": true,
+    "IsDeleted": false,
+    "FID": [],
+    "KID": null,
+    "PID": [],
+    "RID": [],
+    "Kolicina": 12.0
+  }
+]

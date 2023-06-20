@@ -30,7 +30,7 @@ namespace Online_Shop.Storage
                     Korisnici = new List<Korisnik>();
 
                     // ucitavanje svih korisnika iz json datoteke
-                    Korisnici = JsonConvert.DeserializeObject<List<Korisnik>>(File.ReadAllText(KorisniciPath), new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+                    Korisnici = JsonConvert.DeserializeObject<List<Korisnik>>(File.ReadAllText(KorisniciPath));
 
                     // izloguj sve korisnike - server se restartovao
                     foreach (Korisnik k in Korisnici)

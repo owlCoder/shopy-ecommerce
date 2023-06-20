@@ -28,6 +28,7 @@ namespace Online_Shop.Models
         }
 
         // Konstruktor za ucitavanje podataka iz liste
+        [JsonConstructor]
         public Korisnik(string korisnickoIme, string lozinka, string ime, string prezime, string pol, string email,
                         DateTime datumRodjenja, ULOGA uloga, List<Porudzbina> porudzbine, List<Proizvod> omiljenjiProizvodi,
                         List<Proizvod> objavljeniProizvodi, bool isDeleted, bool isLoggedIn)
@@ -40,9 +41,9 @@ namespace Online_Shop.Models
             Email = email;
             DatumRodjenja = datumRodjenja;
             Uloga = uloga;
-            Porudzbine = porudzbine;
-            OmiljenjiProizvodi = omiljenjiProizvodi;
-            ObjavljeniProizvodi = objavljeniProizvodi;
+            Porudzbine = null;
+            OmiljenjiProizvodi = null;
+            ObjavljeniProizvodi = null;
             IsDeleted = isDeleted;
             IsLoggedIn = isLoggedIn;
         }

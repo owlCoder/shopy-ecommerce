@@ -34,6 +34,7 @@ namespace Online_Shop.Models
         }
 
         // Konstruktor za json serializer
+        [JsonConstructor]
         public Recenzija(int id, Proizvod proizvod, Korisnik recenzent, string naslov, string sadrzajRecenzije, string slika, bool odobrena, bool isDeleted)
         {
             Id = id;

@@ -42,6 +42,15 @@ namespace Online_Shop.Storage
                         {
                             p.Status = true; // na stanju je vise od jednog proizvoda
                         }
+
+                        // korisnici prodavci
+                        int korisnik = KorisniciStorage.Korisnici.IndexOf(KorisniciStorage.Korisnici.Find(x => x.KorisnickoIme.Equals(p.KID)));
+
+                        if(korisnik != -1)
+                        {
+                            KorisniciStorage.Korisnici[korisnik].OmiljenjiProizvodi.Add(Proizvodi[Proizvodi.FindIndex(x => x.Id == p.Id)]);
+                        }
+                        
                     }
                 }
                 catch
