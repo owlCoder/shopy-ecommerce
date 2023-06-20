@@ -99,7 +99,7 @@ namespace Online_Shop.Controllers
             }
             else
             {
-                return JsonConvert.SerializeObject(PorudzbineStorage.PorudzbineKupac(), new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+                return JsonConvert.SerializeObject(PorudzbineStorage.PorudzbineKupac().OrderBy(p => p.Status), new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
             }
 
         }
@@ -158,6 +158,74 @@ namespace Online_Shop.Controllers
                 PorudzbineStorage.AzurirajPorudzbineUBazi();
 
                 return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "Porudžbina je uspešno označena kao izvršena." });
+            }
+
+            return JsonConvert.SerializeObject(new Response { Kod = 43, Poruka = "Nije moguće izmeniti status porudžbine!" });
+        }
+
+        // Metoda koja menja status porudzbine na otkazana ako je moguce
+        [HttpPost]
+        [Route("OtkazivanjePorudzbine")]
+        public string OtkazivanjePorudzbine(SingleIdRequest zahtev)
+        {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Administrator)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
+            // jeste admin pa moze promeniti status porudzbine ako nije obrisana ili vec promenjenog statusa (nije AKTIVNA)
+            if (!int.TryParse(zahtev.Id, out int pid))
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 43, Poruka = "Nije moguće izmeniti status porudžbine!" });
+            }
+
+            // validan id format, provera da li porudzbina postoji
+            int index = PorudzbineStorage.Porudzbine.FindIndex(p => p.Id == pid && p.IsDeleted == false);
+
+            // Porudzbina ne postoji
+            if (index == -1)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 32, Poruka = "Porudžbina ne postoji! Nije moguće njeno otkazivanje." });
+            }
+
+            // porudzbina postoji - korisnik kome pripada porudzbina
+            if (!int.TryParse(PorudzbineStorage.Porudzbine[index].Kupac, out int kid))
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 43, Poruka = "Nije moguće izmeniti status porudžbine!" });
+            }
+
+            STATUS status = PorudzbineStorage.Porudzbine[index].Status;
+            int kupacid = KorisniciStorage.Korisnici.FindIndex(p => p.Id.Equals(kid.ToString()) && p.IsDeleted == false);
+
+            if (kupacid == -1)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 61, Poruka = "Porudžbina ne postoji! Nije moguće njeno otkazivanje." });
+            }
+
+            int kpidx = KorisniciStorage.Korisnici[kupacid].Porudzbine.FindIndex(p => p.Id == pid && p.IsDeleted == false);
+
+            if (status == STATUS.AKTIVNA && kpidx != -1)
+            {
+                // oznacavanje prispeca
+                PorudzbineStorage.Porudzbine[index].Status = STATUS.OTKAZANA;
+                KorisniciStorage.Korisnici[kupacid].Porudzbine[kpidx].Status = STATUS.OTKAZANA;
+
+                // kada se porudzbina otkaze, sva kolicina koja je narucena se vraca na kolicinu u proizvodu
+                int proid = PorudzbineStorage.Porudzbine[index].Proizvod.Id;
+                int proidx = ProizvodiStorage.Proizvodi.FindIndex(p => p.Id == proid);
+
+                // vrati kolicinu iz otkazane porudzbine
+                ProizvodiStorage.Proizvodi[proidx].Kolicina += PorudzbineStorage.Porudzbine[index].Kolicina;
+
+                // azuriranje stanja
+                KorisniciStorage.AzurirajKorisnikeUBazi();
+                PorudzbineStorage.AzurirajPorudzbineUBazi();
+                ProizvodiStorage.AzurirajProizvodeUBazi();
+                RecenzijeStorage.AzurirajRecenzijeUBazi();
+
+                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "Porudžbina je uspešno otkazana! Poručena količina iz porudžbine je vraćena na lager." });
             }
 
             return JsonConvert.SerializeObject(new Response { Kod = 43, Poruka = "Nije moguće izmeniti status porudžbine!" });
