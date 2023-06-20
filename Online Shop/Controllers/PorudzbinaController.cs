@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Online_Shop.Models;
 using Online_Shop.Models.Requests;
+using Online_Shop.Models.Responses;
 using Online_Shop.Storage;
 using System.Linq;
 using System.Web;
@@ -252,7 +253,29 @@ namespace Online_Shop.Controllers
         [Route("PorudzbinaRecenzija")]
         public string PorudzbinaPoIdZaRecenziju(PorudzbinaShowRequest zahtev)
         {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Kupac)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
 
+            Porudzbina pronadjena = PorudzbineStorage.Porudzbine.FirstOrDefault(p => p.IsDeleted == false && p.Status == STATUS.IZVRSENA && p.Id == zahtev.Id);
+
+            if (pronadjena == null)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 15, Poruka = "Porudžbina više ne postoji na platformi!" });
+            }
+            else
+            {
+                string datum = pronadjena.DatumPorudzbine.ToString("dd.MM.yyyy.");
+                return JsonConvert.SerializeObject(new PorudzbinaReviewResponse { 
+                    Id = pronadjena.Id, 
+                    Datum = datum, 
+                    NazivProizvoda = pronadjena.Proizvod.Naziv, 
+                    Slika = pronadjena.Proizvod.Slika, 
+                    UkupanIznos = pronadjena.Proizvod.Cena * pronadjena.Kolicina});
+            }    
         }
     }
 }
