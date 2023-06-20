@@ -32,31 +32,35 @@ namespace Online_Shop.Controllers
                 else
                 {
                     // korisnik je prijavljen i kupac je
-                    Proizvod proizvod = ProizvodiStorage.Proizvodi.FirstOrDefault(p => p.IsDeleted == false && p.Id == order.Id);
+                    int proizvod = ProizvodiStorage.Proizvodi.FindIndex(p => p.IsDeleted == false && p.Id == order.Id);
 
-                    if(proizvod == null)
+                    if(proizvod == -1)
                     {
                         return JsonConvert.SerializeObject(new Response { Kod = 41, Poruka = "Nažalost, proizvod više nije u ponudi," });
                     }
                     else
                     {
-                        if (proizvod.Kolicina < order.Kolicina)
+                        if (ProizvodiStorage.Proizvodi[proizvod].Kolicina < order.Kolicina)
                         {
                             // da li korisnik narucuje vise nego sto trenutno ima na stanju
                             return JsonConvert.SerializeObject(new Response { Kod = 42, Poruka = "Nažalost, količina proizvoda koju želite više nije dostupna. Smanjite količinu i pokušajte ponovo." });
                         }
                         else
                         {
-                            Porudzbina nova = new Porudzbina(proizvod, order.Kolicina, korisnik.KorisnickoIme);
-                            Proizvod pr = new Proizvod(proizvod.Id, proizvod.Naziv, proizvod.Cena, proizvod.Kolicina - order.Kolicina, proizvod.Opis, proizvod.Slika, proizvod.DatumPostavljanjaProizvoda, proizvod.Grad, proizvod.Recenzija, proizvod.Status, proizvod.IsDeleted);
-                            Porudzbina novaK = new Porudzbina(pr, order.Kolicina, korisnik.KorisnickoIme);
+                            Porudzbina nova = new Porudzbina(ProizvodiStorage.Proizvodi[proizvod], order.Kolicina, korisnik.KorisnickoIme);
+                            ProizvodiStorage.Proizvodi[proizvod].PID.Add(nova.Id); // pid
 
                             // pokusaj smanjenja stanja kolicine proizvoda
-                            if(ProizvodiStorage.AzuriranjeProizvoda(proizvod.Id.ToString(), proizvod.Naziv, proizvod.Cena, proizvod.Kolicina - order.Kolicina, proizvod.Opis, proizvod.Slika, proizvod.Grad))
+                            if(ProizvodiStorage.AzuriranjeProizvoda(ProizvodiStorage.Proizvodi[proizvod].Id.ToString(), 
+                                ProizvodiStorage.Proizvodi[proizvod].Naziv, ProizvodiStorage.Proizvodi[proizvod].Cena,
+                                ProizvodiStorage.Proizvodi[proizvod].Kolicina - order.Kolicina, 
+                                ProizvodiStorage.Proizvodi[proizvod].Opis,
+                                ProizvodiStorage.Proizvodi[proizvod].Slika, ProizvodiStorage.Proizvodi[proizvod].Grad))
                             {
                                 // tek sada se moze dodati porudzbina
                                 PorudzbineStorage.Porudzbine.Add(nova);
-                                korisnik.Porudzbine.Add(novaK);
+                                int pid = PorudzbineStorage.Porudzbine.FindIndex(p => p.Id == nova.Id);
+                                korisnik.Porudzbine.Add(PorudzbineStorage.Porudzbine[pid]);
                                 KorisniciStorage.AzurirajKorisnikeUBazi();
                                 PorudzbineStorage.AzurirajPorudzbineUBazi();
 

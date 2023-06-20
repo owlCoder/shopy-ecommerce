@@ -3,24 +3,26 @@
     "Id": 1,
     "Proizvod": {
       "Id": 1,
-      "Naziv": "222",
-      "Cena": 22.0,
-      "Opis": "22222222222222222222222",
-      "Slika": "539c72a9-f70f-49f9-a461-9baf601553d1.jpg",
+      "Naziv": "1234",
+      "Cena": 224.0,
+      "Opis": "222222222222222222222224444",
+      "Slika": "cd837362-bbf0-4491-96eb-56f2a53f34f1.jpg",
       "DatumPostavljanjaProizvoda": "2023-06-20T12:33:31.4289267+02:00",
-      "Grad": "22222222",
+      "Grad": "222222224",
       "Recenzija": [],
       "Status": true,
       "IsDeleted": false,
       "FID": [],
       "KID": "prodavac",
-      "PID": [],
+      "PID": [
+        1
+      ],
       "RID": [],
-      "Kolicina": 11.0
+      "Kolicina": 104.0
     },
     "Kolicina": 1.0,
     "Kupac": "kupac1",
-    "DatumPorudzbine": "2023-06-20T12:38:18.339236+02:00",
+    "DatumPorudzbine": "2023-06-20T12:49:47.4044145+02:00",
     "Status": 0,
     "IsDeleted": false
   }
