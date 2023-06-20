@@ -138,16 +138,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AuthKorisnik.cs" />
-    <Compile Include="Models\Enums.cs" />
-    <Compile Include="Models\Korisnik.cs" />
+    <Compile Include="Models\Enums\Enums.cs" />
+    <Compile Include="Models\BaseModels\Korisnik.cs" />
     <Compile Include="Models\KorisnikIzmenaProfila.cs" />
     <Compile Include="Models\KorisnikLogin.cs" />
     <Compile Include="Models\KorisnikRegistracija.cs" />
-    <Compile Include="Models\Porudzbina.cs" />
-    <Compile Include="Models\Proizvod.cs" />
+    <Compile Include="Models\BaseModels\Porudzbina.cs" />
+    <Compile Include="Models\BaseModels\Proizvod.cs" />
     <Compile Include="Models\ProizvodAddRequest.cs" />
     <Compile Include="Models\PromenaLozinke.cs" />
-    <Compile Include="Models\Recenzija.cs" />
+    <Compile Include="Models\BaseModels\Recenzija.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\SearchRequest.cs" />
     <Compile Include="Models\SingleIdRequest.cs" />
