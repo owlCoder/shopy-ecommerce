@@ -196,6 +196,7 @@
     <Content Include="MojProfil.html" />
     <Content Include="IzmenaProfila.html" />
     <Content Include="OmiljeniProizvodi.html" />
+    <Content Include="OznaciPrispece.html" />
     <Content Include="Proizvod.html" />
     <Content Include="Registracija.html" />
     <Content Include="Prijava.html" />
