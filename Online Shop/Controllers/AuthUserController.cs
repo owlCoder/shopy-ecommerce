@@ -92,10 +92,7 @@ namespace Online_Shop.Controllers
                 };
 
                 // proveri kasnije zbog liste porudzbina!
-                return JsonConvert.SerializeObject(novi, new JsonSerializerSettings
-                {
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                });
+                return JsonConvert.SerializeObject(novi);
             }
             else
                 return JsonConvert.SerializeObject(new AuthKorisnik { KorisnickoIme = "" });
