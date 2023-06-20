@@ -211,52 +211,6 @@ namespace Online_Shop.Storage
                 }
             }
 
-            // brisanje proizvoda iz liste objavljenih proizvoda za prodavca
-            // korisnici koji nisu obrisani i koji su prodavci
-            List<Korisnik> korisnici = KorisniciStorage.Korisnici.FindAll(p => p.IsDeleted == false && p.Uloga == ULOGA.Prodavac);
-
-            foreach (Korisnik k in korisnici)
-            {
-                bool pronasao = false;
-                List<Proizvod> objavljeni_za_brisanje = k.ObjavljeniProizvodi.FindAll(p => p.Id == id);
-
-                foreach (Proizvod p in objavljeni_za_brisanje)
-                {
-                    p.IsDeleted = true;
-                    pronasao = true;
-                    break;
-                }
-
-                if (pronasao)
-                {
-                    break; // jedan prodavac moze imati samo jedan proizvod sa jednim id - id je primarni kljuc
-                }
-            }
-
-            // za sve kupce ako se proizvod nalazi u omiljenim, obrisati ga iz omiljenih i aktivnih porudzbina
-            List<Korisnik> korisnici_kupci = KorisniciStorage.Korisnici.FindAll(p => p.IsDeleted == false && p.Uloga == ULOGA.Kupac);
-
-            foreach (Korisnik k in korisnici_kupci)
-            {
-                List<Proizvod> omiljeni = k.OmiljenjiProizvodi.FindAll(p => p.Id == id);
-
-                // uklanja se samo iz aktivnih porudzbina, one obradjenje tj izvrsene vise nisu od interesa za brisanja
-                List<Porudzbina> porudzbine = k.Porudzbine.FindAll(p => p.Proizvod.Id == id && p.Status == STATUS.AKTIVNA);
-
-                foreach (Proizvod p in omiljeni)
-                {
-                    p.IsDeleted = true;
-                }
-
-                // logicko brisanje proizvoda u porudzbini i brisanje same porudzbine
-                // specifikacija: Jedna porudzbina se odnosi na tacno jedan proizvod
-                foreach (Porudzbina p in porudzbine)
-                {
-                    p.IsDeleted = true;
-                    p.Proizvod.IsDeleted = true;
-                }
-            }
-
             // recenzije za dati proizvod vise nije moguce ni postaviti ni menjati, pa se logicki brisu
             List<Recenzija> recenzije = RecenzijeStorage.Recenzije.FindAll(p => p.Proizvod.Id == id && !p.IsDeleted);
 
@@ -372,111 +326,13 @@ namespace Online_Shop.Storage
                 proizvod.Grad = grad;
             }
 
-            // azuriranje proizvoda iz liste objavljenih proizvoda za prodavca
-            // korisnici koji nisu obrisani i koji su prodavci
-            List<Korisnik> korisnici = KorisniciStorage.Korisnici.FindAll(p => p.IsDeleted == false && p.Uloga == ULOGA.Prodavac);
-
-            foreach (Korisnik k in korisnici)
-            {
-                bool pronasao = false;
-                List<Proizvod> objavljeni_za_izmenu = k.ObjavljeniProizvodi.FindAll(p => p.Id == id);
-
-                foreach (Proizvod proizvod in objavljeni_za_izmenu)
-                {
-                    // azuriranje podataka o proizvodu
-                    proizvod.Naziv = naziv;
-                    proizvod.Cena = cena;
-                    proizvod.Kolicina = kolicina;
-                    proizvod.Opis = opis;
-                    proizvod.Slika = slika;
-                    proizvod.Grad = grad;
-                    pronasao = true;
-                    break;
-                }
-
-                if (pronasao)
-                {
-                    break; // jedan prodavac moze imati samo jedan proizvod sa jednim id - id je primarni kljuc
-                }
-            }
-
-            // za sve kupce ako se proizvod nalazi u omiljenim, azurirati ga u omiljenim i aktivnim porudzbinama
-            List<Korisnik> korisnici_kupci = KorisniciStorage.Korisnici.FindAll(p => p.IsDeleted == false && p.Uloga == ULOGA.Kupac);
-
-            foreach (Korisnik k in korisnici_kupci)
-            {
-                List<Proizvod> omiljeni = k.OmiljenjiProizvodi.FindAll(p => p.Id == id);
-
-                // azurira se samo iz aktivnih porudzbina, one obradjenje tj izvrsene vise nisu od interesa za izmenu
-                List<Porudzbina> porudzbine = k.Porudzbine.FindAll(p => p.Proizvod.Id == id && p.Status == STATUS.AKTIVNA);
-
-                foreach (Proizvod proizvod in omiljeni)
-                {
-                    // azuriranje podataka o proizvodu
-                    proizvod.Naziv = naziv;
-                    proizvod.Cena = cena;
-                    proizvod.Kolicina = kolicina;
-                    proizvod.Opis = opis;
-                    proizvod.Slika = slika;
-                    proizvod.Grad = grad;
-                }
-
-                // azuriranje proizvoda u porudzbini
-                // specifikacija: Jedna porudzbina se odnosi na tacno jedan proizvod
-                foreach (Porudzbina p in porudzbine)
-                {
-                    Proizvod proizvod = p.Proizvod;
-                    // azuriranje podataka o proizvodu
-                    proizvod.Naziv = naziv;
-                    proizvod.Cena = cena;
-                    proizvod.Kolicina = kolicina;
-                    proizvod.Opis = opis;
-                    proizvod.Slika = slika;
-                    proizvod.Grad = grad;
-                }
-            }
-
-            // sve recenzije koje sadrze dati proizvod, trebaju da imaju azurirano novo stanje o njemu
-            List<Recenzija> sve = RecenzijeStorage.Recenzije.FindAll(p => p.Proizvod.Id == id && p.IsDeleted == false);
-
-            // i svaki proizvod u sebi ima listu recenzija, pa i nju treba azurirati
-            Proizvod za_izmenu_p = Proizvodi.FirstOrDefault(p => p.Id == id && p.IsDeleted == false);
-            List<Recenzija> recenzcije_proizvod;
-
-            if(za_izmenu_p != null)
-            {
-                recenzcije_proizvod = za_izmenu_p.Recenzija.FindAll(p => p.Proizvod.Id == id && p.IsDeleted == false); // sve recenzije vezane za dati proizvod
-                
-                foreach(Recenzija r in recenzcije_proizvod)
-                {
-                    Proizvod proizvod = r.Proizvod;
-                    proizvod.Naziv = naziv;
-                    proizvod.Cena = cena;
-                    proizvod.Kolicina = kolicina;
-                    proizvod.Opis = opis;
-                    proizvod.Slika = slika;
-                    proizvod.Grad = grad;
-                }
-            }
-
-            foreach(Recenzija r in sve)
-            {
-                Proizvod proizvod = r.Proizvod;
-                proizvod.Naziv = naziv;
-                proizvod.Cena = cena;
-                proizvod.Kolicina = kolicina;
-                proizvod.Opis = opis;
-                proizvod.Slika = slika;
-                proizvod.Grad = grad;
-            }
-
             // Azuriranje u json fajlovima, novo izmenjenih entiteta
             AzurirajProizvodeUBazi();
             KorisniciStorage.AzurirajKorisnikeUBazi();
             PorudzbineStorage.AzurirajPorudzbineUBazi();
             RecenzijeStorage.AzurirajRecenzijeUBazi();
 
-            return true;
+            return za_izmenu.Count > 0;
         }
     }
 }

@@ -194,19 +194,10 @@ namespace Online_Shop.Storage
 
                         foreach (Korisnik korisnik in kupci)
                         {
-                            List<Proizvod> omiljeni = korisnik.OmiljenjiProizvodi.FindAll(p => p.IsDeleted == false);
                             List<Porudzbina> porudzbine = korisnik.Porudzbine.FindAll(p => p.IsDeleted == false);
 
                             foreach (Proizvod tmp in objavljeni_proizvodi)
                             {
-                                foreach (Proizvod kp in omiljeni)
-                                {
-                                    if (kp.Id == tmp.Id)
-                                    {
-                                        kp.IsDeleted = true; // logicko brisanje iz liste omiljenih proizvoda
-                                    }
-                                }
-
                                 // posto se brisu i svi proizvodi kupca, ne treba obrisane porudzbine kao i njihove kolicine
                                 // vracati na stanje u magacinu
                                 foreach (Porudzbina p in porudzbine)

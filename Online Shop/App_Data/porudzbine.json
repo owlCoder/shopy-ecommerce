@@ -1,0 +1,37 @@
+[
+  {
+    "$id": "1",
+    "Id": 1,
+    "Proizvod": {
+      "$id": "2",
+      "Id": 1,
+      "Naziv": "Laptop 54",
+      "Cena": 10000.0,
+      "Opis": ", new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects }, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects }",
+      "Slika": "f151c63b-c79a-4ee4-9dfd-55f51e6de1b7.jpg",
+      "DatumPostavljanjaProizvoda": "2023-06-20T02:11:09.9295566+02:00",
+      "Grad": "Novi Sad",
+      "Recenzija": [],
+      "Status": true,
+      "IsDeleted": false,
+      "Kolicina": 8.0
+    },
+    "Kolicina": 1.0,
+    "Kupac": "kupac2",
+    "DatumPorudzbine": "2023-06-20T02:22:57.5756676+02:00",
+    "Status": 0,
+    "IsDeleted": false
+  },
+  {
+    "$id": "3",
+    "Id": 2,
+    "Proizvod": {
+      "$ref": "2"
+    },
+    "Kolicina": 1.0,
+    "Kupac": "kupac1",
+    "DatumPorudzbine": "2023-06-20T02:23:03.5887856+02:00",
+    "Status": 0,
+    "IsDeleted": false
+  }
+]
