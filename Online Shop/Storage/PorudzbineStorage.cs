@@ -49,7 +49,7 @@ namespace Online_Shop.Storage
         {
             try
             {
-                string json = JsonConvert.SerializeObject(Porudzbine);
+                string json = JsonConvert.SerializeObject(Porudzbine, Formatting.Indented, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
                 File.WriteAllText(PorudzbinePath, json);
             }
             catch { }

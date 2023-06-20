@@ -48,7 +48,7 @@ namespace Online_Shop.Storage
         {
             try
             {
-                string json = JsonConvert.SerializeObject(Recenzije);
+                string json = JsonConvert.SerializeObject(Recenzije, Formatting.Indented, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
                 File.WriteAllText(RecenzijePath, json);
             }
             catch { }

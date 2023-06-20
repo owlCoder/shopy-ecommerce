@@ -108,7 +108,7 @@ namespace Online_Shop.Storage
         {
             try
             {
-                string json = JsonConvert.SerializeObject(Korisnici);
+                string json = JsonConvert.SerializeObject(Korisnici, Formatting.Indented, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
                 File.WriteAllText(KorisniciPath, json);
             }
             catch { }

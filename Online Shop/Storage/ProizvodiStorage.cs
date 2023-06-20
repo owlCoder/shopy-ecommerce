@@ -62,7 +62,7 @@ namespace Online_Shop.Storage
         {
             try
             {
-                string json = JsonConvert.SerializeObject(Proizvodi);
+                string json = JsonConvert.SerializeObject(Proizvodi, Formatting.Indented, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
                 File.WriteAllText(ProizvodiPath, json);
             }
             catch { }
