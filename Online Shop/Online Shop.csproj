@@ -139,15 +139,15 @@
     </Compile>
     <Compile Include="Models\Auth\AuthKorisnik.cs" />
     <Compile Include="Models\Enums\Enums.cs" />
-    <Compile Include="Models\BaseModels\Korisnik.cs" />
+    <Compile Include="Models\Base\Korisnik.cs" />
     <Compile Include="Models\Auth\KorisnikIzmenaProfila.cs" />
     <Compile Include="Models\Auth\KorisnikLogin.cs" />
     <Compile Include="Models\Auth\KorisnikRegistracija.cs" />
-    <Compile Include="Models\BaseModels\Porudzbina.cs" />
-    <Compile Include="Models\BaseModels\Proizvod.cs" />
+    <Compile Include="Models\Base\Porudzbina.cs" />
+    <Compile Include="Models\Base\Proizvod.cs" />
     <Compile Include="Models\Requests\ProizvodAddRequest.cs" />
     <Compile Include="Models\Auth\PromenaLozinke.cs" />
-    <Compile Include="Models\BaseModels\Recenzija.cs" />
+    <Compile Include="Models\Base\Recenzija.cs" />
     <Compile Include="Models\Responses\Response.cs" />
     <Compile Include="Models\Requests\SearchRequest.cs" />
     <Compile Include="Models\Requests\SingleIdRequest.cs" />
