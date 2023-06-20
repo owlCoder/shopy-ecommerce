@@ -29,7 +29,7 @@ namespace Online_Shop.Storage
                     Porudzbine = new List<Porudzbina>();
 
                     // ucitavanje svih porudzbina iz json datoteke
-                    Porudzbine = JsonConvert.DeserializeObject<List<Porudzbina>>(File.ReadAllText(PorudzbinePath), new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+                    Porudzbine = JsonConvert.DeserializeObject<List<Porudzbina>>(File.ReadAllText(PorudzbinePath));
                 
                     // za svaku porudzbinu proizvod
                     foreach(Proizvod pr in ProizvodiStorage.Proizvodi)
@@ -65,7 +65,7 @@ namespace Online_Shop.Storage
         {
             try
             {
-                string json = JsonConvert.SerializeObject(Porudzbine, Formatting.Indented, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+                string json = JsonConvert.SerializeObject(Porudzbine, Formatting.Indented);
                 File.WriteAllText(PorudzbinePath, json);
             }
             catch { }

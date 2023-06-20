@@ -28,7 +28,21 @@ namespace Online_Shop.Storage
                     Recenzije = new List<Recenzija>();
 
                     // ucitavanje svih porudzbina iz json datoteke
-                    Recenzije = JsonConvert.DeserializeObject<List<Recenzija>>(File.ReadAllText(RecenzijePath), new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+                    Recenzije = JsonConvert.DeserializeObject<List<Recenzija>>(File.ReadAllText(RecenzijePath));
+
+                    foreach (Proizvod pr in ProizvodiStorage.Proizvodi)
+                    {
+                        // taj proizvod dodaj u porudzbinu kojoj pripada
+                        foreach (int rid in pr.RID)
+                        {
+                            int recenzija = Recenzije.FindIndex(p => p.Id == rid);
+
+                            if (recenzija != -1)
+                            {
+                                Recenzije[recenzija].Proizvod = pr; // proizvod u porudzbini
+                            }
+                        }
+                    }
                 }
                 catch
                 {
@@ -48,7 +62,7 @@ namespace Online_Shop.Storage
         {
             try
             {
-                string json = JsonConvert.SerializeObject(Recenzije, Formatting.Indented, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+                string json = JsonConvert.SerializeObject(Recenzije, Formatting.Indented);
                 File.WriteAllText(RecenzijePath, json);
             }
             catch { }

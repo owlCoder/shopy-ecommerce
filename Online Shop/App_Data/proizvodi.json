@@ -1,0 +1,19 @@
+[
+  {
+    "Id": 1,
+    "Naziv": "222",
+    "Cena": 22.0,
+    "Opis": "22222222222222222222222",
+    "Slika": "539c72a9-f70f-49f9-a461-9baf601553d1.jpg",
+    "DatumPostavljanjaProizvoda": "2023-06-20T12:33:31.4289267+02:00",
+    "Grad": "22222222",
+    "Recenzija": [],
+    "Status": true,
+    "IsDeleted": false,
+    "FID": [],
+    "KID": "prodavac",
+    "PID": [],
+    "RID": [],
+    "Kolicina": 11.0
+  }
+]

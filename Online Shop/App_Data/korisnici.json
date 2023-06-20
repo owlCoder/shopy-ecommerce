@@ -1,6 +1,5 @@
 [
   {
-    "$id": "1",
     "KorisnickoIme": "admin1",
     "Lozinka": "??t.????\u0000??T????\t0}?",
     "Ime": "Administrator",
@@ -13,10 +12,9 @@
     "OmiljenjiProizvodi": null,
     "ObjavljeniProizvodi": null,
     "IsDeleted": false,
-    "IsLoggedIn": false
+    "IsLoggedIn": true
   },
   {
-    "$id": "2",
     "KorisnickoIme": "prodavac",
     "Lozinka": "??t.????\u0000??T????\t0}?",
     "Ime": "Prodavac",
@@ -27,12 +25,29 @@
     "Uloga": 1,
     "Porudzbine": null,
     "OmiljenjiProizvodi": null,
-    "ObjavljeniProizvodi": [],
+    "ObjavljeniProizvodi": [
+      {
+        "Id": 1,
+        "Naziv": "222",
+        "Cena": 22.0,
+        "Opis": "22222222222222222222222",
+        "Slika": "539c72a9-f70f-49f9-a461-9baf601553d1.jpg",
+        "DatumPostavljanjaProizvoda": "2023-06-20T12:33:31.4289267+02:00",
+        "Grad": "22222222",
+        "Recenzija": [],
+        "Status": true,
+        "IsDeleted": false,
+        "FID": [],
+        "KID": "prodavac",
+        "PID": [],
+        "RID": [],
+        "Kolicina": 11.0
+      }
+    ],
     "IsDeleted": false,
     "IsLoggedIn": true
   },
   {
-    "$id": "4",
     "KorisnickoIme": "kupac1",
     "Lozinka": "??t.????\u0000??T????\t0}?",
     "Ime": "danijel",
@@ -41,8 +56,52 @@
     "Email": "danijel@gmail.com",
     "DatumRodjenja": "2010-01-09T00:00:00Z",
     "Uloga": 0,
-    "Porudzbine": [],
-    "OmiljenjiProizvodi": [],
+    "Porudzbine": [
+      {
+        "Id": 1,
+        "Proizvod": {
+          "Id": 1,
+          "Naziv": "222",
+          "Cena": 22.0,
+          "Opis": "22222222222222222222222",
+          "Slika": "26f29a3f-dea7-4da6-9c9d-78d86121e47d.jpg",
+          "DatumPostavljanjaProizvoda": "2023-06-20T12:33:31.4289267+02:00",
+          "Grad": "22222222",
+          "Recenzija": [],
+          "Status": true,
+          "IsDeleted": false,
+          "FID": [],
+          "KID": null,
+          "PID": [],
+          "RID": [],
+          "Kolicina": 11.0
+        },
+        "Kolicina": 1.0,
+        "Kupac": "kupac1",
+        "DatumPorudzbine": "2023-06-20T12:38:18.339236+02:00",
+        "Status": 0,
+        "IsDeleted": false
+      }
+    ],
+    "OmiljenjiProizvodi": [
+      {
+        "Id": 1,
+        "Naziv": "222",
+        "Cena": 22.0,
+        "Opis": "22222222222222222222222",
+        "Slika": "539c72a9-f70f-49f9-a461-9baf601553d1.jpg",
+        "DatumPostavljanjaProizvoda": "2023-06-20T12:33:31.4289267+02:00",
+        "Grad": "22222222",
+        "Recenzija": [],
+        "Status": true,
+        "IsDeleted": false,
+        "FID": [],
+        "KID": "prodavac",
+        "PID": [],
+        "RID": [],
+        "Kolicina": 11.0
+      }
+    ],
     "ObjavljeniProizvodi": null,
     "IsDeleted": false,
     "IsLoggedIn": true

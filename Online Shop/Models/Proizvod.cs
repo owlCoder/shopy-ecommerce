@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 namespace Online_Shop.Models
 {
-    [JsonObject(IsReference = true)]
     public class Proizvod
     {
         public int Id { get; set; }

@@ -3,7 +3,6 @@ using Online_Shop.Storage;
 
 namespace Online_Shop.Models
 {
-    [JsonObject(IsReference = true)]
     public class Recenzija
     {
         public int Id { get; set; }
