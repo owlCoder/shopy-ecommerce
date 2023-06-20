@@ -17,10 +17,13 @@
     "KID": "2",
     "PID": [
       1,
-      2
+      2,
+      4,
+      5,
+      6
     ],
     "RID": [],
-    "Kolicina": 111.0
+    "Kolicina": 108.0
   },
   {
     "Id": 2,
@@ -35,8 +38,10 @@
     "IsDeleted": false,
     "FID": [],
     "KID": "2",
-    "PID": [],
+    "PID": [
+      3
+    ],
     "RID": [],
-    "Kolicina": 3.0
+    "Kolicina": 2.0
   }
 ]

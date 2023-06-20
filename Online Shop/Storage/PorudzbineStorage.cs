@@ -41,7 +41,13 @@ namespace Online_Shop.Storage
 
                             if (porudzbina != -1)
                             {
-                                Porudzbine[porudzbina].Proizvod = pr; // proizvod u porudzbini
+                                int korisnikp = KorisniciStorage.Korisnici.FindIndex(p => p.Id.Equals(Porudzbine[porudzbina].Kupac));
+
+                                if(korisnikp != -1)
+                                {
+                                    Porudzbine[porudzbina].Proizvod = pr; // proizvod u porudzbini
+                                    KorisniciStorage.Korisnici[korisnikp].Porudzbine.Add(Porudzbine[porudzbina]);
+                                }
                             }
                         }
                     }

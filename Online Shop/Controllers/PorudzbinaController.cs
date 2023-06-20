@@ -50,9 +50,10 @@ namespace Online_Shop.Controllers
                         {
                             Porudzbina nova = new Porudzbina(ProizvodiStorage.Proizvodi[proizvod], order.Kolicina, korisnik.Id);
                             ProizvodiStorage.Proizvodi[proizvod].PID.Add(nova.Id); // pid
+                            int korid = KorisniciStorage.Korisnici.FindIndex(p => p.Id.Equals(korisnik.Id));
 
                             // pokusaj smanjenja stanja kolicine proizvoda
-                            if (ProizvodiStorage.AzuriranjeProizvoda(ProizvodiStorage.Proizvodi[proizvod].Id.ToString(),
+                            if (korid != -1 && ProizvodiStorage.AzuriranjeProizvoda(ProizvodiStorage.Proizvodi[proizvod].Id.ToString(),
                                 ProizvodiStorage.Proizvodi[proizvod].Naziv, ProizvodiStorage.Proizvodi[proizvod].Cena,
                                 ProizvodiStorage.Proizvodi[proizvod].Kolicina - order.Kolicina,
                                 ProizvodiStorage.Proizvodi[proizvod].Opis,
@@ -61,7 +62,7 @@ namespace Online_Shop.Controllers
                                 // tek sada se moze dodati porudzbina
                                 PorudzbineStorage.Porudzbine.Add(nova);
                                 int pid = PorudzbineStorage.Porudzbine.FindIndex(p => p.Id == nova.Id);
-                                korisnik.Porudzbine.Add(PorudzbineStorage.Porudzbine[pid]);
+                                KorisniciStorage.Korisnici[korid].Porudzbine.Add(PorudzbineStorage.Porudzbine[pid]);
                                 KorisniciStorage.AzurirajKorisnikeUBazi();
                                 PorudzbineStorage.AzurirajPorudzbineUBazi();
 
@@ -109,7 +110,7 @@ namespace Online_Shop.Controllers
         {
             // autentifikacija i autorizacija
             Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
-            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Kupac || trenutni.Uloga != ULOGA.Administrator)
+            if (trenutni == null || trenutni.IsLoggedIn == false && (trenutni.Uloga != ULOGA.Kupac || trenutni.Uloga != ULOGA.Administrator))
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
             }
@@ -130,19 +131,26 @@ namespace Online_Shop.Controllers
             }
 
             // porudzbina postoji - korisnik kome pripada porudzbina
-            if(int.TryParse(PorudzbineStorage.Porudzbine[index].Kupac, out int kid))
+            if(!int.TryParse(PorudzbineStorage.Porudzbine[index].Kupac, out int kid))
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 43, Poruka = "Nije moguće izmeniti status porudžbine!" });
             }
 
             STATUS status = PorudzbineStorage.Porudzbine[index].Status;
-            int kpidx = KorisniciStorage.Korisnici[kid].Porudzbine.FindIndex(p => p.Id == pid && p.IsDeleted == false);
+            int kupacid = KorisniciStorage.Korisnici.FindIndex(p => p.Id.Equals(kid.ToString()) && p.IsDeleted == false);
+
+            if (kupacid == -1)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 61, Poruka = "Porudžbina ne postoji! Nije moguće označiti prispeće." });
+            }
+
+            int kpidx = KorisniciStorage.Korisnici[kupacid].Porudzbine.FindIndex(p => p.Id == pid && p.IsDeleted == false);
 
             if (status == STATUS.AKTIVNA && kpidx != -1)
             {
                 // oznacavanje prispeca
                 PorudzbineStorage.Porudzbine[index].Status = STATUS.IZVRSENA;
-                KorisniciStorage.Korisnici[kid].Porudzbine[kpidx].Status = STATUS.IZVRSENA;
+                KorisniciStorage.Korisnici[kpidx].Porudzbine[kpidx].Status = STATUS.IZVRSENA;
 
                 // azuriranje stanja
                 KorisniciStorage.AzurirajKorisnikeUBazi();
