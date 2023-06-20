@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Online_Shop.Models;
 using Online_Shop.Storage;
-using System;
-using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
@@ -19,7 +17,7 @@ namespace Online_Shop.Controllers
         {
             // Samo neprijavljeni korisnici se ne mogu registrovati
             Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
-            if(trenutni != null && trenutni.IsLoggedIn)
+            if (trenutni != null && trenutni.IsLoggedIn)
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Već ste autentifikovani na platformi!" });
             }
@@ -174,7 +172,7 @@ namespace Online_Shop.Controllers
         public string AzuriranjeProfila(KorisnikRegistracija zahtev)
         {
             Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
-            if (!trenutni.IsLoggedIn)
+            if (trenutni != null && !trenutni.IsLoggedIn)
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi!" });
             }
@@ -239,7 +237,7 @@ namespace Online_Shop.Controllers
         public string AzuriranjeLozinke(PromenaLozinke zahtev)
         {
             Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
-            if (trenutni.IsLoggedIn)
+            if (trenutni != null && trenutni.IsLoggedIn)
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi!" });
             }

@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Hosting;
-using System.Web.UI;
 
 namespace Online_Shop.Storage
 {
@@ -366,7 +365,7 @@ namespace Online_Shop.Storage
 
             return sortirani;
         }
-        
+
         // Metoda koja vraca listu omiljenih proizvoda za kupca
         public static List<Proizvod> ListaOmiljenihProizvoda()
         {

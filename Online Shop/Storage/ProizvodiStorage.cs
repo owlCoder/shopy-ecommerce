@@ -45,7 +45,7 @@ namespace Online_Shop.Storage
 
                         // kupci omiljeni
                         int korisnik;
-                        foreach(string uname in p.FID)
+                        foreach (string uname in p.FID)
                         {
                             korisnik = KorisniciStorage.Korisnici.IndexOf(KorisniciStorage.Korisnici.Find(x => x.Id.Equals(uname)));
                             if (korisnik != -1) KorisniciStorage.Korisnici[korisnik].OmiljenjiProizvodi.Add(Proizvodi[Proizvodi.FindIndex(x => x.Id == p.Id)]);
@@ -105,11 +105,11 @@ namespace Online_Shop.Storage
                 if (trenutni.ObjavljeniProizvodi == null) trenutni.ObjavljeniProizvodi = new List<Proizvod>();
 
                 int index = KorisniciStorage.Korisnici.FindIndex(p => p.KorisnickoIme.Equals(trenutni.KorisnickoIme));
-                if(index != -1)
+                if (index != -1)
                 {
                     int pi = Proizvodi.FindIndex(p => p.Id == novi.Id);
                     int ki = KorisniciStorage.Korisnici.FindIndex(p => p.KorisnickoIme.Equals(trenutni.KorisnickoIme));
-                    if(pi != -1 && ki != -1)
+                    if (pi != -1 && ki != -1)
                         KorisniciStorage.Korisnici[ki].ObjavljeniProizvodi.Add(Proizvodi[pi]);
                 }
 
@@ -234,7 +234,7 @@ namespace Online_Shop.Storage
             // recenzije za dati proizvod vise nije moguce ni postaviti ni menjati, pa se logicki brisu
             List<Recenzija> recenzije = RecenzijeStorage.Recenzije.FindAll(p => p.Proizvod.Id == id && !p.IsDeleted);
 
-            foreach(Recenzija recenzija in recenzije)
+            foreach (Recenzija recenzija in recenzije)
             {
                 recenzija.IsDeleted = true; // brisanje recenzije, nezavisno od statusa (odobrena/odbijena)
             }
@@ -339,7 +339,7 @@ namespace Online_Shop.Storage
             {
                 int index = Proizvodi.FindIndex(p => p.Id == pr.Id);
 
-                if(index != -1)
+                if (index != -1)
                 {
                     Proizvodi[index].Naziv = naziv;
                     Proizvodi[index].Cena = cena;
@@ -349,7 +349,7 @@ namespace Online_Shop.Storage
                     Proizvodi[index].Grad = grad;
                 }
                 // azuriranje podataka o proizvodu
-                
+
             }
 
             // Azuriranje u json fajlovima, novo izmenjenih entiteta

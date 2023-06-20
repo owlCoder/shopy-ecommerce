@@ -82,7 +82,7 @@ namespace Online_Shop.Storage
             // proizvod u sebi ima listu recenzija - brza pretraga nego lista svih recenzije
             Proizvod trazeni = ProizvodiStorage.Proizvodi.FirstOrDefault(p => p.Id == proizvod_id);
 
-            if(trazeni == null)
+            if (trazeni == null)
             {
                 return new List<Recenzija>();
             }

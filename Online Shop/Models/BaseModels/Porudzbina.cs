@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using Online_Shop.Storage;
+﻿using Online_Shop.Storage;
 using System;
 
 namespace Online_Shop.Models
@@ -14,7 +13,7 @@ namespace Online_Shop.Models
         public STATUS Status { get; set; }
         public bool IsDeleted { get; set; }
 
-        public Porudzbina() 
+        public Porudzbina()
         {
             // Prazan konstruktor
         }

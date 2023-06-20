@@ -146,7 +146,7 @@ namespace Online_Shop.Controllers
         [Route("ListaFiltriranihProizvodaPocetna")]
         public string PrikazSvihDostupnihProizvoda(FilterProductRequest zahtev)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 List<Proizvod> proizvodi = ProizvodiStorage.Proizvodi.FindAll(p => p.IsDeleted == false && p.Status == true);
 
@@ -154,13 +154,13 @@ namespace Online_Shop.Controllers
                 {
                     proizvodi = proizvodi.FindAll(p => p.Naziv.ToLower().Contains(zahtev.Naziv.ToLower()));
                 }
-                
-                if(!zahtev.Grad.Equals("")) // unet je kriterijum za grad
+
+                if (!zahtev.Grad.Equals("")) // unet je kriterijum za grad
                 {
                     proizvodi = proizvodi.FindAll(p => p.Grad.ToLower().Contains(zahtev.Grad.ToLower()));
                 }
 
-                if(zahtev.MinCena != -1.0 && zahtev.MaxCena != -1.0)
+                if (zahtev.MinCena != -1.0 && zahtev.MaxCena != -1.0)
                 {
                     proizvodi = proizvodi.FindAll(p => p.Cena >= zahtev.MinCena && p.Cena <= zahtev.MaxCena);
                 }

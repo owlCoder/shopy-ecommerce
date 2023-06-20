@@ -1,11 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Online_Shop.Models;
 using Online_Shop.Storage;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace Online_Shop.Controllers
@@ -18,7 +14,7 @@ namespace Online_Shop.Controllers
         [Route("RecenzijeZaProizvodPoId")]
         public string RecenzijePoProizvodu(SingleIdRequest zahtev)
         {
-            if(!ModelState.IsValid || int.TryParse(zahtev.Id, out int id))
+            if (!ModelState.IsValid || int.TryParse(zahtev.Id, out int id))
             {
                 return JsonConvert.SerializeObject(new List<Recenzija>());
             }

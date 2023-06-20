@@ -1,12 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Online_Shop.Models;
 using Online_Shop.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Security.Cryptography;
 using System.Web;
 using System.Web.Http;
 
@@ -32,7 +26,7 @@ namespace Online_Shop.Controllers
                 // proveriti da li je trenutni korisnik kupac
                 Korisnik korisnik = ((Korisnik)HttpContext.Current.Session["korisnik"]);
 
-                if(korisnik == null || korisnik.Uloga != ULOGA.Kupac)
+                if (korisnik == null || korisnik.Uloga != ULOGA.Kupac)
                 {
                     JsonConvert.SerializeObject(new Response { Kod = 21, Poruka = "Potrebno je da se ponovo prijavite kako bi izvršili porudžbinu!!" });
                 }
@@ -41,7 +35,7 @@ namespace Online_Shop.Controllers
                     // korisnik je prijavljen i kupac je
                     int proizvod = ProizvodiStorage.Proizvodi.FindIndex(p => p.IsDeleted == false && p.Id == order.Id);
 
-                    if(proizvod == -1)
+                    if (proizvod == -1)
                     {
                         return JsonConvert.SerializeObject(new Response { Kod = 41, Poruka = "Nažalost, proizvod više nije u ponudi," });
                     }
@@ -58,9 +52,9 @@ namespace Online_Shop.Controllers
                             ProizvodiStorage.Proizvodi[proizvod].PID.Add(nova.Id); // pid
 
                             // pokusaj smanjenja stanja kolicine proizvoda
-                            if(ProizvodiStorage.AzuriranjeProizvoda(ProizvodiStorage.Proizvodi[proizvod].Id.ToString(), 
+                            if (ProizvodiStorage.AzuriranjeProizvoda(ProizvodiStorage.Proizvodi[proizvod].Id.ToString(),
                                 ProizvodiStorage.Proizvodi[proizvod].Naziv, ProizvodiStorage.Proizvodi[proizvod].Cena,
-                                ProizvodiStorage.Proizvodi[proizvod].Kolicina - order.Kolicina, 
+                                ProizvodiStorage.Proizvodi[proizvod].Kolicina - order.Kolicina,
                                 ProizvodiStorage.Proizvodi[proizvod].Opis,
                                 ProizvodiStorage.Proizvodi[proizvod].Slika, ProizvodiStorage.Proizvodi[proizvod].Grad))
                             {
@@ -77,8 +71,8 @@ namespace Online_Shop.Controllers
                             {
                                 return JsonConvert.SerializeObject(new Response { Kod = 45, Poruka = "Nije moguće kreirati porudžbinu! Pokušajte ponovo kasnije." });
                             }
-                        }    
-                    }    
+                        }
+                    }
                 }
 
                 return JsonConvert.SerializeObject(new Response { Kod = 45, Poruka = "Nije moguće kreirati porudžbinu! Pokušajte ponovo kasnije." });
@@ -103,7 +97,7 @@ namespace Online_Shop.Controllers
             }
             else
             {
-                return JsonConvert.SerializeObject(PorudzbineStorage.PorudzbineKupac(), new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore});
+                return JsonConvert.SerializeObject(PorudzbineStorage.PorudzbineKupac(), new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
             }
 
         }

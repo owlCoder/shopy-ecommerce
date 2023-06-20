@@ -30,16 +30,16 @@ namespace Online_Shop.Storage
 
                     // ucitavanje svih porudzbina iz json datoteke
                     Porudzbine = JsonConvert.DeserializeObject<List<Porudzbina>>(File.ReadAllText(PorudzbinePath));
-                
+
                     // za svaku porudzbinu proizvod
-                    foreach(Proizvod pr in ProizvodiStorage.Proizvodi)
+                    foreach (Proizvod pr in ProizvodiStorage.Proizvodi)
                     {
                         // taj proizvod dodaj u porudzbinu kojoj pripada
-                        foreach(int pid in pr.PID)
+                        foreach (int pid in pr.PID)
                         {
                             int porudzbina = Porudzbine.FindIndex(p => p.Id == pid);
 
-                            if(porudzbina != -1)
+                            if (porudzbina != -1)
                             {
                                 Porudzbine[porudzbina].Proizvod = pr; // proizvod u porudzbini
                             }
