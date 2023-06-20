@@ -1,9 +1,11 @@
-﻿using Online_Shop.Storage;
+﻿using Newtonsoft.Json;
+using Online_Shop.Storage;
 using System;
 using System.Collections.Generic;
 
 namespace Online_Shop.Models
 {
+    [JsonObject(IsReference = true)]
     public class Proizvod
     {
         public int Id { get; set; }
@@ -17,6 +19,10 @@ namespace Online_Shop.Models
         public List<Recenzija> Recenzija { get; set; }
         public bool Status { get; set; }
         public bool IsDeleted { get; set; }
+        public List<string> FID { get; set; } = new List<string>();
+        public string KID { get; set; }
+        public List<int> PID { get; set; } = new List<int>();
+        public List<int> RID { get; set; } = new List<int>();
         public double Kolicina { get { return kolicina; } set { if (kolicina != value) { kolicina = value; Status = kolicina > 0.0; } } }
 
         // Prazan konstruktor zbog serijalizacije

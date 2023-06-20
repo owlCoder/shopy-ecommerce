@@ -172,7 +172,7 @@ namespace Online_Shop.Controllers
         [Route("SortiranjeKorisnika")]
         public string SortirajKorisnike(SingleIdRequest id)
         {
-            return JsonConvert.SerializeObject(KorisniciStorage.GetSorterd(id.Id));
+            return JsonConvert.SerializeObject(KorisniciStorage.GetSorted(id.Id));
         }
 
         // Metoda koja provera da li se proizvod nalazi u listi omiljenih proizvoda za trenutnog korisnika

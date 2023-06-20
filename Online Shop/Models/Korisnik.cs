@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace Online_Shop.Models
 {
+    [JsonObject(IsReference = true)]
     public class Korisnik
     {
         public string KorisnickoIme { get; set; }

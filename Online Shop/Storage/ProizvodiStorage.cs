@@ -91,7 +91,14 @@ namespace Online_Shop.Storage
                 // Dodavanje proizvoda u listu objavljenih proizvoda
                 if (trenutni.ObjavljeniProizvodi == null) trenutni.ObjavljeniProizvodi = new List<Proizvod>();
 
-                trenutni.ObjavljeniProizvodi.Add(novi);
+                int index = KorisniciStorage.Korisnici.FindIndex(p => p.KorisnickoIme.Equals(trenutni.KorisnickoIme));
+                if(index != -1)
+                {
+                    int pi = Proizvodi.FindIndex(p => p.Id == novi.Id);
+                    int ki = KorisniciStorage.Korisnici.FindIndex(p => p.KorisnickoIme.Equals(trenutni.KorisnickoIme));
+                    if(pi != -1 && ki != -1)
+                        KorisniciStorage.Korisnici[ki].ObjavljeniProizvodi.Add(Proizvodi[pi]);
+                }
 
                 // Azurirati json i za korisnike i za proizvode
                 KorisniciStorage.AzurirajKorisnikeUBazi();
@@ -315,15 +322,21 @@ namespace Online_Shop.Storage
             }
 
             // ipak postoji proizvod za izmenu u listi svih proizvoda
-            foreach (Proizvod proizvod in za_izmenu)
+            foreach (Proizvod pr in za_izmenu)
             {
+                int index = Proizvodi.FindIndex(p => p.Id == pr.Id);
+
+                if(index != -1)
+                {
+                    Proizvodi[index].Naziv = naziv;
+                    Proizvodi[index].Cena = cena;
+                    Proizvodi[index].Kolicina = kolicina;
+                    Proizvodi[index].Opis = opis;
+                    Proizvodi[index].Slika = slika;
+                    Proizvodi[index].Grad = grad;
+                }
                 // azuriranje podataka o proizvodu
-                proizvod.Naziv = naziv;
-                proizvod.Cena = cena;
-                proizvod.Kolicina = kolicina;
-                proizvod.Opis = opis;
-                proizvod.Slika = slika;
-                proizvod.Grad = grad;
+                
             }
 
             // Azuriranje u json fajlovima, novo izmenjenih entiteta

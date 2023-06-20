@@ -1,8 +1,10 @@
-﻿using Online_Shop.Storage;
+﻿using Newtonsoft.Json;
+using Online_Shop.Storage;
 using System;
 
 namespace Online_Shop.Models
 {
+    [JsonObject(IsReference = true)]
     public class Porudzbina
     {
         public int Id { get; set; }
