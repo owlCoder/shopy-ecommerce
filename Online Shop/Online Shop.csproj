@@ -131,6 +131,7 @@
     <Compile Include="Controllers\RecenzijeController.cs" />
     <Compile Include="Models\Requests\FilterProductRequest.cs" />
     <Compile Include="Models\Requests\OrderRequest.cs" />
+    <Compile Include="Models\Requests\PorudzbinaAddRequest.cs" />
     <Compile Include="Models\Requests\ProizvodEditRequest.cs" />
     <Compile Include="Controllers\ProizvodiController.cs" />
     <Compile Include="Controllers\StorageController.cs" />

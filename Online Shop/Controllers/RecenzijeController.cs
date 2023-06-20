@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Online_Shop.Models;
+using Online_Shop.Models.Requests;
 using Online_Shop.Storage;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -40,5 +41,12 @@ namespace Online_Shop.Controllers
             }
         }
 
+        // Metoda za dodavanje porudzbine
+        [HttpPost]
+        [Route("DodavanjeRecenzije")]
+        public string DodajRecenziju(PorudzbinaAddRequest zahtev)
+        {
+            // to do
+        }
     }
 }
