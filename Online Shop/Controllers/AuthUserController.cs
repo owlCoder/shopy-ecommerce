@@ -17,6 +17,13 @@ namespace Online_Shop.Controllers
         [Route("Registracija")]
         public string Registracija(KorisnikRegistracija zahtev)
         {
+            // Samo neprijavljeni korisnici se ne mogu registrovati
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if(trenutni.IsLoggedIn)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Već ste autentifikovani na platformi!" });
+            }
+
             if (!ModelState.IsValid)
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 1, Poruka = "Podaci koje ste uneli u formi nisu validni!" });
@@ -100,6 +107,13 @@ namespace Online_Shop.Controllers
         [Route("Prijava")]
         public string PrijavaNaPlatformu(KorisnikLogin zahtev)
         {
+            // Samo neprijavljeni korisnici se ne mogu prijaviti
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni.IsLoggedIn)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Već ste autentifikovani na platformi!" });
+            }
+
             if (!ModelState.IsValid)
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 1, Poruka = "Pre prijave na platformu potrebno je da se registrujete!" });
@@ -159,6 +173,12 @@ namespace Online_Shop.Controllers
         [Route("AzuriranjeProfila")]
         public string AzuriranjeProfila(KorisnikRegistracija zahtev)
         {
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (!trenutni.IsLoggedIn)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi!" });
+            }
+
             if (!ModelState.IsValid)
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 1, Poruka = "Niste popunili pravilno formu!" });
@@ -218,6 +238,12 @@ namespace Online_Shop.Controllers
         [Route("AzuriranjeLozinke")]
         public string AzuriranjeLozinke(PromenaLozinke zahtev)
         {
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni.IsLoggedIn)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi!" });
+            }
+
             if (!ModelState.IsValid)
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 1, Poruka = "Niste popunili pravilno formu!" });
