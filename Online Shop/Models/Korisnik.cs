@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Online_Shop.Storage;
 using System;
 using System.Collections.Generic;
 
@@ -6,6 +7,7 @@ namespace Online_Shop.Models
 {
     public class Korisnik
     {
+        public string Id { get; set; }
         public string KorisnickoIme { get; set; }
         public string Lozinka { get; set; }
         public string Ime { get; set; }
@@ -28,10 +30,11 @@ namespace Online_Shop.Models
 
         // Konstruktor za ucitavanje podataka iz liste
         [JsonConstructor]
-        public Korisnik(string korisnickoIme, string lozinka, string ime, string prezime, string pol, string email,
+        public Korisnik(string id, string korisnickoIme, string lozinka, string ime, string prezime, string pol, string email,
                         DateTime datumRodjenja, ULOGA uloga, List<Porudzbina> porudzbine, List<Proizvod> omiljenjiProizvodi,
                         List<Proizvod> objavljeniProizvodi, bool isDeleted, bool isLoggedIn)
         {
+            Id = id;
             KorisnickoIme = korisnickoIme;
             Lozinka = lozinka;
             Ime = ime;
@@ -52,6 +55,7 @@ namespace Online_Shop.Models
         // Kreiranje kupca - nakon registracije
         public Korisnik(string korisnickoIme, string lozinka, string ime, string prezime, string pol, string email, DateTime datumRodjenja)
         {
+            Id = (KorisniciStorage.Korisnici.Count + 1).ToString();
             // podrazumevano nije obrisan, ima praznu listu porudzbina itd - tek se registrovao
             OmiljenjiProizvodi = new List<Proizvod>();
             Porudzbine = new List<Porudzbina>();

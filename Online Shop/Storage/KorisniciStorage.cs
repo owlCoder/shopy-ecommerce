@@ -73,7 +73,7 @@ namespace Online_Shop.Storage
         {
             Korisnik tmp = (Korisnik)HttpContext.Current.Session["korisnik"];
             int proizvod = ProizvodiStorage.Proizvodi.FindIndex(p => p.Id == pid);
-            int korisnik = Korisnici.FindIndex(p => p.KorisnickoIme.Equals(tmp.KorisnickoIme));
+            int korisnik = Korisnici.FindIndex(p => p.Id.Equals(tmp.Id));
 
             if (korisnik != -1 && Korisnici[korisnik].OmiljenjiProizvodi.FindIndex(p => p.Id == pid) != -1)
             {
@@ -211,7 +211,7 @@ namespace Online_Shop.Storage
                                         int index = PorudzbineStorage.Porudzbine.IndexOf(p);
                                         if (index != -1)
                                         {
-                                            p.IsDeleted = true; // brisanje porudzbine koja sadrzi dati proizvod
+                                            PorudzbineStorage.Porudzbine[index].IsDeleted = true; // brisanje porudzbine koja sadrzi dati proizvod
                                         }
                                     }
                                 }

@@ -97,7 +97,7 @@ namespace Online_Shop.Storage
 
             if (trenutni != null)
             {
-                novi.KID = trenutni.KorisnickoIme;
+                novi.KID = trenutni.Id;
                 // Dodavanje proizvoda u listu
                 Proizvodi.Add(novi);
 

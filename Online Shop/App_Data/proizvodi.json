@@ -1,21 +1,36 @@
 [
   {
     "Id": 1,
-    "Naziv": "1234",
-    "Cena": 224.0,
-    "Opis": "222222222222222222222224444",
-    "Slika": "cd837362-bbf0-4491-96eb-56f2a53f34f1.jpg",
-    "DatumPostavljanjaProizvoda": "2023-06-20T12:33:31.4289267+02:00",
-    "Grad": "222222224",
+    "Naziv": "qqqqqqqqqqq",
+    "Cena": 1.0,
+    "Opis": "qqqqqqqqqqqqqqqqqqqqqqqqq",
+    "Slika": "4d9e92e6-25ca-40cb-8468-12909bbce735.jpg",
+    "DatumPostavljanjaProizvoda": "2023-06-20T12:57:36.0832756+02:00",
+    "Grad": "qqqqqq",
     "Recenzija": [],
     "Status": true,
     "IsDeleted": false,
     "FID": [],
-    "KID": "prodavac",
-    "PID": [
-      1
-    ],
+    "KID": "2",
+    "PID": [],
     "RID": [],
-    "Kolicina": 104.0
+    "Kolicina": 1.0
+  },
+  {
+    "Id": 2,
+    "Naziv": "wwwwwwwwwww",
+    "Cena": 12.0,
+    "Opis": "wwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+    "Slika": "fefe38de-46c9-4e8e-80c5-28f461f017ad.jpg",
+    "DatumPostavljanjaProizvoda": "2023-06-20T12:57:48.0423289+02:00",
+    "Grad": "Beograd",
+    "Recenzija": [],
+    "Status": true,
+    "IsDeleted": false,
+    "FID": [],
+    "KID": "2",
+    "PID": [],
+    "RID": [],
+    "Kolicina": 22.0
   }
 ]

@@ -47,7 +47,7 @@ namespace Online_Shop.Controllers
                         }
                         else
                         {
-                            Porudzbina nova = new Porudzbina(ProizvodiStorage.Proizvodi[proizvod], order.Kolicina, korisnik.KorisnickoIme);
+                            Porudzbina nova = new Porudzbina(ProizvodiStorage.Proizvodi[proizvod], order.Kolicina, korisnik.Id);
                             ProizvodiStorage.Proizvodi[proizvod].PID.Add(nova.Id); // pid
 
                             // pokusaj smanjenja stanja kolicine proizvoda

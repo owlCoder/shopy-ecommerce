@@ -83,7 +83,7 @@ namespace Online_Shop.Controllers
                     var sha1 = new ASCIIEncoding().GetString(sifra);
 
                     // dodavanje prodavca
-                    Korisnik novi = new Korisnik(zahtev.KorisnickoIme, sha1, zahtev.Ime, zahtev.Prezime, zahtev.Pol, zahtev.Email, zahtev.DatumRodjenja, ULOGA.Prodavac, null, null, new List<Proizvod>(), false, false);
+                    Korisnik novi = new Korisnik((KorisniciStorage.Korisnici.Count + 1).ToString(), zahtev.KorisnickoIme, sha1, zahtev.Ime, zahtev.Prezime, zahtev.Pol, zahtev.Email, zahtev.DatumRodjenja, ULOGA.Prodavac, null, null, new List<Proizvod>(), false, false);
                     novi.IsLoggedIn = true;
                     KorisniciStorage.Korisnici.Add(novi);
                     KorisniciStorage.AzurirajKorisnikeUBazi();
