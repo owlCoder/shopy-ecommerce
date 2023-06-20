@@ -42,6 +42,7 @@
     </style>
     <script>
         var uloga;
+        var Id;
         // ako je ulogovan, prebaci ga na index - slucaj da ide na back opciju
         $.ajax({
             url: "/api/auth/Ulogovan",
@@ -90,7 +91,10 @@
                         // id iz url
                         let searchParams = new URLSearchParams(window.location.search)
                         if (!searchParams.has('id')) window.location.href = "Index.html";
-                        var Id = searchParams.get('id');
+                        Id = searchParams.get('id');
+
+                        // popuni informacije o porudzbini za koju se dodaje recenzija
+
                     });
                 }
                 else {
@@ -105,10 +109,125 @@
             }
         });
 
+
         // akcija za dodavanje recenzije
         jQuery(function () {
             $("#divgreske").addClass("d-none");
             $("body").removeClass("d-none");
+
+            $("#slika").on('change', function () {
+                if (slika.files[0] === undefined) {
+                    pregled.src = "/Images/productplc.jpg";
+                }
+                else {
+                    pregled.src = URL.createObjectURL(slika.files[0]);
+                }
+            });
+
+            // provera unosa - verifikacija unosa na klijentu
+            $("#dodajrecenzijubtn").on('click', function () {
+                var naslov = $("#naslov").val();
+                var sadrzaj = $("#sadrzaj").val();
+                var slika = $("#slika").val();
+                var greska = false;
+
+                // provera unosa na klijentu
+                if (naslov.length < 3) {
+                    $("#g1").addClass("d-block");
+                    $("#g1").removeClass("d-none");
+                    $("#naslov").addClass("is-invalid");
+                    $("#g1").text("Naslov mora imati minimalno 3 karaktera!");
+                    greska = true;
+                }
+                else {
+                    $("#g1").addClass("d-none");
+                    $("#naslov").removeClass("is-invalid");
+                    $("#naslov").removeClass("invalid-feedback");
+                    $("#naziv").add("is-valid");
+                }
+
+                if (sadrzaj.length < 20) {
+                    $("#g2").addClass("d-block");
+                    $("#g2").removeClass("d-none");
+                    $("#sadrzaj").addClass("is-invalid");
+                    $("#g2").removeClass("d-none");
+                    $("#g2").text("Sadržaj mora imati minimalno 20 karaktera!");
+                    greska = true;
+                }
+                else {
+                    $("#g2").addClass("d-none");
+                    $("#sadrzaj").removeClass("is-invalid");
+                    $("#sadrzaj").removeClass("invalid-feedback");
+                    $("#sadrzaj").add("is-valid");
+                }
+
+                if (slika.length <= 0) {
+                    $("#g3").addClass("d-block");
+                    $("#g3").removeClass("d-none");
+                    $("#slika").addClass("is-invalid");
+                    $("#g6").text("Morate odabrati sliku proizvoda!");
+                    greska = true;
+                }
+                else {
+                    $("#g3").addClass("d-none");
+                    $("#slika").removeClass("is-invalid");
+                    $("#slika").removeClass("invalid-feedback");
+                    $("#slika").add("is-valid");
+                }
+
+                if (greska === true) return; // ne izvrsava se ajax poziv - rasterecuje se server od callbacks
+
+                // priprema slike za slanje
+                var slikaAjax = new FormData();
+                slikaAjax.append("slika", $("#slika")[0].files[0]);
+
+                // ajax poziv ka api-ju za upload slike
+                $.ajax({
+                    url: "/api/storage/OtpremanjeSlike",
+                    type: "POST",
+                    contentType: false,
+                    processData: false,
+                    data: slikaAjax,
+                    success: function (response) {
+                        if (response != null) {
+                            var msg = JSON.parse(response);
+                            if (msg.Kod === 0) // upis podataka o recenziji je prosao uspesno
+                            {
+                                // ajax poziv ka API-ju za kreiranje recenzije
+                                $.ajax({
+                                    url: "/api/reviews/DodavanjeRecenzije",
+                                    type: "POST",
+                                    data: JSON.stringify({
+                                        PorudzbinaId: Id,
+                                        Naslov: naslov,
+                                        Sadrzaj: sadryaj,
+                                        Slika: msg.Poruka,
+                                    }),
+                                    async: false,
+                                    cache: false,
+                                    dataType: "json",
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function (response) {
+                                        if (response != null) {
+                                            if (JSON.parse(response).Kod === 0) {
+                                                window.location.href = "MojePorudzbine.html";
+                                                return false;
+                                            }
+                                        }
+                                    }
+                                });
+
+                                return false;
+                            }
+                            else {
+                                // desila se greska - prikazi je
+                                $("#divgreske").removeClass('d-none');
+                                $("#greske").text(JSON.parse(response).Poruka);
+                            }
+                        }
+                    }
+                });
+            });
         });
 
 
@@ -170,14 +289,14 @@
 
                                                     <hr />
                                                     <div>
-                                                        <h2 id="pid">Porudzbina #1</h2>
-                                                        <p class="text-muted fs-5" id="datum">Izvršena dana: 21.06.2023.</p>
+                                                        <h2 id="pid"></h2>
+                                                        <p class="text-muted fs-5" id="datum"></p>
                                                         <span>
                                                             <img alt="proizvod" src="Images/mainpf.jpg" id="slikapr" class="rounded-circle" width="80" height="80" />&emsp;
-                                                            <span id="nazivpr" class="text-break">Proizvod naziv dasjdsakdsakdksajd kjkas</span><br />
+                                                            <span id="nazivpr" class="text-break"></span><br />
                                                         </span>
                                                         <hr class="text-dark" />
-                                                        <p class="text-success fw-semibold fs-4" id="ukupaniznos">Iznos porudžbine: 1212 RSD</p>
+                                                        <p class="text-success fw-semibold fs-4" id="ukupaniznos"></p>
                                                     </div>
                                                     <hr />
                                                     <br />
@@ -215,7 +334,7 @@
                                                         Recenzija će biti vidljiva isključivo administratorima. Kada administrator odobri recenziju ona postaje vidljiva na platformi Shopy.
                                                     </p>
                                                     <div class="pt-1 mb-4">
-                                                        <button class="btn btn-dark btn-lg btn-block" id="izmenabtn" type="button">Dodavanje recenzije</button>
+                                                        <button class="btn btn-dark btn-lg btn-block" id="dodajrecenzijubtn" type="button">Dodavanje recenzije</button>
                                                     </div>
                                                 </form>
                                             </div>

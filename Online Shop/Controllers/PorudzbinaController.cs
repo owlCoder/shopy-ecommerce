@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Online_Shop.Models;
+using Online_Shop.Models.Requests;
 using Online_Shop.Storage;
 using System.Linq;
 using System.Web;
@@ -244,6 +245,14 @@ namespace Online_Shop.Controllers
 
             // prioritet prikaza imaju aktivne porudzbine
             return JsonConvert.SerializeObject(PorudzbineStorage.Porudzbine.FindAll(p => p.IsDeleted == false).OrderBy(p => p.Status));
+        }
+
+        // Metoda koja vraca tacno odredjenu porudzbinu
+        [HttpPost]
+        [Route("PorudzbinaRecenzija")]
+        public string PorudzbinaPoIdZaRecenziju(PorudzbinaShowRequest zahtev)
+        {
+
         }
     }
 }
