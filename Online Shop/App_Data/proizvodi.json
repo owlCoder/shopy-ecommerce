@@ -11,14 +11,16 @@
     "Status": true,
     "IsDeleted": false,
     "FID": [
-      "3"
+      "3",
+      "4"
     ],
     "KID": "2",
     "PID": [
-      1
+      1,
+      2
     ],
     "RID": [],
-    "Kolicina": 112.0
+    "Kolicina": 111.0
   },
   {
     "Id": 2,

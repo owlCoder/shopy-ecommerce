@@ -2,6 +2,7 @@
 using Online_Shop.Models;
 using Online_Shop.Storage;
 using System.Collections.Generic;
+using System.Web;
 using System.Web.Http;
 
 namespace Online_Shop.Controllers
@@ -14,6 +15,13 @@ namespace Online_Shop.Controllers
         [Route("DodavanjeProizvoda")]
         public string DodajProizvod(ProizvodAddRequest zahtev)
         {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Administrator || trenutni.Uloga != ULOGA.Prodavac)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
             if (ModelState.IsValid)
             {
                 bool uspesno = ProizvodiStorage.DodajProizvod(zahtev.Naziv, zahtev.Cena, zahtev.Kolicina, zahtev.Opis, zahtev.Slika, zahtev.Grad);
@@ -35,6 +43,13 @@ namespace Online_Shop.Controllers
         [Route("BrisanjeProizvoda")]
         public string ObrisiProizvod(SingleIdRequest zahtev)
         {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Administrator || trenutni.Uloga != ULOGA.Prodavac)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
             if (int.TryParse(zahtev.Id, out int idp) && ProizvodiStorage.DeleteProizvod(idp))
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "Proizvod uspešno obrisan iz liste proizvoda." });
@@ -53,6 +68,13 @@ namespace Online_Shop.Controllers
         [Route("AzuriranjeProizvoda")]
         public string AzurirajProizvod(ProizvodEditRequest zahtev)
         {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Administrator || trenutni.Uloga != ULOGA.Prodavac)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
             if (ModelState.IsValid)
             {
                 bool uspesno = ProizvodiStorage.AzuriranjeProizvoda(zahtev.Id, zahtev.Naziv, zahtev.Cena, zahtev.Kolicina, zahtev.Opis, zahtev.Slika, zahtev.Grad);
@@ -73,6 +95,13 @@ namespace Online_Shop.Controllers
         [Route("ListaProizvoda")]
         public string PrikazObjavljenihProizvoda()
         {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Prodavac)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
             return JsonConvert.SerializeObject(ProizvodiStorage.GetProizvodiPerUser());
         }
 
@@ -81,6 +110,13 @@ namespace Online_Shop.Controllers
         [Route("ListaFiltriranihProizvoda")]
         public string PrikazDostupnihProizvoda(SingleIdRequest zahtev)
         {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Prodavac)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
             string[] request = zahtev.Id.Split(';');
             List<Proizvod> proizvodi;
 
@@ -187,6 +223,13 @@ namespace Online_Shop.Controllers
         [Route("SviProizvodi")]
         public string PrikazSvihProizvodaAdministracija()
         {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Administrator)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
             return JsonConvert.SerializeObject(ProizvodiStorage.Proizvodi.FindAll(p => p.IsDeleted == false));
         }
 

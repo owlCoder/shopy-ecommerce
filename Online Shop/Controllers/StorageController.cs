@@ -15,6 +15,13 @@ namespace Online_Shop.Controllers
         [Route("OtpremanjeSlike")]
         public string Otpremanje()
         {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Administrator)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
             HttpFileCollection slika_forma = HttpContext.Current.Request.Files;
             HttpPostedFile otpremljena_slika = slika_forma.Get("slika");
             string naziv_fajla = Guid.NewGuid().ToString() + ".jpg";

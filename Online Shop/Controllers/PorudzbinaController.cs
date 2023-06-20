@@ -19,8 +19,15 @@ namespace Online_Shop.Controllers
         [Route("KreiranjePorudzbine")]
         public string KreirajPorudzbinu(OrderRequest order)
         {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Kupac)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
             // prima se Id proizvoda koji se narucuje kao i kolicina koja je trazena
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 // proveriti da li je trenutni korisnik kupac
                 Korisnik korisnik = ((Korisnik)HttpContext.Current.Session["korisnik"]);
