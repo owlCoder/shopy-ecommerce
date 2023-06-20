@@ -18,6 +18,12 @@ namespace Online_Shop.Controllers
         [Route("ListaKorisnika")]
         public string ListaKorisnika()
         {
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Administrator)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
             return JsonConvert.SerializeObject(KorisniciStorage.GetKorisnici());
         }
 
@@ -26,6 +32,13 @@ namespace Online_Shop.Controllers
         [Route("BrisanjeKorisnika")]
         public string ObrisiKorisnika(SingleIdRequest id)
         {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Administrator)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
             if (KorisniciStorage.LogickoBrisanje(id.Id))
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "Korisnik sa ID '" + id.Id + "' uspešno obrisan!" });
@@ -41,6 +54,13 @@ namespace Online_Shop.Controllers
         [Route("PretragaKorisnika")]
         public string PretragaKorisnika(SearchRequest zahtev)
         {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Administrator)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
             if (ModelState.IsValid)
             {
                 int uloga;
@@ -65,6 +85,13 @@ namespace Online_Shop.Controllers
         [Route("RegistracijaProdavca")]
         public string Registracija(KorisnikRegistracija zahtev)
         {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Administrator)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
             if (!ModelState.IsValid)
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 1, Poruka = "Podaci koje ste uneli u formi nisu validni!" });
@@ -137,9 +164,10 @@ namespace Online_Shop.Controllers
                 }
 
                 // uneti podaci su okej uneti - provera da ne postoji korisnik sa unetim korisnickim imenom
-                if (korisnik != null && provera)
+                int index = KorisniciStorage.Korisnici.FindIndex(p => p.IsDeleted == false && p.Id.Equals(korisnik.Id));
+                if (korisnik != null && provera && index != -1)
                 {
-                    Korisnik tren = korisnik;
+                    Korisnik tren = KorisniciStorage.Korisnici[index];
 
                     if (tren != null)
                     {
@@ -172,6 +200,13 @@ namespace Online_Shop.Controllers
         [Route("SortiranjeKorisnika")]
         public string SortirajKorisnike(SingleIdRequest id)
         {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Administrator)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
             return JsonConvert.SerializeObject(KorisniciStorage.GetSorted(id.Id));
         }
 
@@ -180,7 +215,14 @@ namespace Online_Shop.Controllers
         [Route("OmiljeniProizvod")]
         public string IsOmiljen(SingleIdRequest zahtev)
         {
-            int id = -1;
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Kupac)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
+            int id;
             if(ModelState.IsValid && int.TryParse(zahtev.Id, out id))
             {
                 // da li je trenutni korisnik kupac
@@ -213,7 +255,14 @@ namespace Online_Shop.Controllers
         [Route("DodajOmiljeniProizvod")]
         public string DodavanjeUOmiljene(SingleIdRequest zahtev)
         {
-            int id = -1;
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Kupac)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
+            int id;
             if (ModelState.IsValid && int.TryParse(zahtev.Id, out id))
             {
                 // da li je trenutni korisnik kupac
@@ -247,6 +296,13 @@ namespace Online_Shop.Controllers
         [Route("OmiljeniProizvodiPoKorisniku")]
         public string GetOmiljeniProizvodiKorisnik()
         {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Kupac)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
             if (ModelState.IsValid)
             {
                 // da li je trenutni korisnik kupac
