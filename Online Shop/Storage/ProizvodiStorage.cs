@@ -47,12 +47,12 @@ namespace Online_Shop.Storage
                         int korisnik;
                         foreach(string uname in p.FID)
                         {
-                            korisnik = KorisniciStorage.Korisnici.IndexOf(KorisniciStorage.Korisnici.Find(x => x.KorisnickoIme.Equals(uname)));
+                            korisnik = KorisniciStorage.Korisnici.IndexOf(KorisniciStorage.Korisnici.Find(x => x.Id.Equals(uname)));
                             if (korisnik != -1) KorisniciStorage.Korisnici[korisnik].OmiljenjiProizvodi.Add(Proizvodi[Proizvodi.FindIndex(x => x.Id == p.Id)]);
                         }
 
                         // prodavci oblavljeni
-                        korisnik = KorisniciStorage.Korisnici.IndexOf(KorisniciStorage.Korisnici.Find(x => x.KorisnickoIme.Equals(p.KID)));
+                        korisnik = KorisniciStorage.Korisnici.IndexOf(KorisniciStorage.Korisnici.Find(x => x.Id.Equals(p.KID)));
                         if (korisnik != -1) KorisniciStorage.Korisnici[korisnik].ObjavljeniProizvodi.Add(Proizvodi[Proizvodi.FindIndex(x => x.Id == p.Id)]);
                     }
                 }

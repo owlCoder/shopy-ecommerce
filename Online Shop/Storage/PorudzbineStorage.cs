@@ -80,8 +80,8 @@ namespace Online_Shop.Storage
         // Metoda koja vraca listu svih porudzbina koje nisu obrisane i pripadaju kupcu
         public static List<Porudzbina> PorudzbineKupac()
         {
-            string korisnickoIme = ((Korisnik)HttpContext.Current.Session["korisnik"]).KorisnickoIme;
-            return Porudzbine.FindAll(p => p.Kupac.Equals(korisnickoIme));
+            string id = ((Korisnik)HttpContext.Current.Session["korisnik"]).Id;
+            return Porudzbine.FindAll(p => p.Kupac.Equals(id));
         }
     }
 }

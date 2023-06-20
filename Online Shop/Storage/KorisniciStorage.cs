@@ -84,7 +84,9 @@ namespace Online_Shop.Storage
             if (proizvod != -1)
             {
                 Korisnici[korisnik].OmiljenjiProizvodi.Add(ProizvodiStorage.Proizvodi[proizvod]);
+                ProizvodiStorage.Proizvodi[proizvod].FID.Add(Korisnici[korisnik].Id);
                 AzurirajKorisnikeUBazi();
+                ProizvodiStorage.AzurirajProizvodeUBazi();
                 return true;
             }
             else

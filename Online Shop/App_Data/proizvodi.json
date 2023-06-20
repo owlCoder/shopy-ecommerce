@@ -1,29 +1,33 @@
 [
   {
     "Id": 1,
-    "Naziv": "qqqqqqqqqqq",
-    "Cena": 1.0,
-    "Opis": "qqqqqqqqqqqqqqqqqqqqqqqqq",
-    "Slika": "4d9e92e6-25ca-40cb-8468-12909bbce735.jpg",
-    "DatumPostavljanjaProizvoda": "2023-06-20T12:57:36.0832756+02:00",
-    "Grad": "qqqqqq",
+    "Naziv": "test 32",
+    "Cena": 122.0,
+    "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+    "Slika": "d0d05c20-ec82-484a-8952-5ee0de135bb7.jpg",
+    "DatumPostavljanjaProizvoda": "2023-06-20T13:19:22.3943977+02:00",
+    "Grad": "Beograd2",
     "Recenzija": [],
     "Status": true,
     "IsDeleted": false,
-    "FID": [],
+    "FID": [
+      "3"
+    ],
     "KID": "2",
-    "PID": [],
+    "PID": [
+      1
+    ],
     "RID": [],
-    "Kolicina": 1.0
+    "Kolicina": 112.0
   },
   {
     "Id": 2,
-    "Naziv": "wwwwwwwwwww",
-    "Cena": 12.0,
-    "Opis": "wwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-    "Slika": "fefe38de-46c9-4e8e-80c5-28f461f017ad.jpg",
-    "DatumPostavljanjaProizvoda": "2023-06-20T12:57:48.0423289+02:00",
-    "Grad": "Beograd",
+    "Naziv": "Lorem",
+    "Cena": 3.0,
+    "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+    "Slika": "63d2be1f-7475-4a76-a827-09fa9cfdef74.jpg",
+    "DatumPostavljanjaProizvoda": "2023-06-20T13:19:34.8986532+02:00",
+    "Grad": "Gornji Milanovac",
     "Recenzija": [],
     "Status": true,
     "IsDeleted": false,
@@ -31,6 +35,6 @@
     "KID": "2",
     "PID": [],
     "RID": [],
-    "Kolicina": 22.0
+    "Kolicina": 3.0
   }
 ]
