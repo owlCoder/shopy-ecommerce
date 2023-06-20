@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Online_Shop.Models;
 using Online_Shop.Storage;
+using System.Linq;
 using System.Web;
 using System.Web.Http;
 
@@ -150,7 +151,7 @@ namespace Online_Shop.Controllers
             {
                 // oznacavanje prispeca
                 PorudzbineStorage.Porudzbine[index].Status = STATUS.IZVRSENA;
-                KorisniciStorage.Korisnici[kpidx].Porudzbine[kpidx].Status = STATUS.IZVRSENA;
+                KorisniciStorage.Korisnici[kupacid].Porudzbine[kpidx].Status = STATUS.IZVRSENA;
 
                 // azuriranje stanja
                 KorisniciStorage.AzurirajKorisnikeUBazi();
@@ -160,6 +161,21 @@ namespace Online_Shop.Controllers
             }
 
             return JsonConvert.SerializeObject(new Response { Kod = 43, Poruka = "Nije moguće izmeniti status porudžbine!" });
+        }
+
+        [HttpGet]
+        [Route("SvePorudzbine")]
+        public string SvePorudzbine()
+        {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Administrator)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
+            // prioritet prikaza imaju aktivne porudzbine
+            return JsonConvert.SerializeObject(PorudzbineStorage.Porudzbine.FindAll(p => p.IsDeleted == false).OrderBy(p => p.Status));
         }
     }
 }

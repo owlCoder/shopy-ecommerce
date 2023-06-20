@@ -190,6 +190,7 @@
     <Content Include="IzmenaLozinke.html" />
     <Content Include="IzmenaProizvoda.html" />
     <Content Include="ListaKorisnika.html" />
+    <Content Include="ListaPorudzbina.html" />
     <Content Include="ListaProizvoda.html" />
     <Content Include="MojePorudzbine.html" />
     <Content Include="MojiProizvodi.html" />

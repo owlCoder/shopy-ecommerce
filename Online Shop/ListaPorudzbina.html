@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Moje Porudžbine - Shopy</title>
+    <title>Lista Porudžbina - Shopy</title>
     <link rel="stylesheet" href="Content/bootstrap.min.css">
     <script src="Scripts/jquery-3.7.0.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
@@ -81,8 +81,8 @@
                         // Prikazi samo dugmice vezane za korisnika koji ima datu ulogu
                         var uloga = data.Uloga;
 
-                        if (uloga !== 0) {
-                            // nije pitanju kupac - povratak na pocetnu stranicu
+                        if (uloga !== 2) {
+                            // nije pitanju administrator - povratak na pocetnu stranicu
                             window.location.href = "MojProfil.html";
                         }
                     });
@@ -101,7 +101,7 @@
 
         // get metoda za dobijanje listi svih proizvoda za korisnika
         $.ajax({
-            url: "/api/orders/MojePorudzbine",
+            url: "/api/orders/SvePorudzbine",
             type: "GET",
             async: false,
             cache: false,
@@ -125,27 +125,26 @@
 
                             var status = "";
                             var akcijaPrispeca = "";
-                            var ostaviRecenziju = "";
+                            var otkaziPorudzbinu = "";
 
                             if (k.Status === 0) {
                                 // aktivna
                                 status = '<span class="h5 card-title text-primary fw-semibold justify-content-end">AKTIVNA</span>';
 
                                 // aktivne mogu preci u izvrsene
-                                akcijaPrispeca = '<a href="OznaciPrispece.html?id=' + k.Id + '" class="btn btn-dark">Označite kao prispelu</a>';
-                                ostaviRecenziju = '<a href="#" class="btn btn-outline-primary disabled">Čeka se prispeće porudžbine...</a>';
+                                akcijaPrispeca = '<a href="OznaciPrispece.html?id=' + k.Id + '" class="btn btn-outline-dark">Potvrda prispeća porudžbine</a>';
+                                otkaziPorudzbinu = '<a href="OtkaziPorudzbinu.html?id=' + k.Id + '" class="btn btn-outline-danger">Otkazivanje porudžbine</a>';
                             }
                             else if (k.Status === 1) {
                                 // izvrsena
                                 status = '<span class="h5 card-title text-success fw-semibold justify-content-end">IZVRŠENA</span>';
                                 akcijaPrispeca = '<a href="#" class="btn btn-outline-dark disabled">Porudžbina obrađena</a>';
-                                ostaviRecenziju = '<a href="OstaviRecenziju.html?id=' + k.Id + '" class="btn btn-outline-primary">Ostavite recenziju</a>';
                             }
                             else {
                                 // otkazana
                                 status = '<span class="h5 card-title text-danger fw-semibold justify-content-end">OTKAZANA</span>';
                                 akcijaPrispeca = '<a href="#" class="btn btn-outline-danger disabled">Porudžbina otkazana</a>';
-                                ostaviRecenziju = '<a href="#" class="btn btn-outline-danger disabled">Ostavljanje recenzije nije moguće</a>';
+                                otkaziPorudzbinu = '<a href="#" class="btn btn-outline-danger disabled">Promena statusa porudžbine nije moguća</a>';
                             }
 
                             $("#proizvodi").append(
@@ -162,7 +161,7 @@
                                 '</div>' +
                                 '<h6 class="card-subtitle mb-2 text-muted">Ukupno: ' + (parseFloat(k.Proizvod.Cena) * parseFloat(k.Kolicina)) + ' RSD</h6>' +
                                 '<p class="card-text">' + k.Kolicina + '</p>' +
-                                kupac_dodaj_naruci + akcijaPrispeca + "&emsp;" + ostaviRecenziju +
+                                kupac_dodaj_naruci + akcijaPrispeca + "&emsp;" + otkaziPorudzbinu +
                                 '</div>' +
                                 '</div>' +
                                 '</div>' +
@@ -264,7 +263,7 @@
                                             <div class="card-body text-black">
                                                 <form>
                                                     <div class="d-flex mb-3 pb-1">
-                                                        <span class="h1 fw-bold mb-0">Vaše Porudžbine</span>
+                                                        <span class="h1 fw-bold mb-0">Shopy Porudžbine</span>
                                                     </div>
                                                     <h5 class="fw-normal pb-3" style="letter-spacing: 1px;">Detalji i lista svih porudžbina koje su realizovane na platformi.</h5>
                                                     <div id="divgreske" class="alert alert-dark d-flex align-items-center mb-3 mt-5" role="alert">
@@ -284,8 +283,8 @@
                                                                     <div class="row">
                                                                         <div class="col-12 align-content-center">
                                                                             <center>
-                                                                                <h4>Niste još uvek naručili nijedan proizvod sa Shopy platforme? Pogledajte celokupnu ponudu!</h4>
-                                                                                <a href="Index.html" class="btn btn-success btn-lg mt-3">Celokupna Shopy ponuda</a>
+                                                                                <h4>Još uvek nijedan proizvod sa Shopy platforme nije naručen.</h4>
+                                                                                <a href="Index.html" class="btn btn-success btn-lg mt-3">Povratak na početnu stranicu</a>
                                                                             </center>
                                                                         </div>
                                                                     </div>
