@@ -29,7 +29,7 @@ namespace Online_Shop.Storage
                     Proizvodi = new List<Proizvod>();
 
                     // ucitavanje svih proizvoda iz json datoteke
-                    Proizvodi = JsonConvert.DeserializeObject<List<Proizvod>>(File.ReadAllText(ProizvodiPath));
+                    Proizvodi = JsonConvert.DeserializeObject<List<Proizvod>>(File.ReadAllText(ProizvodiPath), new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
 
                     // azuriranje status proizvoda nakon citanja
                     foreach (Proizvod p in Proizvodi)

@@ -29,7 +29,7 @@ namespace Online_Shop.Storage
                     Porudzbine = new List<Porudzbina>();
 
                     // ucitavanje svih porudzbina iz json datoteke
-                    Porudzbine = JsonConvert.DeserializeObject<List<Porudzbina>>(File.ReadAllText(PorudzbinePath));
+                    Porudzbine = JsonConvert.DeserializeObject<List<Porudzbina>>(File.ReadAllText(PorudzbinePath), new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
                 }
                 catch
                 {

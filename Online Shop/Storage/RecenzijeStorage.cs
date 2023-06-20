@@ -28,7 +28,7 @@ namespace Online_Shop.Storage
                     Recenzije = new List<Recenzija>();
 
                     // ucitavanje svih porudzbina iz json datoteke
-                    Recenzije = JsonConvert.DeserializeObject<List<Recenzija>>(File.ReadAllText(RecenzijePath));
+                    Recenzije = JsonConvert.DeserializeObject<List<Recenzija>>(File.ReadAllText(RecenzijePath), new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
                 }
                 catch
                 {
