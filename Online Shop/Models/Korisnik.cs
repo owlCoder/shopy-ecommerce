@@ -44,6 +44,8 @@ namespace Online_Shop.Models
             Porudzbine = null;
             OmiljenjiProizvodi = null;
             ObjavljeniProizvodi = null;
+            if (uloga == ULOGA.Kupac) { OmiljenjiProizvodi = new List<Proizvod>(); Porudzbine = new List<Porudzbina>(); }
+            if (uloga == ULOGA.Prodavac) { ObjavljeniProizvodi = new List<Proizvod>(); }
             IsDeleted = isDeleted;
             IsLoggedIn = isLoggedIn;
         }

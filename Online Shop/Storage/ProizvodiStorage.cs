@@ -43,14 +43,17 @@ namespace Online_Shop.Storage
                             p.Status = true; // na stanju je vise od jednog proizvoda
                         }
 
-                        // korisnici prodavci
-                        int korisnik = KorisniciStorage.Korisnici.IndexOf(KorisniciStorage.Korisnici.Find(x => x.KorisnickoIme.Equals(p.KID)));
-
-                        if(korisnik != -1)
+                        // kupci omiljeni
+                        int korisnik;
+                        foreach(string uname in p.FID)
                         {
-                            KorisniciStorage.Korisnici[korisnik].OmiljenjiProizvodi.Add(Proizvodi[Proizvodi.FindIndex(x => x.Id == p.Id)]);
+                            korisnik = KorisniciStorage.Korisnici.IndexOf(KorisniciStorage.Korisnici.Find(x => x.KorisnickoIme.Equals(uname)));
+                            if (korisnik != -1) KorisniciStorage.Korisnici[korisnik].OmiljenjiProizvodi.Add(Proizvodi[Proizvodi.FindIndex(x => x.Id == p.Id)]);
                         }
-                        
+
+                        // prodavci oblavljeni
+                        korisnik = KorisniciStorage.Korisnici.IndexOf(KorisniciStorage.Korisnici.Find(x => x.KorisnickoIme.Equals(p.KID)));
+                        if (korisnik != -1) KorisniciStorage.Korisnici[korisnik].ObjavljeniProizvodi.Add(Proizvodi[Proizvodi.FindIndex(x => x.Id == p.Id)]);
                     }
                 }
                 catch
