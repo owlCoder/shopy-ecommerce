@@ -62,7 +62,7 @@ namespace Online_Shop.Storage
         {
             try
             {
-                string json = JsonConvert.SerializeObject(Recenzije, Formatting.Indented);
+                string json = JsonConvert.SerializeObject(Recenzije, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore});
                 File.WriteAllText(RecenzijePath, json);
             }
             catch { }

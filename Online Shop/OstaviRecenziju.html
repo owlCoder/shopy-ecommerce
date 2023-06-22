@@ -220,6 +220,7 @@
                     processData: false,
                     data: slikaAjax,
                     success: function (response) {
+                        
                         if (response != null) {
                             var msg = JSON.parse(response);
                             if (msg.Kod === 0) // upis podataka o recenziji je prosao uspesno
@@ -241,7 +242,7 @@
                                     success: function (response) {
                                         if (response != null) {
                                             if (JSON.parse(response).Kod === 0) {
-                                                window.location.href = "MojePorudzbine.html";
+                                                window.location.href = "MojePorudzbine.html?msg=Porudžbina uspešno recenzirana!";
                                                 return false;
                                             }
                                         }

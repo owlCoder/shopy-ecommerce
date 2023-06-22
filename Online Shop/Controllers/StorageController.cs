@@ -17,7 +17,7 @@ namespace Online_Shop.Controllers
         {
             // autentifikacija i autorizacija
             Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
-            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Administrator)
+            if (trenutni == null && trenutni.IsLoggedIn == false)
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
             }

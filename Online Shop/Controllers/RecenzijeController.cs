@@ -120,8 +120,11 @@ namespace Online_Shop.Controllers
 
                     Korisnik tren = KorisniciStorage.Korisnici[kid];
                     Recenzija nova = new Recenzija(za_recenziju, tren, zahtev.Naslov, zahtev.Sadrzaj, zahtev.Slika);
+                    Recenzija nova_temp = new Recenzija(za_recenziju, tren, zahtev.Naslov, zahtev.Sadrzaj, zahtev.Slika);
+                    nova.PID = pid;
+                    nova_temp.PID = pid;
                     RecenzijeStorage.Recenzije.Add(nova);
-                    ProizvodiStorage.Proizvodi[proizvodIDIzPorudzbine].Recenzija.Add(nova);
+                    ProizvodiStorage.Proizvodi[proizvodIDIzPorudzbine].Recenzija.Add(nova_temp);
 
                     // azuziranje json
                     ProizvodiStorage.AzurirajProizvodeUBazi();
