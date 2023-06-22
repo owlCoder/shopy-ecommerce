@@ -154,9 +154,38 @@ namespace Online_Shop.Controllers
         // Metoda za brisanje recenzije
         [HttpPost]
         [Route("BrisanjeRecenzije")]
-        public string IzmeniRecenziju(SingleIdRequest zahtev)
+        public string BrisanjeRecenzije(SingleIdRequest zahtev)
         {
-            return JsonConvert.SerializeObject("");
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Kupac)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
+            if (!ModelState.IsValid || !int.TryParse(zahtev.Id, out var id))
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste uneli validne podatka za recenziju!" });
+            }
+            else
+            {
+                // brisanje recenzije
+                int indeks_recenzije = RecenzijeStorage.Recenzije.FindIndex(p => p.POID == id && p.IsDeleted == false);
+
+                if(indeks_recenzije == -1)
+                {
+                    return JsonConvert.SerializeObject(new Response { Kod = 12, Poruka = "Nije moguće obrisati recenziju!" });
+                }
+
+                // Brisanje recenzije
+                RecenzijeStorage.Recenzije[indeks_recenzije].IsDeleted = true;
+
+                // azuriranje zapisa u json
+                RecenzijeStorage.AzurirajRecenzijeUBazi();
+                ProizvodiStorage.AzurirajProizvodeUBazi();
+
+                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "Recenzija uspešno obrisana!" });
+            }
         }
 
         // Metoda koja proverava da li postoji recenzija za porudzbinu
@@ -177,7 +206,7 @@ namespace Online_Shop.Controllers
                 return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
             }
 
-            if (RecenzijeStorage.Recenzije.FirstOrDefault(p => p.POID == id) != null)
+            if (RecenzijeStorage.Recenzije.FirstOrDefault(p => p.POID == id && p.IsDeleted == false) != null)
             {
                 // postoji recenzija za datu porudzbinu
                 return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
