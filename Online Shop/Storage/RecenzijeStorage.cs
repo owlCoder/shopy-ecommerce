@@ -96,7 +96,7 @@ namespace Online_Shop.Storage
             else
             {
                 // sve recenzije koje su odobrene i nisu obrisane
-                return trazeni.Recenzija.FindAll(p => p.IsDeleted == false && p.Odobrena == true);
+                return Recenzije.FindAll(p => p.IsDeleted == false && p.Odobrena == true && p.Proizvod.Id == proizvod_id);
             }
         }
 
@@ -104,7 +104,7 @@ namespace Online_Shop.Storage
         public static List<Recenzija> RecenzijePoKorisniku(string korisnickoIme)
         {
             // vracaju se samo ne obrisane, sve recenzije i od datog korisnika
-            return Recenzije.FindAll(p => p.IsDeleted == false && p.Recenzent.KorisnickoIme.Equals(korisnickoIme));
+            return Recenzije.FindAll(p => p.IsDeleted == false && p.Recenzent.Id.Equals(korisnickoIme));
         }
     }
 }
