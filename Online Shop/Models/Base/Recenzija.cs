@@ -12,6 +12,7 @@ namespace Online_Shop.Models
         public string SadrzajRecenzije { get; set; }
         public string Slika { get; set; }
         public bool Odobrena { get; set; }
+        public int PID { get; set; }
         public bool IsDeleted { get; set; }
 
         public Recenzija()

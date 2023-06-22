@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Online_Shop.Models.Requests
 {
-    public class PorudzbinaAddRequest
+    public class RecenzijaAddRequest
     {
         [Required]
         public int PorudzbinaId { get; set; }
