@@ -158,14 +158,14 @@ namespace Online_Shop.Controllers
         public string RecenzijaPostoji(SingleIdRequest zahtev)
         {
             int id = 0;
-            if(!ModelState.IsValid && !int.TryParse(zahtev.Id, out id))
+            if(!ModelState.IsValid || !int.TryParse(zahtev.Id, out id))
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 41, Poruka = "Niste uneli validne podatke!" });
             }
 
             // autentifikacija i autorizacija
             Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
-            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Kupac || trenutni.Uloga != ULOGA.Administrator)
+            if (trenutni == null || trenutni.IsLoggedIn == false && (trenutni.Uloga != ULOGA.Kupac || trenutni.Uloga != ULOGA.Administrator))
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
             }

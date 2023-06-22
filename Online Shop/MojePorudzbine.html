@@ -144,8 +144,34 @@
 
                                 // provera da li porudzbina ako je izvrsena ima recenziju, ako ima, kupac ima mogucnost
                                 // da recenziju izmeni ili obrise
+                                // obrisi korisnika po id
 
-                                ostaviRecenziju = '<a href="OstaviRecenziju.html?id=' + k.Id + '" class="btn btn-outline-primary">Ostavite recenziju</a>';
+                                $.ajax({
+                                    url: "/api/reviews/PostojiRecenzija",
+                                    type: "POST",
+                                    data: JSON.stringify({
+                                        id: k.Id
+                                    }),
+                                    async: false,
+                                    cache: false,
+                                    dataType: "json",
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function (response) {
+                                        var data = JSON.parse(response);
+
+                                        if (data.Kod == 0) {
+                                            // postoji, moze izmeniti ili obrisati
+                                            ostaviRecenziju = "";
+                                            izmeniRecenziju = '<a href="IzmeniRecenziju.html?id=' + k.Id + '" class="btn btn-outline-success">Izmenite recenziju</a>';
+                                            obrisiRecenziju = '<a href="ObrisiRecenziju.html?id=' + k.Id + '" class="btn btn-outline-danger">Obrišite recenziju</a>';
+                                        }
+                                        else {
+                                            ostaviRecenziju = '<a href="OstaviRecenziju.html?id=' + k.Id + '" class="btn btn-outline-primary">Ostavite recenziju</a>';
+                                            izmeniRecenziju = "";
+                                            obrisiRecenziju = "";
+                                        }
+                                    }
+                                });
                             }
                             else {
                                 // otkazana
