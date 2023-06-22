@@ -150,6 +150,7 @@
     <Compile Include="Models\Auth\PromenaLozinke.cs" />
     <Compile Include="Models\Base\Recenzija.cs" />
     <Compile Include="Models\Requests\PorudzbinaShowRequest.cs" />
+    <Compile Include="Models\Requests\RecenzijaEditRequest.cs" />
     <Compile Include="Models\Responses\PorudzbinaReviewResponse.cs" />
     <Compile Include="Models\Responses\Response.cs" />
     <Compile Include="Models\Requests\SearchRequest.cs" />

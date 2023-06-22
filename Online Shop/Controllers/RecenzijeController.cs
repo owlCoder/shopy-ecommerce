@@ -135,5 +135,29 @@ namespace Online_Shop.Controllers
                 return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste uneli validne podatka za recenziju!" });
             }
         }
+
+        // Metoda za izmenu recenzije
+        [HttpPost]
+        [Route("IzmenaRecenzije")]
+        public string IzmeniRecenziju(RecenzijaEditRequest zahtev)
+        {
+            return JsonConvert.SerializeObject("");
+        }
+
+        // Metoda za brisanje recenzije
+        [HttpPost]
+        [Route("BrisanjeRecenzije")]
+        public string IzmeniRecenziju(SingleIdRequest zahtev)
+        {
+            return JsonConvert.SerializeObject("");
+        }
+
+        // Metoda koja proverava da li postoji recenzija za porudzbinu
+        [HttpPost]
+        [Route("PostojiRecenzija")]
+        public string RecenzijaPostoji(SingleIdRequest zahtev)
+        {
+
+        }
     }
 }
