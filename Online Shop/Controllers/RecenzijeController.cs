@@ -193,8 +193,7 @@ namespace Online_Shop.Controllers
         [Route("PostojiRecenzija")]
         public string RecenzijaPostoji(SingleIdRequest zahtev)
         {
-            int id = 0;
-            if(!ModelState.IsValid || !int.TryParse(zahtev.Id, out id))
+            if (!ModelState.IsValid || !int.TryParse(zahtev.Id, out int id))
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 41, Poruka = "Niste uneli validne podatke!" });
             }
@@ -206,10 +205,11 @@ namespace Online_Shop.Controllers
                 return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
             }
 
-            if (RecenzijeStorage.Recenzije.FirstOrDefault(p => p.POID == id && p.IsDeleted == false) != null)
+            Recenzija tmp = RecenzijeStorage.Recenzije.FirstOrDefault(p => p.POID == id && p.IsDeleted == false);
+            if (tmp != null)
             {
-                // postoji recenzija za datu porudzbinu
-                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
+                // postoji recenzija za datu porudzbinu a da nije odbijena
+                return JsonConvert.SerializeObject(new Response { Kod = (ushort)tmp.Status, Poruka = "OK" });
             }
             else
             {
