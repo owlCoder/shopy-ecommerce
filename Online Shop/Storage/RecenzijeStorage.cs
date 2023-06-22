@@ -36,10 +36,17 @@ namespace Online_Shop.Storage
                         foreach (int rid in pr.RID)
                         {
                             int recenzija = Recenzije.FindIndex(p => p.Id == rid);
-
                             if (recenzija != -1)
                             {
-                                Recenzije[recenzija].Proizvod = pr; // proizvod u porudzbini
+                                Recenzija rec = Recenzije[recenzija];
+                                int korisnik = KorisniciStorage.Korisnici.FindIndex(p => p.Id.Equals(rec.KOID.ToString()));
+                                int porudzbina = PorudzbineStorage.Porudzbine.FindIndex(p => p.Id == rec.POID);
+
+                                if (korisnik != -1 && porudzbina != -1)
+                                {
+                                    Recenzije[recenzija].Proizvod = pr; // proizvod u porudzbini
+                                    Recenzije[recenzija].Recenzent = KorisniciStorage.Korisnici[korisnik]; // recenzent porudzbine
+                                }
                             }
                         }
                     }
@@ -62,7 +69,7 @@ namespace Online_Shop.Storage
         {
             try
             {
-                string json = JsonConvert.SerializeObject(Recenzije, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore});
+                string json = JsonConvert.SerializeObject(Recenzije, Formatting.Indented);
                 File.WriteAllText(RecenzijePath, json);
             }
             catch { }

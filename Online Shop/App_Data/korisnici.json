@@ -13,7 +13,7 @@
     "OmiljenjiProizvodi": null,
     "ObjavljeniProizvodi": null,
     "IsDeleted": false,
-    "IsLoggedIn": true
+    "IsLoggedIn": false
   },
   {
     "Id": "2",
@@ -71,10 +71,12 @@
         "FID": [],
         "KID": "2",
         "PID": [
-          3
+          3,
+          4,
+          5
         ],
         "RID": [],
-        "Kolicina": 4.0
+        "Kolicina": 2.0
       }
     ],
     "IsDeleted": false,
@@ -166,6 +168,35 @@
         "IsDeleted": false
       },
       {
+        "Id": 4,
+        "Proizvod": {
+          "Id": 2,
+          "Naziv": "Lorem",
+          "Cena": 3.0,
+          "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+          "Slika": "63d2be1f-7475-4a76-a827-09fa9cfdef74.jpg",
+          "DatumPostavljanjaProizvoda": "2023-06-20T13:19:34.8986532+02:00",
+          "Grad": "Gornji Milanovac",
+          "Recenzija": [],
+          "Status": true,
+          "IsDeleted": false,
+          "FID": [],
+          "KID": "2",
+          "PID": [
+            3,
+            4,
+            5
+          ],
+          "RID": [],
+          "Kolicina": 2.0
+        },
+        "Kolicina": 1.0,
+        "Kupac": "3",
+        "DatumPorudzbine": "2023-06-22T23:03:51.1758165+02:00",
+        "Status": 1,
+        "IsDeleted": false
+      },
+      {
         "Id": 1,
         "Proizvod": {
           "Id": 1,
@@ -255,10 +286,12 @@
           "FID": [],
           "KID": "2",
           "PID": [
-            3
+            3,
+            4,
+            5
           ],
           "RID": [],
-          "Kolicina": 4.0
+          "Kolicina": 2.0
         },
         "Kolicina": 2.0,
         "Kupac": "3",
@@ -282,15 +315,75 @@
           "FID": [],
           "KID": "2",
           "PID": [
-            3
+            3,
+            4,
+            5
           ],
           "RID": [],
-          "Kolicina": 4.0
+          "Kolicina": 2.0
         },
         "Kolicina": 2.0,
         "Kupac": "3",
         "DatumPorudzbine": "2023-06-20T17:46:10.8888205+02:00",
         "Status": 2,
+        "IsDeleted": false
+      },
+      {
+        "Id": 4,
+        "Proizvod": {
+          "Id": 2,
+          "Naziv": "Lorem",
+          "Cena": 3.0,
+          "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+          "Slika": "63d2be1f-7475-4a76-a827-09fa9cfdef74.jpg",
+          "DatumPostavljanjaProizvoda": "2023-06-20T13:19:34.8986532+02:00",
+          "Grad": "Gornji Milanovac",
+          "Recenzija": [],
+          "Status": true,
+          "IsDeleted": false,
+          "FID": [],
+          "KID": "2",
+          "PID": [
+            3,
+            4,
+            5
+          ],
+          "RID": [],
+          "Kolicina": 2.0
+        },
+        "Kolicina": 1.0,
+        "Kupac": "3",
+        "DatumPorudzbine": "2023-06-22T23:03:51.1758165+02:00",
+        "Status": 1,
+        "IsDeleted": false
+      },
+      {
+        "Id": 5,
+        "Proizvod": {
+          "Id": 2,
+          "Naziv": "Lorem",
+          "Cena": 3.0,
+          "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+          "Slika": "63d2be1f-7475-4a76-a827-09fa9cfdef74.jpg",
+          "DatumPostavljanjaProizvoda": "2023-06-20T13:19:34.8986532+02:00",
+          "Grad": "Gornji Milanovac",
+          "Recenzija": [],
+          "Status": true,
+          "IsDeleted": false,
+          "FID": [],
+          "KID": "2",
+          "PID": [
+            3,
+            4,
+            5
+          ],
+          "RID": [],
+          "Kolicina": 2.0
+        },
+        "Kolicina": 1.0,
+        "Kupac": "3",
+        "DatumPorudzbine": "2023-06-22T23:23:26.2752709+02:00",
+        "Status": 0,
         "IsDeleted": false
       }
     ],
@@ -327,7 +420,7 @@
     ],
     "ObjavljeniProizvodi": null,
     "IsDeleted": false,
-    "IsLoggedIn": false
+    "IsLoggedIn": true
   },
   {
     "Id": "4",

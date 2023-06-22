@@ -2,6 +2,7 @@
 using Online_Shop.Models;
 using Online_Shop.Models.Requests;
 using Online_Shop.Storage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -65,77 +66,97 @@ namespace Online_Shop.Controllers
         [Route("DodavanjeRecenzije")]
         public string DodajRecenziju(RecenzijaAddRequest zahtev)
         {
-            // autentifikacija i autorizacija
-            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
-            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Kupac)
+            try
             {
-                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
-            }
 
-            // recenziju moze da dodaje samo kupac
-            if(ModelState.IsValid)
-            {
-                // da li postoji porudzbina u listi porudzbina i da li je mozda porudzbina obrisana u medjuvremenu
-                int pid = zahtev.PorudzbinaId; // porudzbina za koju je vezana recenzija
 
-                if (PorudzbineStorage.Porudzbine.FirstOrDefault(p => p.Id == pid && p.IsDeleted == false && p.Proizvod.IsDeleted == false) == null)
+                // autentifikacija i autorizacija
+                Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+                if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Kupac)
                 {
-                    // ne postoji porudzbin
-                    return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Nije moguće dodati recenziju! Porudžbina više nije dostupna." });
+                    return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+                }
+
+                // recenziju moze da dodaje samo kupac
+                if (ModelState.IsValid)
+                {
+                    // da li postoji porudzbina u listi porudzbina i da li je mozda porudzbina obrisana u medjuvremenu
+                    int pid = zahtev.PorudzbinaId; // porudzbina za koju je vezana recenzija
+
+                    if (PorudzbineStorage.Porudzbine.FirstOrDefault(p => p.Id == pid && p.IsDeleted == false && p.Proizvod.IsDeleted == false) == null)
+                    {
+                        // ne postoji porudzbin
+                        return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Nije moguće dodati recenziju! Porudžbina više nije dostupna." });
+                    }
+                    else
+                    {
+                        // porudzbina postoji - ako vec postoji recenzija za porudzbinu, ne dozvoliti dodavanje nove
+                        if (RecenzijeStorage.Recenzije.FirstOrDefault(p => p.POID == pid && p.IsDeleted == false) != null)
+                        {
+                            // vec postoji recenzija
+                            return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Nije moguće dodati recenziju! Porudžbina je već recenzirana." });
+                        }
+
+                        // ne postoji nijedna recenzija moze se dodati nova
+                        int proizvodIDIzPorudzbine = PorudzbineStorage.Porudzbine.FirstOrDefault(p => p.Id == pid && p.IsDeleted == false && p.Proizvod.IsDeleted == false).Proizvod.Id;
+
+                        if (proizvodIDIzPorudzbine == -1)
+                        {
+                            // proizvod je obrisan u medjuvremenu
+                            return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Nije moguće dodati recenziju! Proizvod je obrisan." });
+                        }
+
+                        int recenziran = ProizvodiStorage.Proizvodi.FindIndex(p => p.Id == proizvodIDIzPorudzbine && !p.IsDeleted);
+
+                        if (recenziran == -1)
+                        {
+                            // proizvod je obrisan u medjuvremenu
+                            return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Nije moguće dodati recenziju! Proizvod je obrisan." });
+                        }
+
+                        int indeks_proizvoda = ProizvodiStorage.Proizvodi.FindIndex(p => p.Id == proizvodIDIzPorudzbine);
+
+                        if (indeks_proizvoda == -1)
+                        {
+                            // proizvod ne postoji
+                            return JsonConvert.SerializeObject(new Response { Kod = 12, Poruka = "Nije moguće dodati recenziju! Proizvod je obrisan." });
+                        }
+
+                        Proizvod za_recenziju = ProizvodiStorage.Proizvodi[indeks_proizvoda];
+                        int kid = KorisniciStorage.Korisnici.FindIndex(p => p.Id.Equals(trenutni.Id));
+
+                        if (kid == -1)
+                        {
+                            // korisnik je obrisan u medjuvremenu
+                            return JsonConvert.SerializeObject(new Response { Kod = 12, Poruka = "Nije moguće dodati recenziju! Korisnik je obrisan." });
+                        }
+
+                        Korisnik tren = KorisniciStorage.Korisnici[kid];
+                        Recenzija nova = new Recenzija(za_recenziju, tren, zahtev.Naslov, zahtev.Sadrzaj, zahtev.Slika);
+                        nova.POID = zahtev.PorudzbinaId;
+                        nova.KOID = int.Parse(trenutni.Id);
+                        nova.PRID = proizvodIDIzPorudzbine;
+                        ProizvodiStorage.Proizvodi[indeks_proizvoda].RID.Add(nova.Id); // recenzija za proizvod
+
+                        // cuvanje u in memory
+                        RecenzijeStorage.Recenzije.Add(nova);
+
+                        // azuziranje json
+                        ProizvodiStorage.AzurirajProizvodeUBazi();
+                        RecenzijeStorage.AzurirajRecenzijeUBazi();
+
+                        return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "Recenzija uspešno dodata!" });
+                    }
                 }
                 else
                 {
-                    // porudzbina postoji - ako vec postoji recenzija za porudzbinu, ne dozvoliti dodavanje nove
-                    if(RecenzijeStorage.Recenzije.FirstOrDefault(p => p.PID == pid && p.IsDeleted == false) != null)
-                    {
-                        // vec postoji recenzija
-                        return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Nije moguće dodati recenziju! Porudžbina je već recenzirana." });
-                    }
-
-                    // ne postoji nijedna recenzija moze se dodati nova
-                    int proizvodIDIzPorudzbine = PorudzbineStorage.Porudzbine.FirstOrDefault(p => p.Id == pid && p.IsDeleted == false && p.Proizvod.IsDeleted == false).Proizvod.Id;
-
-                    if(proizvodIDIzPorudzbine == -1)
-                    {
-                        // proizvod je obrisan u medjuvremenu
-                        return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Nije moguće dodati recenziju! Proizvod je obrisan." });
-                    }
-
-                    int recenziran = ProizvodiStorage.Proizvodi.FindIndex(p => p.Id == proizvodIDIzPorudzbine && !p.IsDeleted);
-
-                    if(recenziran == -1)
-                    {
-                        // proizvod je obrisan u medjuvremenu
-                        return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Nije moguće dodati recenziju! Proizvod je obrisan." });
-                    }
-
-                    Proizvod za_recenziju = ProizvodiStorage.Proizvodi[proizvodIDIzPorudzbine];
-                    int kid = KorisniciStorage.Korisnici.FindIndex(p => p.Id.Equals(trenutni.Id));
-
-                    if(kid == -1)
-                    {
-                        // korisnik je obrisan u medjuvremenu
-                        return JsonConvert.SerializeObject(new Response { Kod = 12, Poruka = "Nije moguće dodati recenziju! Korisnik je obrisan." });
-                    }
-
-                    Korisnik tren = KorisniciStorage.Korisnici[kid];
-                    Recenzija nova = new Recenzija(za_recenziju, tren, zahtev.Naslov, zahtev.Sadrzaj, zahtev.Slika);
-                    Recenzija nova_temp = new Recenzija(za_recenziju, tren, zahtev.Naslov, zahtev.Sadrzaj, zahtev.Slika);
-                    nova.PID = pid;
-                    nova_temp.PID = pid;
-                    RecenzijeStorage.Recenzije.Add(nova);
-                    ProizvodiStorage.Proizvodi[proizvodIDIzPorudzbine].Recenzija.Add(nova_temp);
-
-                    // azuziranje json
-                    ProizvodiStorage.AzurirajProizvodeUBazi();
-                    RecenzijeStorage.AzurirajRecenzijeUBazi();
-
-                    return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "Recenzija uspešno dodata!" });
+                    return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste uneli validne podatka za recenziju!" });
                 }
             }
-            else
+            catch(Exception e)
             {
-                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste uneli validne podatka za recenziju!" });
+                Console.WriteLine(e.Message);
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = e.Message });
             }
         }
 
@@ -173,7 +194,7 @@ namespace Online_Shop.Controllers
                 return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
             }
 
-            if (RecenzijeStorage.Recenzije.FirstOrDefault(p => p.PID == id) != null)
+            if (RecenzijeStorage.Recenzije.FirstOrDefault(p => p.POID == id) != null)
             {
                 // postoji recenzija za datu porudzbinu
                 return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });

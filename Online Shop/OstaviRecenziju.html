@@ -230,16 +230,17 @@
                                     url: "/api/reviews/DodavanjeRecenzije",
                                     type: "POST",
                                     data: JSON.stringify({
-                                        PorudzbinaId: Id,
+                                        PorudzbinaId: parseInt(Id),
                                         Naslov: naslov,
                                         Sadrzaj: sadrzaj,
-                                        Slika: msg.Poruka,
+                                        Slika: msg.Poruka
                                     }),
                                     async: false,
                                     cache: false,
                                     dataType: "json",
                                     contentType: "application/json; charset=utf-8",
                                     success: function (response) {
+
                                         if (response != null) {
                                             if (JSON.parse(response).Kod === 0) {
                                                 window.location.href = "MojePorudzbine.html?msg=Porudžbina uspešno recenzirana!";
