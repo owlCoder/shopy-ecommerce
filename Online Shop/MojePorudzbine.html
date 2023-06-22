@@ -126,6 +126,8 @@
                             var status = "";
                             var akcijaPrispeca = "";
                             var ostaviRecenziju = "";
+                            var izmeniRecenziju = "";
+                            var obrisiRecenziju = "";
 
                             if (k.Status === 0) {
                                 // aktivna
@@ -139,6 +141,10 @@
                                 // izvrsena
                                 status = '<span class="h5 card-title text-success fw-semibold justify-content-end">IZVRŠENA</span>';
                                 akcijaPrispeca = '<a href="#" class="btn btn-outline-dark disabled">Porudžbina obrađena</a>';
+
+                                // provera da li porudzbina ako je izvrsena ima recenziju, ako ima, kupac ima mogucnost
+                                // da recenziju izmeni ili obrise
+
                                 ostaviRecenziju = '<a href="OstaviRecenziju.html?id=' + k.Id + '" class="btn btn-outline-primary">Ostavite recenziju</a>';
                             }
                             else {
@@ -162,7 +168,7 @@
                                 '</div>' +
                                 '<h6 class="card-subtitle mb-2 text-muted">Ukupno: ' + (parseFloat(k.Proizvod.Cena) * parseFloat(k.Kolicina)) + ' RSD</h6>' +
                                 '<p class="card-text">' + k.Kolicina + '</p>' +
-                                kupac_dodaj_naruci + akcijaPrispeca + "&emsp;" + ostaviRecenziju +
+                                kupac_dodaj_naruci + akcijaPrispeca + "&emsp;" + ostaviRecenziju + izmeniRecenziju + "&emsp;" + obrisiRecenziju +
                                 '</div>' +
                                 '</div>' +
                                 '</div>' +

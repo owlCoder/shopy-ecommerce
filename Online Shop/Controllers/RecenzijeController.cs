@@ -3,6 +3,7 @@ using Online_Shop.Models;
 using Online_Shop.Models.Requests;
 using Online_Shop.Storage;
 using System.Collections.Generic;
+using System.Web;
 using System.Web.Http;
 
 namespace Online_Shop.Controllers
@@ -15,6 +16,13 @@ namespace Online_Shop.Controllers
         [Route("RecenzijeZaProizvodPoId")]
         public string RecenzijePoProizvodu(SingleIdRequest zahtev)
         {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Kupac)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
             if (!ModelState.IsValid || int.TryParse(zahtev.Id, out int id))
             {
                 return JsonConvert.SerializeObject(new List<Recenzija>());
@@ -31,6 +39,13 @@ namespace Online_Shop.Controllers
         [Route("RecenzijePoKupcu")]
         public string RecenzijeKupac(SingleIdRequest zahtev)
         {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Kupac)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
             if (!ModelState.IsValid)
             {
                 return JsonConvert.SerializeObject(new List<Recenzija>());
@@ -46,7 +61,16 @@ namespace Online_Shop.Controllers
         [Route("DodavanjeRecenzije")]
         public string DodajRecenziju(PorudzbinaAddRequest zahtev)
         {
-            // to do
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Kupac)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
+            // recenziju moze da dodaje samo kupac
+
+
         }
     }
 }
