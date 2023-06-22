@@ -96,7 +96,7 @@ namespace Online_Shop.Storage
             else
             {
                 // sve recenzije koje su odobrene i nisu obrisane
-                return Recenzije.FindAll(p => p.IsDeleted == false && p.Odobrena == true && p.Proizvod.Id == proizvod_id);
+                return Recenzije.FindAll(p => p.IsDeleted == false && p.Status == STATUS_RECENZIJE.ODOBRENA && p.Proizvod.Id == proizvod_id);
             }
         }
 
