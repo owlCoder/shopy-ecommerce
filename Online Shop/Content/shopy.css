@@ -1,0 +1,29 @@
+﻿.navbar .login-btn {
+    position: absolute;
+    top: 7px;
+    right: 95px;
+}
+
+.navbar .profil-btn {
+    position: absolute;
+    top: 10px;
+    right: 35px;
+}
+
+@media (max-width: 767px) {
+    .navbar .login-btn {
+        right: 75px;
+    }
+}
+
+.navbar .register-btn {
+    position: absolute;
+    top: 7px;
+    right: 15px;
+}
+
+@media (max-width: 767px) {
+    .navbar .register-btn {
+        right: 175px;
+    }
+}

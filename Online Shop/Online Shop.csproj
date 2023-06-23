@@ -164,6 +164,7 @@
   <ItemGroup>
     <Content Include="Brisanje.html" />
     <Content Include="BrisanjeProizvoda.html" />
+    <Content Include="Content\shopy.css" />
     <Content Include="DodajProdavca.html" />
     <Content Include="DodajProizvod.html" />
     <Content Include="Images\lgbg.jpg" />
@@ -190,6 +191,7 @@
     <Content Include="Images\productplc.jpg" />
     <Content Include="Images\pwd.jpg" />
     <Content Include="Images\rgbg.jpg" />
+    <Content Include="Images\shopy.png" />
     <Content Include="Izmena.html" />
     <Content Include="IzmenaLozinke.html" />
     <Content Include="IzmenaProizvoda.html" />
@@ -211,6 +213,10 @@
     <Content Include="Proizvod.html" />
     <Content Include="Registracija.html" />
     <Content Include="Prijava.html" />
+    <Content Include="Scripts\api\auth\auth-base.js" />
+    <Content Include="Scripts\load-optimizer.js" />
+    <Content Include="Scripts\api\products\all-products-fetcher.js" />
+    <Content Include="Scripts\api\products\products-main.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -236,7 +242,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\api\" />
+    <Folder Include="Scripts\api\orders\" />
+    <Folder Include="Scripts\api\reviews\" />
+    <Folder Include="Scripts\api\users\" />
     <Folder Include="Uploads\" />
     <Folder Include="Views\AuthUser\" />
   </ItemGroup>
