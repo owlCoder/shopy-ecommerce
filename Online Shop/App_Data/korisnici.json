@@ -732,5 +732,21 @@
     "ObjavljeniProizvodi": [],
     "IsDeleted": false,
     "IsLoggedIn": true
+  },
+  {
+    "Id": "7",
+    "KorisnickoIme": "prodavac1",
+    "Lozinka": "??t.????\u0000??T????\t0}?",
+    "Ime": "danijel",
+    "Prezime": "danijel",
+    "Pol": "Muški",
+    "Email": "danijel@mail.com",
+    "DatumRodjenja": "2001-11-11T00:00:00Z",
+    "Uloga": 0,
+    "Porudzbine": [],
+    "OmiljenjiProizvodi": [],
+    "ObjavljeniProizvodi": null,
+    "IsDeleted": false,
+    "IsLoggedIn": true
   }
 ]
