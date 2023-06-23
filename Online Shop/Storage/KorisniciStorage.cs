@@ -164,7 +164,12 @@ namespace Online_Shop.Storage
 
                     foreach (Recenzija recenzija in recenzije)
                     {
-                        recenzija.IsDeleted = true; // logicko brisanje recenzije
+                        int index = RecenzijeStorage.Recenzije.FindIndex(p => p.Id == recenzija.Id && p.IsDeleted == false); // indeks recenzije u globalu
+
+                        if(index !=  -1)
+                        {
+                            RecenzijeStorage.Recenzije[index].IsDeleted = true; // logicko brisanje recenzije
+                        }
                     }
 
                     // sve porudzbine vezane za kupca se sada trebaju obrisati
@@ -173,14 +178,16 @@ namespace Online_Shop.Storage
 
                     foreach (Porudzbina porudzbina in porudzbine)
                     {
-                        if (porudzbina.Status == STATUS.AKTIVNA)
+                        int index = PorudzbineStorage.Porudzbine.FindIndex(p => p.Id == porudzbina.Id &&  p.IsDeleted == false);
+
+                        if (index != -1 && PorudzbineStorage.Porudzbine[index].Status == STATUS.AKTIVNA)
                         {
                             // proizvod kome treba da se vrati kolicina nakon brisanja porudzbine
                             int proizvod = ProizvodiStorage.Proizvodi.FindIndex(p => p.Id == porudzbina.Proizvod.Id && p.IsDeleted == false);
                             ProizvodiStorage.Proizvodi[proizvod].Kolicina += porudzbina.Kolicina; // vrati onu kolicinu koju je kupac porucio
                         }
 
-                        porudzbina.IsDeleted = true; // brisanje porudzbine
+                        PorudzbineStorage.Porudzbine[index].IsDeleted = true; // brisanje porudzbine
                     }
                 }
                 else if (Korisnici[pronadjen].Uloga == ULOGA.Prodavac)
@@ -194,55 +201,10 @@ namespace Online_Shop.Storage
                     // samo ako je neki proizvod i objavio pristupa se kaskadnom logickom brisanju
                     if (objavljeni_proizvodi.Count > 0)
                     {
-                        List<Korisnik> kupci = Korisnici.FindAll(p => p.IsDeleted == false && p.Uloga == ULOGA.Kupac);
-                        // pronaci sve kupce koji imaju neki od proizvoda u svojim omiljenim proizvodima
-
-                        foreach (Korisnik korisnik in kupci)
+                        foreach(Proizvod p in objavljeni_proizvodi)
                         {
-                            List<Porudzbina> porudzbine = korisnik.Porudzbine.FindAll(p => p.IsDeleted == false);
-
-                            foreach (Proizvod tmp in objavljeni_proizvodi)
-                            {
-                                // posto se brisu i svi proizvodi kupca, ne treba obrisane porudzbine kao i njihove kolicine
-                                // vracati na stanje u magacinu
-                                foreach (Porudzbina p in porudzbine)
-                                {
-                                    if (p.Proizvod.Id == tmp.Id)
-                                    {
-                                        int index = PorudzbineStorage.Porudzbine.IndexOf(p);
-                                        if (index != -1)
-                                        {
-                                            PorudzbineStorage.Porudzbine[index].IsDeleted = true; // brisanje porudzbine koja sadrzi dati proizvod
-                                        }
-                                    }
-                                }
-
-                                // sve recenzije koje sadrze dati proizvod takodje obrisati - proizvod vise ne postoji
-                                List<Recenzija> recenzije = RecenzijeStorage.Recenzije.FindAll(p => p.IsDeleted == false && p.Proizvod.Id == tmp.Id);
-
-                                foreach (Recenzija recenzija in recenzije)
-                                {
-                                    int index = RecenzijeStorage.Recenzije.IndexOf(recenzija);
-                                    if (index != -1)
-                                    {
-                                        RecenzijeStorage.Recenzije[index].IsDeleted = true; // logicko brisanje recenzija koje su objavljene za taj proizvod
-                                    }
-                                }
-                            }
-                        }
-
-                        // obrisati iz liste svih proizvoda, one proizvode koji pripadaju prodavcu koji se brise
-                        List<Proizvod> svi = ProizvodiStorage.Proizvodi.FindAll(p => p.IsDeleted == false);
-
-                        foreach (Proizvod za_brisanje in objavljeni_proizvodi)
-                        {
-                            // svaki proizvod uvek ima unique id u listi svih proizvoda pa je uvek samo jedan
-                            int proizvod = svi.FindIndex(p => p.Id == za_brisanje.Id);
-
-                            if (ProizvodiStorage.Proizvodi[proizvod] != null)
-                            {
-                                ProizvodiStorage.Proizvodi[proizvod].IsDeleted = true; // logicko brisanje proizvoda
-                            }
+                            // brisanje proizvoda
+                            ProizvodiStorage.DeleteProizvod(p.Id);
                         }
                     }
                 }

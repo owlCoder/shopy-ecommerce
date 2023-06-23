@@ -31,3 +31,14 @@
 .bsp {
     background-color: #F5F5F5 !important;
 }
+
+.tbl-container {
+    width: 400px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.bdr {
+    border-radius: 6px;
+    overflow: hidden;
+}
