@@ -87,17 +87,17 @@
                             $("#proizvodi").append(
                                 '<div class="card mb-4 border-success">' +
                                 '<div class="card-body">' +
-                                '<div class="row justify-content-between">' +
-                                '<div class="col-2">' +
-                                '<img alt="proizvod" class="card-img-top" width="150" height="150" src="/Uploads/' + k.Slika + '" />' +
+                                '<div class="row">' +
+                                '<div class="col-2" style="padding-bottom: 0 !important">' +
+                                '<img alt="proizvod" class="card-img-top w-75 h-75 mt-3" width="150" height="150" src="/Uploads/' + data.Slika + '" />' +
                                 '</div>' +
                                 '<div class="col-10">' +
                                 '<div class="d-flex justify-content-between">' +
-                                '<span class="h5 card-title justify-content-start">' + k.Naziv + '</span>' +
-                                '<span class="h5 card-title text-success fw-semibold justify-content-end">' + k.Grad + '</span>' +
+                                '<span class="h5 card-title justify-content-start">' + data.Naziv + '</span>' +
+                                '<span class="h5 card-title text-success fw-semibold justify-content-end">' + data.Grad + '</span>' +
                                 '</div>' +
-                                '<h6 class="card-subtitle mb-2 text-muted">' + k.Cena + ' RSD</h6>' +
-                                '<p class="card-text">' + k.Opis + '</p>' +
+                                '<h6 class="card-subtitle mb-2 text-muted">' + data.Cena + ' RSD</h6>' +
+                                '<p class="card-text">' + data.Opis + '</p>' +
                                 kupac_dodaj_naruci +
                                 '</div>' +
                                 '</div>' +
@@ -203,17 +203,17 @@
                             $("#proizvodi").append(
                                 '<div class="card mb-4 border-success">' +
                                 '<div class="card-body">' +
-                                '<div class="row justify-content-between">' +
-                                '<div class="col-2">' +
-                                '<img alt="proizvod" class="card-img-top" width="150" height="150" src="/Uploads/' + k.Slika + '" />' +
+                                '<div class="row">' +
+                                '<div class="col-2" style="padding-bottom: 0 !important">' +
+                                '<img alt="proizvod" class="card-img-top w-75 h-75 mt-3" width="150" height="150" src="/Uploads/' + data.Slika + '" />' +
                                 '</div>' +
                                 '<div class="col-10">' +
                                 '<div class="d-flex justify-content-between">' +
-                                '<span class="h5 card-title justify-content-start">' + k.Naziv + '</span>' +
-                                '<span class="h5 card-title text-success fw-semibold justify-content-end">' + k.Grad + '</span>' +
+                                '<span class="h5 card-title justify-content-start">' + data.Naziv + '</span>' +
+                                '<span class="h5 card-title text-success fw-semibold justify-content-end">' + data.Grad + '</span>' +
                                 '</div>' +
-                                '<h6 class="card-subtitle mb-2 text-muted">' + k.Cena + ' RSD</h6>' +
-                                '<p class="card-text">' + k.Opis + '</p>' +
+                                '<h6 class="card-subtitle mb-2 text-muted">' + data.Cena + ' RSD</h6>' +
+                                '<p class="card-text">' + data.Opis + '</p>' +
                                 kupac_dodaj_naruci +
                                 '</div>' +
                                 '</div>' +
@@ -266,9 +266,9 @@
                             $("#proizvodi").append(
                                 '<div class="card mb-4 border-success">' +
                                 '<div class="card-body">' +
-                                '<div class="row justify-content-between">' +
-                                '<div class="col-2">' +
-                                '<img alt="proizvod" class="card-img-top" width="150" height="150" src="/Uploads/' + data.Slika + '" />' +
+                                '<div class="row">' +
+                                '<div class="col-2" style="padding-bottom: 0 !important">' +
+                                '<img alt="proizvod" class="card-img-top w-75 h-75 mt-3" width="150" height="150" src="/Uploads/' + data.Slika + '" />' +
                                 '</div>' +
                                 '<div class="col-10">' +
                                 '<div class="d-flex justify-content-between">' +
