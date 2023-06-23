@@ -234,7 +234,7 @@ namespace Online_Shop.Controllers
         public string AzuriranjeLozinke(PromenaLozinke zahtev)
         {
             Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
-            if (trenutni != null && trenutni.IsLoggedIn)
+            if (trenutni == null || trenutni.IsLoggedIn == false)
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi!" });
             }
