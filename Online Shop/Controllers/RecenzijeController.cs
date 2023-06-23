@@ -332,5 +332,79 @@ namespace Online_Shop.Controllers
                 return JsonConvert.SerializeObject(new Response { Kod = 5, Poruka = "Ne postoji" });
             }
         }
+
+        // Metoda koja odobrava recenziju - ako je to moguce
+        [HttpPost]
+        [Route("OdobravanjeRecenzije")]
+        public string Odobri(SingleIdRequest zahtev)
+        {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Kupac)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
+            if (!ModelState.IsValid || !int.TryParse(zahtev.Id, out var id))
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste uneli validne podatka za recenziju!" });
+            }
+            else
+            {
+                // postoji li recenzija recenzije
+                int indeks_recenzije = RecenzijeStorage.Recenzije.FindIndex(p => p.POID == id && p.IsDeleted == false && p.Status == STATUS_RECENZIJE.CEKA);
+
+                if (indeks_recenzije == -1)
+                {
+                    return JsonConvert.SerializeObject(new Response { Kod = 12, Poruka = "Nije moguće odobriti recenziju!" });
+                }
+
+                // odobravanje recenzije
+                RecenzijeStorage.Recenzije[indeks_recenzije].Status = STATUS_RECENZIJE.ODOBRENA;
+
+                // azuriranje zapisa u json
+                RecenzijeStorage.AzurirajRecenzijeUBazi();
+                ProizvodiStorage.AzurirajProizvodeUBazi();
+
+                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "Recenzija uspešno obrisana!" });
+            }
+        }
+
+        // Metoda koja odbija recenziju - ako je to moguce
+        [HttpPost]
+        [Route("OtkazivanjeRecenzije")]
+        public string Otkazi(SingleIdRequest zahtev)
+        {
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Kupac)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
+            if (!ModelState.IsValid || !int.TryParse(zahtev.Id, out var id))
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste uneli validne podatka za recenziju!" });
+            }
+            else
+            {
+                // postoji li recenzija
+                int indeks_recenzije = RecenzijeStorage.Recenzije.FindIndex(p => p.POID == id && p.IsDeleted == false && p.Status == STATUS_RECENZIJE.CEKA);
+
+                if (indeks_recenzije == -1)
+                {
+                    return JsonConvert.SerializeObject(new Response { Kod = 12, Poruka = "Nije moguće obrisati recenziju!" });
+                }
+
+                // Odbijanje recenzije
+                RecenzijeStorage.Recenzije[indeks_recenzije].Status = STATUS_RECENZIJE.ODBIJENA;
+
+                // azuriranje zapisa u json
+                RecenzijeStorage.AzurirajRecenzijeUBazi();
+                ProizvodiStorage.AzurirajProizvodeUBazi();
+
+                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "Recenzija uspešno obrisana!" });
+            }
+        }
     }
 }
