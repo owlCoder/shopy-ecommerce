@@ -222,6 +222,7 @@
     <Content Include="Scripts\api\products\product-add.js" />
     <Content Include="Scripts\api\products\product-delete.js" />
     <Content Include="Scripts\api\products\product-edit.js" />
+    <Content Include="Scripts\api\products\product-fetcher-admin.js" />
     <Content Include="Scripts\api\reviews\review-edit.js" />
     <Content Include="Scripts\api\users\delete-user.js" />
     <Content Include="Scripts\api\users\edit-user.js" />
