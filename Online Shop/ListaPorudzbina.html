@@ -126,6 +126,8 @@
                             var status = "";
                             var akcijaPrispeca = "";
                             var otkaziPorudzbinu = "";
+                            var odobriRecenziju = "";
+                            var otkaziRecenziju = "";
 
                             if (k.Status === 0) {
                                 // aktivna
@@ -139,6 +141,87 @@
                                 // izvrsena
                                 status = '<span class="h5 card-title text-success fw-semibold justify-content-end">IZVRŠENA</span>';
                                 akcijaPrispeca = '<a href="#" class="btn btn-outline-dark disabled">Porudžbina obrađena</a>';
+
+                                // proveri da li postoji recenzija, ako postoji, proveri onda i status,
+                                // ako je na cekanju
+                                // prikazi ODOBRI ILI ODBI
+                                // ako je ODBIJENA prikazi odbijena
+                                // ako je odobrena prikazi odobrena
+                                // id iz url
+                                Id = k.Id.toString();
+
+                                // popuni informacije o porudzbini za koju se dodaje recenzija
+                                $.ajax({
+                                    url: "/api/orders/PorudzbinaRecenzija",
+                                    type: "POST",
+                                    data: JSON.stringify({
+                                        Id: Id
+                                    }),
+                                    async: false,
+                                    cache: false,
+                                    dataType: "json",
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function (response) {
+                                        var data = JSON.parse(response);
+
+                                        if (data.hasOwnProperty("Id")) {
+                                            // tek sada moze videti formu
+                                            $("#bodyauth").removeClass("d-none");
+
+                                            // popunjavanje forme podacima
+                                            $("#pid").text("Porudžbina #" + data.Id);
+                                            $("#datum").text("Izvršena: " + data.Datum);
+                                            $("#nazivpr").text(data.NazivProizvoda);
+                                            $("#ukupaniznos").text("Ukupan iznos: " + data.UkupanIznos + " RSD");
+                                            $("#slikapr").attr('src', "/Uploads/" + data.Slika);
+
+                                            // popuni podatke o recenziji, Id je id porudzbine
+                                            // porudzbina - recenzija 1:1
+                                            $.ajax({
+                                                url: "/api/reviews/RecenzijaPoIdPorudzbine",
+                                                type: "POST",
+                                                data: JSON.stringify({
+                                                    Id: Id
+                                                }),
+                                                async: false,
+                                                cache: false,
+                                                dataType: "json",
+                                                contentType: "application/json; charset=utf-8",
+                                                success: function (response) {
+                                                    var data = JSON.parse(response);
+
+                                                    // postoji recenzija vracen je json objekat sa Id
+                                                    if (data.hasOwnProperty("Id")) {
+                                                        // koji je status recenzije
+                                                        if (data.Status === 0) {
+                                                            // ceka na odobrenje
+                                                            odobriRecenziju = '<a href="OdobriRecenziju.html?id=' + data.Id + '" class="btn btn-outline-success">Odobri recenziju</a>'
+                                                            otkaziRecenziju = '<a href="OtkaziRecenziju.html?id=' + data.Id + '" class="btn btn-outline-danger">Otkaži recenziju</a>'
+                                                        }
+                                                        else if (data.Status === 1) {
+                                                            // odobrena je
+                                                            odobriRecenziju = '<a href="#" class="btn btn-outline-success disabled">Recenzija odobrena</a>'
+                                                            otkaziRecenziju = "";
+                                                        }
+                                                        else if (data.Status === 2) {
+                                                            // odbijena je
+                                                            otkaziRecenziju = '<a href="#" class="btn btn-outline-danger disabled">Recenzija odbijena</a>'
+                                                            odobriRecenziju = "";
+                                                        }
+                                                    }
+                                                    else {
+                                                        odobriRecenziju = '<a href="#" class="btn btn-outline-primary disabled">Recenzija nije kreirana</a>'
+                                                    }
+                                                }
+                                            });
+                                        }
+                                        else {
+                                            // desila se greska
+                                            $("#divgreske").removeClass('d-none');
+                                            $("#greske").text(data.Poruka);
+                                        }
+                                    }
+                                });
                             }
                             else {
                                 // otkazana
@@ -161,7 +244,7 @@
                                 '</div>' +
                                 '<h6 class="card-subtitle mb-2 text-muted">Ukupno: ' + (parseFloat(k.Proizvod.Cena) * parseFloat(k.Kolicina)) + ' RSD</h6>' +
                                 '<p class="card-text">' + k.Kolicina + '</p>' +
-                                kupac_dodaj_naruci + akcijaPrispeca + "&emsp;" + otkaziPorudzbinu +
+                                kupac_dodaj_naruci + akcijaPrispeca + "&emsp;" + otkaziPorudzbinu + odobriRecenziju + "&emsp;" + otkaziRecenziju +
                                 '</div>' +
                                 '</div>' +
                                 '</div>' +

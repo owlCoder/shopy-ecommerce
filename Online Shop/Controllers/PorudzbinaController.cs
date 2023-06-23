@@ -245,7 +245,7 @@ namespace Online_Shop.Controllers
             }
 
             // prioritet prikaza imaju aktivne porudzbine
-            return JsonConvert.SerializeObject(PorudzbineStorage.Porudzbine.FindAll(p => p.IsDeleted == false).OrderBy(p => p.Status));
+            return JsonConvert.SerializeObject(Enumerable.Reverse(PorudzbineStorage.Porudzbine.FindAll(p => p.IsDeleted == false)).ToList());
         }
 
         // Metoda koja vraca tacno odredjenu porudzbinu
@@ -255,7 +255,7 @@ namespace Online_Shop.Controllers
         {
             // autentifikacija i autorizacija
             Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
-            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Kupac)
+            if (trenutni == null || trenutni.IsLoggedIn == false && (trenutni.Uloga != ULOGA.Kupac || trenutni.Uloga != ULOGA.Administrator))
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
             }
