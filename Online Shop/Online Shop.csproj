@@ -167,7 +167,6 @@
     <Content Include="Content\shopy.css" />
     <Content Include="DodajProdavca.html" />
     <Content Include="DodajProizvod.html" />
-    <Content Include="Images\lgbg.jpg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -186,12 +185,13 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Images\mainpf.jpg" />
     <Content Include="Images\package.png" />
+    <Content Include="Images\pastel-1.jpg" />
+    <Content Include="Images\pastel-2.jpg" />
+    <Content Include="Images\pastel-3.jpg" />
+    <Content Include="Images\pastel-4.jpg" />
+    <Content Include="Images\pastel-5.jpg" />
     <Content Include="Images\productplc.jpg" />
-    <Content Include="Images\pwd.jpg" />
-    <Content Include="Images\rgbg.jpg" />
-    <Content Include="Images\shopy.png" />
     <Content Include="Izmena.html" />
     <Content Include="IzmenaLozinke.html" />
     <Content Include="IzmenaProizvoda.html" />
