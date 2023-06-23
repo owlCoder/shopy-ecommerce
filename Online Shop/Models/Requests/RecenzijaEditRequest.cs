@@ -9,8 +9,6 @@ namespace Online_Shop.Models.Requests
     public class RecenzijaEditRequest
     {
         [Required]
-        public int RecenzijaId { get; set; }
-        [Required]
         public int PorudzbinaId { get; set; }
         [Required]
         public string Naslov { get; set; }
