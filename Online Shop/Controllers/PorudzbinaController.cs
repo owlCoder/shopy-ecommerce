@@ -3,6 +3,7 @@ using Online_Shop.Models;
 using Online_Shop.Models.Requests;
 using Online_Shop.Models.Responses;
 using Online_Shop.Storage;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -268,7 +269,7 @@ namespace Online_Shop.Controllers
             }
             else
             {
-                string datum = pronadjena.DatumPorudzbine.ToString("dd/MM/yyyy.");
+                string datum = pronadjena.DatumPorudzbine.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
                 return JsonConvert.SerializeObject(new PorudzbinaReviewResponse { 
                     Id = pronadjena.Id, 
                     Datum = datum, 

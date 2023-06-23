@@ -381,7 +381,7 @@
     "Kolicina": 12.0,
     "Kupac": "3",
     "DatumPorudzbine": "2023-06-23T16:37:01.1444458+02:00",
-    "Status": 0,
+    "Status": 1,
     "IsDeleted": false
   }
 ]

@@ -221,6 +221,7 @@
     <Content Include="Scripts\api\products\product-add.js" />
     <Content Include="Scripts\api\products\product-delete.js" />
     <Content Include="Scripts\api\products\product-edit.js" />
+    <Content Include="Scripts\api\reviews\review-edit.js" />
     <Content Include="Scripts\api\users\delete-user.js" />
     <Content Include="Scripts\api\users\edit-user.js" />
     <Content Include="Scripts\api\users\seller-add.js" />
@@ -254,7 +255,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\api\orders\" />
-    <Folder Include="Scripts\api\reviews\" />
     <Folder Include="Uploads\" />
     <Folder Include="Views\AuthUser\" />
   </ItemGroup>

@@ -641,7 +641,8 @@
               10
             ],
             "RID": [
-              8
+              8,
+              9
             ],
             "Kolicina": 2.0
           },
@@ -673,14 +674,15 @@
               10
             ],
             "RID": [
-              8
+              8,
+              9
             ],
             "Kolicina": 2.0
           },
           "Kolicina": 12.0,
           "Kupac": "3",
           "DatumPorudzbine": "2023-06-23T16:37:01.1444458+02:00",
-          "Status": 0,
+          "Status": 1,
           "IsDeleted": false
         }
       ],
@@ -774,14 +776,15 @@
             10
           ],
           "RID": [
-            8
+            8,
+            9
           ],
           "Kolicina": 2.0
         }
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": false
+      "IsLoggedIn": true
     },
     "Naslov": "ostaviRecenziju = '<a href=\"#' + k.Id + '\" class=\"btn btn-outline-success\">Recenzija odobrena</a>';                                             izmeniRecenziju = \"\";                                             obrisiRecenziju = \"\";",
     "SadrzajRecenzije": "ostaviRecenziju = '<a href=\"#' + k.Id + '\" class=\"btn btn-outline-success\">Recenzija odobrena</a>';\n                                            izmeniRecenziju = \"\";\n                                            obrisiRecenziju = \"\";",
@@ -1434,7 +1437,8 @@
               10
             ],
             "RID": [
-              8
+              8,
+              9
             ],
             "Kolicina": 2.0
           },
@@ -1466,14 +1470,15 @@
               10
             ],
             "RID": [
-              8
+              8,
+              9
             ],
             "Kolicina": 2.0
           },
           "Kolicina": 12.0,
           "Kupac": "3",
           "DatumPorudzbine": "2023-06-23T16:37:01.1444458+02:00",
-          "Status": 0,
+          "Status": 1,
           "IsDeleted": false
         }
       ],
@@ -1567,14 +1572,15 @@
             10
           ],
           "RID": [
-            8
+            8,
+            9
           ],
           "Kolicina": 2.0
         }
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": false
+      "IsLoggedIn": true
     },
     "Naslov": "nova recenzija je super 2",
     "SadrzajRecenzije": "ovo je sadrzaj recenzije koja je top 2",
@@ -2227,7 +2233,8 @@
               10
             ],
             "RID": [
-              8
+              8,
+              9
             ],
             "Kolicina": 2.0
           },
@@ -2259,14 +2266,15 @@
               10
             ],
             "RID": [
-              8
+              8,
+              9
             ],
             "Kolicina": 2.0
           },
           "Kolicina": 12.0,
           "Kupac": "3",
           "DatumPorudzbine": "2023-06-23T16:37:01.1444458+02:00",
-          "Status": 0,
+          "Status": 1,
           "IsDeleted": false
         }
       ],
@@ -2360,14 +2368,15 @@
             10
           ],
           "RID": [
-            8
+            8,
+            9
           ],
           "Kolicina": 2.0
         }
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": false
+      "IsLoggedIn": true
     },
     "Naslov": "DodavanjeRecenzijeDodavanjeRecenzije",
     "SadrzajRecenzije": "$.ajax({\n                                                url: \"/api/reviews/RecenzijaPoIdPorudzbine\",\n                                                type: \"POST\",\n                                                data: JSON.stringify({\n                                                    Id: Id\n                                                }),\n                                                async: false,\n                                                cache: false,\n                                                dataType: \"json\",\n                                                contentType: \"application/json; charset=utf-8\",\n                                                success: function (response) {\n                                                    var data = JSON.parse(response);\n\n                                                    // postoji recenzija vracen je json objekat sa Id\n                                                    if (data.hasOwnProperty(\"Id\")) {\n                                                        // koji je status recenzije\n                                                        if (data.Status === 0) {\n                                                            // ceka na odobrenje\n                                                            odobriRecenziju = '<a href=\"OdobriRecenziju.html?id=' + data.Id + '\" class=\"btn btn-outline-success\">Odobri recenziju</a>'\n                                                            otkaziRecenziju = '<a href=\"OtkaziRecenziju.html?id=' + data.Id + '\" class=\"btn btn-outline-success\">Otkaži recenziju</a>'\n                                                        }\n                                                        else if (data.Status === 1) {\n                                                            // odobrena je\n                                                            odobriRecenziju = '<a href=\"#\" class=\"btn btn-outline-success disabled\">Recenzija odobrena</a>'\n                                                            otkaziRecenziju = \"\";\n                                                        }\n                                                        else if (data.Status === 2) {\n                                                            // odbijena je\n                                                            otkaziRecenziju = '<a href=\"#\" class=\"btn btn-outline-danger disabled\">Recenzija odbijena</a>'\n                                                            odobriRecenziju = \"\";\n                                                        }\n                                                    }\n                                                    else {\n                                                        window.location.href = \"ListaPorudzbina.html?msg=Recenzija ne postoji ili je odbijena. Dalje izmena nije moguća!\";\n                                                    }\n                                                }\n                                            });",
@@ -3020,7 +3029,8 @@
               10
             ],
             "RID": [
-              8
+              8,
+              9
             ],
             "Kolicina": 2.0
           },
@@ -3052,14 +3062,15 @@
               10
             ],
             "RID": [
-              8
+              8,
+              9
             ],
             "Kolicina": 2.0
           },
           "Kolicina": 12.0,
           "Kupac": "3",
           "DatumPorudzbine": "2023-06-23T16:37:01.1444458+02:00",
-          "Status": 0,
+          "Status": 1,
           "IsDeleted": false
         }
       ],
@@ -3153,14 +3164,15 @@
             10
           ],
           "RID": [
-            8
+            8,
+            9
           ],
           "Kolicina": 2.0
         }
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": false
+      "IsLoggedIn": true
     },
     "Naslov": "dsadsadsadsa",
     "SadrzajRecenzije": "dasdasdsadsa as sad asd sad sadas dsa dasd asda",
@@ -3820,7 +3832,8 @@
               10
             ],
             "RID": [
-              8
+              8,
+              9
             ],
             "Kolicina": 2.0
           },
@@ -3852,14 +3865,15 @@
               10
             ],
             "RID": [
-              8
+              8,
+              9
             ],
             "Kolicina": 2.0
           },
           "Kolicina": 12.0,
           "Kupac": "3",
           "DatumPorudzbine": "2023-06-23T16:37:01.1444458+02:00",
-          "Status": 0,
+          "Status": 1,
           "IsDeleted": false
         }
       ],
@@ -3953,14 +3967,15 @@
             10
           ],
           "RID": [
-            8
+            8,
+            9
           ],
           "Kolicina": 2.0
         }
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": false
+      "IsLoggedIn": true
     },
     "Naslov": "dasdadsadsa",
     "SadrzajRecenzije": "d ahdshjjsadjsdjajddj jhh dhjjhdajh djah ha",
@@ -4620,7 +4635,8 @@
               10
             ],
             "RID": [
-              8
+              8,
+              9
             ],
             "Kolicina": 2.0
           },
@@ -4652,14 +4668,15 @@
               10
             ],
             "RID": [
-              8
+              8,
+              9
             ],
             "Kolicina": 2.0
           },
           "Kolicina": 12.0,
           "Kupac": "3",
           "DatumPorudzbine": "2023-06-23T16:37:01.1444458+02:00",
-          "Status": 0,
+          "Status": 1,
           "IsDeleted": false
         }
       ],
@@ -4753,14 +4770,15 @@
             10
           ],
           "RID": [
-            8
+            8,
+            9
           ],
           "Kolicina": 2.0
         }
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": false
+      "IsLoggedIn": true
     },
     "Naslov": "dsdsadsadsadsadsa",
     "SadrzajRecenzije": "dasdasdsadsadasdsadasdsa",
@@ -5420,7 +5438,8 @@
               10
             ],
             "RID": [
-              8
+              8,
+              9
             ],
             "Kolicina": 2.0
           },
@@ -5452,14 +5471,15 @@
               10
             ],
             "RID": [
-              8
+              8,
+              9
             ],
             "Kolicina": 2.0
           },
           "Kolicina": 12.0,
           "Kupac": "3",
           "DatumPorudzbine": "2023-06-23T16:37:01.1444458+02:00",
-          "Status": 0,
+          "Status": 1,
           "IsDeleted": false
         }
       ],
@@ -5553,14 +5573,15 @@
             10
           ],
           "RID": [
-            8
+            8,
+            9
           ],
           "Kolicina": 2.0
         }
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": false
+      "IsLoggedIn": true
     },
     "Naslov": "http://localhost:53906/OstaviRecenziju.html?id=1http://localhost:53906/OstaviRecenziju.html?id=1",
     "SadrzajRecenzije": "dasdsadsadsadasdasdsadasdsadsa",
@@ -5593,7 +5614,8 @@
         10
       ],
       "RID": [
-        8
+        8,
+        9
       ],
       "Kolicina": 2.0
     },
@@ -6206,7 +6228,8 @@
               10
             ],
             "RID": [
-              8
+              8,
+              9
             ],
             "Kolicina": 2.0
           },
@@ -6238,14 +6261,15 @@
               10
             ],
             "RID": [
-              8
+              8,
+              9
             ],
             "Kolicina": 2.0
           },
           "Kolicina": 12.0,
           "Kupac": "3",
           "DatumPorudzbine": "2023-06-23T16:37:01.1444458+02:00",
-          "Status": 0,
+          "Status": 1,
           "IsDeleted": false
         }
       ],
@@ -6339,20 +6363,811 @@
             10
           ],
           "RID": [
-            8
+            8,
+            9
           ],
           "Kolicina": 2.0
         }
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": false
+      "IsLoggedIn": true
     },
     "Naslov": "ovo je moja recenzija",
     "SadrzajRecenzije": "rece er erere rer erererere",
     "Slika": "4180ae95-1546-420f-a3c0-432b838a0a5a.jpg",
     "Status": 1,
     "POID": 9,
+    "PRID": 4,
+    "KOID": 3,
+    "IsDeleted": false
+  },
+  {
+    "Id": 9,
+    "Proizvod": {
+      "Id": 4,
+      "Naziv": "dsdasdadad",
+      "Cena": 1.0,
+      "Opis": "dsadsaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "Slika": "53981932-f39c-4929-9a18-7ed0002ddc40.jpg",
+      "DatumPostavljanjaProizvoda": "2023-06-23T16:23:31.1372998+02:00",
+      "Grad": "111",
+      "Recenzija": [],
+      "Status": true,
+      "IsDeleted": false,
+      "FID": [
+        "3"
+      ],
+      "KID": "2",
+      "PID": [
+        9,
+        10
+      ],
+      "RID": [
+        8,
+        9
+      ],
+      "Kolicina": 2.0
+    },
+    "Recenzent": {
+      "Id": "3",
+      "KorisnickoIme": "kupac1",
+      "Lozinka": "??t.????\u0000??T????\t0}?",
+      "Ime": "danijel",
+      "Prezime": "danijel",
+      "Pol": "Muški",
+      "Email": "danijel@gmail.com",
+      "DatumRodjenja": "2010-01-09T00:00:00Z",
+      "Uloga": 0,
+      "Porudzbine": [
+        {
+          "Id": 1,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "test 32",
+            "Cena": 122.0,
+            "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+            "Slika": "d0d05c20-ec82-484a-8952-5ee0de135bb7.jpg",
+            "DatumPostavljanjaProizvoda": "2023-06-20T13:19:22.3943977+02:00",
+            "Grad": "Beograd2",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": true,
+            "FID": [
+              "3",
+              "4"
+            ],
+            "KID": "2",
+            "PID": [
+              1,
+              2,
+              4,
+              5,
+              6,
+              1,
+              2,
+              3,
+              6
+            ],
+            "RID": [
+              1,
+              3,
+              1,
+              1,
+              5,
+              6,
+              7
+            ],
+            "Kolicina": 91.0
+          },
+          "Kolicina": 2.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "2023-06-20T17:20:51.988146+02:00",
+          "Status": 1,
+          "IsDeleted": false
+        },
+        {
+          "Id": 2,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "test 32",
+            "Cena": 122.0,
+            "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+            "Slika": "d0d05c20-ec82-484a-8952-5ee0de135bb7.jpg",
+            "DatumPostavljanjaProizvoda": "2023-06-20T13:19:22.3943977+02:00",
+            "Grad": "Beograd2",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": true,
+            "FID": [
+              "3",
+              "4"
+            ],
+            "KID": "2",
+            "PID": [
+              1,
+              2,
+              4,
+              5,
+              6,
+              1,
+              2,
+              3,
+              6
+            ],
+            "RID": [
+              1,
+              3,
+              1,
+              1,
+              5,
+              6,
+              7
+            ],
+            "Kolicina": 91.0
+          },
+          "Kolicina": 12.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "2023-06-20T17:42:25.5778797+02:00",
+          "Status": 1,
+          "IsDeleted": false
+        },
+        {
+          "Id": 4,
+          "Proizvod": {
+            "Id": 2,
+            "Naziv": "Lorem",
+            "Cena": 3.0,
+            "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+            "Slika": "63d2be1f-7475-4a76-a827-09fa9cfdef74.jpg",
+            "DatumPostavljanjaProizvoda": "2023-06-20T13:19:34.8986532+02:00",
+            "Grad": "Gornji Milanovac",
+            "Recenzija": [],
+            "Status": false,
+            "IsDeleted": true,
+            "FID": [
+              "3"
+            ],
+            "KID": "2",
+            "PID": [
+              3,
+              4,
+              5,
+              7
+            ],
+            "RID": [
+              3,
+              1,
+              2,
+              2,
+              3,
+              4
+            ],
+            "Kolicina": 0.0
+          },
+          "Kolicina": 1.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "2023-06-22T23:03:51.1758165+02:00",
+          "Status": 1,
+          "IsDeleted": false
+        },
+        {
+          "Id": 5,
+          "Proizvod": {
+            "Id": 2,
+            "Naziv": "Lorem",
+            "Cena": 3.0,
+            "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+            "Slika": "63d2be1f-7475-4a76-a827-09fa9cfdef74.jpg",
+            "DatumPostavljanjaProizvoda": "2023-06-20T13:19:34.8986532+02:00",
+            "Grad": "Gornji Milanovac",
+            "Recenzija": [],
+            "Status": false,
+            "IsDeleted": true,
+            "FID": [
+              "3"
+            ],
+            "KID": "2",
+            "PID": [
+              3,
+              4,
+              5,
+              7
+            ],
+            "RID": [
+              3,
+              1,
+              2,
+              2,
+              3,
+              4
+            ],
+            "Kolicina": 0.0
+          },
+          "Kolicina": 1.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "2023-06-22T23:23:26.2752709+02:00",
+          "Status": 1,
+          "IsDeleted": false
+        },
+        {
+          "Id": 6,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "test 32",
+            "Cena": 122.0,
+            "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+            "Slika": "d0d05c20-ec82-484a-8952-5ee0de135bb7.jpg",
+            "DatumPostavljanjaProizvoda": "2023-06-20T13:19:22.3943977+02:00",
+            "Grad": "Beograd2",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": true,
+            "FID": [
+              "3",
+              "4"
+            ],
+            "KID": "2",
+            "PID": [
+              1,
+              2,
+              4,
+              5,
+              6,
+              1,
+              2,
+              3,
+              6
+            ],
+            "RID": [
+              1,
+              3,
+              1,
+              1,
+              5,
+              6,
+              7
+            ],
+            "Kolicina": 91.0
+          },
+          "Kolicina": 1.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "2023-06-22T23:47:41.5468548+02:00",
+          "Status": 1,
+          "IsDeleted": false
+        },
+        {
+          "Id": 1,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "test 32",
+            "Cena": 122.0,
+            "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+            "Slika": "d0d05c20-ec82-484a-8952-5ee0de135bb7.jpg",
+            "DatumPostavljanjaProizvoda": "2023-06-20T13:19:22.3943977+02:00",
+            "Grad": "Beograd2",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": true,
+            "FID": [
+              "3",
+              "4"
+            ],
+            "KID": "2",
+            "PID": [
+              1,
+              2,
+              4,
+              5,
+              6,
+              1,
+              2,
+              3,
+              6
+            ],
+            "RID": [
+              1,
+              3,
+              1,
+              1,
+              5,
+              6,
+              7
+            ],
+            "Kolicina": 91.0
+          },
+          "Kolicina": 2.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "2023-06-20T17:20:51.988146+02:00",
+          "Status": 1,
+          "IsDeleted": false
+        },
+        {
+          "Id": 2,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "test 32",
+            "Cena": 122.0,
+            "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+            "Slika": "d0d05c20-ec82-484a-8952-5ee0de135bb7.jpg",
+            "DatumPostavljanjaProizvoda": "2023-06-20T13:19:22.3943977+02:00",
+            "Grad": "Beograd2",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": true,
+            "FID": [
+              "3",
+              "4"
+            ],
+            "KID": "2",
+            "PID": [
+              1,
+              2,
+              4,
+              5,
+              6,
+              1,
+              2,
+              3,
+              6
+            ],
+            "RID": [
+              1,
+              3,
+              1,
+              1,
+              5,
+              6,
+              7
+            ],
+            "Kolicina": 91.0
+          },
+          "Kolicina": 12.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "2023-06-20T17:42:25.5778797+02:00",
+          "Status": 1,
+          "IsDeleted": false
+        },
+        {
+          "Id": 3,
+          "Proizvod": {
+            "Id": 2,
+            "Naziv": "Lorem",
+            "Cena": 3.0,
+            "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+            "Slika": "63d2be1f-7475-4a76-a827-09fa9cfdef74.jpg",
+            "DatumPostavljanjaProizvoda": "2023-06-20T13:19:34.8986532+02:00",
+            "Grad": "Gornji Milanovac",
+            "Recenzija": [],
+            "Status": false,
+            "IsDeleted": true,
+            "FID": [
+              "3"
+            ],
+            "KID": "2",
+            "PID": [
+              3,
+              4,
+              5,
+              7
+            ],
+            "RID": [
+              3,
+              1,
+              2,
+              2,
+              3,
+              4
+            ],
+            "Kolicina": 0.0
+          },
+          "Kolicina": 2.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "2023-06-20T17:46:10.8888205+02:00",
+          "Status": 2,
+          "IsDeleted": false
+        },
+        {
+          "Id": 6,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "test 32",
+            "Cena": 122.0,
+            "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+            "Slika": "d0d05c20-ec82-484a-8952-5ee0de135bb7.jpg",
+            "DatumPostavljanjaProizvoda": "2023-06-20T13:19:22.3943977+02:00",
+            "Grad": "Beograd2",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": true,
+            "FID": [
+              "3",
+              "4"
+            ],
+            "KID": "2",
+            "PID": [
+              1,
+              2,
+              4,
+              5,
+              6,
+              1,
+              2,
+              3,
+              6
+            ],
+            "RID": [
+              1,
+              3,
+              1,
+              1,
+              5,
+              6,
+              7
+            ],
+            "Kolicina": 91.0
+          },
+          "Kolicina": 1.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "2023-06-22T23:47:41.5468548+02:00",
+          "Status": 1,
+          "IsDeleted": false
+        },
+        {
+          "Id": 3,
+          "Proizvod": {
+            "Id": 2,
+            "Naziv": "Lorem",
+            "Cena": 3.0,
+            "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+            "Slika": "63d2be1f-7475-4a76-a827-09fa9cfdef74.jpg",
+            "DatumPostavljanjaProizvoda": "2023-06-20T13:19:34.8986532+02:00",
+            "Grad": "Gornji Milanovac",
+            "Recenzija": [],
+            "Status": false,
+            "IsDeleted": true,
+            "FID": [
+              "3"
+            ],
+            "KID": "2",
+            "PID": [
+              3,
+              4,
+              5,
+              7
+            ],
+            "RID": [
+              3,
+              1,
+              2,
+              2,
+              3,
+              4
+            ],
+            "Kolicina": 0.0
+          },
+          "Kolicina": 2.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "2023-06-20T17:46:10.8888205+02:00",
+          "Status": 2,
+          "IsDeleted": false
+        },
+        {
+          "Id": 4,
+          "Proizvod": {
+            "Id": 2,
+            "Naziv": "Lorem",
+            "Cena": 3.0,
+            "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+            "Slika": "63d2be1f-7475-4a76-a827-09fa9cfdef74.jpg",
+            "DatumPostavljanjaProizvoda": "2023-06-20T13:19:34.8986532+02:00",
+            "Grad": "Gornji Milanovac",
+            "Recenzija": [],
+            "Status": false,
+            "IsDeleted": true,
+            "FID": [
+              "3"
+            ],
+            "KID": "2",
+            "PID": [
+              3,
+              4,
+              5,
+              7
+            ],
+            "RID": [
+              3,
+              1,
+              2,
+              2,
+              3,
+              4
+            ],
+            "Kolicina": 0.0
+          },
+          "Kolicina": 1.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "2023-06-22T23:03:51.1758165+02:00",
+          "Status": 1,
+          "IsDeleted": false
+        },
+        {
+          "Id": 5,
+          "Proizvod": {
+            "Id": 2,
+            "Naziv": "Lorem",
+            "Cena": 3.0,
+            "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+            "Slika": "63d2be1f-7475-4a76-a827-09fa9cfdef74.jpg",
+            "DatumPostavljanjaProizvoda": "2023-06-20T13:19:34.8986532+02:00",
+            "Grad": "Gornji Milanovac",
+            "Recenzija": [],
+            "Status": false,
+            "IsDeleted": true,
+            "FID": [
+              "3"
+            ],
+            "KID": "2",
+            "PID": [
+              3,
+              4,
+              5,
+              7
+            ],
+            "RID": [
+              3,
+              1,
+              2,
+              2,
+              3,
+              4
+            ],
+            "Kolicina": 0.0
+          },
+          "Kolicina": 1.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "2023-06-22T23:23:26.2752709+02:00",
+          "Status": 1,
+          "IsDeleted": false
+        },
+        {
+          "Id": 7,
+          "Proizvod": {
+            "Id": 2,
+            "Naziv": "Lorem",
+            "Cena": 3.0,
+            "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+            "Slika": "63d2be1f-7475-4a76-a827-09fa9cfdef74.jpg",
+            "DatumPostavljanjaProizvoda": "2023-06-20T13:19:34.8986532+02:00",
+            "Grad": "Gornji Milanovac",
+            "Recenzija": [],
+            "Status": false,
+            "IsDeleted": true,
+            "FID": [
+              "3"
+            ],
+            "KID": "2",
+            "PID": [
+              3,
+              4,
+              5,
+              7
+            ],
+            "RID": [
+              3,
+              1,
+              2,
+              2,
+              3,
+              4
+            ],
+            "Kolicina": 0.0
+          },
+          "Kolicina": 2.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "2023-06-23T15:46:28.4268374+02:00",
+          "Status": 1,
+          "IsDeleted": false
+        },
+        {
+          "Id": 8,
+          "Proizvod": {
+            "Id": 3,
+            "Naziv": "dsdasda",
+            "Cena": 2.0,
+            "Opis": "dsasaddddddddddddddddddddddddddddddddd",
+            "Slika": "5fcb39fa-bc23-47eb-8a48-18ef0287a6bd.jpg",
+            "DatumPostavljanjaProizvoda": "2023-06-23T15:43:42.9986235+02:00",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": true,
+            "FID": [],
+            "KID": "2",
+            "PID": [
+              8
+            ],
+            "RID": [],
+            "Kolicina": 11.0
+          },
+          "Kolicina": 1.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "2023-06-23T15:58:46.0188559+02:00",
+          "Status": 0,
+          "IsDeleted": false
+        },
+        {
+          "Id": 9,
+          "Proizvod": {
+            "Id": 4,
+            "Naziv": "dsdasdadad",
+            "Cena": 1.0,
+            "Opis": "dsadsaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "Slika": "53981932-f39c-4929-9a18-7ed0002ddc40.jpg",
+            "DatumPostavljanjaProizvoda": "2023-06-23T16:23:31.1372998+02:00",
+            "Grad": "111",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3"
+            ],
+            "KID": "2",
+            "PID": [
+              9,
+              10
+            ],
+            "RID": [
+              8,
+              9
+            ],
+            "Kolicina": 2.0
+          },
+          "Kolicina": 1.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "2023-06-23T16:34:20.8434+02:00",
+          "Status": 1,
+          "IsDeleted": false
+        },
+        {
+          "Id": 10,
+          "Proizvod": {
+            "Id": 4,
+            "Naziv": "dsdasdadad",
+            "Cena": 1.0,
+            "Opis": "dsadsaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "Slika": "53981932-f39c-4929-9a18-7ed0002ddc40.jpg",
+            "DatumPostavljanjaProizvoda": "2023-06-23T16:23:31.1372998+02:00",
+            "Grad": "111",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3"
+            ],
+            "KID": "2",
+            "PID": [
+              9,
+              10
+            ],
+            "RID": [
+              8,
+              9
+            ],
+            "Kolicina": 2.0
+          },
+          "Kolicina": 12.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "2023-06-23T16:37:01.1444458+02:00",
+          "Status": 1,
+          "IsDeleted": false
+        }
+      ],
+      "OmiljenjiProizvodi": [
+        {
+          "Id": 1,
+          "Naziv": "test 32",
+          "Cena": 122.0,
+          "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+          "Slika": "d0d05c20-ec82-484a-8952-5ee0de135bb7.jpg",
+          "DatumPostavljanjaProizvoda": "2023-06-20T13:19:22.3943977+02:00",
+          "Grad": "Beograd2",
+          "Recenzija": [],
+          "Status": true,
+          "IsDeleted": true,
+          "FID": [
+            "3",
+            "4"
+          ],
+          "KID": "2",
+          "PID": [
+            1,
+            2,
+            4,
+            5,
+            6,
+            1,
+            2,
+            3,
+            6
+          ],
+          "RID": [
+            1,
+            3,
+            1,
+            1,
+            5,
+            6,
+            7
+          ],
+          "Kolicina": 91.0
+        },
+        {
+          "Id": 2,
+          "Naziv": "Lorem",
+          "Cena": 3.0,
+          "Opis": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+          "Slika": "63d2be1f-7475-4a76-a827-09fa9cfdef74.jpg",
+          "DatumPostavljanjaProizvoda": "2023-06-20T13:19:34.8986532+02:00",
+          "Grad": "Gornji Milanovac",
+          "Recenzija": [],
+          "Status": false,
+          "IsDeleted": true,
+          "FID": [
+            "3"
+          ],
+          "KID": "2",
+          "PID": [
+            3,
+            4,
+            5,
+            7
+          ],
+          "RID": [
+            3,
+            1,
+            2,
+            2,
+            3,
+            4
+          ],
+          "Kolicina": 0.0
+        },
+        {
+          "Id": 4,
+          "Naziv": "dsdasdadad",
+          "Cena": 1.0,
+          "Opis": "dsadsaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "Slika": "53981932-f39c-4929-9a18-7ed0002ddc40.jpg",
+          "DatumPostavljanjaProizvoda": "2023-06-23T16:23:31.1372998+02:00",
+          "Grad": "111",
+          "Recenzija": [],
+          "Status": true,
+          "IsDeleted": false,
+          "FID": [
+            "3"
+          ],
+          "KID": "2",
+          "PID": [
+            9,
+            10
+          ],
+          "RID": [
+            8,
+            9
+          ],
+          "Kolicina": 2.0
+        }
+      ],
+      "ObjavljeniProizvodi": null,
+      "IsDeleted": false,
+      "IsLoggedIn": true
+    },
+    "Naslov": "nova",
+    "SadrzajRecenzije": "nova nova nova nova nova nova",
+    "Slika": "1d0829d9-5b96-4f5e-a07c-66f10b42b46b.jpg",
+    "Status": 0,
+    "POID": 10,
     "PRID": 4,
     "KOID": 3,
     "IsDeleted": false
