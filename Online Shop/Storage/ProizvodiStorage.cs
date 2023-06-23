@@ -223,20 +223,38 @@ namespace Online_Shop.Storage
             // ipak postoji proizvod za brisanje u listi svih proizvoda
             foreach (Proizvod proizvod in za_brisanje)
             {
-                if (proizvod.IsDeleted == false)
+                int index = Proizvodi.FindIndex(p => p.Id == proizvod.Id);
+
+                if (index != -1 && proizvod.IsDeleted == false)
                 {
                     // nije jos uvek obrisan
                     // obrisemo ga logicki
-                    proizvod.IsDeleted = true;
+                    Proizvodi[index].IsDeleted = true;
+
+                    // logicko brisanje svih recenzija za proizvod
+                    foreach (int recenzija in Proizvodi[index].RID)
+                    {
+                        int rec_id = RecenzijeStorage.Recenzije.FindIndex(p => p.Id == recenzija && p.IsDeleted == false);
+
+                        if (rec_id != -1)
+                        {
+                            // brisanje recenzije
+                            RecenzijeStorage.Recenzije[rec_id].IsDeleted = true;
+                        }
+                    }
+
+                    // brisanje svih aktivnih porudzbina koje sadrze proizvod koji se brise
+                    foreach (int porudzbina in Proizvodi[index].PID)
+                    {
+                        int por_id = PorudzbineStorage.Porudzbine.FindIndex(p => p.Id == porudzbina && p.IsDeleted == false && p.Status == STATUS.AKTIVNA);
+
+                        if (por_id != -1)
+                        {
+                            // brisanje aktivne porudzbine
+                            PorudzbineStorage.Porudzbine[por_id].IsDeleted = true;
+                        }
+                    }
                 }
-            }
-
-            // recenzije za dati proizvod vise nije moguce ni postaviti ni menjati, pa se logicki brisu
-            List<Recenzija> recenzije = RecenzijeStorage.Recenzije.FindAll(p => p.Proizvod.Id == id && !p.IsDeleted);
-
-            foreach (Recenzija recenzija in recenzije)
-            {
-                recenzija.IsDeleted = true; // brisanje recenzije, nezavisno od statusa (odobrena/odbijena)
             }
 
             // Azuriranje u json fajlovima, novo izmenjenih entiteta
