@@ -319,5 +319,69 @@
     "DatumPorudzbine": "2023-06-23T15:58:46.0188559+02:00",
     "Status": 0,
     "IsDeleted": false
+  },
+  {
+    "Id": 9,
+    "Proizvod": {
+      "Id": 4,
+      "Naziv": "dsdasdadad",
+      "Cena": 1.0,
+      "Opis": "dsadsaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "Slika": "53981932-f39c-4929-9a18-7ed0002ddc40.jpg",
+      "DatumPostavljanjaProizvoda": "2023-06-23T16:23:31.1372998+02:00",
+      "Grad": "111",
+      "Recenzija": [],
+      "Status": true,
+      "IsDeleted": false,
+      "FID": [
+        "3"
+      ],
+      "KID": "2",
+      "PID": [
+        9,
+        10
+      ],
+      "RID": [
+        8
+      ],
+      "Kolicina": 2.0
+    },
+    "Kolicina": 1.0,
+    "Kupac": "3",
+    "DatumPorudzbine": "2023-06-23T16:34:20.8434+02:00",
+    "Status": 1,
+    "IsDeleted": false
+  },
+  {
+    "Id": 10,
+    "Proizvod": {
+      "Id": 4,
+      "Naziv": "dsdasdadad",
+      "Cena": 1.0,
+      "Opis": "dsadsaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "Slika": "53981932-f39c-4929-9a18-7ed0002ddc40.jpg",
+      "DatumPostavljanjaProizvoda": "2023-06-23T16:23:31.1372998+02:00",
+      "Grad": "111",
+      "Recenzija": [],
+      "Status": true,
+      "IsDeleted": false,
+      "FID": [
+        "3"
+      ],
+      "KID": "2",
+      "PID": [
+        9,
+        10
+      ],
+      "RID": [
+        8
+      ],
+      "Kolicina": 2.0
+    },
+    "Kolicina": 12.0,
+    "Kupac": "3",
+    "DatumPorudzbine": "2023-06-23T16:37:01.1444458+02:00",
+    "Status": 0,
+    "IsDeleted": false
   }
 ]

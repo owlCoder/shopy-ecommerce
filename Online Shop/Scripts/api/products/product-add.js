@@ -1,4 +1,23 @@
-﻿// ako je ulogovan, prebaci prikazi meni u zavisnoti od uloge
+﻿// ako je ulogovan, prebaci ga na index - slucaj da ide na back opciju
+$.ajax({
+    url: "/api/auth/Ulogovan",
+    type: "GET",
+    async: false,
+    cache: false,
+    dataType: "json",
+    contentType: "application/json; charset=utf-8",
+    success: function (response) {
+        if (response != null) {
+            if (JSON.parse(response).Kod !== 0) // korisnik je ulogovan, ne moze da se registruje
+            {
+                window.location.href = "Index.html";
+            }
+        }
+    }
+});
+
+
+// ako je ulogovan, prebaci prikazi meni u zavisnoti od uloge
 $.ajax({
     url: "/api/auth/AuthKorisnik",
     type: "GET",
@@ -37,7 +56,6 @@ $.ajax({
         }
     }
 });
-
 jQuery(function () {
     // inicijalno nema poruka o greskama
     $("#divgreske").addClass('d-none');
@@ -52,7 +70,6 @@ jQuery(function () {
             pregled.src = URL.createObjectURL(slika.files[0]);
         }
     });
-
 
     // cuvanje izmena
     $("#dodajbtn").on('click', function () {
