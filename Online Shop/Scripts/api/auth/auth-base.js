@@ -42,8 +42,7 @@ jQuery(function () {
         // ajax poziv ka api-ju za vrsenje registracije
         $.ajax({
             url: "/api/auth/Odjava",
-            type: "POST",
-            data: {},
+            type: "GET",
             async: false,
             cache: false,
             dataType: "json",
