@@ -611,12 +611,12 @@
               8
             ],
             "RID": [],
-            "Kolicina": 11.0
+            "Kolicina": 12.0
           },
           "Kolicina": 1.0,
           "Kupac": "3",
           "DatumPorudzbine": "2023-06-23T15:58:46.0188559+02:00",
-          "Status": 0,
+          "Status": 2,
           "IsDeleted": false
         },
         {
@@ -631,7 +631,7 @@
             "Grad": "111",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": false,
+            "IsDeleted": true,
             "FID": [
               "3"
             ],
@@ -664,7 +664,7 @@
             "Grad": "111",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": false,
+            "IsDeleted": true,
             "FID": [
               "3"
             ],
@@ -766,7 +766,7 @@
           "Grad": "111",
           "Recenzija": [],
           "Status": true,
-          "IsDeleted": false,
+          "IsDeleted": true,
           "FID": [
             "3"
           ],
@@ -784,7 +784,7 @@
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": true
+      "IsLoggedIn": false
     },
     "Naslov": "ostaviRecenziju = '<a href=\"#' + k.Id + '\" class=\"btn btn-outline-success\">Recenzija odobrena</a>';                                             izmeniRecenziju = \"\";                                             obrisiRecenziju = \"\";",
     "SadrzajRecenzije": "ostaviRecenziju = '<a href=\"#' + k.Id + '\" class=\"btn btn-outline-success\">Recenzija odobrena</a>';\n                                            izmeniRecenziju = \"\";\n                                            obrisiRecenziju = \"\";",
@@ -1407,12 +1407,12 @@
               8
             ],
             "RID": [],
-            "Kolicina": 11.0
+            "Kolicina": 12.0
           },
           "Kolicina": 1.0,
           "Kupac": "3",
           "DatumPorudzbine": "2023-06-23T15:58:46.0188559+02:00",
-          "Status": 0,
+          "Status": 2,
           "IsDeleted": false
         },
         {
@@ -1427,7 +1427,7 @@
             "Grad": "111",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": false,
+            "IsDeleted": true,
             "FID": [
               "3"
             ],
@@ -1460,7 +1460,7 @@
             "Grad": "111",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": false,
+            "IsDeleted": true,
             "FID": [
               "3"
             ],
@@ -1562,7 +1562,7 @@
           "Grad": "111",
           "Recenzija": [],
           "Status": true,
-          "IsDeleted": false,
+          "IsDeleted": true,
           "FID": [
             "3"
           ],
@@ -1580,7 +1580,7 @@
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": true
+      "IsLoggedIn": false
     },
     "Naslov": "nova recenzija je super 2",
     "SadrzajRecenzije": "ovo je sadrzaj recenzije koja je top 2",
@@ -2203,12 +2203,12 @@
               8
             ],
             "RID": [],
-            "Kolicina": 11.0
+            "Kolicina": 12.0
           },
           "Kolicina": 1.0,
           "Kupac": "3",
           "DatumPorudzbine": "2023-06-23T15:58:46.0188559+02:00",
-          "Status": 0,
+          "Status": 2,
           "IsDeleted": false
         },
         {
@@ -2223,7 +2223,7 @@
             "Grad": "111",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": false,
+            "IsDeleted": true,
             "FID": [
               "3"
             ],
@@ -2256,7 +2256,7 @@
             "Grad": "111",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": false,
+            "IsDeleted": true,
             "FID": [
               "3"
             ],
@@ -2358,7 +2358,7 @@
           "Grad": "111",
           "Recenzija": [],
           "Status": true,
-          "IsDeleted": false,
+          "IsDeleted": true,
           "FID": [
             "3"
           ],
@@ -2376,7 +2376,7 @@
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": true
+      "IsLoggedIn": false
     },
     "Naslov": "DodavanjeRecenzijeDodavanjeRecenzije",
     "SadrzajRecenzije": "$.ajax({\n                                                url: \"/api/reviews/RecenzijaPoIdPorudzbine\",\n                                                type: \"POST\",\n                                                data: JSON.stringify({\n                                                    Id: Id\n                                                }),\n                                                async: false,\n                                                cache: false,\n                                                dataType: \"json\",\n                                                contentType: \"application/json; charset=utf-8\",\n                                                success: function (response) {\n                                                    var data = JSON.parse(response);\n\n                                                    // postoji recenzija vracen je json objekat sa Id\n                                                    if (data.hasOwnProperty(\"Id\")) {\n                                                        // koji je status recenzije\n                                                        if (data.Status === 0) {\n                                                            // ceka na odobrenje\n                                                            odobriRecenziju = '<a href=\"OdobriRecenziju.html?id=' + data.Id + '\" class=\"btn btn-outline-success\">Odobri recenziju</a>'\n                                                            otkaziRecenziju = '<a href=\"OtkaziRecenziju.html?id=' + data.Id + '\" class=\"btn btn-outline-success\">Otkaži recenziju</a>'\n                                                        }\n                                                        else if (data.Status === 1) {\n                                                            // odobrena je\n                                                            odobriRecenziju = '<a href=\"#\" class=\"btn btn-outline-success disabled\">Recenzija odobrena</a>'\n                                                            otkaziRecenziju = \"\";\n                                                        }\n                                                        else if (data.Status === 2) {\n                                                            // odbijena je\n                                                            otkaziRecenziju = '<a href=\"#\" class=\"btn btn-outline-danger disabled\">Recenzija odbijena</a>'\n                                                            odobriRecenziju = \"\";\n                                                        }\n                                                    }\n                                                    else {\n                                                        window.location.href = \"ListaPorudzbina.html?msg=Recenzija ne postoji ili je odbijena. Dalje izmena nije moguća!\";\n                                                    }\n                                                }\n                                            });",
@@ -2999,12 +2999,12 @@
               8
             ],
             "RID": [],
-            "Kolicina": 11.0
+            "Kolicina": 12.0
           },
           "Kolicina": 1.0,
           "Kupac": "3",
           "DatumPorudzbine": "2023-06-23T15:58:46.0188559+02:00",
-          "Status": 0,
+          "Status": 2,
           "IsDeleted": false
         },
         {
@@ -3019,7 +3019,7 @@
             "Grad": "111",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": false,
+            "IsDeleted": true,
             "FID": [
               "3"
             ],
@@ -3052,7 +3052,7 @@
             "Grad": "111",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": false,
+            "IsDeleted": true,
             "FID": [
               "3"
             ],
@@ -3154,7 +3154,7 @@
           "Grad": "111",
           "Recenzija": [],
           "Status": true,
-          "IsDeleted": false,
+          "IsDeleted": true,
           "FID": [
             "3"
           ],
@@ -3172,7 +3172,7 @@
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": true
+      "IsLoggedIn": false
     },
     "Naslov": "dsadsadsadsa",
     "SadrzajRecenzije": "dasdasdsadsa as sad asd sad sadas dsa dasd asda",
@@ -3802,12 +3802,12 @@
               8
             ],
             "RID": [],
-            "Kolicina": 11.0
+            "Kolicina": 12.0
           },
           "Kolicina": 1.0,
           "Kupac": "3",
           "DatumPorudzbine": "2023-06-23T15:58:46.0188559+02:00",
-          "Status": 0,
+          "Status": 2,
           "IsDeleted": false
         },
         {
@@ -3822,7 +3822,7 @@
             "Grad": "111",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": false,
+            "IsDeleted": true,
             "FID": [
               "3"
             ],
@@ -3855,7 +3855,7 @@
             "Grad": "111",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": false,
+            "IsDeleted": true,
             "FID": [
               "3"
             ],
@@ -3957,7 +3957,7 @@
           "Grad": "111",
           "Recenzija": [],
           "Status": true,
-          "IsDeleted": false,
+          "IsDeleted": true,
           "FID": [
             "3"
           ],
@@ -3975,7 +3975,7 @@
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": true
+      "IsLoggedIn": false
     },
     "Naslov": "dasdadsadsa",
     "SadrzajRecenzije": "d ahdshjjsadjsdjajddj jhh dhjjhdajh djah ha",
@@ -4605,12 +4605,12 @@
               8
             ],
             "RID": [],
-            "Kolicina": 11.0
+            "Kolicina": 12.0
           },
           "Kolicina": 1.0,
           "Kupac": "3",
           "DatumPorudzbine": "2023-06-23T15:58:46.0188559+02:00",
-          "Status": 0,
+          "Status": 2,
           "IsDeleted": false
         },
         {
@@ -4625,7 +4625,7 @@
             "Grad": "111",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": false,
+            "IsDeleted": true,
             "FID": [
               "3"
             ],
@@ -4658,7 +4658,7 @@
             "Grad": "111",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": false,
+            "IsDeleted": true,
             "FID": [
               "3"
             ],
@@ -4760,7 +4760,7 @@
           "Grad": "111",
           "Recenzija": [],
           "Status": true,
-          "IsDeleted": false,
+          "IsDeleted": true,
           "FID": [
             "3"
           ],
@@ -4778,7 +4778,7 @@
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": true
+      "IsLoggedIn": false
     },
     "Naslov": "dsdsadsadsadsadsa",
     "SadrzajRecenzije": "dasdasdsadsadasdsadasdsa",
@@ -5408,12 +5408,12 @@
               8
             ],
             "RID": [],
-            "Kolicina": 11.0
+            "Kolicina": 12.0
           },
           "Kolicina": 1.0,
           "Kupac": "3",
           "DatumPorudzbine": "2023-06-23T15:58:46.0188559+02:00",
-          "Status": 0,
+          "Status": 2,
           "IsDeleted": false
         },
         {
@@ -5428,7 +5428,7 @@
             "Grad": "111",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": false,
+            "IsDeleted": true,
             "FID": [
               "3"
             ],
@@ -5461,7 +5461,7 @@
             "Grad": "111",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": false,
+            "IsDeleted": true,
             "FID": [
               "3"
             ],
@@ -5563,7 +5563,7 @@
           "Grad": "111",
           "Recenzija": [],
           "Status": true,
-          "IsDeleted": false,
+          "IsDeleted": true,
           "FID": [
             "3"
           ],
@@ -5581,7 +5581,7 @@
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": true
+      "IsLoggedIn": false
     },
     "Naslov": "http://localhost:53906/OstaviRecenziju.html?id=1http://localhost:53906/OstaviRecenziju.html?id=1",
     "SadrzajRecenzije": "dasdsadsadsadasdasdsadasdsadsa",
@@ -5604,7 +5604,7 @@
       "Grad": "111",
       "Recenzija": [],
       "Status": true,
-      "IsDeleted": false,
+      "IsDeleted": true,
       "FID": [
         "3"
       ],
@@ -6198,12 +6198,12 @@
               8
             ],
             "RID": [],
-            "Kolicina": 11.0
+            "Kolicina": 12.0
           },
           "Kolicina": 1.0,
           "Kupac": "3",
           "DatumPorudzbine": "2023-06-23T15:58:46.0188559+02:00",
-          "Status": 0,
+          "Status": 2,
           "IsDeleted": false
         },
         {
@@ -6218,7 +6218,7 @@
             "Grad": "111",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": false,
+            "IsDeleted": true,
             "FID": [
               "3"
             ],
@@ -6251,7 +6251,7 @@
             "Grad": "111",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": false,
+            "IsDeleted": true,
             "FID": [
               "3"
             ],
@@ -6353,7 +6353,7 @@
           "Grad": "111",
           "Recenzija": [],
           "Status": true,
-          "IsDeleted": false,
+          "IsDeleted": true,
           "FID": [
             "3"
           ],
@@ -6371,7 +6371,7 @@
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": true
+      "IsLoggedIn": false
     },
     "Naslov": "ovo je moja recenzija",
     "SadrzajRecenzije": "rece er erere rer erererere",
@@ -6380,7 +6380,7 @@
     "POID": 9,
     "PRID": 4,
     "KOID": 3,
-    "IsDeleted": false
+    "IsDeleted": true
   },
   {
     "Id": 9,
@@ -6394,7 +6394,7 @@
       "Grad": "111",
       "Recenzija": [],
       "Status": true,
-      "IsDeleted": false,
+      "IsDeleted": true,
       "FID": [
         "3"
       ],
@@ -6988,12 +6988,12 @@
               8
             ],
             "RID": [],
-            "Kolicina": 11.0
+            "Kolicina": 12.0
           },
           "Kolicina": 1.0,
           "Kupac": "3",
           "DatumPorudzbine": "2023-06-23T15:58:46.0188559+02:00",
-          "Status": 0,
+          "Status": 2,
           "IsDeleted": false
         },
         {
@@ -7008,7 +7008,7 @@
             "Grad": "111",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": false,
+            "IsDeleted": true,
             "FID": [
               "3"
             ],
@@ -7041,7 +7041,7 @@
             "Grad": "111",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": false,
+            "IsDeleted": true,
             "FID": [
               "3"
             ],
@@ -7143,7 +7143,7 @@
           "Grad": "111",
           "Recenzija": [],
           "Status": true,
-          "IsDeleted": false,
+          "IsDeleted": true,
           "FID": [
             "3"
           ],
@@ -7161,7 +7161,7 @@
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": true
+      "IsLoggedIn": false
     },
     "Naslov": "nova",
     "SadrzajRecenzije": "nova nova nova nova nova nova",
@@ -7170,6 +7170,6 @@
     "POID": 10,
     "PRID": 4,
     "KOID": 3,
-    "IsDeleted": false
+    "IsDeleted": true
   }
 ]

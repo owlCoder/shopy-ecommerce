@@ -218,6 +218,7 @@
     <Content Include="Scripts\api\auth\auth-edit-profile.js" />
     <Content Include="Scripts\api\auth\auth-edit-user.js" />
     <Content Include="Scripts\api\auth\auth-update-password.js" />
+    <Content Include="Scripts\api\orders\orders-fetcher.js" />
     <Content Include="Scripts\api\products\product-add.js" />
     <Content Include="Scripts\api\products\product-delete.js" />
     <Content Include="Scripts\api\products\product-edit.js" />
@@ -255,7 +256,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\api\orders\" />
     <Folder Include="Uploads\" />
     <Folder Include="Views\AuthUser\" />
   </ItemGroup>

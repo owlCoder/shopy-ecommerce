@@ -85,7 +85,7 @@
       8
     ],
     "RID": [],
-    "Kolicina": 11.0
+    "Kolicina": 12.0
   },
   {
     "Id": 4,
@@ -97,7 +97,7 @@
     "Grad": "111",
     "Recenzija": [],
     "Status": true,
-    "IsDeleted": false,
+    "IsDeleted": true,
     "FID": [
       "3"
     ],

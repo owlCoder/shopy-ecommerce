@@ -97,7 +97,7 @@ namespace Online_Shop.Controllers
         {
             // autentifikacija i autorizacija
             Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
-            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Prodavac)
+            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Prodavac)
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
             }
@@ -112,7 +112,7 @@ namespace Online_Shop.Controllers
         {
             // autentifikacija i autorizacija
             Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
-            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Prodavac)
+            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Prodavac)
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
             }
