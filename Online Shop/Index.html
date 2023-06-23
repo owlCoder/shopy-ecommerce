@@ -1,93 +1,93 @@
 ﻿<!DOCTYPE html>
 <html data-bs-theme="light" lang="sr">
-<head>
-    <title>Dobro došli - Shopy</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="Content/bootstrap.min.css">
-    <link href="Content/shopy.css" rel="stylesheet" />
-    <script src="Scripts/jquery-3.7.0.min.js"></script>
-    <script src="Scripts/load-optimizer.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
-    <script src="Scripts/bootstrap.bundle.min.js"></script>
-    <script src="Scripts/modernizr-2.8.3.js"></script>
-    <script src="Scripts/api/auth/auth-base.js"></script>
-    <script src="Scripts/api/products/all-products-fetcher.js"></script>
-    <script src="Scripts/api/products/products-main.js"></script>
-    <script src="Scripts/loader-finisher.js"></script>
-</head>
-<body class="d-none bsp">
-    <div id="nm"></div>
-    <div class="container body-content mt-4">
-        <div class="container">
+   <head>
+      <title>Dobro došli - Shopy</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width" />
+      <link rel="stylesheet" href="Content/bootstrap.min.css">
+      <link href="Content/shopy.css" rel="stylesheet" />
+      <script src="Scripts/jquery-3.7.0.min.js"></script>
+      <script src="Scripts/load-optimizer.js"></script>
+      <script src="Scripts/bootstrap.min.js"></script>
+      <script src="Scripts/bootstrap.bundle.min.js"></script>
+      <script src="Scripts/modernizr-2.8.3.js"></script>
+      <script src="Scripts/api/auth/auth-base.js"></script>
+      <script src="Scripts/api/products/all-products-fetcher.js"></script>
+      <script src="Scripts/api/products/products-main.js"></script>
+      <script src="Scripts/loader-finisher.js"></script>
+   </head>
+   <body class="d-none bsp">
+      <div id="nm"></div>
+      <div class="container body-content mt-4">
+         <div class="container">
             <div class="row">
-                <div class="col-lg-12 mx-auto">
-                    <h3 class="text-dark mt-4">Shopy eCommerce</h3>
-                    <p class="fw-normal pb-3" style="letter-spacing: 1px;">Ispred Vas je celokupna ponuda proizvoda na platformi. Shopy Team Vam želi ugodnu kupovinu!</p>
-                    <form class="col-12 mb-3">
+               <div class="col-lg-12 mx-auto">
+                  <h3 class="text-dark mt-4">Shopy eCommerce</h3>
+                  <p class="fw-normal pb-3" style="letter-spacing: 1px;">Ispred Vas je celokupna ponuda proizvoda na platformi. Shopy Team Vam želi ugodnu kupovinu!</p>
+                  <form class="col-12 mb-3">
+                     <div class="row">
+                        <div class="col-3">
+                           <div class="input-group flex-nowrap mb-3">
+                              <span class="input-group-text" id="addon-wrapping">Naziv</span>
+                              <input id="naziv" type="text" class="form-control" placeholder="Unesite pojam..." aria-label="ime" aria-describedby="addon-wrapping">
+                           </div>
+                        </div>
+                        <div class="col-3">
+                           <div class="input-group flex-nowrap mb-3">
+                              <span class="input-group-text" id="addon-wrapping">Grad</span>
+                              <input id="grad" type="text" class="form-control" placeholder="Unesite pojam..." aria-label="prezime" aria-describedby="addon-wrapping">
+                           </div>
+                        </div>
+                        <div class="col-3">
+                           <div class="input-group flex-nowrap mb-3">
+                              <span class="input-group-text" id="addon-wrapping">Minimalna cena</span>
+                              <input id="od" type="number" min="0" class="form-control" placeholder="Unesite cenu..." aria-label="prezime" aria-describedby="addon-wrapping">
+                           </div>
+                        </div>
+                        <div class="col-3">
+                           <div class="input-group flex-nowrap mb-3">
+                              <span class="input-group-text" id="addon-wrapping">Maksimalna cena</span>
+                              <input id="do" type="number" min="0" class="form-control" placeholder="Unesite cenu..." aria-label="prezime" aria-describedby="addon-wrapping">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="pt-4 pb-4 mb-2 col-12 d-flex justify-content-end">
+                           <button id="pretragabtn" type="button" class="btn btn-dark col-3 btn-block fs-5">🔎 Pretraga proizvoda</button>
+                           &emsp;<button id="ponistibtn" type="reset" class="btn btn-secondary col-3 fs-5 btn-block">↺ Resetovanje pretrage</button>
+                        </div>
+                     </div>
+                     <div id="divgreske" class="alert alert-dark d-flex align-items-center mb-3 mt-5" role="alert">
+                        <svg height="25" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                           <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                        </svg>
+                        <span>&emsp;</span>
+                        <span id="greske"></span>
+                     </div>
+                     <br />
+                     <div class="col-12 mb-1 d-flex justify-content-end">
                         <div class="row">
-                            <div class="col-3">
-                                <div class="input-group flex-nowrap mb-3">
-                                    <span class="input-group-text" id="addon-wrapping">Naziv</span>
-                                    <input id="naziv" type="text" class="form-control" placeholder="Unesite pojam..." aria-label="ime" aria-describedby="addon-wrapping">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="input-group flex-nowrap mb-3">
-                                    <span class="input-group-text" id="addon-wrapping">Grad</span>
-                                    <input id="grad" type="text" class="form-control" placeholder="Unesite pojam..." aria-label="prezime" aria-describedby="addon-wrapping">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="input-group flex-nowrap mb-3">
-                                    <span class="input-group-text" id="addon-wrapping">Minimalna cena</span>
-                                    <input id="od" type="number" min="0" class="form-control" placeholder="Unesite cenu..." aria-label="prezime" aria-describedby="addon-wrapping">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="input-group flex-nowrap mb-3">
-                                    <span class="input-group-text" id="addon-wrapping">Maksimalna cena</span>
-                                    <input id="do" type="number" min="0" class="form-control" placeholder="Unesite cenu..." aria-label="prezime" aria-describedby="addon-wrapping">
-                                </div>
-                            </div>
+                           <div class="col-12">
+                              <div class="input-group flex-nowrap mb-3">
+                                 <span class="input-group-text" id="addon-sort">Sortiranje proizvoda po</span>
+                                 <select id="sort" class="form-control">
+                                    <option value="0">Podrazumevano</option>
+                                    <option value="1">Nazivu (rastuće)</option>
+                                    <option value="2">Nazivu (opadajuće)</option>
+                                    <option value="3">Ceni (rastuće)</option>
+                                    <option value="4">Ceni (opadajuće)</option>
+                                    <option value="5">Datumu oglašavanja (rastuće)</option>
+                                    <option value="6">Datumu oglašavanja (opadajuće)</option>
+                                 </select>
+                              </div>
+                           </div>
                         </div>
-                        <div class="row">
-                            <div class="pt-4 pb-4 mb-2 col-12 d-flex justify-content-end">
-                                <button id="pretragabtn" type="button" class="btn btn-dark col-3 btn-block fs-5">🔎 Pretraga proizvoda</button>
-                                &emsp;<button id="ponistibtn" type="reset" class="btn btn-secondary col-3 fs-5 btn-block">↺ Resetovanje pretrage</button>
-                            </div>
-                        </div>
-                        <div id="divgreske" class="alert alert-dark d-flex align-items-center mb-3 mt-5" role="alert">
-                            <svg height="25" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
-                            </svg>
-                            <span>&emsp;</span>
-                            <span id="greske"></span>
-                        </div>
-                        <br />
-                        <div class="col-12 mb-1 d-flex justify-content-end">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="input-group flex-nowrap mb-3">
-                                        <span class="input-group-text" id="addon-sort">Sortiranje proizvoda po</span>
-                                        <select id="sort" class="form-control">
-                                            <option value="0">Podrazumevano</option>
-                                            <option value="1">Nazivu (rastuće)</option>
-                                            <option value="2">Nazivu (opadajuće)</option>
-                                            <option value="3">Ceni (rastuće)</option>
-                                            <option value="4">Ceni (opadajuće)</option>
-                                            <option value="5">Datumu oglašavanja (rastuće)</option>
-                                            <option value="6">Datumu oglašavanja (opadajuće)</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <div id="proizvodi"></div>
-                </div>
+                     </div>
+                  </form>
+                  <div id="proizvodi"></div>
+               </div>
             </div>
-        </div>
-    </div>
-</body>
+         </div>
+      </div>
+   </body>
 </html>
