@@ -211,7 +211,6 @@
     <Content Include="Proizvod.html" />
     <Content Include="Registracija.html" />
     <Content Include="Prijava.html" />
-    <Content Include="Scripts\base64Encoder.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -237,6 +236,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\api\" />
     <Folder Include="Uploads\" />
     <Folder Include="Views\AuthUser\" />
   </ItemGroup>

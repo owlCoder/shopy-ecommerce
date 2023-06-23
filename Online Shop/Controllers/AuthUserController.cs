@@ -146,7 +146,7 @@ namespace Online_Shop.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("Odjava")]
         public string OdjavaKorisnika()
         {
