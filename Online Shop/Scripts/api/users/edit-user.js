@@ -77,8 +77,8 @@
         if (datumRodjenja === "") // datum se nije promenio
             datumRodjenja = STARI_DATUM;
 
-        var datum = Date.parse(datumRodjenja.split(".").reverse().join("-"));
-        datumRodjenja = Date.parse(datumRodjenja.split(".").reverse().join("-"));
+        var datum = Date.parse(datumRodjenja.split("/").join("-"));
+        datumRodjenja = Date.parse(datumRodjenja.split("/").join("-"));
         datumRodjenja = new Date(datumRodjenja).toISOString();
 
         if ((datum < minDate) || (datum > maxDate)) {

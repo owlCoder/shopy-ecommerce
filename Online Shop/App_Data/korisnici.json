@@ -17,13 +17,13 @@
   },
   {
     "Id": "2",
-    "KorisnickoIme": "prodavac12",
+    "KorisnickoIme": "prodavac34",
     "Lozinka": "??t.????\u0000??T????\t0}?",
-    "Ime": "Prodavac",
-    "Prezime": "Prodavacic",
-    "Pol": "Muški",
-    "Email": "prodavac@shopy.rs",
-    "DatumRodjenja": "2001-01-20T00:00:00Z",
+    "Ime": "Prodavac2",
+    "Prezime": "Prodavacic2",
+    "Pol": "Ženski",
+    "Email": "prodavac2@shopy.rs",
+    "DatumRodjenja": "2001-06-10T22:00:00Z",
     "Uloga": 1,
     "Porudzbine": null,
     "OmiljenjiProizvodi": null,
@@ -142,7 +142,7 @@
       }
     ],
     "IsDeleted": false,
-    "IsLoggedIn": true
+    "IsLoggedIn": false
   },
   {
     "Id": "3",
