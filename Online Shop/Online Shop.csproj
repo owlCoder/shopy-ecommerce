@@ -193,6 +193,7 @@
     <Content Include="Izmena.html" />
     <Content Include="IzmenaLozinke.html" />
     <Content Include="IzmenaProizvoda.html" />
+    <Content Include="IzmeniRecenziju.html" />
     <Content Include="ListaKorisnika.html" />
     <Content Include="ListaPorudzbina.html" />
     <Content Include="ListaProizvoda.html" />

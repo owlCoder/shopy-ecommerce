@@ -101,7 +101,7 @@ namespace Online_Shop.Controllers
             }
             else
             {
-                return JsonConvert.SerializeObject(PorudzbineStorage.PorudzbineKupac().OrderBy(p => p.Status), new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+                return JsonConvert.SerializeObject(Enumerable.Reverse(PorudzbineStorage.PorudzbineKupac()).ToList(), new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
             }
 
         }
@@ -268,7 +268,7 @@ namespace Online_Shop.Controllers
             }
             else
             {
-                string datum = pronadjena.DatumPorudzbine.ToString("dd.MM.yyyy.");
+                string datum = pronadjena.DatumPorudzbine.ToString("dd/MM/yyyy.");
                 return JsonConvert.SerializeObject(new PorudzbinaReviewResponse { 
                     Id = pronadjena.Id, 
                     Datum = datum, 
