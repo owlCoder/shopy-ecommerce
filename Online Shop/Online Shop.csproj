@@ -219,6 +219,7 @@
     <Content Include="Scripts\api\products\product-delete.js" />
     <Content Include="Scripts\api\users\delete-user.js" />
     <Content Include="Scripts\api\users\edit-user.js" />
+    <Content Include="Scripts\api\users\seller-add.js" />
     <Content Include="Scripts\load-optimizer.js" />
     <Content Include="Scripts\api\products\all-products-fetcher.js" />
     <Content Include="Scripts\api\products\products-main.js" />

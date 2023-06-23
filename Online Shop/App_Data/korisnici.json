@@ -716,5 +716,21 @@
     "ObjavljeniProizvodi": null,
     "IsDeleted": false,
     "IsLoggedIn": false
+  },
+  {
+    "Id": "6",
+    "KorisnickoIme": "dasdsadasdsad",
+    "Lozinka": "\u0002?=??\r???]Cu??7Va\u0000??",
+    "Ime": "dadasdadadsa",
+    "Prezime": "dsadadasdsadsa",
+    "Pol": "Muški",
+    "Email": "dsadasdasdasdada@gmail.com",
+    "DatumRodjenja": "2001-11-11T00:00:00Z",
+    "Uloga": 1,
+    "Porudzbine": null,
+    "OmiljenjiProizvodi": null,
+    "ObjavljeniProizvodi": [],
+    "IsDeleted": false,
+    "IsLoggedIn": true
   }
 ]
