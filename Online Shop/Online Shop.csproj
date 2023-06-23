@@ -216,6 +216,7 @@
     <Content Include="Prijava.html" />
     <Content Include="Scripts\api\auth\auth-base.js" />
     <Content Include="Scripts\api\auth\auth-edit-user.js" />
+    <Content Include="Scripts\api\products\product-delete.js" />
     <Content Include="Scripts\api\users\delete-user.js" />
     <Content Include="Scripts\api\users\edit-user.js" />
     <Content Include="Scripts\load-optimizer.js" />
