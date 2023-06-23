@@ -178,7 +178,7 @@
                                             // popuni podatke o recenziji, Id je id porudzbine
                                             // porudzbina - recenzija 1:1
                                             $.ajax({
-                                                url: "/api/reviews/RecenzijaPoIdPorudzbine",
+                                                url: "/api/reviews/RecenzijaPoIdPorudzbineAdmin",
                                                 type: "POST",
                                                 data: JSON.stringify({
                                                     Id: Id
@@ -200,13 +200,13 @@
                                                         }
                                                         else if (data.Status === 1) {
                                                             // odobrena je
-                                                            odobriRecenziju = '<a href="#" class="btn btn-outline-success disabled">Recenzija odobrena</a>'
+                                                            odobriRecenziju = '<a href="#" class="btn btn-outline-success disabled">Odobrili ste recenziju</a>'
                                                             otkaziRecenziju = "";
                                                         }
                                                         else if (data.Status === 2) {
                                                             // odbijena je
-                                                            otkaziRecenziju = '<a href="#" class="btn btn-outline-danger disabled">Recenzija odbijena</a>'
-                                                            odobriRecenziju = "";
+                                                            odobriRecenziju = '<a href="#" class="btn btn-outline-danger disabled">Odbili ste recenziju</a>'
+                                                            otkaziPorudzbinu = "";
                                                         }
                                                     }
                                                     else {

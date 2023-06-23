@@ -333,6 +333,36 @@ namespace Online_Shop.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("RecenzijaPoIdPorudzbineAdmin")]
+        public string RecenzijaPoPorudzbiniAdmin(SingleIdRequest zahtev)
+        {
+            if (!ModelState.IsValid || !int.TryParse(zahtev.Id, out int id))
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 41, Poruka = "Niste uneli validne podatke!" });
+            }
+
+            // autentifikacija i autorizacija
+            Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
+            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Administrator)
+            {
+                return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
+            }
+
+            // samo ne obrisane recenzije koje cekaju mogu biti i izmenjene
+            Recenzija tmp = RecenzijeStorage.Recenzije.FirstOrDefault(p => p.POID == id && p.IsDeleted == false);
+            if (tmp != null)
+            {
+                // postoji recenzija za datu porudzbinu a da nije odbijena
+                return JsonConvert.SerializeObject(tmp);
+            }
+            else
+            {
+                // ne postoji recenzija za datu porudzbinu
+                return JsonConvert.SerializeObject(new Response { Kod = 5, Poruka = "Ne postoji" });
+            }
+        }
+
         // Metoda koja odobrava recenziju - ako je to moguce
         [HttpPost]
         [Route("OdobravanjeRecenzije")]
@@ -340,7 +370,7 @@ namespace Online_Shop.Controllers
         {
             // autentifikacija i autorizacija
             Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
-            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Kupac)
+            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Administrator)
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
             }
@@ -352,7 +382,7 @@ namespace Online_Shop.Controllers
             else
             {
                 // postoji li recenzija recenzije
-                int indeks_recenzije = RecenzijeStorage.Recenzije.FindIndex(p => p.POID == id && p.IsDeleted == false && p.Status == STATUS_RECENZIJE.CEKA);
+                int indeks_recenzije = RecenzijeStorage.Recenzije.FindIndex(p => p.Id == id && p.IsDeleted == false && p.Status == STATUS_RECENZIJE.CEKA);
 
                 if (indeks_recenzije == -1)
                 {
@@ -366,7 +396,7 @@ namespace Online_Shop.Controllers
                 RecenzijeStorage.AzurirajRecenzijeUBazi();
                 ProizvodiStorage.AzurirajProizvodeUBazi();
 
-                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "Recenzija uspešno obrisana!" });
+                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "Recenzija uspešno odobrena!" });
             }
         }
 
@@ -377,7 +407,7 @@ namespace Online_Shop.Controllers
         {
             // autentifikacija i autorizacija
             Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
-            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Kupac)
+            if (trenutni == null || trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Administrator)
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
             }
@@ -389,7 +419,7 @@ namespace Online_Shop.Controllers
             else
             {
                 // postoji li recenzija
-                int indeks_recenzije = RecenzijeStorage.Recenzije.FindIndex(p => p.POID == id && p.IsDeleted == false && p.Status == STATUS_RECENZIJE.CEKA);
+                int indeks_recenzije = RecenzijeStorage.Recenzije.FindIndex(p => p.Id == id && p.IsDeleted == false && p.Status == STATUS_RECENZIJE.CEKA);
 
                 if (indeks_recenzije == -1)
                 {
@@ -403,7 +433,7 @@ namespace Online_Shop.Controllers
                 RecenzijeStorage.AzurirajRecenzijeUBazi();
                 ProizvodiStorage.AzurirajProizvodeUBazi();
 
-                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "Recenzija uspešno obrisana!" });
+                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "Recenzija uspešno odbijena!" });
             }
         }
     }
