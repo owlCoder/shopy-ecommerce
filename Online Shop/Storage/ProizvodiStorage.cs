@@ -254,6 +254,24 @@ namespace Online_Shop.Storage
                             PorudzbineStorage.Porudzbine[por_id].IsDeleted = true;
                         }
                     }
+
+                    // obrisi i iz liste omiljenih proizvoda kod svih korisnika
+                    foreach (string korid in Proizvodi[index].FID)
+                    {
+                        int korisnik_index = KorisniciStorage.Korisnici.FindIndex(p => p.Id.Equals(korid));
+
+                        if(korisnik_index != -1)
+                        {
+                            // ukloni iz liste omiljenih
+                            int omiljeni_idx = KorisniciStorage.Korisnici[korisnik_index].OmiljenjiProizvodi.FindIndex(p => p.Id == Proizvodi[index].Id);
+                            
+                            if(omiljeni_idx != -1)
+                            {
+                                // "ukloni" ga iz omiljenih
+                                KorisniciStorage.Korisnici[korisnik_index].OmiljenjiProizvodi[omiljeni_idx].IsDeleted = true;
+                            }
+                        }
+                    }
                 }
             }
 
