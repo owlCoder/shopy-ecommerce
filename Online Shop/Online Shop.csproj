@@ -228,6 +228,7 @@
     <Content Include="Scripts\api\reviews\review-edit.js" />
     <Content Include="Scripts\api\users\delete-user.js" />
     <Content Include="Scripts\api\users\edit-user.js" />
+    <Content Include="Scripts\api\users\my-profile.js" />
     <Content Include="Scripts\api\users\seller-add.js" />
     <Content Include="Scripts\api\users\users-all.js" />
     <Content Include="Scripts\load-optimizer.js" />
