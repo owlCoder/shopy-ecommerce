@@ -217,6 +217,7 @@
     <Content Include="Scripts\api\auth\auth-edit-profile.js" />
     <Content Include="Scripts\api\auth\auth-edit-user.js" />
     <Content Include="Scripts\api\auth\auth-update-password.js" />
+    <Content Include="Scripts\api\auth\user-register.js" />
     <Content Include="Scripts\api\orders\order-confirmation.js" />
     <Content Include="Scripts\api\orders\orders-by-users.js" />
     <Content Include="Scripts\api\orders\orders-cancellation.js" />
