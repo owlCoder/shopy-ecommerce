@@ -218,6 +218,7 @@
     <Content Include="Scripts\api\auth\auth-edit-user.js" />
     <Content Include="Scripts\api\auth\auth-update-password.js" />
     <Content Include="Scripts\api\orders\orders-by-users.js" />
+    <Content Include="Scripts\api\orders\orders-cancellation.js" />
     <Content Include="Scripts\api\orders\orders-fetcher.js" />
     <Content Include="Scripts\api\products\product-add.js" />
     <Content Include="Scripts\api\products\product-delete.js" />
@@ -225,6 +226,7 @@
     <Content Include="Scripts\api\products\product-fetcher-admin.js" />
     <Content Include="Scripts\api\products\products-favourite-by-user.js" />
     <Content Include="Scripts\api\products\products-favourite.js" />
+    <Content Include="Scripts\api\reviews\review-add.js" />
     <Content Include="Scripts\api\reviews\review-allow.js" />
     <Content Include="Scripts\api\reviews\review-delete.js" />
     <Content Include="Scripts\api\reviews\review-edit.js" />
