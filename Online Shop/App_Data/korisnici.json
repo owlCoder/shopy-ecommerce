@@ -13,7 +13,7 @@
     "OmiljenjiProizvodi": null,
     "ObjavljeniProizvodi": null,
     "IsDeleted": false,
-    "IsLoggedIn": true
+    "IsLoggedIn": false
   },
   {
     "Id": "2",
@@ -893,6 +893,25 @@
           9
         ],
         "Kolicina": 2.0
+      },
+      {
+        "Id": 5,
+        "Naziv": "dsdasdadad",
+        "Cena": 1.0,
+        "Opis": "dasdasdsadsadasdasdsada",
+        "Slika": "3b3ba6a0-9396-4815-89ca-fd227681ca2a.jpg",
+        "DatumPostavljanjaProizvoda": "2023-06-23T23:46:32.3799223+02:00",
+        "Grad": "111",
+        "Recenzija": [],
+        "Status": true,
+        "IsDeleted": false,
+        "FID": [
+          "3"
+        ],
+        "KID": "8",
+        "PID": [],
+        "RID": [],
+        "Kolicina": 1.0
       }
     ],
     "ObjavljeniProizvodi": null,
@@ -1026,7 +1045,9 @@
         "Recenzija": [],
         "Status": true,
         "IsDeleted": false,
-        "FID": [],
+        "FID": [
+          "3"
+        ],
         "KID": "8",
         "PID": [],
         "RID": [],
@@ -1034,6 +1055,6 @@
       }
     ],
     "IsDeleted": false,
-    "IsLoggedIn": true
+    "IsLoggedIn": false
   }
 ]

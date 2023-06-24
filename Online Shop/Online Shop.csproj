@@ -224,6 +224,7 @@
     <Content Include="Scripts\api\products\product-edit.js" />
     <Content Include="Scripts\api\products\product-fetcher-admin.js" />
     <Content Include="Scripts\api\products\products-favourite-by-user.js" />
+    <Content Include="Scripts\api\products\products-favourite.js" />
     <Content Include="Scripts\api\reviews\review-allow.js" />
     <Content Include="Scripts\api\reviews\review-delete.js" />
     <Content Include="Scripts\api\reviews\review-edit.js" />
