@@ -113,11 +113,11 @@ jQuery(function () {
             $("#ime").add("is-valid");
         }
 
-        if (prezime.length < 6) {
+        if (prezime.length < 5) {
             $("#g4").addClass("d-block");
             $("#g4").removeClass("d-none");
             $("#prezime").addClass("is-invalid");
-            $("#g4").text("Prezime mora imati minimalno 6 karaktera!");
+            $("#g4").text("Prezime mora imati minimalno 5 karaktera!");
             greska = true;
         }
         else {
@@ -151,7 +151,7 @@ jQuery(function () {
         var datum = Date.parse(datumRodjenja.split("/").join("-"));
         datumRodjenja = Date.parse(datumRodjenja.split("/").join("-"));
         datumRodjenja = new Date(datumRodjenja).toISOString();
-
+        
         if ((datum < minDate) || (datum > maxDate)) {
             $("#g6").addClass("d-block");
             $("#g6").removeClass("d-none");

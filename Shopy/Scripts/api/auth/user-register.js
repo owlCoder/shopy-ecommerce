@@ -75,11 +75,11 @@ jQuery(function () {
             $("#ime").add("is-valid");
         }
 
-        if (prezime.length < 6) {
+        if (prezime.length < 5) {
             $("#g4").addClass("d-block");
             $("#g4").removeClass("d-none");
             $("#prezime").addClass("is-invalid");
-            $("#g4").text("Prezime mora imati minimalno 6 karaktera!");
+            $("#g4").text("Prezime mora imati minimalno 5 karaktera!");
             greska = true;
         }
         else {
