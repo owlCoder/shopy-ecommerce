@@ -1,148 +1,22 @@
 ﻿<!DOCTYPE html>
-<html data-bs-theme="light">
+<html data-bs-theme="light" lang="sr">
 <head>
+    <title>Prijava na sistem - Shopy</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="Content/bootstrap.min.css">
-    <title>Prijava na sistem - Shopy</title>
+    <link href="Content/shopy.css" rel="stylesheet" />
     <script src="Scripts/jquery-3.7.0.min.js"></script>
+    <script src="Scripts/load-optimizer.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
     <script src="Scripts/modernizr-2.8.3.js"></script>
-    <style>
-        .navbar .login-btn {
-            position: absolute;
-            top: 7px;
-            right: 95px;
-        }
-
-        @media (max-width: 767px) {
-            .navbar .login-btn {
-                right: 75px;
-            }
-        }
-
-        .navbar .register-btn {
-            position: absolute;
-            top: 7px;
-            right: 15px;
-        }
-
-        @media (max-width: 767px) {
-            .navbar .register-btn {
-                right: 175px;
-            }
-        }
-    </style>
-    <script>
-        // ako je ulogovan, prebaci ga na index - slucaj da ide na back opciju
-        $.ajax({
-            url: "/api/auth/Ulogovan",
-            type: "GET",
-            async: false,
-            cache: false,
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            success: function (response) {
-                if (response != null) {
-                    if (JSON.parse(response).Kod === 0) // korisnik je ulogovan, ne moze da se registruje
-                    {
-                        window.location.href = "Index.html";
-                    }
-                }
-            }
-        });
-
-        jQuery(function () {
-            // inicijalno nema poruka o greskama
-            $("#divgreske").addClass('d-none');
-
-            $("#prijavabtn").on('click', function () {
-                var korisnickoIme = $("#korisnickoime").val();
-                var lozinka = $("#lozinka").val();
-
-                var greska = false;
-
-                // provera unosa na klijentu
-                if (korisnickoIme.length < 6) {
-                    $("#g1").addClass("d-block");
-                    $("#g1").removeClass("d-none");
-                    $("#korisnickoime").addClass("is-invalid");
-                    $("#g1").text("Korisničko ime mora imati minimalno 6 karaktera!");
-                    greska = true;
-                }
-                else {
-                    $("#g1").addClass("d-none");
-                    $("#korisnickoime").removeClass("is-invalid");
-                    $("#korisnickoime").removeClass("invalid-feedback");
-                    $("#korisnickoime").add("is-valid");
-                }
-
-                if (lozinka.length < 6) {
-                    $("#g2").addClass("d-block");
-                    $("#g2").removeClass("d-none");
-                    $("#lozinka").addClass("is-invalid");
-                    $("#g2").text("Lozinka mora imati minimalno 6 karaktera!");
-                    greska = true;
-                }
-                else {
-                    $("#g2").addClass("d-none");
-                    $("#lozinka").removeClass("is-invalid");
-                    $("#lozinka").removeClass("invalid-feedback");
-                    $("#lozinka").add("is-valid");
-                }
-
-                if (greska === true) return; // ne izvrsava se ajax poziv - rasterecuje se server od callbacks
-
-                // ajax poziv ka api-ju za vrsenje registracije
-                $.ajax({
-                    url: "/api/auth/Prijava",
-                    type: "POST",
-                    data: JSON.stringify({
-                        KorisnickoIme: korisnickoIme,
-                        Lozinka: lozinka
-                    }),
-
-                    async: false,
-                    cache: false,
-                    dataType: "json",
-                    contentType: "application/json; charset=utf-8",
-                    success: function (response) {
-                        if (response != null) {
-                            if (JSON.parse(response).Kod === 0) // korisnik se prijavio uspesno
-                            {
-                                window.location.href = "Index.html";
-                                return false;
-                            }
-                            else {
-                                // desila se greska - prikazi je
-                                $("#divgreske").removeClass('d-none');
-                                $("#greske").text(JSON.parse(response).Poruka);
-                            }
-                        }
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="Scripts/api/auth/auth-base.js"></script>
+    <script src="Scripts/api/auth/auth-login.js"></script>
+    <script src="Scripts/loader-finisher.js"></script>
 </head>
-<body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-        <div class="container">
-            <a href="/" class="navbar-brand">Shopy</a>
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li><a href="/" class="nav-link">Početna stranica</a></li>
-                    <li>
-                        <a href="Registracija.html" type="submit" id="registracija" class="btn btn-outline-light navbar-btn login-btn">Registracija</a>
-                        <a href="Prijava.html" type="submit" id="prijava" class="btn btn-outline-light navbar-btn register-btn">Prijava</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<body class="d-none bsp">
+    <div id="nm"></div>
     <div class="container body-content mt-4">
         <main>
             <div class="container">
@@ -153,7 +27,7 @@
                                 <div class="card" style="border-radius: 1rem;">
                                     <div class="row g-0">
                                         <div class="col-md-6 col-lg-5 d-none d-md-block">
-                                            <img src="Images/lgbg.jpg" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                                            <img src="Images/pastel-login.jpg" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
                                         </div>
                                         <div class="col-md-6 col-lg-7 d-flex align-items-center">
                                             <div class="card-body p-4 p-lg-5 text-black">
@@ -185,8 +59,7 @@
                                                         <button class="btn btn-dark btn-lg btn-block" id="prijavabtn" type="button">Prijava na platformu</button>
                                                     </div>
                                                     <p class="mb-5 pb-lg-2" style="color: #393f81;">
-                                                        Nemate aktivan nalog? <a href="Registracija.html"
-                                                                                 style="color: #393f81;">Registrujte se</a>
+                                                        Nemate aktivan nalog? <a href="Registracija.html" style="color: #393f81;">Registrujte se</a>
                                                     </p>
                                                 </form>
                                             </div>

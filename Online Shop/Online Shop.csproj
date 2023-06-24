@@ -216,12 +216,14 @@
     <Content Include="Scripts\api\auth\auth-base.js" />
     <Content Include="Scripts\api\auth\auth-edit-profile.js" />
     <Content Include="Scripts\api\auth\auth-edit-user.js" />
+    <Content Include="Scripts\api\auth\auth-login.js" />
     <Content Include="Scripts\api\auth\auth-update-password.js" />
     <Content Include="Scripts\api\auth\user-register.js" />
     <Content Include="Scripts\api\orders\order-confirmation.js" />
     <Content Include="Scripts\api\orders\orders-by-users.js" />
     <Content Include="Scripts\api\orders\orders-cancellation.js" />
     <Content Include="Scripts\api\orders\orders-fetcher.js" />
+    <Content Include="Scripts\api\products\product-actions.js" />
     <Content Include="Scripts\api\products\product-add.js" />
     <Content Include="Scripts\api\products\product-delete.js" />
     <Content Include="Scripts\api\products\product-edit.js" />

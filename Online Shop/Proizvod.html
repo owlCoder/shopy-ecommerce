@@ -1,342 +1,25 @@
 ﻿<!DOCTYPE html>
-<html data-bs-theme="light">
+<html data-bs-theme="light" lang="sr">
 <head>
+    <title>Pregled Proizvoda - Shopy</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Pregled Proizvoda - Shopy</title>
     <link rel="stylesheet" href="Content/bootstrap.min.css">
+    <link href="Content/shopy.css" rel="stylesheet" />
     <script src="Scripts/jquery-3.7.0.min.js"></script>
+    <script src="Scripts/load-optimizer.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/bootstrap.bundle.min.js"></script>
     <script src="Scripts/modernizr-2.8.3.js"></script>
-    <style>
-        .navbar .login-btn {
-            position: absolute;
-            top: 7px;
-            right: 95px;
-        }
-
-        .navbar .profil-btn {
-            position: absolute;
-            top: 10px;
-            right: 35px;
-        }
-
-        @media (max-width: 767px) {
-            .navbar .login-btn {
-                right: 75px;
-            }
-        }
-
-        .navbar .register-btn {
-            position: absolute;
-            top: 7px;
-            right: 15px;
-        }
-
-        @media (max-width: 767px) {
-            .navbar .register-btn {
-                right: 175px;
-            }
-        }
-    </style>
-    <script>
-        var uloga = -1;
-        var Id = "";
-        var maxQuantity = 0;
-
-        // ako je ulogovan, prebaci prikazi meni u zavisnoti od uloge
-        $.ajax({
-            url: "/api/auth/AuthKorisnik",
-            type: "GET",
-            async: false,
-            cache: false,
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            success: function (response) {
-                var data = JSON.parse(response);
-
-                if (data.KorisnickoIme !== "") {
-                    // prikazi podatke i promeni meni
-                    // sakri dugmice za login i register
-                    $(function () {
-                        $("#pl").remove();
-
-                        // prikazi meni za nalog
-                        $('#poruka').text("Dobrodošli nazad, " + data.KorisnickoIme);
-
-                        // Prikazi samo dugmice vezane za korisnika koji ima datu ulogu
-                        uloga = data.Uloga;
-                        
-                        
-                    });
-                }
-                else {
-                    $(function () {
-                        // korisnik nije ulogovan - prikazi login i register
-                        $("#pl").show();
-
-                        // sakri meni za nalog
-                        $('#profil').addClass('d-none');
-                    });
-                }
-            }
-        });
-
-        jQuery(function () {
-            $("#kupmsg").addClass("d-none");
-            $("#nema").addClass("d-none");
-
-            // id iz url
-            let searchParams = new URLSearchParams(window.location.search)
-
-            if (!searchParams.has('id')) {
-                window.location.href = "Index.html?msg=Proizvod više nije dostupan na platformi!";
-                return false;
-            }
-
-            // samo kupci mogu porucivati i dodavati u omiljene
-            if (uloga !== 0) {
-                $("#porucibtn").addClass("disabled");
-                $("input").attr("disabled", true);
-                $("#kupmsg").removeClass("d-none");
-                $("#omiljenbtn").addClass("d-none");
-            }
-
-            Id = searchParams.get('id');
-
-            // obrisi korisnika po id
-            $.ajax({
-                url: "/api/products/DostupanProizvodPoId",
-                type: "POST",
-                data: JSON.stringify({
-                    id: Id
-                }),
-                async: false,
-                cache: false,
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function (response) {
-                    // ako je proizvod obrisan u medjuvremenu)
-                    var data = JSON.parse(response);
-
-                    // ako je proizvod postao nedostupan u medjuvremenu
-                    if (data.Id === 0) {
-                        window.location.href = "Index.html?msg=Proizvod više nije dostupan na platformi!";
-                        return false;
-                    }
-
-                    // ispis podataka o proizvodu
-                    maxQuantity = data.Kolicina;
-
-                    $("#grad").text(data.Grad);
-                    $("#naslov").text(data.Naziv.substring(0, 30));
-                    $("#cena").text(data.Cena + " RSD");
-                    $("#opis").text(data.Opis);
-                    $("#slika").attr('src', "/Uploads/" + data.Slika);
-                }
-            });
-
-            // proveriti da li je proizvod vec dodat u omiljene proizvode
-            $.ajax({
-                url: "/api/users/OmiljeniProizvod",
-                type: "POST",
-                data: JSON.stringify({
-                    Id: Id
-                }),
-                async: false,
-                cache: false,
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function (response) {
-                    var data = JSON.parse(response);
-                    if (data.Poruka === "OK") {
-                        // nalazi se u omiljenim
-                        $(function () {
-                            $("#omiljenbtn").addClass('d-none'); // sakriti dugme za dodavanje u omiljenje
-                        });
-                    }
-                    else {
-                        $(function () {
-                            // nije jos uvek u omiljenim proizvodima
-                            $("#omiljenovec").addClass('d-none'); // sakriti dugme vec u omiljenim
-                        });
-                    }
-                }
-            });
-
-            // ucitavanje recenzija
-            $.ajax({
-                url: "/api/reviews/RecenzijeZaProizvodPoId",
-                type: "POST",
-                data: JSON.stringify({
-                    Id: Id,
-                }),
-
-                async: false,
-                cache: false,
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function (response) {
-                    var res = JSON.parse(response);
-
-                    if (res.length > 0) {
-                        $(function () {
-                            // popuni tabelu
-                            $.each(res, function (key, data) {
-                                // dodavanje reda po red
-                                $("#recenzijelista").append(
-                                    '<div class="col-md-10 pt-4"><div class="card"><div class="card-body m-3"><div class="row"><div class="col-lg-4 d-flex justify-content-center align-items-center mb-4 mb-lg-0">' +
-                                    '<img src="/Uploads/' + data.Slika + '" class=" shadow-1 rounded-5" alt="sliak recenzije" width="150" height="150" /></div>' +
-                                    '<div class="col-lg-8"><h4>' + data.Naslov + '</h4><p class="text-muted fw-light mb-4">' + data.SadrzajRecenzije + '</p><p class="fw-bold lead mb-1"><strong>' + data.Recenzent.Ime + ' ' + data.Recenzent.Prezime + '</strong></p>' +
-                                    '<p class="fw-bold text-muted mb-0">Shopy Kupac</p></div></div></div></div></div>'
-                                );
-                            });
-                        });
-                    }
-                    else {
-                        // nema recenzija
-                        $("#nema").removeClass("d-none");
-                    }
-                }
-            });
-
-            // limitiranje unosa kolicine
-            $('input').on('input', function () {
-                var value = $(this).val();
-                if ((value !== '') && (value.indexOf('.') === -1)) {
-                    $(this).val(Math.max(Math.min(value, maxQuantity), -maxQuantity));
-                }
-            });
-
-            // inicijalno nema poruka o greskama
-            $("#divgreske").addClass('d-none');
-
-            $("#odjava").on('click', function () {
-                // ajax poziv ka api-ju za vrsenje registracije
-                $.ajax({
-                    url: "/api/auth/Odjava",
-                    type: "POST",
-                    data: {},
-                    async: false,
-                    cache: false,
-                    dataType: "json",
-                    contentType: "application/json; charset=utf-8",
-                    success: function (response) {
-                        if (response != null) {
-                            if (JSON.parse(response).Kod === 0) // korisnik se odjavio uspesno
-                            {
-                                window.location.href = "Index.html";
-                                return false;
-                            }
-                        }
-                    }
-                });
-            });
-
-            // kreiranje porudzbine
-            $("#porucibtn").on('click', function () {
-                var kolicina = parseFloat($("#kolicina").val());
-
-                // ajax poziv ka api-ju za vrsenje porudzbine
-                $.ajax({
-                    url: "/api/orders/KreiranjePorudzbine",
-                    type: "POST",
-                    data: JSON.stringify({
-                        Id: Id,
-                        Kolicina: kolicina
-                    }),
-                    async: false,
-                    cache: false,
-                    dataType: "json",
-                    contentType: "application/json; charset=utf-8",
-                    success: function (response) {
-                        var data = JSON.parse(response);
-                        
-                        $(function () {
-                            $("#divgreske").removeClass('d-none');
-                            $("#greske").text(data.Poruka);
-                        });
-                    }
-                });
-                
-            });
-
-            // dodavanje u omiljene
-            $("#omiljenbtn").on('click', function () {
-                // ajax poziv ka api-ju za dodavanje u omiljenje proizvode
-                // Id je trenutni id proizvoda koji se dodaje u omiljene
-                $.ajax({
-                    url: "/api/users/DodajOmiljeniProizvod",
-                    type: "POST",
-                    data: JSON.stringify({
-                        Id: Id
-                    }),
-                    async: false,
-                    cache: false,
-                    dataType: "json",
-                    contentType: "application/json; charset=utf-8",
-                    success: function (response) {
-                        var data = JSON.parse(response);
-                        if (data.Poruka === "OK") {
-                            // nalazi se u omiljenim
-                            $(function () {
-                                $("#omiljenbtn").addClass('d-none'); // sakriti dugme za dodavanje u omiljenje
-                                $("#omiljenovec").removeClass('d-none'); 
-                                $("#divgreske").removeClass('d-none');
-                                $("#greske").text("Proizvod je dodat u omiljene proizvode!");
-                            });
-                        }
-                        else {
-                            $(function () {
-                                // nije jos uvek u omiljenim proizvodima
-                                $("#omiljenovec").addClass('d-none'); // sakriti dugme vec u omiljenim
-                            });
-                        }
-                    }
-                });
-
-            });
-        });
-    </script>
+    <script src="Scripts/api/auth/auth-base.js"></script>
+    <script src="Scripts/api/products/product-actions.js"></script>
+    <script src="Scripts/loader-finisher.js"></script>
 </head>
-<body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-        <div class="container">
-            <a href="/" class="navbar-brand">Shopy</a>
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li><a href="/" class="nav-link">Početna stranica</a></li>
-                    <li id="pl">
-                        <a href="Registracija.html" type="submit" id="registracija" class="btn btn-outline-light navbar-btn login-btn">Registracija</a>
-                        <a href="Prijava.html" type="submit" id="prijava" class="btn btn-outline-light navbar-btn register-btn">Prijava</a>
-                    </li>
-                    <li id="profil">
-                        <div class="btn-group profil-btn">
-                            <button type="button" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span id="poruka"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="MojProfil.html" id="mojprofil">Moj profil</a></li>
-                                <li><a class="dropdown-item" href="IzmenaLozinke.html" id="izmenalozinke">Izmena lozinke</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item text-danger" id="odjava" href="#">Odjava sa platforme</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<body class="d-none bsp">
+    <div id="nm"></div>
     <section class="pt-0">
-        <div class="container px-4 pt-lg-5 mt-0">
-            <div id="divgreske" class="alert alert-dark d-flex align-items-center mb-3 mt-5" role="alert">
+        <div class="container px-4 pt-lg-5 mt-0 bg-white mt-5 rounded-5">
+            <div id="divgreske" class="alert alert-dark d-flex align-items-center mb-3" role="alert">
                 <svg height="25" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
                 </svg>
@@ -344,9 +27,9 @@
                 <span id="greske"></span>
             </div>
             <br />
-            <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="row gx-4 gx-lg-5 pb-4 align-items-center bg-white rounded-5">
                 <div class="col-md-6">
-                    <img class="w-75 h-75 card-img-top mb-5 mb-md-0" src="" id="slika" alt="proizvod" />
+                    <img class="w-75 h-50 card-img-top mb-5 mb-md-0" src="" id="slika" alt="proizvod" />
                 </div>
                 <div class="col-md-6">
                     <h5 class="mb-1 text-success" id="grad"></h5>
@@ -366,15 +49,15 @@
             </div>
         </div>
     </section>
-    <section class="px-4 p-md-5 text-center text-lg-start border-0">
-        <div class="row d-flex justify-content-center" id="recenzijelista">
+    <section class="px-4 p-md-5 text-center text-lg-start">
+        <div class="row d-flex justify-content-center border-0" id="recenzijelista">
 
             <!-- Naslov pocetka recenzija -->
             <div class="col-md-10">
-                <div class="card border-0">
+                <div class="card border-0 rounded-4">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-lg-8">
+                            <div class="col-lg-8 px-4 pt-2">
                                 <h1 class="fw-semibold mb-4">Recenzije proizvoda</h1>
                             </div>
                         </div>
@@ -384,7 +67,7 @@
 
             <!-- Ucitane recenzije za dati proizvod -->
             <div class="col-md-10 text-start" style="margin-top: -20px !important;" id="nema">
-                <div class="card border-0">
+                <div class="card border-0 rounded-4">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-8">
