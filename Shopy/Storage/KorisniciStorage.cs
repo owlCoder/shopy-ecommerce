@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Online_Shop.Models;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace Online_Shop.Storage
                     Korisnici = new List<Korisnik>();
 
                     // ucitavanje svih korisnika iz json datoteke
-                    Korisnici = JsonConvert.DeserializeObject<List<Korisnik>>(File.ReadAllText(KorisniciPath));
+                    Korisnici = JsonConvert.DeserializeObject<List<Korisnik>>(File.ReadAllText(KorisniciPath), new IsoDateTimeConverter { DateTimeFormat = "dd/MM/yyyy", Culture = System.Globalization.CultureInfo.InvariantCulture });
 
                     // izloguj sve korisnike - server se restartovao
                     foreach (Korisnik k in Korisnici)
@@ -113,7 +114,7 @@ namespace Online_Shop.Storage
         {
             try
             {
-                string json = JsonConvert.SerializeObject(Korisnici, Formatting.Indented);
+                string json = JsonConvert.SerializeObject(Korisnici, Formatting.Indented, new IsoDateTimeConverter { DateTimeFormat = "dd/MM/yyyy", Culture = System.Globalization.CultureInfo.InvariantCulture });
                 File.WriteAllText(KorisniciPath, json);
             }
             catch { }

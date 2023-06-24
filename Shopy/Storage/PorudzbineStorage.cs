@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Online_Shop.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -29,7 +30,7 @@ namespace Online_Shop.Storage
                     Porudzbine = new List<Porudzbina>();
 
                     // ucitavanje svih porudzbina iz json datoteke
-                    Porudzbine = JsonConvert.DeserializeObject<List<Porudzbina>>(File.ReadAllText(PorudzbinePath));
+                    Porudzbine = JsonConvert.DeserializeObject<List<Porudzbina>>(File.ReadAllText(PorudzbinePath), new IsoDateTimeConverter { DateTimeFormat = "dd/MM/yyyy", Culture = System.Globalization.CultureInfo.InvariantCulture });
 
                     // za svaku porudzbinu proizvod
                     foreach (Proizvod pr in ProizvodiStorage.Proizvodi)
@@ -71,7 +72,7 @@ namespace Online_Shop.Storage
         {
             try
             {
-                string json = JsonConvert.SerializeObject(Porudzbine, Formatting.Indented);
+                string json = JsonConvert.SerializeObject(Porudzbine, Formatting.Indented, new IsoDateTimeConverter { DateTimeFormat = "dd/MM/yyyy", Culture = System.Globalization.CultureInfo.InvariantCulture });
                 File.WriteAllText(PorudzbinePath, json);
             }
             catch { }

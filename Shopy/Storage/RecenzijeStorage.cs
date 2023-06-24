@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Online_Shop.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -28,7 +29,7 @@ namespace Online_Shop.Storage
                     Recenzije = new List<Recenzija>();
 
                     // ucitavanje svih porudzbina iz json datoteke
-                    Recenzije = JsonConvert.DeserializeObject<List<Recenzija>>(File.ReadAllText(RecenzijePath));
+                    Recenzije = JsonConvert.DeserializeObject<List<Recenzija>>(File.ReadAllText(RecenzijePath), new IsoDateTimeConverter { DateTimeFormat = "dd/MM/yyyy", Culture = System.Globalization.CultureInfo.InvariantCulture });
 
                     foreach (Proizvod pr in ProizvodiStorage.Proizvodi)
                     {
@@ -69,7 +70,7 @@ namespace Online_Shop.Storage
         {
             try
             {
-                string json = JsonConvert.SerializeObject(Recenzije, Formatting.Indented);
+                string json = JsonConvert.SerializeObject(Recenzije, Formatting.Indented, new IsoDateTimeConverter { DateTimeFormat = "dd/MM/yyyy", Culture = System.Globalization.CultureInfo.InvariantCulture });
                 File.WriteAllText(RecenzijePath, json);
             }
             catch { }
