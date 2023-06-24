@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1",
+    "KorisnickoIme": "prodavac12",
+    "Lozinka": "??t.????\u0000??T????\t0}?",
+    "Ime": "Prodavac2",
+    "Prezime": "Prodavacic2",
+    "Pol": "Muški",
+    "Email": "prodavac2@shopy.rs",
+    "DatumRodjenja": "1999-11-20T00:00:00Z",
+    "Uloga": 0,
+    "Porudzbine": [],
+    "OmiljenjiProizvodi": [],
+    "ObjavljeniProizvodi": null,
+    "IsDeleted": false,
+    "IsLoggedIn": true
+  },
+  {
+    "Id": "2",
+    "KorisnickoIme": "admin1",
+    "Lozinka": "??t.????\u0000??T????\t0}?",
+    "Ime": "danijel",
+    "Prezime": "danijel",
+    "Pol": "Muški",
+    "Email": "prodavac2@shopy.rs",
+    "DatumRodjenja": "2001-12-01T00:00:00Z",
+    "Uloga": 2,
+    "Porudzbine": [],
+    "OmiljenjiProizvodi": [],
+    "ObjavljeniProizvodi": null,
+    "IsDeleted": false,
+    "IsLoggedIn": true
+  }
+]
