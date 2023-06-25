@@ -72,7 +72,7 @@ $.ajax({
                 // popuni tabelu
                 $.each(data, function (key, k) {
                     // dodavanje reda po red
-                    $("#proizvodi > tbody").append('<tr><td class="align-middle">' + k.Naziv + '</td>' +
+                    $("#proizvodi > tbody").append('<tr><td class="align-middle">' + k.Naziv.substring(0, 20) + '</td>' +
                         '<td><img alt="proizvod" width="80" height="80" src="/Uploads/' + k.Slika + '" /></td>' +
                         '<td class="align-middle">' + k.Kolicina + '</td>' +
                         '<td class="align-middle">' + k.Cena + '&nbsp;RSD</td>' +
@@ -135,7 +135,7 @@ jQuery(function () {
                         // popuni tabelu
                         $.each(data, function (key, k) {
                             // dodavanje reda po red
-                            $("#proizvodi > tbody").append('<tr><td class="align-middle">' + k.Naziv + '</td>' +
+                            $("#proizvodi > tbody").append('<tr><td class="align-middle">' + k.Naziv.substring(0, 20) + '</td>' +
                                 '<td><img alt="proizvod" width="80" height="80" src="/Uploads/' + k.Slika + '" /></td>' +
                                 '<td class="align-middle">' + k.Kolicina + '</td>' +
                                 '<td class="align-middle">' + k.Cena + '&nbsp;RSD</td>' +
