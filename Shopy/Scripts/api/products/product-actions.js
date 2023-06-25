@@ -78,7 +78,7 @@ jQuery(function () {
             maxQuantity = data.Kolicina;
 
             $("#grad").text(data.Grad);
-            $("#naslov").text(data.Naziv.substring(0, 30));
+            $("#naslov").text(data.Naziv.substring(0, 100));
             $("#cena").text(data.Cena + " RSD");
             $("#opis").text(data.Opis);
             $("#slika").attr('src', "/Uploads/" + data.Slika);

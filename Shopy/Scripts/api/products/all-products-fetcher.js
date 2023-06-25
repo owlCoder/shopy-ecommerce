@@ -31,7 +31,7 @@ $.ajax({
                         '<span class="h5 card-title text-success fw-semibold justify-content-end">' + data.Grad + '</span>' +
                         '</div>' +
                         '<h6 class="card-subtitle mb-2 text-muted">' + data.Cena + ' RSD</h6>' +
-                        '<p class="card-text">' + data.Opis + '</p>' +
+                        '<p class="card-text">' + data.Opis.substring(0, 300) + '</p>' +
                         kupac_dodaj_naruci +
                         '</div>' +
                         '</div>' +
