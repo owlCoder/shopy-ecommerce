@@ -10,11 +10,20 @@
     "Recenzija": [],
     "Status": true,
     "IsDeleted": false,
-    "FID": [],
+    "FID": [
+      "3",
+      "14"
+    ],
     "KID": "4",
-    "PID": [],
-    "RID": [],
-    "Kolicina": 20.0
+    "PID": [
+      1,
+      4
+    ],
+    "RID": [
+      1,
+      2
+    ],
+    "Kolicina": 14.0
   },
   {
     "Id": 2,
@@ -27,11 +36,15 @@
     "Recenzija": [],
     "Status": true,
     "IsDeleted": false,
-    "FID": [],
+    "FID": [
+      "3"
+    ],
     "KID": "4",
-    "PID": [],
+    "PID": [
+      6
+    ],
     "RID": [],
-    "Kolicina": 5.0
+    "Kolicina": 4.0
   },
   {
     "Id": 3,
@@ -46,9 +59,13 @@
     "IsDeleted": false,
     "FID": [],
     "KID": "4",
-    "PID": [],
-    "RID": [],
-    "Kolicina": 40.0
+    "PID": [
+      8
+    ],
+    "RID": [
+      4
+    ],
+    "Kolicina": 39.0
   },
   {
     "Id": 4,
@@ -59,13 +76,18 @@
     "DatumPostavljanjaProizvoda": "24/06/2023",
     "Grad": "Novi Sad",
     "Recenzija": [],
-    "Status": true,
+    "Status": false,
     "IsDeleted": false,
-    "FID": [],
+    "FID": [
+      "14",
+      "3"
+    ],
     "KID": "4",
-    "PID": [],
+    "PID": [
+      7
+    ],
     "RID": [],
-    "Kolicina": 1.0
+    "Kolicina": 0.0
   },
   {
     "Id": 5,
@@ -80,9 +102,13 @@
     "IsDeleted": false,
     "FID": [],
     "KID": "5",
-    "PID": [],
-    "RID": [],
-    "Kolicina": 6.0
+    "PID": [
+      2
+    ],
+    "RID": [
+      3
+    ],
+    "Kolicina": 5.0
   },
   {
     "Id": 6,
@@ -129,9 +155,13 @@
     "Recenzija": [],
     "Status": true,
     "IsDeleted": false,
-    "FID": [],
+    "FID": [
+      "3"
+    ],
     "KID": "5",
-    "PID": [],
+    "PID": [
+      3
+    ],
     "RID": [],
     "Kolicina": 8.0
   },
@@ -180,11 +210,15 @@
     "Recenzija": [],
     "Status": true,
     "IsDeleted": false,
-    "FID": [],
+    "FID": [
+      "3"
+    ],
     "KID": "8",
-    "PID": [],
+    "PID": [
+      5
+    ],
     "RID": [],
-    "Kolicina": 12.0
+    "Kolicina": 11.0
   },
   {
     "Id": 12,

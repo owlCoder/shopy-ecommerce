@@ -81,8 +81,8 @@ $.ajax({
                         '<td class="align-middle">' + k.Grad.substring(0, 20) + '</td>' +
                         '<td class="align-middle"><b>' + (k.Status ? "NA&nbsp;STANJU" : "NEDOSTUPAN") + '</b></td>' +
                         '<td class="align-middle"><div class="align-middle justify-content-center">' +
-                        '&emsp;<a class="btn btn-dark" href="IzmenaProizvoda.html?id=' + k.Id + '">Izmena</a>&emsp;' +
-                        '<a class="btn btn-danger" href="BrisanjeProizvoda.html?id=' + k.Id + '">Brisanje</a></div></td>' +
+                        '&emsp;<a class="btn btn-dark" href="IzmenaProizvoda.html?id=' + k.Id + '">&#128393;</a>&emsp;' +
+                        '<a class="btn btn-danger" href="BrisanjeProizvoda.html?id=' + k.Id + '">&#128473;</a></div></td>' +
                         '</tr>');
                 });
             });
@@ -144,8 +144,8 @@ jQuery(function () {
                                 '<td class="align-middle">' + k.Grad.substring(0, 20) + '</td>' +
                                 '<td class="align-middle"><b>' + (k.Status ? "NA&nbsp;STANJU" : "NEDOSTUPAN") + '</b></td>' +
                                 '<td class="align-middle"><div class="align-middle justify-content-center">' +
-                                '&emsp;<a class="btn btn-dark" href="IzmenaProizvoda.html?id=' + k.Id + '">Izmena</a>&emsp;' +
-                                '<a class="btn btn-danger" href="BrisanjeProizvoda.html?id=' + k.Id + '">Brisanje</a></div></td>' +
+                                '&emsp;<a class="btn btn-dark" href="IzmenaProizvoda.html?id=' + k.Id + '">&#128393;</a>&emsp;' +
+                                '<a class="btn btn-danger" href="BrisanjeProizvoda.html?id=' + k.Id + '">&#128473;</a></div></td>' +
                                 '</tr>');
                         });
                     });

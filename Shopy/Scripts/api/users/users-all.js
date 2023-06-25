@@ -142,8 +142,8 @@ jQuery(function () {
                                 '<td>' + k.Email + '</td>' +
                                 '<td>' + new Date(k.DatumRodjenja).toLocaleDateString("en-GB") + '</td>' +
                                 '<td><b>' + uloga.toUpperCase() + '</b></td>' +
-                                '<td class="d-flex justify-content-center"><a class="btn btn-dark" href="Izmena.html?id=' + k.KorisnickoIme + '">Izmena</a>&emsp;' +
-                                '<a class="btn btn-danger" href="Brisanje.html?id=' + k.KorisnickoIme + '">Brisanje</a></td>' +
+                                '<td class="d-flex justify-content-center"><a class="btn btn-dark" href="Izmena.html?id=' + k.KorisnickoIme + '">&#128393;</a>&emsp;' +
+                                '<a class="btn btn-danger" href="Brisanje.html?id=' + k.KorisnickoIme + '">&#128473;</a></td>' +
                                 '</tr>');
                         });
                     });
@@ -235,8 +235,8 @@ jQuery(function () {
                             '<td>' + k.Email + '</td>' +
                             '<td>' + new Date(k.DatumRodjenja).toLocaleDateString("en-GB") + '</td>' +
                             '<td><b>' + uloga.toUpperCase() + '</b></td>' +
-                            '<td class="d-flex justify-content-center"><a class="btn btn-dark" href="Izmena.html?id=' + k.KorisnickoIme + '">Izmena</a>&emsp;' +
-                            '<a class="btn btn-danger" href="Brisanje.html?id=' + k.KorisnickoIme + '">Brisanje</a></td>' +
+                            '<td class="d-flex justify-content-center"><a class="btn btn-dark" href="Izmena.html?id=' + k.KorisnickoIme + '">&#128393;</a>&emsp;' +
+                            '<a class="btn btn-danger" href="Brisanje.html?id=' + k.KorisnickoIme + '">&#128473;</a></td>' +
                             '</tr>');
                     });
 
@@ -296,8 +296,8 @@ jQuery(function () {
                                 '<td>' + k.Email + '</td>' +
                                 '<td>' + new Date(k.DatumRodjenja).toLocaleDateString("en-GB") + '</td>' +
                                 '<td><b>' + uloga.toUpperCase() + '</b></td>' +
-                                '<td class="d-flex justify-content-center"><a class="btn btn-dark" href="Izmena.html?id=' + k.KorisnickoIme + '">Izmena</a>&emsp;' +
-                                '<a class="btn btn-danger" href="Brisanje.html?id=' + k.KorisnickoIme + '">Brisanje</a></td>' +
+                                '<td class="d-flex justify-content-center"><a class="btn btn-dark" href="Izmena.html?id=' + k.KorisnickoIme + '">&#128393;</a>&emsp;' +
+                                '<a class="btn btn-danger" href="Brisanje.html?id=' + k.KorisnickoIme + '">&#128473;</a></td>' +
                                 '</tr>');
                         });
                     });

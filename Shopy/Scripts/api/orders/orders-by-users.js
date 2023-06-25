@@ -162,7 +162,7 @@ $.ajax({
                         status +
                         '</div>' +
                         '<h6 class="card-subtitle mb-2 text-muted">Ukupno: ' + (parseFloat(k.Proizvod.Cena) * parseFloat(k.Kolicina)) + ' RSD</h6>' +
-                        '<p class="card-text">' + k.Kolicina + '</p>' +
+                        '<p class="card-text">Količina: ' + k.Kolicina + '</p>' +
                         kupac_dodaj_naruci + akcijaPrispeca + "&emsp;" + ostaviRecenziju + izmeniRecenziju + "&emsp;" + obrisiRecenziju +
                         '</div>' +
                         '</div>' +

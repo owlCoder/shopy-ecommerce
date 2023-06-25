@@ -153,7 +153,7 @@ $.ajax({
                                                 if (data.Status === 0) {
                                                     // ceka na odobrenje
                                                     odobriRecenziju = '<a href="OdobriRecenziju.html?id=' + data.Id + '" class="btn btn-outline-success">Odobri recenziju</a>'
-                                                    otkaziRecenziju = '<a href="OtkaziRecenziju.html?id=' + data.Id + '" class="btn btn-outline-danger">Otkaži recenziju</a>'
+                                                    otkaziRecenziju = '<a href="OtkaziRecenziju.html?id=' + data.Id + '" class="btn btn-outline-danger">Odbi recenziju</a>'
                                                 }
                                                 else if (data.Status === 1) {
                                                     // odobrena je
@@ -200,7 +200,7 @@ $.ajax({
                         status +
                         '</div>' +
                         '<h6 class="card-subtitle mb-2 text-muted">Ukupno: ' + (parseFloat(k.Proizvod.Cena) * parseFloat(k.Kolicina)) + ' RSD</h6>' +
-                        '<p class="card-text">' + k.Kolicina + '</p>' +
+                        '<p class="card-text">Količina: ' + k.Kolicina + '</p>' +
                         kupac_dodaj_naruci + akcijaPrispeca + "&emsp;" + otkaziPorudzbinu + odobriRecenziju + "&emsp;" + otkaziRecenziju +
                         '</div>' +
                         '</div>' +
