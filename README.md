@@ -12,7 +12,7 @@ Ovo je veb aplikacija za evidenciju veb prodavnice koja omogućava korisnicima d
 
 ## Tehnologije
 
-- ASP.NET Core 5.0
+- ASP.NET
 - JQuery 3.7
 - Bootstrap 5.3
 
