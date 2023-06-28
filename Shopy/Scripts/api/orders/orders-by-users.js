@@ -74,12 +74,6 @@ $.ajax({
                 $.each(data, function (key, k) {
                     // dodavanje reda po red
                     var kupac_dodaj_naruci = "";
-
-                    //if (k.Status)
-                    //    kupac_dodaj_naruci = '<a href="Proizvod.html?id=' + k.Id + '" class="btn btn-dark">Pogledajte proizvod</a>';
-                    //else
-                    //    kupac_dodaj_naruci = '<a href="#" class="btn btn-outline-danger disabled">Proizvod nije dostupan</a>';
-
                     var status = "";
                     var akcijaPrispeca = "";
                     var ostaviRecenziju = "";

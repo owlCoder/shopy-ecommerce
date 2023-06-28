@@ -1,0 +1,67 @@
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\Online Shop.dll.config
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\Online Shop.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\Online Shop.pdb
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\csc.exe
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\csc.exe.config
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\csc.rsp
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\csi.exe
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\csi.exe.config
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\csi.rsp
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\Microsoft.Managed.Core.CurrentVersions.targets
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\System.Buffers.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\System.Memory.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\System.Numerics.Vectors.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\vbc.exe
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\vbc.exe.config
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\vbc.rsp
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\VBCSCompiler.exe
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\Antlr3.Runtime.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\Newtonsoft.Json.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Net.Http.Formatting.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Web.Helpers.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Web.Http.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Web.Http.WebHost.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Web.Mvc.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Web.Optimization.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Web.Razor.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Web.WebPages.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Web.WebPages.Razor.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\WebGrease.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\Newtonsoft.Json.xml
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Net.Http.Formatting.xml
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Web.Helpers.xml
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Web.Http.xml
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Web.Http.WebHost.xml
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Web.Mvc.xml
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Web.Optimization.xml
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Web.Razor.xml
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Web.WebPages.xml
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\System.Web.WebPages.Razor.xml
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\bin\Antlr3.Runtime.pdb
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\obj\Debug\Shop.csproj.AssemblyReference.cache
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\obj\Debug\Shop.csproj.CoreCompileInputs.cache
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\obj\Debug\Shop.csproj.CopyComplete
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\obj\Debug\Online Shop.dll
+C:\Users\Danijel\Desktop\WEB\web-gitlab\Shopy\obj\Debug\Online Shop.pdb

@@ -214,6 +214,10 @@ namespace Online_Shop.Controllers
         // Metoda za prikaz svih proizvoda koji nisu obrisani i koji su dostupni
         [HttpGet]
         [Route("SviProizvodiPocetna")]
+        //public List<Proizvod> PrikazSvihProizvoda()
+        //{
+        //    return ProizvodiStorage.Proizvodi.FindAll(p => p.IsDeleted == false && p.Status == true);
+        //}
         public string PrikazSvihProizvoda()
         {
             return JsonConvert.SerializeObject(ProizvodiStorage.Proizvodi.FindAll(p => p.IsDeleted == false && p.Status == true));
