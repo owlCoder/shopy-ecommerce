@@ -33,13 +33,6 @@ namespace Online_Shop
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            // da vraca json objekte klijentu
-            GlobalConfiguration.Configuration.Formatters.JsonFormatter.S‌​erializerSettings = new JsonSerializerSettings
-            {
-                NullValueHandling = NullValueHandling.Ignore,
-                Formatting = Formatting.Indented
-            };
         }
 
         // Podrška za sesije u okviru poziva rest servisa
