@@ -61,7 +61,6 @@ jQuery(function () {
     $("#divgreske").addClass('d-none');
 
     // azuriranje pregleda slike
-    // azuriranje pregleda slike
     $("#slika").on('change', function () {
         if (slika.files[0] === undefined) {
             pregled.src = "/Images/productplc.jpg";

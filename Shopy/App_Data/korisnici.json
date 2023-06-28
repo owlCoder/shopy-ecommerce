@@ -13,7 +13,7 @@
     "OmiljenjiProizvodi": null,
     "ObjavljeniProizvodi": null,
     "IsDeleted": false,
-    "IsLoggedIn": false
+    "IsLoggedIn": true
   },
   {
     "Id": "2",
@@ -39,7 +39,7 @@
     "Prezime": "Čukić",
     "Pol": "Muški",
     "Email": "danijel.xda@gmail.com",
-    "DatumRodjenja": "14/02/2000",
+    "DatumRodjenja": "05/10/2001",
     "Uloga": 0,
     "Porudzbine": [
       {
@@ -308,7 +308,7 @@
     ],
     "ObjavljeniProizvodi": null,
     "IsDeleted": false,
-    "IsLoggedIn": true
+    "IsLoggedIn": false
   },
   {
     "Id": "4",
