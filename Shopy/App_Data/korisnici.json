@@ -7,7 +7,7 @@
     "Prezime": "Administrator",
     "Pol": "Muški",
     "Email": "admin@shopy.rs",
-    "DatumRodjenja": "29/12/2018",
+    "DatumRodjenja": "05/11/1985",
     "Uloga": 2,
     "Porudzbine": null,
     "OmiljenjiProizvodi": null,
@@ -36,10 +36,10 @@
     "KorisnickoIme": "danijel",
     "Lozinka": "??t.????\u0000??T????\t0}?",
     "Ime": "Danijel",
-    "Prezime": "Čukić",
+    "Prezime": "Jovanović",
     "Pol": "Muški",
     "Email": "danijel.xda@gmail.com",
-    "DatumRodjenja": "30/01/2007",
+    "DatumRodjenja": "19/01/2001",
     "Uloga": 0,
     "Porudzbine": [
       {
@@ -175,7 +175,7 @@
           "Grad": "Niš",
           "Recenzija": [],
           "Status": true,
-          "IsDeleted": false,
+          "IsDeleted": true,
           "FID": [
             "3"
           ],
@@ -190,7 +190,7 @@
         "Kupac": "3",
         "DatumPorudzbine": "25/06/2023",
         "Status": 0,
-        "IsDeleted": false
+        "IsDeleted": true
       }
     ],
     "OmiljenjiProizvodi": [
@@ -294,7 +294,7 @@
         "Grad": "Niš",
         "Recenzija": [],
         "Status": true,
-        "IsDeleted": false,
+        "IsDeleted": true,
         "FID": [
           "3"
         ],
@@ -318,7 +318,7 @@
     "Prezime": "Popović",
     "Pol": "Muški",
     "Email": "sales@sparksee.com",
-    "DatumRodjenja": "25/12/2019",
+    "DatumRodjenja": "01/12/2010",
     "Uloga": 1,
     "Porudzbine": null,
     "OmiljenjiProizvodi": null,
@@ -599,7 +599,7 @@
         "Grad": "Niš",
         "Recenzija": [],
         "Status": true,
-        "IsDeleted": false,
+        "IsDeleted": true,
         "FID": [
           "3"
         ],

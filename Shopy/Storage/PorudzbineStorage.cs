@@ -81,14 +81,14 @@ namespace Online_Shop.Storage
         // Metoda koja vraca trazeni proizvod po Id
         public static Porudzbina GetPorudzbinaById(int id)
         {
-            return Porudzbine.FirstOrDefault(p => p.Id == id);
+            return Porudzbine.FirstOrDefault(p => p.Id == id && p.IsDeleted == false);
         }
 
         // Metoda koja vraca listu svih porudzbina koje nisu obrisane i pripadaju kupcu
         public static List<Porudzbina> PorudzbineKupac()
         {
             string id = ((Korisnik)HttpContext.Current.Session["korisnik"]).Id;
-            return Porudzbine.FindAll(p => p.Kupac.Equals(id));
+            return Porudzbine.FindAll(p => p.Kupac.Equals(id) && p.IsDeleted == false);
         }
     }
 }

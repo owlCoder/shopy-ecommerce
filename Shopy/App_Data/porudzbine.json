@@ -137,7 +137,7 @@
       "Grad": "Niš",
       "Recenzija": [],
       "Status": true,
-      "IsDeleted": false,
+      "IsDeleted": true,
       "FID": [
         "3"
       ],
@@ -152,7 +152,7 @@
     "Kupac": "3",
     "DatumPorudzbine": "25/06/2023",
     "Status": 0,
-    "IsDeleted": false
+    "IsDeleted": true
   },
   {
     "Id": 6,
@@ -231,7 +231,9 @@
       "PID": [
         8
       ],
-      "RID": [],
+      "RID": [
+        4
+      ],
       "Kolicina": 39.0
     },
     "Kolicina": 1.0,
