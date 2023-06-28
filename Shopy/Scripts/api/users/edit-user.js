@@ -77,13 +77,9 @@
         if (datumRodjenja === "") // datum se nije promenio
             datumRodjenja = STARI_DATUM;
 
-        alert(datumRodjenja);
-
         const [year, month, day] = datumRodjenja.split('-');
-        var datum = new Date(`${month}/${day}/${year}`);
-        var datumRodjenja = new Date(Date.UTC(year, month - 1, day)).toLocaleString('en-GB', { timeZone: 'UTC' });
-
-        alert(datumRodjenja.toISOString());
+        var datum = new Date(Date.UTC(year, month - 1, day))
+        var datumRodjenja = new Date(Date.UTC(year, month - 1, day)).toISOString();
 
         if ((datum < minDate) || (datum > maxDate)) {
             $("#g6").addClass("d-block");
