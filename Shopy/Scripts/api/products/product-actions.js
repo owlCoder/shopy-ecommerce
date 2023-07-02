@@ -164,6 +164,13 @@ jQuery(function () {
     $("#porucibtn").on('click', function () {
         var kolicina = parseFloat($("#kolicina").val());
 
+        if (kolicina <= 0.0) {
+            $(function () {
+                $("#divgreske").removeClass('d-none');
+                $("#greske").text("Minimalna količina porudžbine je 1 komad!");
+            });
+        }
+
         // ajax poziv ka api-ju za vrsenje porudzbine
         $.ajax({
             url: "/api/orders/KreiranjePorudzbine",

@@ -23,13 +23,23 @@
         4,
         9,
         10,
-        14
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
       ],
       "RID": [
         1,
         2
       ],
-      "Kolicina": 8.0
+      "Kolicina": 5.0
     },
     "Recenzent": {
       "Id": "3",
@@ -66,13 +76,23 @@
               4,
               9,
               10,
-              14
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
             ],
             "RID": [
               1,
               2
             ],
-            "Kolicina": 8.0
+            "Kolicina": 5.0
           },
           "Kolicina": 2.0,
           "Kupac": "3",
@@ -197,6 +217,438 @@
           "DatumPorudzbine": "25/06/2023",
           "Status": 0,
           "IsDeleted": false
+        },
+        {
+          "Id": 15,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1200.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3",
+              "14",
+              "15"
+            ],
+            "KID": "4",
+            "PID": [
+              1,
+              4,
+              9,
+              10,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "RID": [
+              1,
+              2
+            ],
+            "Kolicina": 5.0
+          },
+          "Kolicina": 0.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "03/07/2023",
+          "Status": 0,
+          "IsDeleted": false
+        },
+        {
+          "Id": 16,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1200.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3",
+              "14",
+              "15"
+            ],
+            "KID": "4",
+            "PID": [
+              1,
+              4,
+              9,
+              10,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "RID": [
+              1,
+              2
+            ],
+            "Kolicina": 5.0
+          },
+          "Kolicina": 1.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "03/07/2023",
+          "Status": 0,
+          "IsDeleted": false
+        },
+        {
+          "Id": 17,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1200.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3",
+              "14",
+              "15"
+            ],
+            "KID": "4",
+            "PID": [
+              1,
+              4,
+              9,
+              10,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "RID": [
+              1,
+              2
+            ],
+            "Kolicina": 5.0
+          },
+          "Kolicina": 0.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "03/07/2023",
+          "Status": 0,
+          "IsDeleted": false
+        },
+        {
+          "Id": 18,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1200.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3",
+              "14",
+              "15"
+            ],
+            "KID": "4",
+            "PID": [
+              1,
+              4,
+              9,
+              10,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "RID": [
+              1,
+              2
+            ],
+            "Kolicina": 5.0
+          },
+          "Kolicina": 1.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "03/07/2023",
+          "Status": 0,
+          "IsDeleted": false
+        },
+        {
+          "Id": 19,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1200.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3",
+              "14",
+              "15"
+            ],
+            "KID": "4",
+            "PID": [
+              1,
+              4,
+              9,
+              10,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "RID": [
+              1,
+              2
+            ],
+            "Kolicina": 5.0
+          },
+          "Kolicina": 0.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "03/07/2023",
+          "Status": 0,
+          "IsDeleted": false
+        },
+        {
+          "Id": 20,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1200.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3",
+              "14",
+              "15"
+            ],
+            "KID": "4",
+            "PID": [
+              1,
+              4,
+              9,
+              10,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "RID": [
+              1,
+              2
+            ],
+            "Kolicina": 5.0
+          },
+          "Kolicina": 0.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "03/07/2023",
+          "Status": 0,
+          "IsDeleted": false
+        },
+        {
+          "Id": 21,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1200.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3",
+              "14",
+              "15"
+            ],
+            "KID": "4",
+            "PID": [
+              1,
+              4,
+              9,
+              10,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "RID": [
+              1,
+              2
+            ],
+            "Kolicina": 5.0
+          },
+          "Kolicina": 0.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "03/07/2023",
+          "Status": 0,
+          "IsDeleted": false
+        },
+        {
+          "Id": 22,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1200.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3",
+              "14",
+              "15"
+            ],
+            "KID": "4",
+            "PID": [
+              1,
+              4,
+              9,
+              10,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "RID": [
+              1,
+              2
+            ],
+            "Kolicina": 5.0
+          },
+          "Kolicina": 0.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "03/07/2023",
+          "Status": 0,
+          "IsDeleted": false
+        },
+        {
+          "Id": 23,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1200.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3",
+              "14",
+              "15"
+            ],
+            "KID": "4",
+            "PID": [
+              1,
+              4,
+              9,
+              10,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "RID": [
+              1,
+              2
+            ],
+            "Kolicina": 5.0
+          },
+          "Kolicina": 0.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "03/07/2023",
+          "Status": 0,
+          "IsDeleted": false
         }
       ],
       "OmiljenjiProizvodi": [
@@ -222,13 +674,23 @@
             4,
             9,
             10,
-            14
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24
           ],
           "RID": [
             1,
             2
           ],
-          "Kolicina": 8.0
+          "Kolicina": 5.0
         },
         {
           "Id": 2,
@@ -320,7 +782,7 @@
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": false
+      "IsLoggedIn": true
     },
     "Naslov": "Iskustvo sa mlekom za telo",
     "SadrzajRecenzije": "Veoma sam zadovoljan ovim mlekom za zaštitu od sunca. Lako se nanosi, ne ostavlja beli trag i ima prijatan miris. Štiti kožu od opekotina i crvenila, a istovremeno je hidrira i neguje. Preporučujem ga svima koji traže kvalitetnu zaštitu od sunca.",
@@ -355,13 +817,23 @@
         4,
         9,
         10,
-        14
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
       ],
       "RID": [
         1,
         2
       ],
-      "Kolicina": 8.0
+      "Kolicina": 5.0
     },
     "Recenzent": {
       "Id": "14",
@@ -398,13 +870,23 @@
               4,
               9,
               10,
-              14
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
             ],
             "RID": [
               1,
               2
             ],
-            "Kolicina": 8.0
+            "Kolicina": 5.0
           },
           "Kolicina": 4.0,
           "Kupac": "14",
@@ -495,13 +977,23 @@
             4,
             9,
             10,
-            14
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24
           ],
           "RID": [
             1,
             2
           ],
-          "Kolicina": 8.0
+          "Kolicina": 5.0
         },
         {
           "Id": 4,
@@ -597,13 +1089,23 @@
               4,
               9,
               10,
-              14
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
             ],
             "RID": [
               1,
               2
             ],
-            "Kolicina": 8.0
+            "Kolicina": 5.0
           },
           "Kolicina": 2.0,
           "Kupac": "3",
@@ -728,6 +1230,438 @@
           "DatumPorudzbine": "25/06/2023",
           "Status": 0,
           "IsDeleted": false
+        },
+        {
+          "Id": 15,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1200.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3",
+              "14",
+              "15"
+            ],
+            "KID": "4",
+            "PID": [
+              1,
+              4,
+              9,
+              10,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "RID": [
+              1,
+              2
+            ],
+            "Kolicina": 5.0
+          },
+          "Kolicina": 0.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "03/07/2023",
+          "Status": 0,
+          "IsDeleted": false
+        },
+        {
+          "Id": 16,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1200.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3",
+              "14",
+              "15"
+            ],
+            "KID": "4",
+            "PID": [
+              1,
+              4,
+              9,
+              10,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "RID": [
+              1,
+              2
+            ],
+            "Kolicina": 5.0
+          },
+          "Kolicina": 1.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "03/07/2023",
+          "Status": 0,
+          "IsDeleted": false
+        },
+        {
+          "Id": 17,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1200.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3",
+              "14",
+              "15"
+            ],
+            "KID": "4",
+            "PID": [
+              1,
+              4,
+              9,
+              10,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "RID": [
+              1,
+              2
+            ],
+            "Kolicina": 5.0
+          },
+          "Kolicina": 0.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "03/07/2023",
+          "Status": 0,
+          "IsDeleted": false
+        },
+        {
+          "Id": 18,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1200.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3",
+              "14",
+              "15"
+            ],
+            "KID": "4",
+            "PID": [
+              1,
+              4,
+              9,
+              10,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "RID": [
+              1,
+              2
+            ],
+            "Kolicina": 5.0
+          },
+          "Kolicina": 1.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "03/07/2023",
+          "Status": 0,
+          "IsDeleted": false
+        },
+        {
+          "Id": 19,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1200.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3",
+              "14",
+              "15"
+            ],
+            "KID": "4",
+            "PID": [
+              1,
+              4,
+              9,
+              10,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "RID": [
+              1,
+              2
+            ],
+            "Kolicina": 5.0
+          },
+          "Kolicina": 0.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "03/07/2023",
+          "Status": 0,
+          "IsDeleted": false
+        },
+        {
+          "Id": 20,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1200.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3",
+              "14",
+              "15"
+            ],
+            "KID": "4",
+            "PID": [
+              1,
+              4,
+              9,
+              10,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "RID": [
+              1,
+              2
+            ],
+            "Kolicina": 5.0
+          },
+          "Kolicina": 0.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "03/07/2023",
+          "Status": 0,
+          "IsDeleted": false
+        },
+        {
+          "Id": 21,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1200.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3",
+              "14",
+              "15"
+            ],
+            "KID": "4",
+            "PID": [
+              1,
+              4,
+              9,
+              10,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "RID": [
+              1,
+              2
+            ],
+            "Kolicina": 5.0
+          },
+          "Kolicina": 0.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "03/07/2023",
+          "Status": 0,
+          "IsDeleted": false
+        },
+        {
+          "Id": 22,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1200.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3",
+              "14",
+              "15"
+            ],
+            "KID": "4",
+            "PID": [
+              1,
+              4,
+              9,
+              10,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "RID": [
+              1,
+              2
+            ],
+            "Kolicina": 5.0
+          },
+          "Kolicina": 0.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "03/07/2023",
+          "Status": 0,
+          "IsDeleted": false
+        },
+        {
+          "Id": 23,
+          "Proizvod": {
+            "Id": 1,
+            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1200.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3",
+              "14",
+              "15"
+            ],
+            "KID": "4",
+            "PID": [
+              1,
+              4,
+              9,
+              10,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "RID": [
+              1,
+              2
+            ],
+            "Kolicina": 5.0
+          },
+          "Kolicina": 0.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "03/07/2023",
+          "Status": 0,
+          "IsDeleted": false
         }
       ],
       "OmiljenjiProizvodi": [
@@ -753,13 +1687,23 @@
             4,
             9,
             10,
-            14
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24
           ],
           "RID": [
             1,
             2
           ],
-          "Kolicina": 8.0
+          "Kolicina": 5.0
         },
         {
           "Id": 2,
@@ -851,7 +1795,7 @@
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": false
+      "IsLoggedIn": true
     },
     "Naslov": "Nije dobra",
     "SadrzajRecenzije": "Nije dobra na mom tipu kože.",
@@ -920,13 +1864,23 @@
               4,
               9,
               10,
-              14
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
             ],
             "RID": [
               1,
               2
             ],
-            "Kolicina": 8.0
+            "Kolicina": 5.0
           },
           "Kolicina": 4.0,
           "Kupac": "14",
@@ -1017,13 +1971,23 @@
             4,
             9,
             10,
-            14
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24
           ],
           "RID": [
             1,
             2
           ],
-          "Kolicina": 8.0
+          "Kolicina": 5.0
         },
         {
           "Id": 4,

@@ -8,12 +8,15 @@ namespace Online_Shop.Models
         public string Id { get; set; }
 
         [Required]
+        [MinLength(3)]
         public string Naziv { get; set; }
 
         [Required]
+        [Range(0, double.MaxValue)]
         public double Cena { get; set; }
 
         [Required]
+        [Range(1, double.MaxValue)]
         public double Kolicina { get; set; }
 
         [Required]
