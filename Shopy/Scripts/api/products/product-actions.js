@@ -169,6 +169,8 @@ jQuery(function () {
                 $("#divgreske").removeClass('d-none');
                 $("#greske").text("Minimalna količina porudžbine je 1 komad!");
             });
+
+            return false;
         }
 
         // ajax poziv ka api-ju za vrsenje porudzbine

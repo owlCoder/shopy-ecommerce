@@ -20,12 +20,14 @@ namespace Online_Shop.Models
         public double Kolicina { get; set; }
 
         [Required]
+        [MinLength(20)]
         public string Opis { get; set; }
 
         [Required]
         public string Slika { get; set; }
 
         [Required]
+        [MinLength(3)]
         public string Grad { get; set; }
     }
 }

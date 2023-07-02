@@ -11,8 +11,10 @@ namespace Online_Shop.Models.Requests
         [Required]
         public int PorudzbinaId { get; set; }
         [Required]
+        [MinLength(3)]
         public string Naslov { get; set; }
         [Required]
+        [MinLength(20)]
         public  string Sadrzaj { get; set; }
         [Required]
         public string Slika { get; set; }
