@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html data-bs-theme="light" lang="sr">
+<head>
+    <title>Ostavljanje Recenzije - Shopy</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="Content/bootstrap.min.css">
+    <link href="Content/shopy.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.7.0.min.js"></script>
+    <script src="Scripts/load-optimizer.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
+    <script src="Scripts/modernizr-2.8.3.js"></script>
+    <script src="Scripts/api/auth/auth-base.js"></script>
+    <script src="Scripts/api/reviews/review-add.js"></script>
+    <script src="Scripts/loader-finisher.js"></script>
+</head>
+<body class="d-none bsp">
+    <div id="nm"></div>
+    <div class="container body-content mt-4 mb-5">
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 mx-auto mt-4">
+                        <div class="row d-flex justify-content-center align-items-center h-100">
+                            <div class="col col-xl-10">
+                                <div class="card" style="border-radius: 1rem;">
+                                    <div class="row g-0">
+                                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                                            <img src="Images/pastel-2.jpg" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                                        </div>
+                                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                                            <div class="card-body p-4 p-lg-5 text-black">
+                                                <form id="form" name="form" enctype="multipart/form-data">
+                                                    <div class="d-flex mb-3 pb-1">
+                                                        <span class="h1 fw-bold mb-0">Shopy</span>
+                                                    </div>
+                                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Dodavanje recenzije za porudžbinu</h5>
+                                                    <hr />
+                                                    <div>
+                                                        <h2 id="pid"></h2>
+                                                        <p class="text-muted fs-5" id="datum"></p>
+                                                        <span>
+                                                            <img alt="proizvod" src="" id="slikapr" class="rounded-circle" width="80" height="80" />&emsp;
+                                                            <span id="nazivpr" class="text-break"></span><br />
+                                                        </span>
+                                                        <hr class="text-dark" />
+                                                        <p class="text-success fw-semibold fs-4" id="ukupaniznos"></p>
+                                                    </div>
+                                                    <hr />
+                                                    <div id="divgreske" class="alert alert-danger d-flex align-items-center" role="alert">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-exclamation-mark" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                            <path d="M12 19v.01" />
+                                                            <path d="M12 15v-10" />
+                                                        </svg>
+                                                        <span id="greske">
+                                                        </span>
+                                                    </div>
+                                                    <div class="form-outline mb-4 pt-1">
+                                                        <label class="form-label" for="naslov">Naslov recenzije</label>
+                                                        <input type="text" id="naslov" autofocus class="form-control form-control-lg" required />
+                                                        <span id="g1" class="invalid-feedback">Molimo Vas popunite ovo polje.</span>
+                                                    </div>
+                                                    <div class="form-outline mb-4">
+                                                        <label class="form-label" for="sadrzaj">Sadržaj recenzije</label>
+                                                        <textarea id="sadrzaj" class="form-control" rows="5" required></textarea>
+                                                        <span id="g2" class="invalid-feedback">Molimo Vas popunite ovo polje.</span>
+                                                    </div>
+                                                    <div class="form-outline mb-4">
+                                                        <label class="form-label" for="slika">Slika uz recenziju</label>
+                                                        <input type="file" accept="image/*" class="form-control" id="slika" required />
+                                                        <span id="g3" class="invalid-feedback">Molimo Vas popunite ovo polje.</span>
+                                                    </div>
+                                                    <div class="form-outline mb-4">
+                                                        <label class="form-label" for="pregled">Pregled slike recenzije</label>
+                                                        <br />
+                                                        <img id="pregled" alt="pregled" src="/Images/productplc.jpg" width="80" height="80" class="img-fluid" />
+                                                    </div>
+                                                    <p class="my-2 pb-lg-2 fw-bold text-danger">
+                                                        Recenzija će biti vidljiva isključivo administratorima. Kada administrator odobri recenziju ona postaje vidljiva na platformi.
+                                                    </p>
+                                                    <div class="pt-1 mb-0">
+                                                        <button class="btn btn-dark btn-lg btn-block" id="dodajrecenzijubtn" type="button">Dodavanje recenzije</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -178,6 +178,7 @@
     <Content Include="Images\pastel-3.jpg" />
     <Content Include="Images\pastel-4.jpg" />
     <Content Include="Images\pastel-5.jpg" />
+    <Content Include="Images\pastel-login.jpg" />
     <Content Include="Images\pastel-pwd.jpg" />
     <Content Include="Images\productplc.jpg" />
     <Content Include="Izmena.html" />

@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html data-bs-theme="light" lang="sr">
+<head>
+    <title>Moj Profil - Shopy</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="Content/bootstrap.min.css">
+    <link href="Content/shopy.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.7.0.min.js"></script>
+    <script src="Scripts/load-optimizer.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
+    <script src="Scripts/modernizr-2.8.3.js"></script>
+    <script src="Scripts/api/auth/auth-base.js"></script>
+    <script src="Scripts/api/users/my-profile.js"></script>
+    <script src="Scripts/loader-finisher.js"></script>
+</head>
+<body class="d-none bsp">
+    <div id="nm"></div>
+    <div class="container body-content mt-4 mb-5">
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 mx-auto mt-4">
+                        <div class="row d-flex justify-content-center align-items-center h-100">
+                            <div class="col col-xl-10">
+                                <div class="card" style="border-radius: 1rem;">
+                                    <div class="row g-0">
+                                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                                            <img src="Images/pastel-profile.jpg" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                                        </div>
+                                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                                            <div class="card-body p-4 p-lg-5 text-black">
+                                                <form>
+                                                    <div class="d-flex mb-3 pb-1">
+                                                        <span class="h1 fw-bold mb-0">Shopy <span id="uloga"></span></span>
+                                                    </div>
+                                                    <h5 class="fw-normal mb-5 pb-2" style="letter-spacing: 1px;">Detalji i opcije Vašeg naloga</h5>
+                                                    <div id="kupacmeni" class="row row-cols-3">
+                                                        <div class="pt-1 mb-4 col">
+                                                            <a href="IzmenaProfila.html" class="btn btn-outline-dark btn-lg btn-block fw-bold" id="izmenaprofila" type="button">Izmena Profila</a>
+                                                        </div>
+                                                        <div class="pt-1 mb-4 col">
+                                                            <a href="MojePorudzbine.html" class="btn btn-outline-primary btn-lg btn-block fw-bold" id="mojeporudzbine" type="button">Moje Porudžbine</a>
+                                                        </div>
+                                                        <div class="pt-1 mb-4 col">
+                                                            <a href="OmiljeniProizvodi.html" class="btn btn-outline-success btn-lg btn-block fw-bold" id="omiljeniproizvodi" type="button">Omiljeni Proizvodi</a>
+                                                        </div>
+                                                    </div>
+                                                    <div id="prodavacmeni" class="row row-cols-3">
+                                                        <div class="pt-1 mb-4 col">
+                                                            <a href="IzmenaProfila.html" class="btn btn-outline-dark btn-lg btn-block fw-bold" id="izmenaprofila" type="button">Izmena Profila</a>
+                                                        </div>
+                                                        <div class="pt-1 mb-4 col">
+                                                            <a href="MojiProizvodi.html" class="btn btn-outline-primary btn-lg btn-block fw-bold" id="mojiproizvodi" type="button">Moji Proizvodi</a>
+                                                        </div>
+                                                    </div>
+                                                    <div id="adminmeni" class="row row-cols-4">
+                                                        <div class="pt-1 mb-4 col">
+                                                            <a href="IzmenaProfila.html" class="btn btn-outline-dark btn-lg btn-block fw-bold" id="izmenaprofila" type="button">Izmena Profila</a>
+                                                        </div>
+                                                        <div class="pt-1 mb-4 col">
+                                                            <a href="ListaKorisnika.html" class="btn btn-outline-primary btn-lg btn-block fw-bold" id="listakorisnika" type="button">Shopy Korisnici</a>
+                                                        </div>
+                                                        <div class="pt-1 mb-4 col">
+                                                            <a href="ListaProizvoda.html" class="btn btn-outline-success btn-lg btn-block fw-bold" id="listaproizvoda" type="button">Shopy Proizvodi</a>
+                                                        </div>
+                                                        <div class="pt-1 mb-4 col">
+                                                            <a href="ListaPorudzbina.html" class="btn btn-outline-danger btn-lg btn-block fw-bold" id="listaporudzbina" type="button">Shopy Porudžbine</a>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
