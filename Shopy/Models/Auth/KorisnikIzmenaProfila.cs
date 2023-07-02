@@ -9,15 +9,19 @@ namespace Online_Shop.Models
         public string Id { get; set; }
 
         [Required]
+        [MinLength(6)] 
         public string KorisnickoIme { get; set; }
 
         [Required]
+        [MinLength(6)]
         public string Lozinka { get; set; }
 
         [Required]
+        [MinLength(3)]
         public string Ime { get; set; }
 
         [Required]
+        [MinLength(5)]
         public string Prezime { get; set; }
 
         [Required]

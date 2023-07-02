@@ -11,7 +11,7 @@
       "Grad": "Novi Sad",
       "Recenzija": [],
       "Status": true,
-      "IsDeleted": true,
+      "IsDeleted": false,
       "FID": [
         "3",
         "14",
@@ -107,7 +107,7 @@
       "Grad": "Novi Sad",
       "Recenzija": [],
       "Status": true,
-      "IsDeleted": true,
+      "IsDeleted": false,
       "FID": [
         "3",
         "14",
@@ -264,7 +264,7 @@
       "Grad": "Novi Sad",
       "Recenzija": [],
       "Status": true,
-      "IsDeleted": true,
+      "IsDeleted": false,
       "FID": [
         "3",
         "14",
@@ -288,7 +288,7 @@
     "Kupac": "15",
     "DatumPorudzbine": "03/07/2023",
     "Status": 0,
-    "IsDeleted": true
+    "IsDeleted": false
   },
   {
     "Id": 10,
@@ -302,7 +302,7 @@
       "Grad": "Novi Sad",
       "Recenzija": [],
       "Status": true,
-      "IsDeleted": true,
+      "IsDeleted": false,
       "FID": [
         "3",
         "14",
@@ -431,7 +431,7 @@
       "Grad": "Novi Sad",
       "Recenzija": [],
       "Status": true,
-      "IsDeleted": true,
+      "IsDeleted": false,
       "FID": [
         "3",
         "14",
@@ -455,6 +455,6 @@
     "Kupac": "15",
     "DatumPorudzbine": "03/07/2023",
     "Status": 0,
-    "IsDeleted": true
+    "IsDeleted": false
   }
 ]

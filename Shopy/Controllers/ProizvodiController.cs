@@ -214,10 +214,6 @@ namespace Online_Shop.Controllers
         // Metoda za prikaz svih proizvoda koji nisu obrisani i koji su dostupni
         [HttpGet]
         [Route("SviProizvodiPocetna")]
-        //public List<Proizvod> PrikazSvihProizvoda()
-        //{
-        //    return ProizvodiStorage.Proizvodi.FindAll(p => p.IsDeleted == false && p.Status == true);
-        //}
         public string PrikazSvihProizvoda()
         {
             return JsonConvert.SerializeObject(ProizvodiStorage.Proizvodi.FindAll(p => p.IsDeleted == false && p.Status == true));
@@ -229,7 +225,7 @@ namespace Online_Shop.Controllers
         {
             // autentifikacija i autorizacija
             Korisnik trenutni = ((Korisnik)HttpContext.Current.Session["korisnik"]);
-            if (trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Administrator)
+            if (trenutni != null && trenutni.IsLoggedIn == false || trenutni.Uloga != ULOGA.Administrator)
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi ili Vam zahtevana operacija nije dozvoljena!" });
             }

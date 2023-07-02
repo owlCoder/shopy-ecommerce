@@ -9,7 +9,7 @@
     "Grad": "Novi Sad",
     "Recenzija": [],
     "Status": true,
-    "IsDeleted": true,
+    "IsDeleted": false,
     "FID": [
       "3",
       "14",

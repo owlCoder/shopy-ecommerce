@@ -11,7 +11,7 @@
       "Grad": "Novi Sad",
       "Recenzija": [],
       "Status": true,
-      "IsDeleted": true,
+      "IsDeleted": false,
       "FID": [
         "3",
         "14",
@@ -54,7 +54,7 @@
             "Grad": "Novi Sad",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": true,
+            "IsDeleted": false,
             "FID": [
               "3",
               "14",
@@ -210,7 +210,7 @@
           "Grad": "Novi Sad",
           "Recenzija": [],
           "Status": true,
-          "IsDeleted": true,
+          "IsDeleted": false,
           "FID": [
             "3",
             "14",
@@ -329,7 +329,7 @@
     "POID": 1,
     "PRID": 1,
     "KOID": 3,
-    "IsDeleted": true
+    "IsDeleted": false
   },
   {
     "Id": 2,
@@ -343,7 +343,7 @@
       "Grad": "Novi Sad",
       "Recenzija": [],
       "Status": true,
-      "IsDeleted": true,
+      "IsDeleted": false,
       "FID": [
         "3",
         "14",
@@ -386,7 +386,7 @@
             "Grad": "Novi Sad",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": true,
+            "IsDeleted": false,
             "FID": [
               "3",
               "14",
@@ -483,7 +483,7 @@
           "Grad": "Novi Sad",
           "Recenzija": [],
           "Status": true,
-          "IsDeleted": true,
+          "IsDeleted": false,
           "FID": [
             "3",
             "14",
@@ -537,7 +537,7 @@
     "POID": 4,
     "PRID": 1,
     "KOID": 14,
-    "IsDeleted": true
+    "IsDeleted": false
   },
   {
     "Id": 3,
@@ -585,7 +585,7 @@
             "Grad": "Novi Sad",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": true,
+            "IsDeleted": false,
             "FID": [
               "3",
               "14",
@@ -741,7 +741,7 @@
           "Grad": "Novi Sad",
           "Recenzija": [],
           "Status": true,
-          "IsDeleted": true,
+          "IsDeleted": false,
           "FID": [
             "3",
             "14",
@@ -908,7 +908,7 @@
             "Grad": "Novi Sad",
             "Recenzija": [],
             "Status": true,
-            "IsDeleted": true,
+            "IsDeleted": false,
             "FID": [
               "3",
               "14",
@@ -1005,7 +1005,7 @@
           "Grad": "Novi Sad",
           "Recenzija": [],
           "Status": true,
-          "IsDeleted": true,
+          "IsDeleted": false,
           "FID": [
             "3",
             "14",
