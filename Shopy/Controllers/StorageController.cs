@@ -29,7 +29,7 @@ namespace Online_Shop.Controllers
             // Ako direktorijum ne postoji, kreiraj ga
             if (!Directory.Exists(HostingEnvironment.MapPath(@"~/Uploads/")))
             {
-                Directory.CreateDirectory(HostingEnvironment.MapPath(@"~/Uploads/")); 
+                Directory.CreateDirectory(HostingEnvironment.MapPath(@"~/Uploads/"));
             }
 
             try
