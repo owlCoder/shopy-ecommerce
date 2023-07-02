@@ -23,23 +23,13 @@
         4,
         9,
         10,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        24
+        14
       ],
       "RID": [
         1,
         2
       ],
-      "Kolicina": 5.0
+      "Kolicina": 8.0
     },
     "Kolicina": 2.0,
     "Kupac": "3",
@@ -129,23 +119,13 @@
         4,
         9,
         10,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        24
+        14
       ],
       "RID": [
         1,
         2
       ],
-      "Kolicina": 5.0
+      "Kolicina": 8.0
     },
     "Kolicina": 4.0,
     "Kupac": "14",
@@ -202,8 +182,7 @@
       "KID": "4",
       "PID": [
         6,
-        11,
-        25
+        11
       ],
       "RID": [],
       "Kolicina": 1.0
@@ -260,14 +239,12 @@
       "FID": [],
       "KID": "4",
       "PID": [
-        8,
-        26,
-        27
+        8
       ],
       "RID": [
         4
       ],
-      "Kolicina": 38.0
+      "Kolicina": 39.0
     },
     "Kolicina": 1.0,
     "Kupac": "14",
@@ -299,23 +276,13 @@
         4,
         9,
         10,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        24
+        14
       ],
       "RID": [
         1,
         2
       ],
-      "Kolicina": 5.0
+      "Kolicina": 8.0
     },
     "Kolicina": 1.0,
     "Kupac": "15",
@@ -347,23 +314,13 @@
         4,
         9,
         10,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        24
+        14
       ],
       "RID": [
         1,
         2
       ],
-      "Kolicina": 5.0
+      "Kolicina": 8.0
     },
     "Kolicina": 4.0,
     "Kupac": "15",
@@ -391,8 +348,7 @@
       "KID": "4",
       "PID": [
         6,
-        11,
-        25
+        11
       ],
       "RID": [],
       "Kolicina": 1.0
@@ -487,602 +443,18 @@
         4,
         9,
         10,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        24
+        14
       ],
       "RID": [
         1,
         2
       ],
-      "Kolicina": 5.0
+      "Kolicina": 8.0
     },
     "Kolicina": 1.0,
     "Kupac": "15",
     "DatumPorudzbine": "03/07/2023",
     "Status": 0,
-    "IsDeleted": false
-  },
-  {
-    "Id": 15,
-    "Proizvod": {
-      "Id": 1,
-      "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-      "Cena": 1200.0,
-      "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-      "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
-      "DatumPostavljanjaProizvoda": "24/06/2023",
-      "Grad": "Novi Sad",
-      "Recenzija": [],
-      "Status": true,
-      "IsDeleted": false,
-      "FID": [
-        "3",
-        "14",
-        "15"
-      ],
-      "KID": "4",
-      "PID": [
-        1,
-        4,
-        9,
-        10,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        24
-      ],
-      "RID": [
-        1,
-        2
-      ],
-      "Kolicina": 5.0
-    },
-    "Kolicina": 0.0,
-    "Kupac": "3",
-    "DatumPorudzbine": "03/07/2023",
-    "Status": 0,
-    "IsDeleted": false
-  },
-  {
-    "Id": 16,
-    "Proizvod": {
-      "Id": 1,
-      "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-      "Cena": 1200.0,
-      "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-      "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
-      "DatumPostavljanjaProizvoda": "24/06/2023",
-      "Grad": "Novi Sad",
-      "Recenzija": [],
-      "Status": true,
-      "IsDeleted": false,
-      "FID": [
-        "3",
-        "14",
-        "15"
-      ],
-      "KID": "4",
-      "PID": [
-        1,
-        4,
-        9,
-        10,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        24
-      ],
-      "RID": [
-        1,
-        2
-      ],
-      "Kolicina": 5.0
-    },
-    "Kolicina": 1.0,
-    "Kupac": "3",
-    "DatumPorudzbine": "03/07/2023",
-    "Status": 0,
-    "IsDeleted": false
-  },
-  {
-    "Id": 17,
-    "Proizvod": {
-      "Id": 1,
-      "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-      "Cena": 1200.0,
-      "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-      "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
-      "DatumPostavljanjaProizvoda": "24/06/2023",
-      "Grad": "Novi Sad",
-      "Recenzija": [],
-      "Status": true,
-      "IsDeleted": false,
-      "FID": [
-        "3",
-        "14",
-        "15"
-      ],
-      "KID": "4",
-      "PID": [
-        1,
-        4,
-        9,
-        10,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        24
-      ],
-      "RID": [
-        1,
-        2
-      ],
-      "Kolicina": 5.0
-    },
-    "Kolicina": 0.0,
-    "Kupac": "3",
-    "DatumPorudzbine": "03/07/2023",
-    "Status": 0,
-    "IsDeleted": false
-  },
-  {
-    "Id": 18,
-    "Proizvod": {
-      "Id": 1,
-      "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-      "Cena": 1200.0,
-      "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-      "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
-      "DatumPostavljanjaProizvoda": "24/06/2023",
-      "Grad": "Novi Sad",
-      "Recenzija": [],
-      "Status": true,
-      "IsDeleted": false,
-      "FID": [
-        "3",
-        "14",
-        "15"
-      ],
-      "KID": "4",
-      "PID": [
-        1,
-        4,
-        9,
-        10,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        24
-      ],
-      "RID": [
-        1,
-        2
-      ],
-      "Kolicina": 5.0
-    },
-    "Kolicina": 1.0,
-    "Kupac": "3",
-    "DatumPorudzbine": "03/07/2023",
-    "Status": 0,
-    "IsDeleted": false
-  },
-  {
-    "Id": 19,
-    "Proizvod": {
-      "Id": 1,
-      "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-      "Cena": 1200.0,
-      "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-      "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
-      "DatumPostavljanjaProizvoda": "24/06/2023",
-      "Grad": "Novi Sad",
-      "Recenzija": [],
-      "Status": true,
-      "IsDeleted": false,
-      "FID": [
-        "3",
-        "14",
-        "15"
-      ],
-      "KID": "4",
-      "PID": [
-        1,
-        4,
-        9,
-        10,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        24
-      ],
-      "RID": [
-        1,
-        2
-      ],
-      "Kolicina": 5.0
-    },
-    "Kolicina": 0.0,
-    "Kupac": "3",
-    "DatumPorudzbine": "03/07/2023",
-    "Status": 0,
-    "IsDeleted": false
-  },
-  {
-    "Id": 20,
-    "Proizvod": {
-      "Id": 1,
-      "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-      "Cena": 1200.0,
-      "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-      "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
-      "DatumPostavljanjaProizvoda": "24/06/2023",
-      "Grad": "Novi Sad",
-      "Recenzija": [],
-      "Status": true,
-      "IsDeleted": false,
-      "FID": [
-        "3",
-        "14",
-        "15"
-      ],
-      "KID": "4",
-      "PID": [
-        1,
-        4,
-        9,
-        10,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        24
-      ],
-      "RID": [
-        1,
-        2
-      ],
-      "Kolicina": 5.0
-    },
-    "Kolicina": 0.0,
-    "Kupac": "3",
-    "DatumPorudzbine": "03/07/2023",
-    "Status": 0,
-    "IsDeleted": false
-  },
-  {
-    "Id": 21,
-    "Proizvod": {
-      "Id": 1,
-      "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-      "Cena": 1200.0,
-      "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-      "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
-      "DatumPostavljanjaProizvoda": "24/06/2023",
-      "Grad": "Novi Sad",
-      "Recenzija": [],
-      "Status": true,
-      "IsDeleted": false,
-      "FID": [
-        "3",
-        "14",
-        "15"
-      ],
-      "KID": "4",
-      "PID": [
-        1,
-        4,
-        9,
-        10,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        24
-      ],
-      "RID": [
-        1,
-        2
-      ],
-      "Kolicina": 5.0
-    },
-    "Kolicina": 0.0,
-    "Kupac": "3",
-    "DatumPorudzbine": "03/07/2023",
-    "Status": 0,
-    "IsDeleted": false
-  },
-  {
-    "Id": 22,
-    "Proizvod": {
-      "Id": 1,
-      "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-      "Cena": 1200.0,
-      "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-      "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
-      "DatumPostavljanjaProizvoda": "24/06/2023",
-      "Grad": "Novi Sad",
-      "Recenzija": [],
-      "Status": true,
-      "IsDeleted": false,
-      "FID": [
-        "3",
-        "14",
-        "15"
-      ],
-      "KID": "4",
-      "PID": [
-        1,
-        4,
-        9,
-        10,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        24
-      ],
-      "RID": [
-        1,
-        2
-      ],
-      "Kolicina": 5.0
-    },
-    "Kolicina": 0.0,
-    "Kupac": "3",
-    "DatumPorudzbine": "03/07/2023",
-    "Status": 0,
-    "IsDeleted": false
-  },
-  {
-    "Id": 23,
-    "Proizvod": {
-      "Id": 1,
-      "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-      "Cena": 1200.0,
-      "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-      "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
-      "DatumPostavljanjaProizvoda": "24/06/2023",
-      "Grad": "Novi Sad",
-      "Recenzija": [],
-      "Status": true,
-      "IsDeleted": false,
-      "FID": [
-        "3",
-        "14",
-        "15"
-      ],
-      "KID": "4",
-      "PID": [
-        1,
-        4,
-        9,
-        10,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        24
-      ],
-      "RID": [
-        1,
-        2
-      ],
-      "Kolicina": 5.0
-    },
-    "Kolicina": 0.0,
-    "Kupac": "3",
-    "DatumPorudzbine": "03/07/2023",
-    "Status": 0,
-    "IsDeleted": false
-  },
-  {
-    "Id": 24,
-    "Proizvod": {
-      "Id": 1,
-      "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-      "Cena": 1200.0,
-      "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-      "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
-      "DatumPostavljanjaProizvoda": "24/06/2023",
-      "Grad": "Novi Sad",
-      "Recenzija": [],
-      "Status": true,
-      "IsDeleted": false,
-      "FID": [
-        "3",
-        "14",
-        "15"
-      ],
-      "KID": "4",
-      "PID": [
-        1,
-        4,
-        9,
-        10,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        24
-      ],
-      "RID": [
-        1,
-        2
-      ],
-      "Kolicina": 5.0
-    },
-    "Kolicina": 1.0,
-    "Kupac": "3",
-    "DatumPorudzbine": "03/07/2023",
-    "Status": 0,
-    "IsDeleted": false
-  },
-  {
-    "Id": 25,
-    "Proizvod": {
-      "Id": 2,
-      "Naziv": "SMART+ Bluetooth slušalice F9C TWS crne",
-      "Cena": 1999.0,
-      "Opis": "Bluetooth 5.0: Slušalice koriste\n• Bluetooth 5.0 čip, bez kašnjenja, niske potrošnje energije i mogu postići brzu i stabilnu vezu. Zaista bežične Bluetooth slušalice velikog kapaciteta.\n\n• Dva načina povezivanja: jednokratna/dvostruka upotreba bez upotrebe ruku, možete koristiti jednu ili dve slušalice za HiFi stereo. Samo uživajte u slušanju na jednom uhu i HiFi stereo binauralnom slušanju.\n\n• Tehnologija smanjenja šuma: binauralni poziv visoke definicije, 5.0 automatsko uparivanje, ugrađena aktivna redukcija buke CVC 8.0, može da obezbedi jasne telefonske pozive i najbolje muzičko iskustvo.\n\n• Karakteristike proizvoda: binauralni poziv visoke definicije, pauza pri reprodukciji, pomoćnik za pozive, podešavanje jačine zvuka, prebacivanje pesama nagore i nadole, automatsko pokretanje, automatsko uparivanje, inteligentno smanjenje šuma, bez kašnjenja u igri.\n\n• Bluetooth slušalice imaju funkciju dodira, jednostavne za upotrebu.",
-      "Slika": "21c3c02c-4c59-4ee7-9091-3d3e0aeb5158.jpg",
-      "DatumPostavljanjaProizvoda": "24/06/2023",
-      "Grad": "Beograd",
-      "Recenzija": [],
-      "Status": true,
-      "IsDeleted": false,
-      "FID": [
-        "3",
-        "15"
-      ],
-      "KID": "4",
-      "PID": [
-        6,
-        11,
-        25
-      ],
-      "RID": [],
-      "Kolicina": 1.0
-    },
-    "Kolicina": 0.0,
-    "Kupac": "3",
-    "DatumPorudzbine": "03/07/2023",
-    "Status": 0,
-    "IsDeleted": false
-  },
-  {
-    "Id": 26,
-    "Proizvod": {
-      "Id": 3,
-      "Naziv": "McADAMS Hrana za odrasle pse malih rasa TURKEY SENSITIVE 2kg",
-      "Cena": 4795.0,
-      "Opis": "McADAMS HRANA ZA ODRASLE PSE MALIH RASA\nBez žitarica i mesnog brašna, nežno pečena i lako svarljiva. Ultra-premium kompletna hrana za pse napravljena sa jednim izvorom proteina, pogodna za pse malih rasa sa alergijama i intolerancijama na hranu.\nPrešli smo na ulje algi održivog izvora, koje ima iste zdravstvene prednosti, ali je manje verovatno da će izazvati alergije.\nU sve naše recepte zbog zdravih zglobova uključujemo novozelandsku zelenu usnu dagnju i ručno rezanu irsku algu i oboje su odlični izvori antioksidanata koji mogu pomoći u sprečavanju upalnih reakcija kod kućnih ljubimaca. Prešli smo na ulje algi održivog izvora, koje ima isto koristi za zdravlje, ali je manje verovatno da će izazvati alergije.\n\nSastav\nČitava britanska ćuretina iz slobodnog uzgoja sa ćurećom masti i sosom (64,5%), slatkim krompirom (25%), tapiokom (6,5%), sočivom, mineralima, biljnim vlaknima, uljem algi, prebioticima (FOS (0,15%), MOS (0,15%) )), ekstrakt juke, sušeni neven, ručno rezane irske morske alge (0,03%), sušena pomorandža, novozelandska zelenousna dagnja, kamilica, šargarepa, brusnice, spanać, paradajz, lavanda, sušeni ruzmarin.\nAnalitičke komponente\nSirovi proteini 23%, Sirove masti 11%, Sirova vlakna 3,5%, Sirovi pepeo 8%, Omega 6 1,5%, Omega 3 0,6%, 353,00 kcal/100g.\nAditivi\nVitamini: Vitamin A 14.423 IU, Vitamin D3 2.000 IU, Vitamin E 96 IU; Elementi u tragovima: cink (cink-sulfat monohidrat) 48 mg, gvožđe (gvožđe (II) sulfat monohidrat) 48 mg, mangan (mangan sulfat monohidrat) 34 mg, bakar (bakar (II) sulfat pentahidrat) 5 mg, jod-jod (Calcij anhidrat) ) 0,96 mg, selen (natrijum selenit) 0,19 mg. Antioksidansi: Konzervirano sa mešanim tokoferolima.\n\nSmernice za dnevno hranjenje:\nKao i ljudi, svi psi su različiti i imaju različite potrebe u ishrani u zavisnosti od njihovog metabolizma i nivoa aktivnosti. Koristite dole navedene količine kao vodič i prilagodite veličinu obroka vašeg psa u skladu sa tim ako primećujete da vaš pas ili gubi ili dobija na težini. Većina pasa preferira da se njihova dnevna količina podeli između dva obroka. Sveža voda treba uvek da bude dostupna.\nTežina psa 3 kg / 5 kg / 7 kg / 10 kg\nDnevna količina 50-65g / 75-100g / 95-125g / 120-165g",
-      "Slika": "876a65c0-9543-4891-b8cf-fd090334f2be.jpg",
-      "DatumPostavljanjaProizvoda": "24/06/2023",
-      "Grad": "Novi Sad",
-      "Recenzija": [],
-      "Status": true,
-      "IsDeleted": false,
-      "FID": [],
-      "KID": "4",
-      "PID": [
-        8,
-        26,
-        27
-      ],
-      "RID": [
-        4
-      ],
-      "Kolicina": 38.0
-    },
-    "Kolicina": 0.0,
-    "Kupac": "3",
-    "DatumPorudzbine": "03/07/2023",
-    "Status": 0,
-    "IsDeleted": false
-  },
-  {
-    "Id": 27,
-    "Proizvod": {
-      "Id": 3,
-      "Naziv": "McADAMS Hrana za odrasle pse malih rasa TURKEY SENSITIVE 2kg",
-      "Cena": 4795.0,
-      "Opis": "McADAMS HRANA ZA ODRASLE PSE MALIH RASA\nBez žitarica i mesnog brašna, nežno pečena i lako svarljiva. Ultra-premium kompletna hrana za pse napravljena sa jednim izvorom proteina, pogodna za pse malih rasa sa alergijama i intolerancijama na hranu.\nPrešli smo na ulje algi održivog izvora, koje ima iste zdravstvene prednosti, ali je manje verovatno da će izazvati alergije.\nU sve naše recepte zbog zdravih zglobova uključujemo novozelandsku zelenu usnu dagnju i ručno rezanu irsku algu i oboje su odlični izvori antioksidanata koji mogu pomoći u sprečavanju upalnih reakcija kod kućnih ljubimaca. Prešli smo na ulje algi održivog izvora, koje ima isto koristi za zdravlje, ali je manje verovatno da će izazvati alergije.\n\nSastav\nČitava britanska ćuretina iz slobodnog uzgoja sa ćurećom masti i sosom (64,5%), slatkim krompirom (25%), tapiokom (6,5%), sočivom, mineralima, biljnim vlaknima, uljem algi, prebioticima (FOS (0,15%), MOS (0,15%) )), ekstrakt juke, sušeni neven, ručno rezane irske morske alge (0,03%), sušena pomorandža, novozelandska zelenousna dagnja, kamilica, šargarepa, brusnice, spanać, paradajz, lavanda, sušeni ruzmarin.\nAnalitičke komponente\nSirovi proteini 23%, Sirove masti 11%, Sirova vlakna 3,5%, Sirovi pepeo 8%, Omega 6 1,5%, Omega 3 0,6%, 353,00 kcal/100g.\nAditivi\nVitamini: Vitamin A 14.423 IU, Vitamin D3 2.000 IU, Vitamin E 96 IU; Elementi u tragovima: cink (cink-sulfat monohidrat) 48 mg, gvožđe (gvožđe (II) sulfat monohidrat) 48 mg, mangan (mangan sulfat monohidrat) 34 mg, bakar (bakar (II) sulfat pentahidrat) 5 mg, jod-jod (Calcij anhidrat) ) 0,96 mg, selen (natrijum selenit) 0,19 mg. Antioksidansi: Konzervirano sa mešanim tokoferolima.\n\nSmernice za dnevno hranjenje:\nKao i ljudi, svi psi su različiti i imaju različite potrebe u ishrani u zavisnosti od njihovog metabolizma i nivoa aktivnosti. Koristite dole navedene količine kao vodič i prilagodite veličinu obroka vašeg psa u skladu sa tim ako primećujete da vaš pas ili gubi ili dobija na težini. Većina pasa preferira da se njihova dnevna količina podeli između dva obroka. Sveža voda treba uvek da bude dostupna.\nTežina psa 3 kg / 5 kg / 7 kg / 10 kg\nDnevna količina 50-65g / 75-100g / 95-125g / 120-165g",
-      "Slika": "876a65c0-9543-4891-b8cf-fd090334f2be.jpg",
-      "DatumPostavljanjaProizvoda": "24/06/2023",
-      "Grad": "Novi Sad",
-      "Recenzija": [],
-      "Status": true,
-      "IsDeleted": false,
-      "FID": [],
-      "KID": "4",
-      "PID": [
-        8,
-        26,
-        27
-      ],
-      "RID": [
-        4
-      ],
-      "Kolicina": 38.0
-    },
-    "Kolicina": 1.0,
-    "Kupac": "3",
-    "DatumPorudzbine": "03/07/2023",
-    "Status": 1,
     "IsDeleted": false
   }
 ]
