@@ -203,6 +203,11 @@ jQuery(function () {
                                         window.location.href = "MojePorudzbine.html?msg=Porudžbina uspešno recenzirana!";
                                         return false;
                                     }
+                                    else {
+                                        // desila se greska - prikazi je
+                                        $("#divgreske").removeClass('d-none');
+                                        $("#greske").text(JSON.parse(response).Poruka);
+                                    }
                                 }
                             }
                         });
