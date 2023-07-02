@@ -235,6 +235,10 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="App_Data\korisnici.json" />
+    <Content Include="App_Data\porudzbine.json" />
+    <Content Include="App_Data\proizvodi.json" />
+    <Content Include="App_Data\recenzije.json" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
     <Content Include="Scripts\loader-finisher.js" />
@@ -251,7 +255,6 @@
     <Content Include="Index.html" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Uploads\" />
     <Folder Include="Views\AuthUser\" />
   </ItemGroup>

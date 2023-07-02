@@ -247,7 +247,7 @@ namespace Online_Shop.Storage
                     // brisanje svih aktivnih porudzbina koje sadrze proizvod koji se brise
                     foreach (int porudzbina in Proizvodi[index].PID)
                     {
-                        int por_id = PorudzbineStorage.Porudzbine.FindIndex(p => p.Id == porudzbina && p.IsDeleted == false && p.Status != STATUS.AKTIVNA);
+                        int por_id = PorudzbineStorage.Porudzbine.FindIndex(p => p.Id == porudzbina && p.IsDeleted == false && p.Status == STATUS.AKTIVNA);
 
                         if (por_id != -1)
                         {

@@ -46,29 +46,33 @@
         "Id": 1,
         "Proizvod": {
           "Id": 1,
-          "Naziv": "GARNIER Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-          "Cena": 1019.0,
-          "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-          "Slika": "cce7f89b-6c2a-41f9-b3ae-74c6cf7f2747.jpg",
+          "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+          "Cena": 1200.0,
+          "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+          "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
           "DatumPostavljanjaProizvoda": "24/06/2023",
           "Grad": "Novi Sad",
           "Recenzija": [],
           "Status": true,
-          "IsDeleted": false,
+          "IsDeleted": true,
           "FID": [
             "3",
-            "14"
+            "14",
+            "15"
           ],
           "KID": "4",
           "PID": [
             1,
-            4
+            4,
+            9,
+            10,
+            14
           ],
           "RID": [
             1,
             2
           ],
-          "Kolicina": 14.0
+          "Kolicina": 8.0
         },
         "Kolicina": 2.0,
         "Kupac": "3",
@@ -90,14 +94,16 @@
           "Status": true,
           "IsDeleted": false,
           "FID": [
-            "3"
+            "3",
+            "15"
           ],
           "KID": "4",
           "PID": [
-            6
+            6,
+            11
           ],
           "RID": [],
-          "Kolicina": 4.0
+          "Kolicina": 1.0
         },
         "Kolicina": 1.0,
         "Kupac": "3",
@@ -175,7 +181,7 @@
           "Grad": "Niš",
           "Recenzija": [],
           "Status": true,
-          "IsDeleted": true,
+          "IsDeleted": false,
           "FID": [
             "3"
           ],
@@ -190,35 +196,39 @@
         "Kupac": "3",
         "DatumPorudzbine": "25/06/2023",
         "Status": 0,
-        "IsDeleted": true
+        "IsDeleted": false
       }
     ],
     "OmiljenjiProizvodi": [
       {
         "Id": 1,
-        "Naziv": "GARNIER Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-        "Cena": 1019.0,
-        "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-        "Slika": "cce7f89b-6c2a-41f9-b3ae-74c6cf7f2747.jpg",
+        "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+        "Cena": 1200.0,
+        "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+        "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
         "DatumPostavljanjaProizvoda": "24/06/2023",
         "Grad": "Novi Sad",
         "Recenzija": [],
         "Status": true,
-        "IsDeleted": false,
+        "IsDeleted": true,
         "FID": [
           "3",
-          "14"
+          "14",
+          "15"
         ],
         "KID": "4",
         "PID": [
           1,
-          4
+          4,
+          9,
+          10,
+          14
         ],
         "RID": [
           1,
           2
         ],
-        "Kolicina": 14.0
+        "Kolicina": 8.0
       },
       {
         "Id": 2,
@@ -232,14 +242,16 @@
         "Status": true,
         "IsDeleted": false,
         "FID": [
-          "3"
+          "3",
+          "15"
         ],
         "KID": "4",
         "PID": [
-          6
+          6,
+          11
         ],
         "RID": [],
-        "Kolicina": 4.0
+        "Kolicina": 1.0
       },
       {
         "Id": 4,
@@ -294,7 +306,7 @@
         "Grad": "Niš",
         "Recenzija": [],
         "Status": true,
-        "IsDeleted": true,
+        "IsDeleted": false,
         "FID": [
           "3"
         ],
@@ -325,29 +337,33 @@
     "ObjavljeniProizvodi": [
       {
         "Id": 1,
-        "Naziv": "GARNIER Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-        "Cena": 1019.0,
-        "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-        "Slika": "cce7f89b-6c2a-41f9-b3ae-74c6cf7f2747.jpg",
+        "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+        "Cena": 1200.0,
+        "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+        "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
         "DatumPostavljanjaProizvoda": "24/06/2023",
         "Grad": "Novi Sad",
         "Recenzija": [],
         "Status": true,
-        "IsDeleted": false,
+        "IsDeleted": true,
         "FID": [
           "3",
-          "14"
+          "14",
+          "15"
         ],
         "KID": "4",
         "PID": [
           1,
-          4
+          4,
+          9,
+          10,
+          14
         ],
         "RID": [
           1,
           2
         ],
-        "Kolicina": 14.0
+        "Kolicina": 8.0
       },
       {
         "Id": 2,
@@ -361,14 +377,16 @@
         "Status": true,
         "IsDeleted": false,
         "FID": [
-          "3"
+          "3",
+          "15"
         ],
         "KID": "4",
         "PID": [
-          6
+          6,
+          11
         ],
         "RID": [],
-        "Kolicina": 4.0
+        "Kolicina": 1.0
       },
       {
         "Id": 3,
@@ -479,9 +497,14 @@
         "Recenzija": [],
         "Status": true,
         "IsDeleted": false,
-        "FID": [],
+        "FID": [
+          "15"
+        ],
         "KID": "5",
-        "PID": [],
+        "PID": [
+          12,
+          13
+        ],
         "RID": [],
         "Kolicina": 3.0
       },
@@ -599,7 +622,7 @@
         "Grad": "Niš",
         "Recenzija": [],
         "Status": true,
-        "IsDeleted": true,
+        "IsDeleted": false,
         "FID": [
           "3"
         ],
@@ -726,29 +749,33 @@
         "Id": 4,
         "Proizvod": {
           "Id": 1,
-          "Naziv": "GARNIER Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-          "Cena": 1019.0,
-          "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-          "Slika": "cce7f89b-6c2a-41f9-b3ae-74c6cf7f2747.jpg",
+          "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+          "Cena": 1200.0,
+          "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+          "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
           "DatumPostavljanjaProizvoda": "24/06/2023",
           "Grad": "Novi Sad",
           "Recenzija": [],
           "Status": true,
-          "IsDeleted": false,
+          "IsDeleted": true,
           "FID": [
             "3",
-            "14"
+            "14",
+            "15"
           ],
           "KID": "4",
           "PID": [
             1,
-            4
+            4,
+            9,
+            10,
+            14
           ],
           "RID": [
             1,
             2
           ],
-          "Kolicina": 14.0
+          "Kolicina": 8.0
         },
         "Kolicina": 4.0,
         "Kupac": "14",
@@ -819,29 +846,33 @@
     "OmiljenjiProizvodi": [
       {
         "Id": 1,
-        "Naziv": "GARNIER Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-        "Cena": 1019.0,
-        "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-        "Slika": "cce7f89b-6c2a-41f9-b3ae-74c6cf7f2747.jpg",
+        "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+        "Cena": 1200.0,
+        "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+        "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
         "DatumPostavljanjaProizvoda": "24/06/2023",
         "Grad": "Novi Sad",
         "Recenzija": [],
         "Status": true,
-        "IsDeleted": false,
+        "IsDeleted": true,
         "FID": [
           "3",
-          "14"
+          "14",
+          "15"
         ],
         "KID": "4",
         "PID": [
           1,
-          4
+          4,
+          9,
+          10,
+          14
         ],
         "RID": [
           1,
           2
         ],
-        "Kolicina": 14.0
+        "Kolicina": 8.0
       },
       {
         "Id": 4,
@@ -869,5 +900,303 @@
     "ObjavljeniProizvodi": null,
     "IsDeleted": false,
     "IsLoggedIn": false
+  },
+  {
+    "Id": "15",
+    "KorisnickoIme": "kupac1244",
+    "Lozinka": "??t.????\u0000??T????\t0}?",
+    "Ime": "kupac",
+    "Prezime": "Kupac",
+    "Pol": "Muški",
+    "Email": "kupac@shopy.rs",
+    "DatumRodjenja": "15/10/2000",
+    "Uloga": 0,
+    "Porudzbine": [
+      {
+        "Id": 9,
+        "Proizvod": {
+          "Id": 1,
+          "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+          "Cena": 1200.0,
+          "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+          "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+          "DatumPostavljanjaProizvoda": "24/06/2023",
+          "Grad": "Novi Sad",
+          "Recenzija": [],
+          "Status": true,
+          "IsDeleted": true,
+          "FID": [
+            "3",
+            "14",
+            "15"
+          ],
+          "KID": "4",
+          "PID": [
+            1,
+            4,
+            9,
+            10,
+            14
+          ],
+          "RID": [
+            1,
+            2
+          ],
+          "Kolicina": 8.0
+        },
+        "Kolicina": 1.0,
+        "Kupac": "15",
+        "DatumPorudzbine": "03/07/2023",
+        "Status": 0,
+        "IsDeleted": true
+      },
+      {
+        "Id": 10,
+        "Proizvod": {
+          "Id": 1,
+          "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+          "Cena": 1200.0,
+          "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+          "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+          "DatumPostavljanjaProizvoda": "24/06/2023",
+          "Grad": "Novi Sad",
+          "Recenzija": [],
+          "Status": true,
+          "IsDeleted": true,
+          "FID": [
+            "3",
+            "14",
+            "15"
+          ],
+          "KID": "4",
+          "PID": [
+            1,
+            4,
+            9,
+            10,
+            14
+          ],
+          "RID": [
+            1,
+            2
+          ],
+          "Kolicina": 8.0
+        },
+        "Kolicina": 4.0,
+        "Kupac": "15",
+        "DatumPorudzbine": "03/07/2023",
+        "Status": 1,
+        "IsDeleted": false
+      },
+      {
+        "Id": 11,
+        "Proizvod": {
+          "Id": 2,
+          "Naziv": "SMART+ Bluetooth slušalice F9C TWS crne",
+          "Cena": 1999.0,
+          "Opis": "Bluetooth 5.0: Slušalice koriste\n• Bluetooth 5.0 čip, bez kašnjenja, niske potrošnje energije i mogu postići brzu i stabilnu vezu. Zaista bežične Bluetooth slušalice velikog kapaciteta.\n\n• Dva načina povezivanja: jednokratna/dvostruka upotreba bez upotrebe ruku, možete koristiti jednu ili dve slušalice za HiFi stereo. Samo uživajte u slušanju na jednom uhu i HiFi stereo binauralnom slušanju.\n\n• Tehnologija smanjenja šuma: binauralni poziv visoke definicije, 5.0 automatsko uparivanje, ugrađena aktivna redukcija buke CVC 8.0, može da obezbedi jasne telefonske pozive i najbolje muzičko iskustvo.\n\n• Karakteristike proizvoda: binauralni poziv visoke definicije, pauza pri reprodukciji, pomoćnik za pozive, podešavanje jačine zvuka, prebacivanje pesama nagore i nadole, automatsko pokretanje, automatsko uparivanje, inteligentno smanjenje šuma, bez kašnjenja u igri.\n\n• Bluetooth slušalice imaju funkciju dodira, jednostavne za upotrebu.",
+          "Slika": "21c3c02c-4c59-4ee7-9091-3d3e0aeb5158.jpg",
+          "DatumPostavljanjaProizvoda": "24/06/2023",
+          "Grad": "Beograd",
+          "Recenzija": [],
+          "Status": true,
+          "IsDeleted": false,
+          "FID": [
+            "3",
+            "15"
+          ],
+          "KID": "4",
+          "PID": [
+            6,
+            11
+          ],
+          "RID": [],
+          "Kolicina": 1.0
+        },
+        "Kolicina": 3.0,
+        "Kupac": "15",
+        "DatumPorudzbine": "03/07/2023",
+        "Status": 1,
+        "IsDeleted": false
+      },
+      {
+        "Id": 12,
+        "Proizvod": {
+          "Id": 7,
+          "Naziv": "DR.GRANDEL Epigran ELEMENTS OF NATURE 30 ml",
+          "Cena": 3766.0,
+          "Opis": "Multiaktivna esencija koja svoju delotvornost pokazuje više od 70 godina. Obiluje esencijalnim hranljivim materijama koje snabdevaju kožu, za zdrav, svež i mladalački ten. Zaglađuje, regeneriše, zateže i značajno poboljšava vlažnost. ECO Control sertifikat potvrđuje ekološki kvalitet sirovina, proizvodnih procesa i proizvoda.",
+          "Slika": "b1b93be2-472e-48bc-8943-545877c05439.jpg",
+          "DatumPostavljanjaProizvoda": "25/06/2023",
+          "Grad": "Niš",
+          "Recenzija": [],
+          "Status": true,
+          "IsDeleted": false,
+          "FID": [
+            "15"
+          ],
+          "KID": "5",
+          "PID": [
+            12,
+            13
+          ],
+          "RID": [],
+          "Kolicina": 3.0
+        },
+        "Kolicina": 1.0,
+        "Kupac": "15",
+        "DatumPorudzbine": "03/07/2023",
+        "Status": 1,
+        "IsDeleted": false
+      },
+      {
+        "Id": 13,
+        "Proizvod": {
+          "Id": 7,
+          "Naziv": "DR.GRANDEL Epigran ELEMENTS OF NATURE 30 ml",
+          "Cena": 3766.0,
+          "Opis": "Multiaktivna esencija koja svoju delotvornost pokazuje više od 70 godina. Obiluje esencijalnim hranljivim materijama koje snabdevaju kožu, za zdrav, svež i mladalački ten. Zaglađuje, regeneriše, zateže i značajno poboljšava vlažnost. ECO Control sertifikat potvrđuje ekološki kvalitet sirovina, proizvodnih procesa i proizvoda.",
+          "Slika": "b1b93be2-472e-48bc-8943-545877c05439.jpg",
+          "DatumPostavljanjaProizvoda": "25/06/2023",
+          "Grad": "Niš",
+          "Recenzija": [],
+          "Status": true,
+          "IsDeleted": false,
+          "FID": [
+            "15"
+          ],
+          "KID": "5",
+          "PID": [
+            12,
+            13
+          ],
+          "RID": [],
+          "Kolicina": 3.0
+        },
+        "Kolicina": 2.0,
+        "Kupac": "15",
+        "DatumPorudzbine": "03/07/2023",
+        "Status": 2,
+        "IsDeleted": false
+      },
+      {
+        "Id": 14,
+        "Proizvod": {
+          "Id": 1,
+          "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+          "Cena": 1200.0,
+          "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+          "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+          "DatumPostavljanjaProizvoda": "24/06/2023",
+          "Grad": "Novi Sad",
+          "Recenzija": [],
+          "Status": true,
+          "IsDeleted": true,
+          "FID": [
+            "3",
+            "14",
+            "15"
+          ],
+          "KID": "4",
+          "PID": [
+            1,
+            4,
+            9,
+            10,
+            14
+          ],
+          "RID": [
+            1,
+            2
+          ],
+          "Kolicina": 8.0
+        },
+        "Kolicina": 1.0,
+        "Kupac": "15",
+        "DatumPorudzbine": "03/07/2023",
+        "Status": 0,
+        "IsDeleted": true
+      }
+    ],
+    "OmiljenjiProizvodi": [
+      {
+        "Id": 1,
+        "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+        "Cena": 1200.0,
+        "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+        "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+        "DatumPostavljanjaProizvoda": "24/06/2023",
+        "Grad": "Novi Sad",
+        "Recenzija": [],
+        "Status": true,
+        "IsDeleted": true,
+        "FID": [
+          "3",
+          "14",
+          "15"
+        ],
+        "KID": "4",
+        "PID": [
+          1,
+          4,
+          9,
+          10,
+          14
+        ],
+        "RID": [
+          1,
+          2
+        ],
+        "Kolicina": 8.0
+      },
+      {
+        "Id": 2,
+        "Naziv": "SMART+ Bluetooth slušalice F9C TWS crne",
+        "Cena": 1999.0,
+        "Opis": "Bluetooth 5.0: Slušalice koriste\n• Bluetooth 5.0 čip, bez kašnjenja, niske potrošnje energije i mogu postići brzu i stabilnu vezu. Zaista bežične Bluetooth slušalice velikog kapaciteta.\n\n• Dva načina povezivanja: jednokratna/dvostruka upotreba bez upotrebe ruku, možete koristiti jednu ili dve slušalice za HiFi stereo. Samo uživajte u slušanju na jednom uhu i HiFi stereo binauralnom slušanju.\n\n• Tehnologija smanjenja šuma: binauralni poziv visoke definicije, 5.0 automatsko uparivanje, ugrađena aktivna redukcija buke CVC 8.0, može da obezbedi jasne telefonske pozive i najbolje muzičko iskustvo.\n\n• Karakteristike proizvoda: binauralni poziv visoke definicije, pauza pri reprodukciji, pomoćnik za pozive, podešavanje jačine zvuka, prebacivanje pesama nagore i nadole, automatsko pokretanje, automatsko uparivanje, inteligentno smanjenje šuma, bez kašnjenja u igri.\n\n• Bluetooth slušalice imaju funkciju dodira, jednostavne za upotrebu.",
+        "Slika": "21c3c02c-4c59-4ee7-9091-3d3e0aeb5158.jpg",
+        "DatumPostavljanjaProizvoda": "24/06/2023",
+        "Grad": "Beograd",
+        "Recenzija": [],
+        "Status": true,
+        "IsDeleted": false,
+        "FID": [
+          "3",
+          "15"
+        ],
+        "KID": "4",
+        "PID": [
+          6,
+          11
+        ],
+        "RID": [],
+        "Kolicina": 1.0
+      },
+      {
+        "Id": 7,
+        "Naziv": "DR.GRANDEL Epigran ELEMENTS OF NATURE 30 ml",
+        "Cena": 3766.0,
+        "Opis": "Multiaktivna esencija koja svoju delotvornost pokazuje više od 70 godina. Obiluje esencijalnim hranljivim materijama koje snabdevaju kožu, za zdrav, svež i mladalački ten. Zaglađuje, regeneriše, zateže i značajno poboljšava vlažnost. ECO Control sertifikat potvrđuje ekološki kvalitet sirovina, proizvodnih procesa i proizvoda.",
+        "Slika": "b1b93be2-472e-48bc-8943-545877c05439.jpg",
+        "DatumPostavljanjaProizvoda": "25/06/2023",
+        "Grad": "Niš",
+        "Recenzija": [],
+        "Status": true,
+        "IsDeleted": false,
+        "FID": [
+          "15"
+        ],
+        "KID": "5",
+        "PID": [
+          12,
+          13
+        ],
+        "RID": [],
+        "Kolicina": 3.0
+      }
+    ],
+    "ObjavljeniProizvodi": null,
+    "IsDeleted": false,
+    "IsLoggedIn": true
   }
 ]
