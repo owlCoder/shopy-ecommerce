@@ -71,7 +71,7 @@ $.ajax({
             $(function () {
                 // popuni tabelu
                 $("#nema").addClass('d-none');
-                console.log(data);
+
                 $.each(data, function (key, k) {
                     // dodavanje reda po red
                     var kupac_dodaj_naruci = "";

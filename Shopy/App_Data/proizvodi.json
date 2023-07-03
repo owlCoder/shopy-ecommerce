@@ -1,10 +1,10 @@
 [
   {
     "Id": 1,
-    "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-    "Cena": 1200.0,
-    "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-    "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+    "Naziv": "GARNIER Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+    "Cena": 1019.0,
+    "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+    "Slika": "cce7f89b-6c2a-41f9-b3ae-74c6cf7f2747.jpg",
     "DatumPostavljanjaProizvoda": "24/06/2023",
     "Grad": "Novi Sad",
     "Recenzija": [],
@@ -12,22 +12,18 @@
     "IsDeleted": false,
     "FID": [
       "3",
-      "14",
-      "15"
+      "14"
     ],
     "KID": "4",
     "PID": [
       1,
-      4,
-      9,
-      10,
-      14
+      4
     ],
     "RID": [
       1,
       2
     ],
-    "Kolicina": 8.0
+    "Kolicina": 14.0
   },
   {
     "Id": 2,
@@ -41,16 +37,14 @@
     "Status": true,
     "IsDeleted": false,
     "FID": [
-      "3",
-      "15"
+      "3"
     ],
     "KID": "4",
     "PID": [
-      6,
-      11
+      6
     ],
     "RID": [],
-    "Kolicina": 1.0
+    "Kolicina": 4.0
   },
   {
     "Id": 3,
@@ -144,14 +138,9 @@
     "Recenzija": [],
     "Status": true,
     "IsDeleted": false,
-    "FID": [
-      "15"
-    ],
+    "FID": [],
     "KID": "5",
-    "PID": [
-      12,
-      13
-    ],
+    "PID": [],
     "RID": [],
     "Kolicina": 3.0
   },

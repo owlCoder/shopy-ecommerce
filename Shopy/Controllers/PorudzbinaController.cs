@@ -30,7 +30,7 @@ namespace Online_Shop.Controllers
                 // proveriti da li je trenutni korisnik kupac
                 Korisnik korisnik = ((Korisnik)HttpContext.Current.Session["korisnik"]);
 
-                if (korisnik == null || korisnik.Uloga != ULOGA.Kupac)
+                if (korisnik == null || korisnik.IsLoggedIn == false || korisnik.Uloga != ULOGA.Kupac)
                 {
                     JsonConvert.SerializeObject(new Response { Kod = 21, Poruka = "Potrebno je da se ponovo prijavite kako bi izvršili porudžbinu!!" });
                 }
@@ -38,8 +38,9 @@ namespace Online_Shop.Controllers
                 {
                     // korisnik je prijavljen i kupac je
                     int proizvod = ProizvodiStorage.Proizvodi.FindIndex(p => p.IsDeleted == false && p.Id == order.Id);
+                    int korisnikUlogovan = KorisniciStorage.Korisnici.FindIndex(p => p.Id == korisnik.Id && p.IsLoggedIn);
 
-                    if (proizvod == -1)
+                    if (proizvod == -1 || korisnikUlogovan == -1)
                     {
                         return JsonConvert.SerializeObject(new Response { Kod = 41, Poruka = "Nažalost, proizvod više nije u ponudi," });
                     }

@@ -212,6 +212,7 @@ namespace Online_Shop.Storage
 
                 // logicko brisanje korisnika
                 Korisnici[pronadjen].IsDeleted = true;
+                Korisnici[pronadjen].IsLoggedIn = false;
 
                 // azuriranje podataka u svim bazama podataka
                 AzurirajKorisnikeUBazi(); // ostaje upisan u fajlu ali sa IsDeleted na true

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Online_Shop.Models;
 using Online_Shop.Storage;
+using System;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
@@ -55,7 +56,7 @@ namespace Online_Shop.Controllers
         [HttpGet]
         [Route("Ulogovan")]
         public string Ulogovan()
-        {
+            {
             Korisnik korisnik = (Korisnik)HttpContext.Current.Session["korisnik"];
 
             if (korisnik != null && !korisnik.IsDeleted && korisnik.IsLoggedIn)
@@ -159,6 +160,13 @@ namespace Online_Shop.Controllers
 
                 return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
             }
+            else if(korisnik != null && !korisnik.IsLoggedIn && korisnik.IsDeleted)
+            {
+                // odjava korisnika sa sesije
+                HttpContext.Current.Session["korisnik"] = null;
+
+                return JsonConvert.SerializeObject(new Response { Kod = 0, Poruka = "OK" });
+            }
             else
                 return JsonConvert.SerializeObject(new Response { Kod = 3, Poruka = "Nije ulogovan!" });
         }
@@ -172,6 +180,12 @@ namespace Online_Shop.Controllers
             if (trenutni != null && !trenutni.IsLoggedIn)
             {
                 return JsonConvert.SerializeObject(new Response { Kod = 50, Poruka = "Niste autentifikovani na platformi!" });
+            }
+
+            if(zahtev.DatumRodjenja.Equals(new DateTime(0001, 1, 1)))
+            {
+                zahtev.DatumRodjenja = trenutni.DatumRodjenja;
+                ModelState.Clear();
             }
 
             if (!ModelState.IsValid)

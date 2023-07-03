@@ -167,7 +167,7 @@ jQuery(function () {
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (response) {
-                console.log(response);
+                
                 if (response != null) {
                     if (JSON.parse(response).Kod === 0) // prodavac je registrovan uspesno
                     {

@@ -233,6 +233,9 @@ jQuery(function () {
                 success: function (response) {
                     if (response != null) {
                         var msg = JSON.parse(response);
+                        var e = new Date().getTime() + (3 * 1000);
+                        while (new Date().getTime() <= e) { }
+
                         if (msg.Kod === 0) // azuriranje podataka je proslo uspesno
                         {
                             STARA_SLIKA = msg.Poruka; // novi naziv tj guid slike na serveru

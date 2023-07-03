@@ -3,10 +3,10 @@
     "Id": 1,
     "Proizvod": {
       "Id": 1,
-      "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-      "Cena": 1200.0,
-      "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-      "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+      "Naziv": "GARNIER Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+      "Cena": 1019.0,
+      "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+      "Slika": "cce7f89b-6c2a-41f9-b3ae-74c6cf7f2747.jpg",
       "DatumPostavljanjaProizvoda": "24/06/2023",
       "Grad": "Novi Sad",
       "Recenzija": [],
@@ -14,22 +14,18 @@
       "IsDeleted": false,
       "FID": [
         "3",
-        "14",
-        "15"
+        "14"
       ],
       "KID": "4",
       "PID": [
         1,
-        4,
-        9,
-        10,
-        14
+        4
       ],
       "RID": [
         1,
         2
       ],
-      "Kolicina": 8.0
+      "Kolicina": 14.0
     },
     "Recenzent": {
       "Id": "3",
@@ -46,10 +42,10 @@
           "Id": 1,
           "Proizvod": {
             "Id": 1,
-            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-            "Cena": 1200.0,
-            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "Naziv": "GARNIER Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1019.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "cce7f89b-6c2a-41f9-b3ae-74c6cf7f2747.jpg",
             "DatumPostavljanjaProizvoda": "24/06/2023",
             "Grad": "Novi Sad",
             "Recenzija": [],
@@ -57,55 +53,20 @@
             "IsDeleted": false,
             "FID": [
               "3",
-              "14",
-              "15"
+              "14"
             ],
             "KID": "4",
             "PID": [
               1,
-              4,
-              9,
-              10,
-              14
+              4
             ],
             "RID": [
               1,
               2
             ],
-            "Kolicina": 8.0
+            "Kolicina": 14.0
           },
           "Kolicina": 2.0,
-          "Kupac": "3",
-          "DatumPorudzbine": "25/06/2023",
-          "Status": 1,
-          "IsDeleted": false
-        },
-        {
-          "Id": 6,
-          "Proizvod": {
-            "Id": 2,
-            "Naziv": "SMART+ Bluetooth slušalice F9C TWS crne",
-            "Cena": 1999.0,
-            "Opis": "Bluetooth 5.0: Slušalice koriste\n• Bluetooth 5.0 čip, bez kašnjenja, niske potrošnje energije i mogu postići brzu i stabilnu vezu. Zaista bežične Bluetooth slušalice velikog kapaciteta.\n\n• Dva načina povezivanja: jednokratna/dvostruka upotreba bez upotrebe ruku, možete koristiti jednu ili dve slušalice za HiFi stereo. Samo uživajte u slušanju na jednom uhu i HiFi stereo binauralnom slušanju.\n\n• Tehnologija smanjenja šuma: binauralni poziv visoke definicije, 5.0 automatsko uparivanje, ugrađena aktivna redukcija buke CVC 8.0, može da obezbedi jasne telefonske pozive i najbolje muzičko iskustvo.\n\n• Karakteristike proizvoda: binauralni poziv visoke definicije, pauza pri reprodukciji, pomoćnik za pozive, podešavanje jačine zvuka, prebacivanje pesama nagore i nadole, automatsko pokretanje, automatsko uparivanje, inteligentno smanjenje šuma, bez kašnjenja u igri.\n\n• Bluetooth slušalice imaju funkciju dodira, jednostavne za upotrebu.",
-            "Slika": "21c3c02c-4c59-4ee7-9091-3d3e0aeb5158.jpg",
-            "DatumPostavljanjaProizvoda": "24/06/2023",
-            "Grad": "Beograd",
-            "Recenzija": [],
-            "Status": true,
-            "IsDeleted": false,
-            "FID": [
-              "3",
-              "15"
-            ],
-            "KID": "4",
-            "PID": [
-              6,
-              11
-            ],
-            "RID": [],
-            "Kolicina": 1.0
-          },
-          "Kolicina": 1.0,
           "Kupac": "3",
           "DatumPorudzbine": "25/06/2023",
           "Status": 1,
@@ -197,84 +158,38 @@
           "DatumPorudzbine": "25/06/2023",
           "Status": 0,
           "IsDeleted": false
+        },
+        {
+          "Id": 6,
+          "Proizvod": {
+            "Id": 2,
+            "Naziv": "SMART+ Bluetooth slušalice F9C TWS crne",
+            "Cena": 1999.0,
+            "Opis": "Bluetooth 5.0: Slušalice koriste\n• Bluetooth 5.0 čip, bez kašnjenja, niske potrošnje energije i mogu postići brzu i stabilnu vezu. Zaista bežične Bluetooth slušalice velikog kapaciteta.\n\n• Dva načina povezivanja: jednokratna/dvostruka upotreba bez upotrebe ruku, možete koristiti jednu ili dve slušalice za HiFi stereo. Samo uživajte u slušanju na jednom uhu i HiFi stereo binauralnom slušanju.\n\n• Tehnologija smanjenja šuma: binauralni poziv visoke definicije, 5.0 automatsko uparivanje, ugrađena aktivna redukcija buke CVC 8.0, može da obezbedi jasne telefonske pozive i najbolje muzičko iskustvo.\n\n• Karakteristike proizvoda: binauralni poziv visoke definicije, pauza pri reprodukciji, pomoćnik za pozive, podešavanje jačine zvuka, prebacivanje pesama nagore i nadole, automatsko pokretanje, automatsko uparivanje, inteligentno smanjenje šuma, bez kašnjenja u igri.\n\n• Bluetooth slušalice imaju funkciju dodira, jednostavne za upotrebu.",
+            "Slika": "21c3c02c-4c59-4ee7-9091-3d3e0aeb5158.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Beograd",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3"
+            ],
+            "KID": "4",
+            "PID": [
+              6
+            ],
+            "RID": [],
+            "Kolicina": 4.0
+          },
+          "Kolicina": 1.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "25/06/2023",
+          "Status": 1,
+          "IsDeleted": false
         }
       ],
       "OmiljenjiProizvodi": [
-        {
-          "Id": 1,
-          "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-          "Cena": 1200.0,
-          "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-          "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
-          "DatumPostavljanjaProizvoda": "24/06/2023",
-          "Grad": "Novi Sad",
-          "Recenzija": [],
-          "Status": true,
-          "IsDeleted": false,
-          "FID": [
-            "3",
-            "14",
-            "15"
-          ],
-          "KID": "4",
-          "PID": [
-            1,
-            4,
-            9,
-            10,
-            14
-          ],
-          "RID": [
-            1,
-            2
-          ],
-          "Kolicina": 8.0
-        },
-        {
-          "Id": 2,
-          "Naziv": "SMART+ Bluetooth slušalice F9C TWS crne",
-          "Cena": 1999.0,
-          "Opis": "Bluetooth 5.0: Slušalice koriste\n• Bluetooth 5.0 čip, bez kašnjenja, niske potrošnje energije i mogu postići brzu i stabilnu vezu. Zaista bežične Bluetooth slušalice velikog kapaciteta.\n\n• Dva načina povezivanja: jednokratna/dvostruka upotreba bez upotrebe ruku, možete koristiti jednu ili dve slušalice za HiFi stereo. Samo uživajte u slušanju na jednom uhu i HiFi stereo binauralnom slušanju.\n\n• Tehnologija smanjenja šuma: binauralni poziv visoke definicije, 5.0 automatsko uparivanje, ugrađena aktivna redukcija buke CVC 8.0, može da obezbedi jasne telefonske pozive i najbolje muzičko iskustvo.\n\n• Karakteristike proizvoda: binauralni poziv visoke definicije, pauza pri reprodukciji, pomoćnik za pozive, podešavanje jačine zvuka, prebacivanje pesama nagore i nadole, automatsko pokretanje, automatsko uparivanje, inteligentno smanjenje šuma, bez kašnjenja u igri.\n\n• Bluetooth slušalice imaju funkciju dodira, jednostavne za upotrebu.",
-          "Slika": "21c3c02c-4c59-4ee7-9091-3d3e0aeb5158.jpg",
-          "DatumPostavljanjaProizvoda": "24/06/2023",
-          "Grad": "Beograd",
-          "Recenzija": [],
-          "Status": true,
-          "IsDeleted": false,
-          "FID": [
-            "3",
-            "15"
-          ],
-          "KID": "4",
-          "PID": [
-            6,
-            11
-          ],
-          "RID": [],
-          "Kolicina": 1.0
-        },
-        {
-          "Id": 4,
-          "Naziv": "IPANEMA Sandale za devojčice Summer Ix Baby 83188-20874 roze",
-          "Cena": 1999.0,
-          "Opis": "IPANEMA je jedan od najznačajnijih brazilskih brendova. Iako relativno mlad brend, napravio je pravu revoluciju u domenu letnje obuće na tržištu. Lansirala ga je poznata brazilska manekenka Gisele Bündchen tako da se često ovaj brend vezuje za njeno ime. Ipanema je brend koji je zaljubljen u ritam koji pokreće svet. Inspisana životom brazilskih ulica i plaža, Ipanemu pokreću jedinstveni, jednostavni detalji svakodnevnice. Njena suština dolazi sa plaže iz Rio de Janeira, po kojoj je ovaj brend i dobio ime, ali u isto vreme ovaj brend je cosmopolita. U svakoj kolekciji Ipanema ostaje verna sebi i svojoj filozofiji. Različiti stilovi uključuju japanke i sandale koje se mogu nositi kako na plaži, u gradu, preko dana u izlasku… Ipanema je eco frendly brend i njena celokupna proizvodnja zasniva se na 100% materijala koji je moguće reciklirati i od čak 30% materijala koji je već recikliran. Na taj način, Ipanema brine o održivosti prirode.",
-          "Slika": "9eb5d426-1c7d-472c-8925-df86c621a5ec.jpg",
-          "DatumPostavljanjaProizvoda": "24/06/2023",
-          "Grad": "Novi Sad",
-          "Recenzija": [],
-          "Status": false,
-          "IsDeleted": false,
-          "FID": [
-            "14",
-            "3"
-          ],
-          "KID": "4",
-          "PID": [
-            7
-          ],
-          "RID": [],
-          "Kolicina": 0.0
-        },
         {
           "Id": 8,
           "Naziv": "DR.GRANDEL Couperose Expert krema 50 ml",
@@ -297,6 +212,32 @@
           "Kolicina": 8.0
         },
         {
+          "Id": 1,
+          "Naziv": "GARNIER Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+          "Cena": 1019.0,
+          "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+          "Slika": "cce7f89b-6c2a-41f9-b3ae-74c6cf7f2747.jpg",
+          "DatumPostavljanjaProizvoda": "24/06/2023",
+          "Grad": "Novi Sad",
+          "Recenzija": [],
+          "Status": true,
+          "IsDeleted": false,
+          "FID": [
+            "3",
+            "14"
+          ],
+          "KID": "4",
+          "PID": [
+            1,
+            4
+          ],
+          "RID": [
+            1,
+            2
+          ],
+          "Kolicina": 14.0
+        },
+        {
           "Id": 11,
           "Naziv": "CAR LINE Kablovi za startovanje 500A",
           "Cena": 2194.0,
@@ -316,11 +257,54 @@
           ],
           "RID": [],
           "Kolicina": 11.0
+        },
+        {
+          "Id": 2,
+          "Naziv": "SMART+ Bluetooth slušalice F9C TWS crne",
+          "Cena": 1999.0,
+          "Opis": "Bluetooth 5.0: Slušalice koriste\n• Bluetooth 5.0 čip, bez kašnjenja, niske potrošnje energije i mogu postići brzu i stabilnu vezu. Zaista bežične Bluetooth slušalice velikog kapaciteta.\n\n• Dva načina povezivanja: jednokratna/dvostruka upotreba bez upotrebe ruku, možete koristiti jednu ili dve slušalice za HiFi stereo. Samo uživajte u slušanju na jednom uhu i HiFi stereo binauralnom slušanju.\n\n• Tehnologija smanjenja šuma: binauralni poziv visoke definicije, 5.0 automatsko uparivanje, ugrađena aktivna redukcija buke CVC 8.0, može da obezbedi jasne telefonske pozive i najbolje muzičko iskustvo.\n\n• Karakteristike proizvoda: binauralni poziv visoke definicije, pauza pri reprodukciji, pomoćnik za pozive, podešavanje jačine zvuka, prebacivanje pesama nagore i nadole, automatsko pokretanje, automatsko uparivanje, inteligentno smanjenje šuma, bez kašnjenja u igri.\n\n• Bluetooth slušalice imaju funkciju dodira, jednostavne za upotrebu.",
+          "Slika": "21c3c02c-4c59-4ee7-9091-3d3e0aeb5158.jpg",
+          "DatumPostavljanjaProizvoda": "24/06/2023",
+          "Grad": "Beograd",
+          "Recenzija": [],
+          "Status": true,
+          "IsDeleted": false,
+          "FID": [
+            "3"
+          ],
+          "KID": "4",
+          "PID": [
+            6
+          ],
+          "RID": [],
+          "Kolicina": 4.0
+        },
+        {
+          "Id": 4,
+          "Naziv": "IPANEMA Sandale za devojčice Summer Ix Baby 83188-20874 roze",
+          "Cena": 1999.0,
+          "Opis": "IPANEMA je jedan od najznačajnijih brazilskih brendova. Iako relativno mlad brend, napravio je pravu revoluciju u domenu letnje obuće na tržištu. Lansirala ga je poznata brazilska manekenka Gisele Bündchen tako da se često ovaj brend vezuje za njeno ime. Ipanema je brend koji je zaljubljen u ritam koji pokreće svet. Inspisana životom brazilskih ulica i plaža, Ipanemu pokreću jedinstveni, jednostavni detalji svakodnevnice. Njena suština dolazi sa plaže iz Rio de Janeira, po kojoj je ovaj brend i dobio ime, ali u isto vreme ovaj brend je cosmopolita. U svakoj kolekciji Ipanema ostaje verna sebi i svojoj filozofiji. Različiti stilovi uključuju japanke i sandale koje se mogu nositi kako na plaži, u gradu, preko dana u izlasku… Ipanema je eco frendly brend i njena celokupna proizvodnja zasniva se na 100% materijala koji je moguće reciklirati i od čak 30% materijala koji je već recikliran. Na taj način, Ipanema brine o održivosti prirode.",
+          "Slika": "9eb5d426-1c7d-472c-8925-df86c621a5ec.jpg",
+          "DatumPostavljanjaProizvoda": "24/06/2023",
+          "Grad": "Novi Sad",
+          "Recenzija": [],
+          "Status": false,
+          "IsDeleted": false,
+          "FID": [
+            "14",
+            "3"
+          ],
+          "KID": "4",
+          "PID": [
+            7
+          ],
+          "RID": [],
+          "Kolicina": 0.0
         }
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": false
+      "IsLoggedIn": true
     },
     "Naslov": "Iskustvo sa mlekom za telo",
     "SadrzajRecenzije": "Veoma sam zadovoljan ovim mlekom za zaštitu od sunca. Lako se nanosi, ne ostavlja beli trag i ima prijatan miris. Štiti kožu od opekotina i crvenila, a istovremeno je hidrira i neguje. Preporučujem ga svima koji traže kvalitetnu zaštitu od sunca.",
@@ -335,10 +319,10 @@
     "Id": 2,
     "Proizvod": {
       "Id": 1,
-      "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-      "Cena": 1200.0,
-      "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-      "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+      "Naziv": "GARNIER Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+      "Cena": 1019.0,
+      "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+      "Slika": "cce7f89b-6c2a-41f9-b3ae-74c6cf7f2747.jpg",
       "DatumPostavljanjaProizvoda": "24/06/2023",
       "Grad": "Novi Sad",
       "Recenzija": [],
@@ -346,22 +330,18 @@
       "IsDeleted": false,
       "FID": [
         "3",
-        "14",
-        "15"
+        "14"
       ],
       "KID": "4",
       "PID": [
         1,
-        4,
-        9,
-        10,
-        14
+        4
       ],
       "RID": [
         1,
         2
       ],
-      "Kolicina": 8.0
+      "Kolicina": 14.0
     },
     "Recenzent": {
       "Id": "14",
@@ -378,10 +358,10 @@
           "Id": 4,
           "Proizvod": {
             "Id": 1,
-            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-            "Cena": 1200.0,
-            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "Naziv": "GARNIER Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1019.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "cce7f89b-6c2a-41f9-b3ae-74c6cf7f2747.jpg",
             "DatumPostavljanjaProizvoda": "24/06/2023",
             "Grad": "Novi Sad",
             "Recenzija": [],
@@ -389,53 +369,20 @@
             "IsDeleted": false,
             "FID": [
               "3",
-              "14",
-              "15"
+              "14"
             ],
             "KID": "4",
             "PID": [
               1,
-              4,
-              9,
-              10,
-              14
+              4
             ],
             "RID": [
               1,
               2
             ],
-            "Kolicina": 8.0
+            "Kolicina": 14.0
           },
           "Kolicina": 4.0,
-          "Kupac": "14",
-          "DatumPorudzbine": "25/06/2023",
-          "Status": 1,
-          "IsDeleted": false
-        },
-        {
-          "Id": 8,
-          "Proizvod": {
-            "Id": 3,
-            "Naziv": "McADAMS Hrana za odrasle pse malih rasa TURKEY SENSITIVE 2kg",
-            "Cena": 4795.0,
-            "Opis": "McADAMS HRANA ZA ODRASLE PSE MALIH RASA\nBez žitarica i mesnog brašna, nežno pečena i lako svarljiva. Ultra-premium kompletna hrana za pse napravljena sa jednim izvorom proteina, pogodna za pse malih rasa sa alergijama i intolerancijama na hranu.\nPrešli smo na ulje algi održivog izvora, koje ima iste zdravstvene prednosti, ali je manje verovatno da će izazvati alergije.\nU sve naše recepte zbog zdravih zglobova uključujemo novozelandsku zelenu usnu dagnju i ručno rezanu irsku algu i oboje su odlični izvori antioksidanata koji mogu pomoći u sprečavanju upalnih reakcija kod kućnih ljubimaca. Prešli smo na ulje algi održivog izvora, koje ima isto koristi za zdravlje, ali je manje verovatno da će izazvati alergije.\n\nSastav\nČitava britanska ćuretina iz slobodnog uzgoja sa ćurećom masti i sosom (64,5%), slatkim krompirom (25%), tapiokom (6,5%), sočivom, mineralima, biljnim vlaknima, uljem algi, prebioticima (FOS (0,15%), MOS (0,15%) )), ekstrakt juke, sušeni neven, ručno rezane irske morske alge (0,03%), sušena pomorandža, novozelandska zelenousna dagnja, kamilica, šargarepa, brusnice, spanać, paradajz, lavanda, sušeni ruzmarin.\nAnalitičke komponente\nSirovi proteini 23%, Sirove masti 11%, Sirova vlakna 3,5%, Sirovi pepeo 8%, Omega 6 1,5%, Omega 3 0,6%, 353,00 kcal/100g.\nAditivi\nVitamini: Vitamin A 14.423 IU, Vitamin D3 2.000 IU, Vitamin E 96 IU; Elementi u tragovima: cink (cink-sulfat monohidrat) 48 mg, gvožđe (gvožđe (II) sulfat monohidrat) 48 mg, mangan (mangan sulfat monohidrat) 34 mg, bakar (bakar (II) sulfat pentahidrat) 5 mg, jod-jod (Calcij anhidrat) ) 0,96 mg, selen (natrijum selenit) 0,19 mg. Antioksidansi: Konzervirano sa mešanim tokoferolima.\n\nSmernice za dnevno hranjenje:\nKao i ljudi, svi psi su različiti i imaju različite potrebe u ishrani u zavisnosti od njihovog metabolizma i nivoa aktivnosti. Koristite dole navedene količine kao vodič i prilagodite veličinu obroka vašeg psa u skladu sa tim ako primećujete da vaš pas ili gubi ili dobija na težini. Većina pasa preferira da se njihova dnevna količina podeli između dva obroka. Sveža voda treba uvek da bude dostupna.\nTežina psa 3 kg / 5 kg / 7 kg / 10 kg\nDnevna količina 50-65g / 75-100g / 95-125g / 120-165g",
-            "Slika": "876a65c0-9543-4891-b8cf-fd090334f2be.jpg",
-            "DatumPostavljanjaProizvoda": "24/06/2023",
-            "Grad": "Novi Sad",
-            "Recenzija": [],
-            "Status": true,
-            "IsDeleted": false,
-            "FID": [],
-            "KID": "4",
-            "PID": [
-              8
-            ],
-            "RID": [
-              4
-            ],
-            "Kolicina": 39.0
-          },
-          "Kolicina": 1.0,
           "Kupac": "14",
           "DatumPorudzbine": "25/06/2023",
           "Status": 1,
@@ -470,15 +417,44 @@
           "DatumPorudzbine": "25/06/2023",
           "Status": 0,
           "IsDeleted": false
+        },
+        {
+          "Id": 8,
+          "Proizvod": {
+            "Id": 3,
+            "Naziv": "McADAMS Hrana za odrasle pse malih rasa TURKEY SENSITIVE 2kg",
+            "Cena": 4795.0,
+            "Opis": "McADAMS HRANA ZA ODRASLE PSE MALIH RASA\nBez žitarica i mesnog brašna, nežno pečena i lako svarljiva. Ultra-premium kompletna hrana za pse napravljena sa jednim izvorom proteina, pogodna za pse malih rasa sa alergijama i intolerancijama na hranu.\nPrešli smo na ulje algi održivog izvora, koje ima iste zdravstvene prednosti, ali je manje verovatno da će izazvati alergije.\nU sve naše recepte zbog zdravih zglobova uključujemo novozelandsku zelenu usnu dagnju i ručno rezanu irsku algu i oboje su odlični izvori antioksidanata koji mogu pomoći u sprečavanju upalnih reakcija kod kućnih ljubimaca. Prešli smo na ulje algi održivog izvora, koje ima isto koristi za zdravlje, ali je manje verovatno da će izazvati alergije.\n\nSastav\nČitava britanska ćuretina iz slobodnog uzgoja sa ćurećom masti i sosom (64,5%), slatkim krompirom (25%), tapiokom (6,5%), sočivom, mineralima, biljnim vlaknima, uljem algi, prebioticima (FOS (0,15%), MOS (0,15%) )), ekstrakt juke, sušeni neven, ručno rezane irske morske alge (0,03%), sušena pomorandža, novozelandska zelenousna dagnja, kamilica, šargarepa, brusnice, spanać, paradajz, lavanda, sušeni ruzmarin.\nAnalitičke komponente\nSirovi proteini 23%, Sirove masti 11%, Sirova vlakna 3,5%, Sirovi pepeo 8%, Omega 6 1,5%, Omega 3 0,6%, 353,00 kcal/100g.\nAditivi\nVitamini: Vitamin A 14.423 IU, Vitamin D3 2.000 IU, Vitamin E 96 IU; Elementi u tragovima: cink (cink-sulfat monohidrat) 48 mg, gvožđe (gvožđe (II) sulfat monohidrat) 48 mg, mangan (mangan sulfat monohidrat) 34 mg, bakar (bakar (II) sulfat pentahidrat) 5 mg, jod-jod (Calcij anhidrat) ) 0,96 mg, selen (natrijum selenit) 0,19 mg. Antioksidansi: Konzervirano sa mešanim tokoferolima.\n\nSmernice za dnevno hranjenje:\nKao i ljudi, svi psi su različiti i imaju različite potrebe u ishrani u zavisnosti od njihovog metabolizma i nivoa aktivnosti. Koristite dole navedene količine kao vodič i prilagodite veličinu obroka vašeg psa u skladu sa tim ako primećujete da vaš pas ili gubi ili dobija na težini. Većina pasa preferira da se njihova dnevna količina podeli između dva obroka. Sveža voda treba uvek da bude dostupna.\nTežina psa 3 kg / 5 kg / 7 kg / 10 kg\nDnevna količina 50-65g / 75-100g / 95-125g / 120-165g",
+            "Slika": "876a65c0-9543-4891-b8cf-fd090334f2be.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [],
+            "KID": "4",
+            "PID": [
+              8
+            ],
+            "RID": [
+              4
+            ],
+            "Kolicina": 39.0
+          },
+          "Kolicina": 1.0,
+          "Kupac": "14",
+          "DatumPorudzbine": "25/06/2023",
+          "Status": 1,
+          "IsDeleted": false
         }
       ],
       "OmiljenjiProizvodi": [
         {
           "Id": 1,
-          "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-          "Cena": 1200.0,
-          "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-          "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+          "Naziv": "GARNIER Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+          "Cena": 1019.0,
+          "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+          "Slika": "cce7f89b-6c2a-41f9-b3ae-74c6cf7f2747.jpg",
           "DatumPostavljanjaProizvoda": "24/06/2023",
           "Grad": "Novi Sad",
           "Recenzija": [],
@@ -486,22 +462,18 @@
           "IsDeleted": false,
           "FID": [
             "3",
-            "14",
-            "15"
+            "14"
           ],
           "KID": "4",
           "PID": [
             1,
-            4,
-            9,
-            10,
-            14
+            4
           ],
           "RID": [
             1,
             2
           ],
-          "Kolicina": 8.0
+          "Kolicina": 14.0
         },
         {
           "Id": 4,
@@ -528,7 +500,7 @@
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": false
+      "IsLoggedIn": true
     },
     "Naslov": "Krema za sunce koja vredi",
     "SadrzajRecenzije": "Ovo je jedan od najboljih proizvoda za zaštitu od sunca koje sam probala. Ima visok faktor zaštite, ali ne osećam da mi je koža teška ili masna. Naprotiv, koža mi je mekana i glatka posle nanošenja. Mleko se brzo upija i ne iritira osetljivu kožu. Miris je diskretan i prirodan.",
@@ -577,10 +549,10 @@
           "Id": 1,
           "Proizvod": {
             "Id": 1,
-            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-            "Cena": 1200.0,
-            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "Naziv": "GARNIER Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1019.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "cce7f89b-6c2a-41f9-b3ae-74c6cf7f2747.jpg",
             "DatumPostavljanjaProizvoda": "24/06/2023",
             "Grad": "Novi Sad",
             "Recenzija": [],
@@ -588,55 +560,20 @@
             "IsDeleted": false,
             "FID": [
               "3",
-              "14",
-              "15"
+              "14"
             ],
             "KID": "4",
             "PID": [
               1,
-              4,
-              9,
-              10,
-              14
+              4
             ],
             "RID": [
               1,
               2
             ],
-            "Kolicina": 8.0
+            "Kolicina": 14.0
           },
           "Kolicina": 2.0,
-          "Kupac": "3",
-          "DatumPorudzbine": "25/06/2023",
-          "Status": 1,
-          "IsDeleted": false
-        },
-        {
-          "Id": 6,
-          "Proizvod": {
-            "Id": 2,
-            "Naziv": "SMART+ Bluetooth slušalice F9C TWS crne",
-            "Cena": 1999.0,
-            "Opis": "Bluetooth 5.0: Slušalice koriste\n• Bluetooth 5.0 čip, bez kašnjenja, niske potrošnje energije i mogu postići brzu i stabilnu vezu. Zaista bežične Bluetooth slušalice velikog kapaciteta.\n\n• Dva načina povezivanja: jednokratna/dvostruka upotreba bez upotrebe ruku, možete koristiti jednu ili dve slušalice za HiFi stereo. Samo uživajte u slušanju na jednom uhu i HiFi stereo binauralnom slušanju.\n\n• Tehnologija smanjenja šuma: binauralni poziv visoke definicije, 5.0 automatsko uparivanje, ugrađena aktivna redukcija buke CVC 8.0, može da obezbedi jasne telefonske pozive i najbolje muzičko iskustvo.\n\n• Karakteristike proizvoda: binauralni poziv visoke definicije, pauza pri reprodukciji, pomoćnik za pozive, podešavanje jačine zvuka, prebacivanje pesama nagore i nadole, automatsko pokretanje, automatsko uparivanje, inteligentno smanjenje šuma, bez kašnjenja u igri.\n\n• Bluetooth slušalice imaju funkciju dodira, jednostavne za upotrebu.",
-            "Slika": "21c3c02c-4c59-4ee7-9091-3d3e0aeb5158.jpg",
-            "DatumPostavljanjaProizvoda": "24/06/2023",
-            "Grad": "Beograd",
-            "Recenzija": [],
-            "Status": true,
-            "IsDeleted": false,
-            "FID": [
-              "3",
-              "15"
-            ],
-            "KID": "4",
-            "PID": [
-              6,
-              11
-            ],
-            "RID": [],
-            "Kolicina": 1.0
-          },
-          "Kolicina": 1.0,
           "Kupac": "3",
           "DatumPorudzbine": "25/06/2023",
           "Status": 1,
@@ -728,84 +665,38 @@
           "DatumPorudzbine": "25/06/2023",
           "Status": 0,
           "IsDeleted": false
+        },
+        {
+          "Id": 6,
+          "Proizvod": {
+            "Id": 2,
+            "Naziv": "SMART+ Bluetooth slušalice F9C TWS crne",
+            "Cena": 1999.0,
+            "Opis": "Bluetooth 5.0: Slušalice koriste\n• Bluetooth 5.0 čip, bez kašnjenja, niske potrošnje energije i mogu postići brzu i stabilnu vezu. Zaista bežične Bluetooth slušalice velikog kapaciteta.\n\n• Dva načina povezivanja: jednokratna/dvostruka upotreba bez upotrebe ruku, možete koristiti jednu ili dve slušalice za HiFi stereo. Samo uživajte u slušanju na jednom uhu i HiFi stereo binauralnom slušanju.\n\n• Tehnologija smanjenja šuma: binauralni poziv visoke definicije, 5.0 automatsko uparivanje, ugrađena aktivna redukcija buke CVC 8.0, može da obezbedi jasne telefonske pozive i najbolje muzičko iskustvo.\n\n• Karakteristike proizvoda: binauralni poziv visoke definicije, pauza pri reprodukciji, pomoćnik za pozive, podešavanje jačine zvuka, prebacivanje pesama nagore i nadole, automatsko pokretanje, automatsko uparivanje, inteligentno smanjenje šuma, bez kašnjenja u igri.\n\n• Bluetooth slušalice imaju funkciju dodira, jednostavne za upotrebu.",
+            "Slika": "21c3c02c-4c59-4ee7-9091-3d3e0aeb5158.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Beograd",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [
+              "3"
+            ],
+            "KID": "4",
+            "PID": [
+              6
+            ],
+            "RID": [],
+            "Kolicina": 4.0
+          },
+          "Kolicina": 1.0,
+          "Kupac": "3",
+          "DatumPorudzbine": "25/06/2023",
+          "Status": 1,
+          "IsDeleted": false
         }
       ],
       "OmiljenjiProizvodi": [
-        {
-          "Id": 1,
-          "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-          "Cena": 1200.0,
-          "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-          "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
-          "DatumPostavljanjaProizvoda": "24/06/2023",
-          "Grad": "Novi Sad",
-          "Recenzija": [],
-          "Status": true,
-          "IsDeleted": false,
-          "FID": [
-            "3",
-            "14",
-            "15"
-          ],
-          "KID": "4",
-          "PID": [
-            1,
-            4,
-            9,
-            10,
-            14
-          ],
-          "RID": [
-            1,
-            2
-          ],
-          "Kolicina": 8.0
-        },
-        {
-          "Id": 2,
-          "Naziv": "SMART+ Bluetooth slušalice F9C TWS crne",
-          "Cena": 1999.0,
-          "Opis": "Bluetooth 5.0: Slušalice koriste\n• Bluetooth 5.0 čip, bez kašnjenja, niske potrošnje energije i mogu postići brzu i stabilnu vezu. Zaista bežične Bluetooth slušalice velikog kapaciteta.\n\n• Dva načina povezivanja: jednokratna/dvostruka upotreba bez upotrebe ruku, možete koristiti jednu ili dve slušalice za HiFi stereo. Samo uživajte u slušanju na jednom uhu i HiFi stereo binauralnom slušanju.\n\n• Tehnologija smanjenja šuma: binauralni poziv visoke definicije, 5.0 automatsko uparivanje, ugrađena aktivna redukcija buke CVC 8.0, može da obezbedi jasne telefonske pozive i najbolje muzičko iskustvo.\n\n• Karakteristike proizvoda: binauralni poziv visoke definicije, pauza pri reprodukciji, pomoćnik za pozive, podešavanje jačine zvuka, prebacivanje pesama nagore i nadole, automatsko pokretanje, automatsko uparivanje, inteligentno smanjenje šuma, bez kašnjenja u igri.\n\n• Bluetooth slušalice imaju funkciju dodira, jednostavne za upotrebu.",
-          "Slika": "21c3c02c-4c59-4ee7-9091-3d3e0aeb5158.jpg",
-          "DatumPostavljanjaProizvoda": "24/06/2023",
-          "Grad": "Beograd",
-          "Recenzija": [],
-          "Status": true,
-          "IsDeleted": false,
-          "FID": [
-            "3",
-            "15"
-          ],
-          "KID": "4",
-          "PID": [
-            6,
-            11
-          ],
-          "RID": [],
-          "Kolicina": 1.0
-        },
-        {
-          "Id": 4,
-          "Naziv": "IPANEMA Sandale za devojčice Summer Ix Baby 83188-20874 roze",
-          "Cena": 1999.0,
-          "Opis": "IPANEMA je jedan od najznačajnijih brazilskih brendova. Iako relativno mlad brend, napravio je pravu revoluciju u domenu letnje obuće na tržištu. Lansirala ga je poznata brazilska manekenka Gisele Bündchen tako da se često ovaj brend vezuje za njeno ime. Ipanema je brend koji je zaljubljen u ritam koji pokreće svet. Inspisana životom brazilskih ulica i plaža, Ipanemu pokreću jedinstveni, jednostavni detalji svakodnevnice. Njena suština dolazi sa plaže iz Rio de Janeira, po kojoj je ovaj brend i dobio ime, ali u isto vreme ovaj brend je cosmopolita. U svakoj kolekciji Ipanema ostaje verna sebi i svojoj filozofiji. Različiti stilovi uključuju japanke i sandale koje se mogu nositi kako na plaži, u gradu, preko dana u izlasku… Ipanema je eco frendly brend i njena celokupna proizvodnja zasniva se na 100% materijala koji je moguće reciklirati i od čak 30% materijala koji je već recikliran. Na taj način, Ipanema brine o održivosti prirode.",
-          "Slika": "9eb5d426-1c7d-472c-8925-df86c621a5ec.jpg",
-          "DatumPostavljanjaProizvoda": "24/06/2023",
-          "Grad": "Novi Sad",
-          "Recenzija": [],
-          "Status": false,
-          "IsDeleted": false,
-          "FID": [
-            "14",
-            "3"
-          ],
-          "KID": "4",
-          "PID": [
-            7
-          ],
-          "RID": [],
-          "Kolicina": 0.0
-        },
         {
           "Id": 8,
           "Naziv": "DR.GRANDEL Couperose Expert krema 50 ml",
@@ -828,6 +719,32 @@
           "Kolicina": 8.0
         },
         {
+          "Id": 1,
+          "Naziv": "GARNIER Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+          "Cena": 1019.0,
+          "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+          "Slika": "cce7f89b-6c2a-41f9-b3ae-74c6cf7f2747.jpg",
+          "DatumPostavljanjaProizvoda": "24/06/2023",
+          "Grad": "Novi Sad",
+          "Recenzija": [],
+          "Status": true,
+          "IsDeleted": false,
+          "FID": [
+            "3",
+            "14"
+          ],
+          "KID": "4",
+          "PID": [
+            1,
+            4
+          ],
+          "RID": [
+            1,
+            2
+          ],
+          "Kolicina": 14.0
+        },
+        {
           "Id": 11,
           "Naziv": "CAR LINE Kablovi za startovanje 500A",
           "Cena": 2194.0,
@@ -847,11 +764,54 @@
           ],
           "RID": [],
           "Kolicina": 11.0
+        },
+        {
+          "Id": 2,
+          "Naziv": "SMART+ Bluetooth slušalice F9C TWS crne",
+          "Cena": 1999.0,
+          "Opis": "Bluetooth 5.0: Slušalice koriste\n• Bluetooth 5.0 čip, bez kašnjenja, niske potrošnje energije i mogu postići brzu i stabilnu vezu. Zaista bežične Bluetooth slušalice velikog kapaciteta.\n\n• Dva načina povezivanja: jednokratna/dvostruka upotreba bez upotrebe ruku, možete koristiti jednu ili dve slušalice za HiFi stereo. Samo uživajte u slušanju na jednom uhu i HiFi stereo binauralnom slušanju.\n\n• Tehnologija smanjenja šuma: binauralni poziv visoke definicije, 5.0 automatsko uparivanje, ugrađena aktivna redukcija buke CVC 8.0, može da obezbedi jasne telefonske pozive i najbolje muzičko iskustvo.\n\n• Karakteristike proizvoda: binauralni poziv visoke definicije, pauza pri reprodukciji, pomoćnik za pozive, podešavanje jačine zvuka, prebacivanje pesama nagore i nadole, automatsko pokretanje, automatsko uparivanje, inteligentno smanjenje šuma, bez kašnjenja u igri.\n\n• Bluetooth slušalice imaju funkciju dodira, jednostavne za upotrebu.",
+          "Slika": "21c3c02c-4c59-4ee7-9091-3d3e0aeb5158.jpg",
+          "DatumPostavljanjaProizvoda": "24/06/2023",
+          "Grad": "Beograd",
+          "Recenzija": [],
+          "Status": true,
+          "IsDeleted": false,
+          "FID": [
+            "3"
+          ],
+          "KID": "4",
+          "PID": [
+            6
+          ],
+          "RID": [],
+          "Kolicina": 4.0
+        },
+        {
+          "Id": 4,
+          "Naziv": "IPANEMA Sandale za devojčice Summer Ix Baby 83188-20874 roze",
+          "Cena": 1999.0,
+          "Opis": "IPANEMA je jedan od najznačajnijih brazilskih brendova. Iako relativno mlad brend, napravio je pravu revoluciju u domenu letnje obuće na tržištu. Lansirala ga je poznata brazilska manekenka Gisele Bündchen tako da se često ovaj brend vezuje za njeno ime. Ipanema je brend koji je zaljubljen u ritam koji pokreće svet. Inspisana životom brazilskih ulica i plaža, Ipanemu pokreću jedinstveni, jednostavni detalji svakodnevnice. Njena suština dolazi sa plaže iz Rio de Janeira, po kojoj je ovaj brend i dobio ime, ali u isto vreme ovaj brend je cosmopolita. U svakoj kolekciji Ipanema ostaje verna sebi i svojoj filozofiji. Različiti stilovi uključuju japanke i sandale koje se mogu nositi kako na plaži, u gradu, preko dana u izlasku… Ipanema je eco frendly brend i njena celokupna proizvodnja zasniva se na 100% materijala koji je moguće reciklirati i od čak 30% materijala koji je već recikliran. Na taj način, Ipanema brine o održivosti prirode.",
+          "Slika": "9eb5d426-1c7d-472c-8925-df86c621a5ec.jpg",
+          "DatumPostavljanjaProizvoda": "24/06/2023",
+          "Grad": "Novi Sad",
+          "Recenzija": [],
+          "Status": false,
+          "IsDeleted": false,
+          "FID": [
+            "14",
+            "3"
+          ],
+          "KID": "4",
+          "PID": [
+            7
+          ],
+          "RID": [],
+          "Kolicina": 0.0
         }
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": false
+      "IsLoggedIn": true
     },
     "Naslov": "Nije dobra",
     "SadrzajRecenzije": "Nije dobra na mom tipu kože.",
@@ -900,10 +860,10 @@
           "Id": 4,
           "Proizvod": {
             "Id": 1,
-            "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-            "Cena": 1200.0,
-            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-            "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+            "Naziv": "GARNIER Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+            "Cena": 1019.0,
+            "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+            "Slika": "cce7f89b-6c2a-41f9-b3ae-74c6cf7f2747.jpg",
             "DatumPostavljanjaProizvoda": "24/06/2023",
             "Grad": "Novi Sad",
             "Recenzija": [],
@@ -911,53 +871,20 @@
             "IsDeleted": false,
             "FID": [
               "3",
-              "14",
-              "15"
+              "14"
             ],
             "KID": "4",
             "PID": [
               1,
-              4,
-              9,
-              10,
-              14
+              4
             ],
             "RID": [
               1,
               2
             ],
-            "Kolicina": 8.0
+            "Kolicina": 14.0
           },
           "Kolicina": 4.0,
-          "Kupac": "14",
-          "DatumPorudzbine": "25/06/2023",
-          "Status": 1,
-          "IsDeleted": false
-        },
-        {
-          "Id": 8,
-          "Proizvod": {
-            "Id": 3,
-            "Naziv": "McADAMS Hrana za odrasle pse malih rasa TURKEY SENSITIVE 2kg",
-            "Cena": 4795.0,
-            "Opis": "McADAMS HRANA ZA ODRASLE PSE MALIH RASA\nBez žitarica i mesnog brašna, nežno pečena i lako svarljiva. Ultra-premium kompletna hrana za pse napravljena sa jednim izvorom proteina, pogodna za pse malih rasa sa alergijama i intolerancijama na hranu.\nPrešli smo na ulje algi održivog izvora, koje ima iste zdravstvene prednosti, ali je manje verovatno da će izazvati alergije.\nU sve naše recepte zbog zdravih zglobova uključujemo novozelandsku zelenu usnu dagnju i ručno rezanu irsku algu i oboje su odlični izvori antioksidanata koji mogu pomoći u sprečavanju upalnih reakcija kod kućnih ljubimaca. Prešli smo na ulje algi održivog izvora, koje ima isto koristi za zdravlje, ali je manje verovatno da će izazvati alergije.\n\nSastav\nČitava britanska ćuretina iz slobodnog uzgoja sa ćurećom masti i sosom (64,5%), slatkim krompirom (25%), tapiokom (6,5%), sočivom, mineralima, biljnim vlaknima, uljem algi, prebioticima (FOS (0,15%), MOS (0,15%) )), ekstrakt juke, sušeni neven, ručno rezane irske morske alge (0,03%), sušena pomorandža, novozelandska zelenousna dagnja, kamilica, šargarepa, brusnice, spanać, paradajz, lavanda, sušeni ruzmarin.\nAnalitičke komponente\nSirovi proteini 23%, Sirove masti 11%, Sirova vlakna 3,5%, Sirovi pepeo 8%, Omega 6 1,5%, Omega 3 0,6%, 353,00 kcal/100g.\nAditivi\nVitamini: Vitamin A 14.423 IU, Vitamin D3 2.000 IU, Vitamin E 96 IU; Elementi u tragovima: cink (cink-sulfat monohidrat) 48 mg, gvožđe (gvožđe (II) sulfat monohidrat) 48 mg, mangan (mangan sulfat monohidrat) 34 mg, bakar (bakar (II) sulfat pentahidrat) 5 mg, jod-jod (Calcij anhidrat) ) 0,96 mg, selen (natrijum selenit) 0,19 mg. Antioksidansi: Konzervirano sa mešanim tokoferolima.\n\nSmernice za dnevno hranjenje:\nKao i ljudi, svi psi su različiti i imaju različite potrebe u ishrani u zavisnosti od njihovog metabolizma i nivoa aktivnosti. Koristite dole navedene količine kao vodič i prilagodite veličinu obroka vašeg psa u skladu sa tim ako primećujete da vaš pas ili gubi ili dobija na težini. Većina pasa preferira da se njihova dnevna količina podeli između dva obroka. Sveža voda treba uvek da bude dostupna.\nTežina psa 3 kg / 5 kg / 7 kg / 10 kg\nDnevna količina 50-65g / 75-100g / 95-125g / 120-165g",
-            "Slika": "876a65c0-9543-4891-b8cf-fd090334f2be.jpg",
-            "DatumPostavljanjaProizvoda": "24/06/2023",
-            "Grad": "Novi Sad",
-            "Recenzija": [],
-            "Status": true,
-            "IsDeleted": false,
-            "FID": [],
-            "KID": "4",
-            "PID": [
-              8
-            ],
-            "RID": [
-              4
-            ],
-            "Kolicina": 39.0
-          },
-          "Kolicina": 1.0,
           "Kupac": "14",
           "DatumPorudzbine": "25/06/2023",
           "Status": 1,
@@ -992,15 +919,44 @@
           "DatumPorudzbine": "25/06/2023",
           "Status": 0,
           "IsDeleted": false
+        },
+        {
+          "Id": 8,
+          "Proizvod": {
+            "Id": 3,
+            "Naziv": "McADAMS Hrana za odrasle pse malih rasa TURKEY SENSITIVE 2kg",
+            "Cena": 4795.0,
+            "Opis": "McADAMS HRANA ZA ODRASLE PSE MALIH RASA\nBez žitarica i mesnog brašna, nežno pečena i lako svarljiva. Ultra-premium kompletna hrana za pse napravljena sa jednim izvorom proteina, pogodna za pse malih rasa sa alergijama i intolerancijama na hranu.\nPrešli smo na ulje algi održivog izvora, koje ima iste zdravstvene prednosti, ali je manje verovatno da će izazvati alergije.\nU sve naše recepte zbog zdravih zglobova uključujemo novozelandsku zelenu usnu dagnju i ručno rezanu irsku algu i oboje su odlični izvori antioksidanata koji mogu pomoći u sprečavanju upalnih reakcija kod kućnih ljubimaca. Prešli smo na ulje algi održivog izvora, koje ima isto koristi za zdravlje, ali je manje verovatno da će izazvati alergije.\n\nSastav\nČitava britanska ćuretina iz slobodnog uzgoja sa ćurećom masti i sosom (64,5%), slatkim krompirom (25%), tapiokom (6,5%), sočivom, mineralima, biljnim vlaknima, uljem algi, prebioticima (FOS (0,15%), MOS (0,15%) )), ekstrakt juke, sušeni neven, ručno rezane irske morske alge (0,03%), sušena pomorandža, novozelandska zelenousna dagnja, kamilica, šargarepa, brusnice, spanać, paradajz, lavanda, sušeni ruzmarin.\nAnalitičke komponente\nSirovi proteini 23%, Sirove masti 11%, Sirova vlakna 3,5%, Sirovi pepeo 8%, Omega 6 1,5%, Omega 3 0,6%, 353,00 kcal/100g.\nAditivi\nVitamini: Vitamin A 14.423 IU, Vitamin D3 2.000 IU, Vitamin E 96 IU; Elementi u tragovima: cink (cink-sulfat monohidrat) 48 mg, gvožđe (gvožđe (II) sulfat monohidrat) 48 mg, mangan (mangan sulfat monohidrat) 34 mg, bakar (bakar (II) sulfat pentahidrat) 5 mg, jod-jod (Calcij anhidrat) ) 0,96 mg, selen (natrijum selenit) 0,19 mg. Antioksidansi: Konzervirano sa mešanim tokoferolima.\n\nSmernice za dnevno hranjenje:\nKao i ljudi, svi psi su različiti i imaju različite potrebe u ishrani u zavisnosti od njihovog metabolizma i nivoa aktivnosti. Koristite dole navedene količine kao vodič i prilagodite veličinu obroka vašeg psa u skladu sa tim ako primećujete da vaš pas ili gubi ili dobija na težini. Većina pasa preferira da se njihova dnevna količina podeli između dva obroka. Sveža voda treba uvek da bude dostupna.\nTežina psa 3 kg / 5 kg / 7 kg / 10 kg\nDnevna količina 50-65g / 75-100g / 95-125g / 120-165g",
+            "Slika": "876a65c0-9543-4891-b8cf-fd090334f2be.jpg",
+            "DatumPostavljanjaProizvoda": "24/06/2023",
+            "Grad": "Novi Sad",
+            "Recenzija": [],
+            "Status": true,
+            "IsDeleted": false,
+            "FID": [],
+            "KID": "4",
+            "PID": [
+              8
+            ],
+            "RID": [
+              4
+            ],
+            "Kolicina": 39.0
+          },
+          "Kolicina": 1.0,
+          "Kupac": "14",
+          "DatumPorudzbine": "25/06/2023",
+          "Status": 1,
+          "IsDeleted": false
         }
       ],
       "OmiljenjiProizvodi": [
         {
           "Id": 1,
-          "Naziv": "GARNIER 22Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
-          "Cena": 1200.0,
-          "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.222\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
-          "Slika": "45c1225b-a58e-4975-a93d-51646422becb.jpg",
+          "Naziv": "GARNIER Mleko za zaštitu od sunca Ambre Solaire SPF50 200ml",
+          "Cena": 1019.0,
+          "Opis": "Mleko za zaštitu od sunca protiv isušivanja kože.\n• Hidrirajuća formula štiti od isušivanja i ostavlja kožu nežnom i mekanom.\n• Obogaćeno ši puterom.\n• Veoma visoka zaštita SPF 50.",
+          "Slika": "cce7f89b-6c2a-41f9-b3ae-74c6cf7f2747.jpg",
           "DatumPostavljanjaProizvoda": "24/06/2023",
           "Grad": "Novi Sad",
           "Recenzija": [],
@@ -1008,22 +964,18 @@
           "IsDeleted": false,
           "FID": [
             "3",
-            "14",
-            "15"
+            "14"
           ],
           "KID": "4",
           "PID": [
             1,
-            4,
-            9,
-            10,
-            14
+            4
           ],
           "RID": [
             1,
             2
           ],
-          "Kolicina": 8.0
+          "Kolicina": 14.0
         },
         {
           "Id": 4,
@@ -1050,7 +1002,7 @@
       ],
       "ObjavljeniProizvodi": null,
       "IsDeleted": false,
-      "IsLoggedIn": false
+      "IsLoggedIn": true
     },
     "Naslov": "Srednje kvalitetna hrana za pse",
     "SadrzajRecenzije": "Paket je stigao kroz 5 dana i očekivala sam da će kvalitet hrane biti u odnosu na visoku cenu dosta iznad standarda. Naravno, brzo sam sipala Džekiju i nije bio previše oduševljen kvalitetom, tu negde oko proseka.",

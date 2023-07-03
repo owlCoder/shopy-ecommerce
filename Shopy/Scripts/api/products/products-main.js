@@ -276,7 +276,7 @@
                                 '<span class="h5 card-title text-success fw-semibold justify-content-end">' + k.Grad + '</span>' +
                                 '</div>' +
                                 '<h6 class="card-subtitle mb-2 text-muted">' + k.Cena + ' RSD</h6>' +
-                                '<p class="card-text">' + k.Opis + '</p>' +
+                                '<p class="card-text">' + k.Opis.substring(0, 300) + '</p>' +
                                 kupac_dodaj_naruci +
                                 '</div>' +
                                 '</div>' +
