@@ -1,0 +1,63 @@
+﻿@model List<string>
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <title>Profesor</title>
+</head>
+<body>
+    <div class="bgd">
+        <h1>Dodavanje ispita</h1>
+        <div class="action">
+            <form action="/Profesor/Index" method="post" style="all: initial;">
+                <div class="content">
+                    <button type="submit" style="max-width: 300px; border-radius: 7px;">Početna stranica</button>
+                </div>
+            </form>
+
+            <form action="/Profesor/OcenivanjeView" method="post" style="all: initial;">
+                <div class="content" style="margin-left: -50px;">
+                    <button type="submit" style="max-width: 300px; border-radius: 7px;">Ocenivanje ispita</button>
+                </div>
+            </form>
+
+            <form action="/Home/Odjava" method="post" style="all: initial;">
+                <div class="content" style="margin-left: -50px;">
+                    <button type="submit" class="button2">Logout</button>
+                </div>
+            </form>
+        </div>
+
+        <form action="/Profesor/Dodaj" method="post" style="all: initial;">
+            <div class="content">
+                <div class="input-field">
+                    <select style="font-size: 18px; font-size: 16px; display: block; font-family: 'Rubik', sans-serif; width: 100%; padding: 10px 1px; border: 0; border-bottom: 1px solid #747474; outline: none; -webkit-transition: all .2s; transition: all .2s;" id="predmet" name="predmet" required>
+                        @foreach (var p in Model)
+                        {
+                            <option value="@p">@p</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="input-field">
+                    <input style="font-size: 18px;" type="text" id="ucionica" name="ucionica" placeholder="Naziv učionice" required>
+                </div>
+
+                <div class="input-field">
+                    <input type="text" id="nazivIspitnogRoka" name="nazivIspitnogRoka" placeholder="Naziv ispitnog roka " required>
+                </div>
+
+                <div class="input-field">
+                    <input style="font-size: 18px;" type="datetime-local" id="datumIVremeOdrzavanja" name="datumIVremeOdrzavanja" required>
+                </div>
+            </div>
+
+            <div class="action" style="max-width: 300px; margin-left: 40px;">
+                <button style="border-radius: 7px;">Dodavanje ispita</button>
+            </div>
+        </form>
+
+        <br />
+    </div>
+</body>
+</html>

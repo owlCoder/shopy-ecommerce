@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <title>Administrator</title>
+</head>
+<body>
+    <div class="bgd">
+        <h1>Dodavanje studenta</h1>
+        <div class="action">
+            <form action="/Administrator/Index" method="post" style="all: initial;">
+                <div class="content">
+                    <button type="submit" style="max-width: 300px; border-radius: 7px;">Početna stranica</button>
+                </div>
+            </form>
+
+            <form action="/Home/Odjava" method="post" style="all: initial;">
+                <div class="content" style="margin-left: -50px;">
+                    <button type="submit" class="button2">Logout</button>
+                </div>
+            </form>
+        </div>
+
+        <form action="/Administrator/Dodavanje" method="post" style="all: initial;">
+            <div class="content">
+                <div class="input-field">
+                    <input type="text" placeholder="Korisničko ime" name="korisnickoIme" required autocomplete="nope">
+                </div>
+                <div class="input-field">
+                    <input type="password" placeholder="Lozinka" name="sifra" required">
+                </div>
+
+                <div class="input-field">
+                    <input type="text" id="brojIndeksa" name="brojIndeksa" placeholder="Broj indeksa" required>
+                </div>
+
+                <div class="input-field">
+                    <input type="text" id="ime" name="ime" placeholder="Ime" required>
+                </div>
+
+                <div class="input-field">
+                    <input type="text" id="prezime" name="prezime" placeholder="Prezime" required>
+                </div>
+
+                <div class="input-field">
+                    <input type="date" id="datumRodjenja" min="01-01-1980" max="01-01-2023" placeholder="Datum rođenja" name="datumRodjenja" required>
+                </div>
+
+                <div class="input-field">
+                    <input type="email" id="email" name="Email" placeholder="Elektronska pošta" required>
+                </div>
+            </div>
+
+            <div class="action" style="max-width: 300px; margin-left: 40px;">
+                <button style="border-radius: 7px;">Dodavanje studenta</button>
+            </div>
+        </form>
+
+        <br />
+    </div>
+</body>
+</html>

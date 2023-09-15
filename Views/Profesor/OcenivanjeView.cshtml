@@ -1,0 +1,85 @@
+﻿@model List<WebProjekat.Models.RezultatIspita>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <title>Profesor</title>
+</head>
+<body>
+    <div class="bgd">
+        <h1>Ocenivanje ispita</h1>
+        <div class="action">
+            <form action="/Profesor/Index" method="post" style="all: initial;">
+                <div class="content">
+                    <button type="submit" style="max-width: 300px; border-radius: 7px;">Početna stranica</button>
+                </div>
+            </form>
+
+            <form action="/Profesor/DodavanjeView" method="post" style="all: initial;">
+                <div class="content" style="margin-left: -50px;">
+                    <button type="submit" style="max-width: 300px; border-radius: 7px;">Dodavanje ispita</button>
+                </div>
+            </form>
+
+            <form action="/Home/Odjava" method="post" style="all: initial;">
+                <div class="content" style="margin-left: -50px;">
+                    <button type="submit" class="button2">Logout</button>
+                </div>
+            </form>
+        </div>
+
+        <h2 style="color: darkgoldenrod; padding-top: 15px; text-align: center;">@Session["error"]</h2>
+
+        <br />
+        <table>
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Predmet</th>
+                    <th>Učionica</th>
+                    <th>Ispitni rok</th>
+                    <th>Datum i vreme održavanja</th>
+                    <th>Ocena</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var s in Model)
+                {
+                    <tr>
+                        <td>@s.Student.BrojIndeksa</td>
+                        <td>@s.Ispit.Predmet</td>
+                        <td>@s.Ispit.Ucionica</td>
+                        <td>@s.Ispit.NazivIspitnogRoka</td>
+                        <td>@s.Ispit.DatumIVremeOdrzavanja.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>
+                            @{
+                                if (s.Ocena == 0)
+                                {
+                                    if (s.Ispit.DatumIVremeOdrzavanja <= DateTime.Now)
+                                    {
+                                        <form method="post" action="/Profesor/Oceni">
+                                            <input type="number" min="5" max="10" id="o" name="o" />
+                                            <input type="hidden" value="@s.Id" id="iid" name="iid" />
+                                            <input type="submit" value="Upis" />
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <span>/</span>
+                                    }
+                                }
+                                else
+                                {
+                                    <span>@s.Ocena</span>
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+    </div>
+</body>
+</html>

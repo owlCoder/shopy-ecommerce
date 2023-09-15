@@ -1,0 +1,59 @@
+﻿@model List<WebProjekat.Models.Ispit>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <title>Profesor</title>
+</head>
+<body>
+    <div class="bgd">
+        <h1>Ispiti</h1>
+        <div class="action">
+            <form action="/Profesor/DodavanjeView" method="post" style="all: initial;">
+                <div class="content">
+                    <button type="submit" style="max-width: 300px; border-radius: 7px;">Dodavanje ispita</button>
+                </div>
+            </form>
+
+            <form action="/Profesor/OcenivanjeView" method="post" style="all: initial;">
+                <div class="content" style="margin-left: -50px;">
+                    <button type="submit" style="max-width: 300px; border-radius: 7px;">Ocenivanje ispita</button>
+                </div>
+            </form>
+
+            <form action="/Home/Odjava" method="post" style="all: initial;">
+                <div class="content" style="margin-left: -50px;">
+                    <button type="submit" class="button2">Logout</button>
+                </div>
+            </form>
+        </div>
+
+        <h2 style="color: darkgoldenrod; padding-top: 15px; text-align: center;">@Session["error"]</h2>
+
+        <br /><br />
+        <table>
+            <thead>
+                <tr>
+                    <th>Predmet</th>
+                    <th>Učionica</th>
+                    <th>Ispitni rok</th>
+                    <th>Datum i vreme održavanja</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var s in Model)
+                {
+                    <tr>
+                        <td>@s.Predmet</td>
+                        <td>@s.Ucionica</td>
+                        <td>@s.NazivIspitnogRoka</td>
+                        <td>@s.DatumIVremeOdrzavanja.ToString("dd/MM/yyyy HH:mm")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+    </div>
+</body>
+</html>

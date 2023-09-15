@@ -1,0 +1,65 @@
+﻿@model WebProjekat.Models.Student
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <title>Administrator</title>
+</head>
+<body>
+    <div class="bgd">
+        <h1>Izmena studenta</h1>
+        <div class="action">
+            <form action="/Administrator/Index" method="post" style="all: initial;">
+                <div class="content">
+                    <button type="submit" style="max-width: 300px; border-radius: 7px;">Početna stranica</button>
+                </div>
+            </form>
+
+            <form action="/Home/Odjava" method="post" style="all: initial;">
+                <div class="content" style="margin-left: -50px;">
+                    <button type="submit" class="button2">Logout</button>
+                </div>
+            </form>
+        </div>
+
+        <form action="/Administrator/Izmena" method="post" style="all: initial;">
+            <div class="content">
+                <div class="input-field">
+                    <input type="text" placeholder="Korisničko ime" name="korisnickoIme" readonly value="@Model.KorisnickoIme" required autocomplete="nope">
+                </div>
+
+                <div class="input-field">
+                    <input type="text" id="brojIndeksa" name="brojIndeksa" value="@Model.BrojIndeksa" readonly placeholder="Broj indeksa" required>
+                </div>
+
+                <div class="input-field">
+                    <input type="password" placeholder="Lozinka" name="sifra" value="@Model.Sifra" required">
+                </div>
+
+                <div class="input-field">
+                    <input type="text" id="ime" name="ime" placeholder="Ime" value="@Model.Ime" required>
+                </div>
+
+                <div class="input-field">
+                    <input type="text" id="prezime" name="prezime" placeholder="Prezime" value="@Model.Prezime" required>
+                </div>
+
+                <div class="input-field">
+                    <input type="date" id="datumRodjenja" min="01-01-1980" max="01-01-2023" placeholder="Datum rođenja" value="@Model.DatumRodjenja.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)" name="datumRodjenja" required>
+                </div>
+
+                <div class="input-field">
+                    <input type="email" id="email" name="Email" placeholder="Elektronska pošta" value="@Model.Email" required>
+                </div>
+            </div>
+
+            <div class="action" style="max-width: 300px; margin-left: 40px;">
+                <button style="border-radius: 7px;">Izmena podataka</button>
+            </div>
+        </form>
+
+        <br />
+    </div>
+</body>
+</html>

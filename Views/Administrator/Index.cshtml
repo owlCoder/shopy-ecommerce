@@ -1,0 +1,62 @@
+﻿@model List<WebProjekat.Models.Student>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <title>Administrator</title>
+</head>
+<body>
+    <div class="bgd">
+        <h1>Studenti</h1>
+        <div class="action">
+            <form action="/Administrator/DodavanjeView" method="post" style="all: initial;">
+                <div class="content">
+                    <button type="submit" style="max-width: 300px; border-radius: 7px;">Dodavanje studenta</button>
+                </div>
+            </form>
+
+            <form action="/Home/Odjava" method="post" style="all: initial;">
+                <div class="content" style="margin-left: -50px;">
+                    <button type="submit" class="button2">Logout</button>
+                </div>
+            </form>
+        </div>
+        
+        <h2 style="color: darkgoldenrod; padding-top: 15px; text-align: center;">@Session["error"]</h2>
+        
+        <br /><br />
+        <table>
+            <thead>
+                <tr>
+                    <th>Korisničko ime</th>
+                    <th>Broj indeksa</th>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Datum rođenja</th>
+                    <th>Email</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var s in Model)
+                {
+                    <tr>
+                        <td>@s.KorisnickoIme</td>
+                        <td>@s.BrojIndeksa</td>
+                        <td>@s.Ime</td>
+                        <td>@s.Prezime</td>
+                        <td>@s.DatumRodjenja.ToString("dd/MM/yyyy")</td>
+                        <td>@s.Email</td>
+                        <td style="text-align: center;">
+                            <a href='/Administrator/IzmenaView?uid=@s.KorisnickoIme' style="color: darkgoldenrod">Izmena</a>&emsp;
+                            <a href='/Administrator/Brisanje?uid=@s.KorisnickoIme' style="color: crimson">Brisanje</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+    </div>
+</body>
+</html>
